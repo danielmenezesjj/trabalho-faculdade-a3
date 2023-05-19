@@ -21,6 +21,3 @@
 
 ## Entidades 
 
-
-
-editado - morgana aqui
