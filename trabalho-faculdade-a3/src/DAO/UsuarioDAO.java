@@ -22,7 +22,7 @@ public class UsuarioDAO {
         conn = (Connection) new ConexaoDAO().connectDB();
         
         try{
-            String sql = "select * from users where username = ? and password = ?";
+            String sql = "SELECT * FROM usuarios where cpf = ? and senha = ?";
             
             PreparedStatement pstm = conn.prepareStatement(sql);
             pstm.setString(1, objUsuarioDto.getUsername_usuario());
