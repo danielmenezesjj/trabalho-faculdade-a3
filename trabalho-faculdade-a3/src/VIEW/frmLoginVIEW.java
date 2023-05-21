@@ -143,26 +143,31 @@ public class frmLoginVIEW extends javax.swing.JFrame {
 
     private void logar() {
         try {
-            String username_usuario, password_usuario;
+            String cpf_usuario, senha_usuario;
 
-            username_usuario = txtUsername.getText();
-            password_usuario = txtPassword.getText();
+            cpf_usuario = txtUsername.getText();
+            senha_usuario = txtPassword.getText();
 
             UsuarioDTO objUsuarioDto = new UsuarioDTO();
             
-            objUsuarioDto.setUsername_usuario(username_usuario);
-            objUsuarioDto.setPassword_usuario(password_usuario);
+            objUsuarioDto.setCpf_usuario(cpf_usuario);
+            objUsuarioDto.setSenha_usuario(senha_usuario);
 
             UsuarioDAO objUsuarioDao = new UsuarioDAO();
 
             ResultSet rsUsuarioDao = objUsuarioDao.autenticacaoUsuario(objUsuarioDto);
 
             if (rsUsuarioDao.next()) {
-                // chamar tela 
-                frmPrincipalVIEW objFrmPrincipalView = new frmPrincipalVIEW();
-                objFrmPrincipalView.setVisible(true);
+                if (rsUsuarioDao.getInt("perfil_id") == 5) {
+                    // chamar tela
+                    frmPrincipalVIEW objFrmPrincipalView = new frmPrincipalVIEW();
+                    objFrmPrincipalView.setVisible(true);
 
-                this.dispose();
+                    this.dispose();
+
+                } else if(rsUsuarioDao.getInt("perfil_id") == 1){
+                    JOptionPane.showMessageDialog(null, "E médico");
+                }
 
             } else {
                 JOptionPane.showMessageDialog(null, "Usuário ou senha incorreto.");
