@@ -16,8 +16,9 @@ CREATE TABLE usuarios(
     perfil_id int not null,
     FOREIGN KEY (perfil_id) REFERENCES perfil(id)
 );
-INSERT INTO usuarios(nome_completo, dt_nascimento, adm, cpf, email, telefone, senha, perfil_id) value("daniel menezes", '2000-12-25', true, "1234567891", "danielmenezes2512@outlook.com", "12356791", "123", 5);
 insert into perfil(nome_perfil) value ("ADMIN");
+INSERT INTO usuarios(nome_completo, dt_nascimento, adm, cpf, email, telefone, senha, perfil_id) value("daniel menezes", '2000-12-25', true, "1234567891", "danielmenezes2512@outlook.com", "12356791", "123", 5);
+
 
 
 
