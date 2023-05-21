@@ -11,8 +11,26 @@ package DTO;
 public class UsuarioDTO {
 
     private int id_usuario;
-    private String username_usuario;
-    private String password_usuario;
+    private String cpf_usuario;
+    private String senha_usuario;
+    private int perfil_usuario;
+    private boolean admin;
+
+    public boolean isAdmin() {
+        return admin;
+    }
+
+    public void setAdmin(boolean admin) {
+        this.admin = admin;
+    }
+
+    public int getPerfil_usuario() {
+        return perfil_usuario;
+    }
+
+    public void setPerfil_usuario(int perfil_usuario) {
+        this.perfil_usuario = perfil_usuario;
+    }
 
     public int getId_usuario() {
         return id_usuario;
@@ -22,19 +40,19 @@ public class UsuarioDTO {
         this.id_usuario = id_usuario;
     }
 
-    public String getUsername_usuario() {
-        return username_usuario;
+    public String getCpf_usuario() {
+        return cpf_usuario;
     }
 
-    public void setUsername_usuario(String username_usuario) {
-        this.username_usuario = username_usuario;
+    public void setCpf_usuario(String cpf_usuario) {
+        this.cpf_usuario = cpf_usuario;
     }
 
-    public String getPassword_usuario() {
-        return password_usuario;
+    public String getSenha_usuario() {
+        return senha_usuario;
     }
 
-    public void setPassword_usuario(String password_usuario) {
-        this.password_usuario = password_usuario;
+    public void setSenha_usuario(String senha_usuario) {
+        this.senha_usuario = senha_usuario;
     }
 }
