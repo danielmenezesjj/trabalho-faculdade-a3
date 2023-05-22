@@ -1,4 +1,7 @@
+CREATE DATABASE detran;
+
 use detran;
+
 
 CREATE TABLE perfil(
 					id int auto_increment primary key, 
