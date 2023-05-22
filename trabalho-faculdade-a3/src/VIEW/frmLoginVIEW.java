@@ -71,7 +71,7 @@ public class frmLoginVIEW extends javax.swing.JFrame {
                             .addComponent(txtUsername)
                             .addComponent(txtPassword, javax.swing.GroupLayout.DEFAULT_SIZE, 153, Short.MAX_VALUE)))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(148, 148, 148)
+                        .addGap(160, 160, 160)
                         .addComponent(btnLogin)))
                 .addContainerGap(138, Short.MAX_VALUE))
         );
@@ -86,12 +86,11 @@ public class frmLoginVIEW extends javax.swing.JFrame {
                 .addComponent(jLabel2)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(txtPassword, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(30, 30, 30)
+                .addGap(37, 37, 37)
                 .addComponent(btnLogin)
-                .addContainerGap(74, Short.MAX_VALUE))
+                .addContainerGap(67, Short.MAX_VALUE))
         );
 
-        btnLogin.getAccessibleContext().setAccessibleName("Entrar");
         btnLogin.getAccessibleContext().setAccessibleDescription("");
 
         pack();
