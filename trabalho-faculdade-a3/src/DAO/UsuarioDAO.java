@@ -12,8 +12,6 @@ public class UsuarioDAO {
     Connection  conn = (Connection) new ConexaoDAO().connectDB();
     
     public ResultSet autenticacaoUsuario(UsuarioDTO objUsuarioDto){
-    
-        
         try{
             String sql = "SELECT * FROM usuarios JOIN perfil ON usuarios.perfil_id = perfil.id WHERE usuarios.cpf = ? AND usuarios.senha = ?";
             

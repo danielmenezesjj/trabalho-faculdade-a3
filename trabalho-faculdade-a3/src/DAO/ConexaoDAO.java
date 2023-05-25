@@ -10,12 +10,11 @@ public class ConexaoDAO{
     public static void main(String[] args) throws Exception {
         
     }
-
         public  Connection connectDB(){
         Connection conn = null;
         
         try{
-            String url = "jdbc:mysql://localhost:3306/detran?user=root&password=123456";
+            String url = "jdbc:mysql://localhost:3306/detran?user=root&password=root";
             conn = DriverManager.getConnection(url);
 
             System.out.println("DB connected!");
