@@ -1,5 +1,10 @@
 # Trabalho faculdade A3 - Sistema de Gerencimaneto de cadastro de CNH
 
+
+## Requisitos funcionais e não funcionais
+![Requisitos ](https://i.imgur.com/9YDVM57.png)
+
+
 ## Primeiros passos
     Executar o script que está no repositorio com nome de `modela_banco.sql`
     Ou então copiar as querys e colar no MySQL Workbench 8.0 CE
