@@ -22,8 +22,11 @@
     https://dev.mysql.com/downloads/file/?id=518834 - MySql 
 
 
+
 ## Configuração do projeto
-    Mudar o login e senha da sua database -   String url = "jdbc:mysql://localhost:3306/detran?user=<SEU LOGIN>&password=<SUA SENHA>";
+    1º Git clone https://github.com/danielmenezesjj/trabalho-faculdade-a3.git
+    2º Importe a dependecia do mysql-conector
+    3º Mudar o login e senha da sua database -   String url = "jdbc:mysql://localhost:3306/detran?user=<SEU LOGIN>&password=<SUA SENHA>";
 
 
 ## Interfaces 
