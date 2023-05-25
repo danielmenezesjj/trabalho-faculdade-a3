@@ -20,6 +20,7 @@
     https://download.oracle.com/java/19/archive/jdk-19.0.2_windows-x64_bin.exe - JDK 19
     https://dlcdn.apache.org/netbeans/netbeans-installers/17/Apache-NetBeans-17-bin-windows-x64.exe - NetBeans 17
     https://dev.mysql.com/downloads/file/?id=518834 - MySql 
+    https://drive.google.com/file/d/1yHQNdGL22YSC-tjBaMblB73Ps2NYG7Gc/view - mysql-connector-java
 
 
 
