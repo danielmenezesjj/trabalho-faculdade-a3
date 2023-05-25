@@ -1,5 +1,8 @@
 # Trabalho faculdade A3 - Sistema de Gerencimaneto de cadastro de CNH
 
+## Requisitos
+* Aluno se cadastra 
+* Admin cadastra todos os tipos de perfis
 
 ## Requisitos funcionais e não funcionais
 ![Requisitos ](https://i.imgur.com/9YDVM57.png)
