@@ -144,7 +144,7 @@ public class frmLoginVIEW extends javax.swing.JFrame {
 
             if (rsUsuarioDao.next()) {
                 // chamar tela
-                if (rsUsuarioDao.getInt("perfil_id") == 5) {
+                if (rsUsuarioDao.getString("nome_perfil").equals("ADMIN")) {
                     frmCadastroFuncionario objFrmCadastroFuncionario = new frmCadastroFuncionario();
                     objFrmCadastroFuncionario.setVisible(true);
                     this.dispose();

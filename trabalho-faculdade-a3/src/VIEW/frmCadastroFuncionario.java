@@ -1,5 +1,14 @@
 package VIEW;
 
+import DAO.UsuarioDAO;
+import DTO.UsuarioDTO;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JOptionPane;
+
 public class frmCadastroFuncionario extends javax.swing.JFrame {
     public frmCadastroFuncionario() {
         initComponents();
@@ -163,13 +172,62 @@ public class frmCadastroFuncionario extends javax.swing.JFrame {
     }//GEN-LAST:event_txtCPFActionPerformed
 
     private void bntCadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bntCadastrarActionPerformed
-        // TODO add your handling code here:
+         try {
+            // TODO add your handling code here:
+            cadastrar();
+        } catch (ParseException ex) {
+            Logger.getLogger(frmCadastroFuncionario.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+        
     }//GEN-LAST:event_bntCadastrarActionPerformed
 
     private void txtPerfilActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtPerfilActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtPerfilActionPerformed
-
+    
+    private void cadastrar() throws ParseException{
+        try {
+            String nome, cpf,dt_nascimento, email, telefone, senha;
+        int perfil;
+        boolean adm;
+        
+        SimpleDateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy");
+        
+       
+        
+        nome = txtNomeCompleto.getText();
+        cpf = txtCPF.getText();
+        dt_nascimento = txtDtNascimento.getText();
+        email = txtEmail.getText();
+        telefone = txtEmail.getText();
+        senha = txtSenha.getText();
+        perfil = Integer.parseInt(txtPerfil.getText());
+        
+         Date dt_nascimento_usuario = dateFormat.parse(dt_nascimento);
+        
+        UsuarioDTO objUsuarioDto = new UsuarioDTO();
+        objUsuarioDto.setNome_usuario(nome);
+        objUsuarioDto.setCpf_usuario(cpf);
+        objUsuarioDto.setDt_nascimento_usuario(dt_nascimento_usuario);
+        objUsuarioDto.setEmail_usuario(email);
+        objUsuarioDto.setTelefone_usuario(telefone);
+        objUsuarioDto.setSenha_usuario(senha);
+        objUsuarioDto.setPerfil_usuario(perfil);
+        
+        UsuarioDAO objUsuarioDao = new UsuarioDAO();
+        objUsuarioDao.cadastrarUsuario(objUsuarioDto);
+    
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, e);
+        }
+        
+        
+        
+    }
+    
+    
+    
     /**
      * @param args the command line arguments
      */
