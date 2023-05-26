@@ -53,10 +53,8 @@
                           <Component id="jLabel5" alignment="0" min="-2" pref="107" max="-2" attributes="0"/>
                           <Component id="txtCPF" alignment="0" max="32767" attributes="0"/>
                           <Component id="txtTelefone" alignment="0" min="-2" pref="170" max="-2" attributes="0"/>
-                          <Group type="103" alignment="0" groupAlignment="1" max="-2" attributes="0">
-                              <Component id="txtDtNascimento" alignment="0" max="32767" attributes="0"/>
-                              <Component id="jLabel7" alignment="0" min="-2" pref="129" max="-2" attributes="0"/>
-                          </Group>
+                          <Component id="txtDtNascimento" alignment="0" max="32767" attributes="0"/>
+                          <Component id="jLabel7" alignment="0" min="-2" pref="129" max="-2" attributes="0"/>
                       </Group>
                   </Group>
               </Group>
