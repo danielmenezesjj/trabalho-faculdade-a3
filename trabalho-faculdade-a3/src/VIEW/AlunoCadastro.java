@@ -5,7 +5,7 @@
 package VIEW;
 
 import DAO.UsuarioDAO;
-import DTO.UsuarioDTO;
+import DTO.UsuariosDTO;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -48,8 +48,10 @@ public class AlunoCadastro extends javax.swing.JFrame {
         jLabel7 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setBackground(new java.awt.Color(51, 51, 51));
         setResizable(false);
 
+        bntCadastrar.setBackground(new java.awt.Color(0, 153, 153));
         bntCadastrar.setText("Cadastrar");
         bntCadastrar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -183,8 +185,6 @@ public class AlunoCadastro extends javax.swing.JFrame {
         
         try {
             String nome, cpf, dt_nascimento, email, telefone, senha;
-            int perfil;
-            boolean adm;
 
             SimpleDateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy");
 
@@ -197,7 +197,7 @@ public class AlunoCadastro extends javax.swing.JFrame {
 
             Date dt_nascimento_aluno = dateFormat.parse(dt_nascimento);
 
-            UsuarioDTO objUsuarioDto = new UsuarioDTO();
+            UsuariosDTO objUsuarioDto = new UsuariosDTO();
             objUsuarioDto.setNome_usuario(nome);
             objUsuarioDto.setCpf_usuario(cpf);
             objUsuarioDto.setDt_nascimento_usuario(dt_nascimento_aluno);

@@ -5,7 +5,7 @@
 package VIEW;
 
 import DAO.UsuarioDAO;
-import DTO.UsuarioDTO;
+import DTO.UsuariosDTO;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import javax.swing.JOptionPane;
@@ -124,7 +124,7 @@ public class Login extends javax.swing.JFrame {
             cpf_usuario = txtCpf.getText();
             password_usuario = txtSenha.getText();
 
-            UsuarioDTO objUsuarioDto = new UsuarioDTO();
+            UsuariosDTO objUsuarioDto = new UsuariosDTO();
 
             objUsuarioDto.setCpf_usuario(cpf_usuario);
             objUsuarioDto.setSenha_usuario(password_usuario);
