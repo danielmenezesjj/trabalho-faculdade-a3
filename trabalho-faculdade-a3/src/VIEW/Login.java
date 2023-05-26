@@ -5,17 +5,17 @@
 package VIEW;
 
 import DAO.UsuarioDAO;
-import DTO.UsuarioDTO;
+import DTO.UsuariosDTO;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import javax.swing.JOptionPane;
 
-public class LoginVIEW extends javax.swing.JFrame {
+public class Login extends javax.swing.JFrame {
 
     /**
      * Creates new form LoginVIEW
      */
-    public LoginVIEW() {
+    public Login() {
         initComponents();
     }
 
@@ -124,7 +124,7 @@ public class LoginVIEW extends javax.swing.JFrame {
             cpf_usuario = txtCpf.getText();
             password_usuario = txtSenha.getText();
 
-            UsuarioDTO objUsuarioDto = new UsuarioDTO();
+            UsuariosDTO objUsuarioDto = new UsuariosDTO();
 
             objUsuarioDto.setCpf_usuario(cpf_usuario);
             objUsuarioDto.setSenha_usuario(password_usuario);
@@ -136,7 +136,7 @@ public class LoginVIEW extends javax.swing.JFrame {
             if (rsUsuarioDao.next()) {
                 // chamar tela
                 if (rsUsuarioDao.getString("nome_perfil").equals("ADMIN")) {
-                    frmCadastroUsuarios objFrmCadastroFuncionario = new frmCadastroUsuarios();
+                    CadastroUsuarios objFrmCadastroFuncionario = new CadastroUsuarios();
                     objFrmCadastroFuncionario.setVisible(true);
                     this.dispose();
                 } else {
@@ -171,14 +171,18 @@ public class LoginVIEW extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(LoginVIEW.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Login.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(LoginVIEW.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Login.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(LoginVIEW.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Login.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(LoginVIEW.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Login.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
         //</editor-fold>
@@ -187,7 +191,7 @@ public class LoginVIEW extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new LoginVIEW().setVisible(true);
+                new Login().setVisible(true);
             }
         });
     }
