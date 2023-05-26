@@ -10,6 +10,7 @@ import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 
 public class CadastroUsuarios extends javax.swing.JFrame {
+
     public CadastroUsuarios() {
         initComponents();
     }
@@ -18,6 +19,11 @@ public class CadastroUsuarios extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jCheckBox1 = new javax.swing.JCheckBox();
+        buttonGroup1 = new javax.swing.ButtonGroup();
+        buttonGroup2 = new javax.swing.ButtonGroup();
+        buttonGroup3 = new javax.swing.ButtonGroup();
+        buttonGroup4 = new javax.swing.ButtonGroup();
         jLabel1 = new javax.swing.JLabel();
         txtNomeCompleto = new javax.swing.JTextField();
         txtEmail = new javax.swing.JTextField();
@@ -32,14 +38,18 @@ public class CadastroUsuarios extends javax.swing.JFrame {
         txtSenha = new javax.swing.JPasswordField();
         txtDtNascimento = new javax.swing.JTextField();
         jLabel7 = new javax.swing.JLabel();
-        txtPerfil = new javax.swing.JTextField();
-        jLabel8 = new javax.swing.JLabel();
+        optionMedico = new javax.swing.JRadioButton();
+        optionPsicologo = new javax.swing.JRadioButton();
+        optionAgente = new javax.swing.JRadioButton();
+        optionAdmin = new javax.swing.JRadioButton();
+
+        jCheckBox1.setText("jCheckBox1");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
 
         jLabel1.setFont(new java.awt.Font("Dialog", 0, 28)); // NOI18N
-        jLabel1.setText("Cadastros");
+        jLabel1.setText("Cadastro");
 
         txtNomeCompleto.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -72,50 +82,56 @@ public class CadastroUsuarios extends javax.swing.JFrame {
 
         jLabel7.setText("Data de Nascimento");
 
-        txtPerfil.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtPerfilActionPerformed(evt);
-            }
-        });
+        buttonGroup1.add(optionMedico);
+        optionMedico.setText("Médico");
 
-        jLabel8.setText("Perfil");
+        buttonGroup1.add(optionPsicologo);
+        optionPsicologo.setText("Psicólogo");
+
+        buttonGroup1.add(optionAgente);
+        optionAgente.setText("Agente");
+
+        buttonGroup1.add(optionAdmin);
+        optionAdmin.setText("Admin");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(238, 238, 238)
-                        .addComponent(bntCadastrar, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(87, 87, 87)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(txtNomeCompleto, javax.swing.GroupLayout.DEFAULT_SIZE, 210, Short.MAX_VALUE)
-                                    .addComponent(txtEmail)
-                                    .addComponent(txtSenha, javax.swing.GroupLayout.PREFERRED_SIZE, 181, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(58, 58, 58)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(txtCPF)
-                                    .addComponent(txtTelefone, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(txtPerfil, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jLabel8)))
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                .addComponent(txtDtNascimento, javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(jLabel7, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 129, Short.MAX_VALUE)))))
-                .addContainerGap(99, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addGap(0, 0, Short.MAX_VALUE)
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 218, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(168, 168, 168))
+            .addGroup(layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(87, 87, 87)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(txtNomeCompleto, javax.swing.GroupLayout.DEFAULT_SIZE, 210, Short.MAX_VALUE)
+                                .addComponent(txtEmail)
+                                .addComponent(txtSenha, javax.swing.GroupLayout.PREFERRED_SIZE, 181, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                .addComponent(txtDtNascimento, javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(jLabel7, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 129, Short.MAX_VALUE)))
+                        .addGap(58, 58, 58)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(optionMedico)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(txtCPF)
+                                .addComponent(txtTelefone, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(optionPsicologo)
+                            .addComponent(optionAgente)
+                            .addComponent(optionAdmin)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(227, 227, 227)
+                        .addComponent(bntCadastrar, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(99, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -143,20 +159,26 @@ public class CadastroUsuarios extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(txtTelefone, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(33, 33, 33)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel6)
-                    .addComponent(jLabel8))
+                .addComponent(jLabel6)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtSenha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtPerfil, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(35, 35, 35)
-                .addComponent(jLabel7)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(txtDtNascimento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 59, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(txtSenha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(36, 36, 36)
+                        .addComponent(jLabel7)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(txtDtNascimento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(optionMedico)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(optionPsicologo)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(optionAgente)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(optionAdmin)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 57, Short.MAX_VALUE)
                 .addComponent(bntCadastrar, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(62, 62, 62))
+                .addGap(45, 45, 45))
         );
 
         pack();
@@ -172,60 +194,55 @@ public class CadastroUsuarios extends javax.swing.JFrame {
     }//GEN-LAST:event_txtCPFActionPerformed
 
     private void bntCadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bntCadastrarActionPerformed
-         try {
+        try {
             // TODO add your handling code here:
             cadastrar();
         } catch (ParseException ex) {
             Logger.getLogger(CadastroUsuarios.class.getName()).log(Level.SEVERE, null, ex);
         }
 
-        
+
     }//GEN-LAST:event_bntCadastrarActionPerformed
 
-    private void txtPerfilActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtPerfilActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtPerfilActionPerformed
-    
-    private void cadastrar() throws ParseException{
+    private void cadastrar() throws ParseException {
         try {
-            String nome, cpf,dt_nascimento, email, telefone, senha;
-        int perfil;
-        boolean adm;
-        
-        SimpleDateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy");
-        
-       
-        
-        nome = txtNomeCompleto.getText();
-        cpf = txtCPF.getText();
-        dt_nascimento = txtDtNascimento.getText();
-        email = txtEmail.getText();
-        telefone = txtEmail.getText();
-        senha = txtSenha.getText();
-        perfil = Integer.parseInt(txtPerfil.getText());
-        
-         Date dt_nascimento_usuario = dateFormat.parse(dt_nascimento);
-        
-        UsuariosDTO objUsuarioDto = new UsuariosDTO();
-        objUsuarioDto.setNome_usuario(nome);
-        objUsuarioDto.setCpf_usuario(cpf);
-        objUsuarioDto.setDt_nascimento_usuario(dt_nascimento_usuario);
-        objUsuarioDto.setEmail_usuario(email);
-        objUsuarioDto.setTelefone_usuario(telefone);
-        objUsuarioDto.setSenha_usuario(senha);
-        objUsuarioDto.setPerfil_usuario(perfil);
-        
-        UsuarioDAO objUsuarioDao = new UsuarioDAO();
-        objUsuarioDao.cadastrarUsuario(objUsuarioDto);
-    
+            String nome, cpf, dt_nascimento, email, telefone, senha;
+            int perfil = 0;
+
+            if(optionMedico.isSelected() == true) perfil = 2;
+            if(optionAgente.isSelected() == true) perfil = 3;
+            if(optionPsicologo.isSelected() == true) perfil = 4;
+            if(optionAdmin.isSelected() == true) perfil = 5;
+
+            SimpleDateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy");
+
+            nome = txtNomeCompleto.getText();
+            cpf = txtCPF.getText();
+            dt_nascimento = txtDtNascimento.getText();
+            email = txtEmail.getText();
+            telefone = txtEmail.getText();
+            senha = txtSenha.getText();
+
+            Date dt_nascimento_usuario = dateFormat.parse(dt_nascimento);
+
+            UsuariosDTO objUsuarioDto = new UsuariosDTO();
+            objUsuarioDto.setNome_usuario(nome);
+            objUsuarioDto.setCpf_usuario(cpf);
+            objUsuarioDto.setDt_nascimento_usuario(dt_nascimento_usuario);
+            objUsuarioDto.setEmail_usuario(email);
+            objUsuarioDto.setTelefone_usuario(telefone);
+            objUsuarioDto.setSenha_usuario(senha);
+            objUsuarioDto.setPerfil_usuario(perfil);
+
+            UsuarioDAO objUsuarioDao = new UsuarioDAO();
+            objUsuarioDao.cadastrarUsuario(objUsuarioDto);
+
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, e);
         }
-        
+
     }
-    
-    
-    
+
     /**
      * @param args the command line arguments
      */
@@ -261,6 +278,11 @@ public class CadastroUsuarios extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton bntCadastrar;
+    private javax.swing.ButtonGroup buttonGroup1;
+    private javax.swing.ButtonGroup buttonGroup2;
+    private javax.swing.ButtonGroup buttonGroup3;
+    private javax.swing.ButtonGroup buttonGroup4;
+    private javax.swing.JCheckBox jCheckBox1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -268,12 +290,14 @@ public class CadastroUsuarios extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
-    private javax.swing.JLabel jLabel8;
+    private javax.swing.JRadioButton optionAdmin;
+    private javax.swing.JRadioButton optionAgente;
+    private javax.swing.JRadioButton optionMedico;
+    private javax.swing.JRadioButton optionPsicologo;
     private javax.swing.JTextField txtCPF;
     private javax.swing.JTextField txtDtNascimento;
     private javax.swing.JTextField txtEmail;
     private javax.swing.JTextField txtNomeCompleto;
-    private javax.swing.JTextField txtPerfil;
     private javax.swing.JPasswordField txtSenha;
     private javax.swing.JTextField txtTelefone;
     // End of variables declaration//GEN-END:variables

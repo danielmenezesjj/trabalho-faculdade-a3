@@ -13,23 +13,24 @@ public class PrincipalAdmin extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
 
-        jLabel1.setText("Tela main");
+        jLabel1.setFont(new java.awt.Font("Dialog", 0, 24)); // NOI18N
+        jLabel1.setText("Tela main admin");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(128, 128, 128)
+                .addGap(102, 102, 102)
                 .addComponent(jLabel1)
-                .addContainerGap(221, Short.MAX_VALUE))
+                .addContainerGap(126, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(77, 77, 77)
+                .addContainerGap()
                 .addComponent(jLabel1)
-                .addContainerGap(207, Short.MAX_VALUE))
+                .addContainerGap(299, Short.MAX_VALUE))
         );
 
         pack();

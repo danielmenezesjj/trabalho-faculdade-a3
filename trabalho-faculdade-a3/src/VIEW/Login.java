@@ -36,6 +36,7 @@ public class Login extends javax.swing.JFrame {
         txtSenha = new javax.swing.JPasswordField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setName("frameLogin"); // NOI18N
         setResizable(false);
 
         jLabel1.setText("CPF");
