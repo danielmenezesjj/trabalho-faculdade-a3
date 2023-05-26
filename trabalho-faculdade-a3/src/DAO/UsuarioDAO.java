@@ -57,5 +57,35 @@ public void cadastrarUsuario(UsuarioDTO objUsuarioDto) {
         JOptionPane.showMessageDialog(null, "UsuarioDAO: " + erro);
     }
 }
+
+public void cadastrarUsuarioAluno(UsuarioDTO objUsuarioDto) {
+    try {
+        String sql = "INSERT INTO usuarios(nome_completo, dt_nascimento, adm, cpf, email, telefone, senha, perfil_id) values (?, ?, ?, ?, ?, ?, ?, ?)";
+        PreparedStatement pstm = conn.prepareStatement(sql);
+
+        pstm.setString(1, objUsuarioDto.getNome_usuario());
+        
+        Date sqlDate = new java.sql.Date(objUsuarioDto.getDt_nascimento_usuario().getTime());
+        
+        pstm.setDate(2, sqlDate);
+        pstm.setBoolean(3, false);
+        pstm.setString(4, objUsuarioDto.getCpf_usuario());
+        pstm.setString(5, objUsuarioDto.getEmail_usuario());
+        pstm.setString(6, objUsuarioDto.getTelefone_usuario());
+        pstm.setString(7, objUsuarioDto.getSenha_usuario());
+        pstm.setInt(8, 1);
+        
+        int rowsAffected = pstm.executeUpdate();
+        
+        if (rowsAffected > 0) {
+            JOptionPane.showMessageDialog(null, "Aluno cadastrado!" + "\nNome: " + objUsuarioDto.getNome_usuario());
+        } else {
+            JOptionPane.showMessageDialog(null, "Falha ao cadastrar usuário!");
+        }
+        
+    } catch (Exception erro) {
+        JOptionPane.showMessageDialog(null, "UsuarioDAO: " + erro);
+    }
+}
     
 }
