@@ -49,7 +49,7 @@ public class CadastroUsuarios extends javax.swing.JFrame {
         setResizable(false);
 
         jLabel1.setFont(new java.awt.Font("Dialog", 0, 28)); // NOI18N
-        jLabel1.setText("Cadastros");
+        jLabel1.setText("Cadastro");
 
         txtNomeCompleto.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
