@@ -166,6 +166,7 @@ public class AlunoCadastro extends javax.swing.JFrame {
         try {
             // TODO add your handling code here:
             cadastrarAluno();
+            limpar();
         } catch (ParseException ex) {
             Logger.getLogger(CadastroUsuarios.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -219,6 +220,18 @@ public class AlunoCadastro extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, e);
         }
 
+    }
+    
+    public void limpar(){
+        txtNomeCompleto.setText("");
+        txtCPF.setText("");
+        txtDtNascimento.setText("");
+        txtEmail.setText("");
+        txtTelefone.setText("");
+        txtSenha.setText("");
+        
+        txtNomeCompleto.requestFocus();
+        
     }
 
     /**
