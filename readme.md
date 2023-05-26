@@ -1,12 +1,12 @@
 # Trabalho faculdade A3 - Sistema de Gerencimaneto de cadastro de CNH
 
-##Descrição:
+## Descrição:
 Desenvolvimento do sistema de controle da Carteira Nacional de Habilitação (CNH) para o DETRAN, conforme cenário descrito a seguir.
 
-##Objetivos:
+## Objetivos:
 O objetivo do trabalho é oferecer a oportunidade dos alunos da UC de Programação e Soluções Computacionais para desenvolverem um sistema para o Detran.
 
-##Cenário:
+## Cenário:
 * Você foi contratado pelo Detran para desenvolver um sistema para controle das Carteiras Nacional de Habilitação (CNH) incluindo emissão de novas carteiras, segunda via de carteira e renovação. O sistema deverá funcionar conforme descrito a seguir.
 
 * Todo cidadão maior de 18 anos tem direito a tirar a CNH. Para isso primeiramente ele emite um boleto de pagamento e paga esse boleto para então dar início ao processo de realização de exames. O cidadão deve realizar exame psicológico, exame médico, exame teórico e exame prático. Para que o cidadão receba sua carteira ele deve ser aprovado nestes três exames. Desta forma, após pagar o boleto o cidadão pode efetuar a marcação dos três exames. Realizado o exame psicológico, o psicólogo lança diretamente o resultado no sistema. Da mesma forma, realizado o exame médico, o resultado também é lançado no sistema diretamente pelo médico. O exame prático é realizado por um agente de trânsito do Detran que lança o resultado no sistema. O exame teórico é feito no próprio sistema. O sistema possui um banco de questões definidas pelo próprio Detran. Quando o cidadão inicia uma prova o sistema sorteia 20 questões deste banco, apresenta para o cidadão, ele responde a prova e recebe o resultado imediatamente. 
