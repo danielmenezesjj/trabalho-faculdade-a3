@@ -27,27 +27,27 @@ public class InterfaceMedico extends javax.swing.JFrame {
     private void initComponents() {
 
         jLabel1 = new javax.swing.JLabel();
-        bntAlunos = new javax.swing.JButton();
-        bntResultado = new javax.swing.JButton();
+        btnAlunos = new javax.swing.JButton();
+        btnResultado = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jLabel1.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
         jLabel1.setText("Olá, #nomeMedico");
 
-        bntAlunos.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
-        bntAlunos.setText("Consultar Alunos");
-        bntAlunos.addActionListener(new java.awt.event.ActionListener() {
+        btnAlunos.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+        btnAlunos.setText("Consultar Alunos");
+        btnAlunos.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                bntAlunosActionPerformed(evt);
+                btnAlunosActionPerformed(evt);
             }
         });
 
-        bntResultado.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
-        bntResultado.setText("Lançar Resultado de Exame Médico");
-        bntResultado.addActionListener(new java.awt.event.ActionListener() {
+        btnResultado.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+        btnResultado.setText("Lançar Resultado de Exame Médico");
+        btnResultado.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                bntResultadoActionPerformed(evt);
+                btnResultadoActionPerformed(evt);
             }
         });
 
@@ -62,8 +62,8 @@ public class InterfaceMedico extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(76, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(bntResultado, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(bntAlunos, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(btnResultado, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnAlunos, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(82, 82, 82))
         );
         layout.setVerticalGroup(
@@ -72,22 +72,22 @@ public class InterfaceMedico extends javax.swing.JFrame {
                 .addGap(44, 44, 44)
                 .addComponent(jLabel1)
                 .addGap(44, 44, 44)
-                .addComponent(bntAlunos, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btnAlunos, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(35, 35, 35)
-                .addComponent(bntResultado, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btnResultado, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(69, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void bntAlunosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bntAlunosActionPerformed
+    private void btnAlunosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAlunosActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_bntAlunosActionPerformed
+    }//GEN-LAST:event_btnAlunosActionPerformed
 
-    private void bntResultadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bntResultadoActionPerformed
+    private void btnResultadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnResultadoActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_bntResultadoActionPerformed
+    }//GEN-LAST:event_btnResultadoActionPerformed
 
     /**
      * @param args the command line arguments
@@ -125,8 +125,8 @@ public class InterfaceMedico extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton bntAlunos;
-    private javax.swing.JButton bntResultado;
+    private javax.swing.JButton btnAlunos;
+    private javax.swing.JButton btnResultado;
     private javax.swing.JLabel jLabel1;
     // End of variables declaration//GEN-END:variables
 }

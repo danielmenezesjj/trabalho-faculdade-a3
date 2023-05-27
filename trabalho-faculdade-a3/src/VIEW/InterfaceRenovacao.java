@@ -8,12 +8,12 @@ package VIEW;
  *
  * @author Morgana
  */
-public class InterfaceRenovação extends javax.swing.JFrame {
+public class InterfaceRenovacao extends javax.swing.JFrame {
 
     /**
      * Creates new form InterfaceRenovação
      */
-    public InterfaceRenovação() {
+    public InterfaceRenovacao() {
         initComponents();
     }
 
@@ -28,7 +28,7 @@ public class InterfaceRenovação extends javax.swing.JFrame {
 
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        bntImprimir = new javax.swing.JButton();
+        btnImprimir = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -37,7 +37,7 @@ public class InterfaceRenovação extends javax.swing.JFrame {
 
         jLabel2.setText("Exame Médico:");
 
-        bntImprimir.setText("Imprimir carteira");
+        btnImprimir.setText("Imprimir carteira");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -48,7 +48,7 @@ public class InterfaceRenovação extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
                     .addComponent(jLabel1)
                     .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(bntImprimir))
+                    .addComponent(btnImprimir))
                 .addGap(128, 128, 128))
         );
         layout.setVerticalGroup(
@@ -59,7 +59,7 @@ public class InterfaceRenovação extends javax.swing.JFrame {
                 .addGap(72, 72, 72)
                 .addComponent(jLabel2)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 84, Short.MAX_VALUE)
-                .addComponent(bntImprimir)
+                .addComponent(btnImprimir)
                 .addGap(46, 46, 46))
         );
 
@@ -83,26 +83,27 @@ public class InterfaceRenovação extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(InterfaceRenovação.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(InterfaceRenovacao.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(InterfaceRenovação.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(InterfaceRenovacao.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(InterfaceRenovação.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(InterfaceRenovacao.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(InterfaceRenovação.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(InterfaceRenovacao.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new InterfaceRenovação().setVisible(true);
+                new InterfaceRenovacao().setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton bntImprimir;
+    private javax.swing.JButton btnImprimir;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     // End of variables declaration//GEN-END:variables
