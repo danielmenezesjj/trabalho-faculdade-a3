@@ -216,7 +216,7 @@ public class Login extends javax.swing.JFrame {
                 JOptionPane.showMessageDialog(null, "Usuário ou senha incorreto.");
             }
         } catch (SQLException erro) {
-            JOptionPane.showMessageDialog(null, "UsuarioDAO: " + erro);
+            JOptionPane.showMessageDialog(null, "Login: " + erro);
 
         }
     }

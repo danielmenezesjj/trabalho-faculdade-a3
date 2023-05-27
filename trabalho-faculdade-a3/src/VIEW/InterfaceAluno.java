@@ -4,6 +4,12 @@
  */
 package VIEW;
 
+import DAO.ServicoDAO;
+import DTO.ServicoDTO;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author Morgana
@@ -38,6 +44,11 @@ public class InterfaceAluno extends javax.swing.JFrame {
         jLabel1.setText("Olá, #nomeAluno");
 
         btnSegundavia.setText("Segunda via CNH");
+        btnSegundavia.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSegundaviaActionPerformed(evt);
+            }
+        });
 
         btnEmissao.setText("Emissão de nova CNH");
         btnEmissao.addActionListener(new java.awt.event.ActionListener() {
@@ -85,13 +96,44 @@ public class InterfaceAluno extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnEmissaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEmissaoActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnEmissaoActionPerformed
+      buscarServico(1);
 
+    }//GEN-LAST:event_btnEmissaoActionPerformed
+    
+  
     private void btnRenovaçãoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRenovaçãoActionPerformed
-        // TODO add your handling code here:
+        buscarServico(3);
     }//GEN-LAST:event_btnRenovaçãoActionPerformed
 
+    private void btnSegundaviaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSegundaviaActionPerformed
+        buscarServico(2);
+    }//GEN-LAST:event_btnSegundaviaActionPerformed
+    
+    private void buscarServico(int id){
+    try {
+            ServicoDTO objServicoDto = new ServicoDTO();
+            objServicoDto.setId(id);
+
+            ServicoDAO objServicoDao = new ServicoDAO();
+            ResultSet rsServicoDao = objServicoDao.getServico(objServicoDto);
+
+            if (rsServicoDao.next()) {
+                objServicoDto.setValor(rsServicoDao.getDouble("preco_item"));
+                objServicoDto.setItem(rsServicoDao.getString("nome_item"));
+                
+                Boleto objBoleto = new Boleto();
+                objBoleto.getServico(objServicoDto);
+                objBoleto.setVisible(true);             
+            } else {
+                JOptionPane.showMessageDialog(null, "Serviço não encontrado.");
+            }
+
+            
+        } catch (SQLException erro) {
+            JOptionPane.showMessageDialog(null, "InterfaceALuno: " + erro);
+        }
+    }
+    
     /**
      * @param args the command line arguments
      */
