@@ -57,6 +57,7 @@ public class Login extends javax.swing.JFrame {
         jLabel2.setText("Senha");
 
         btnEntrar.setBackground(new java.awt.Color(0, 0, 0));
+        btnEntrar.setForeground(new java.awt.Color(255, 255, 255));
         btnEntrar.setText("Entrar");
         btnEntrar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -81,6 +82,7 @@ public class Login extends javax.swing.JFrame {
         });
 
         bntCriarConta.setBackground(new java.awt.Color(0, 0, 0));
+        bntCriarConta.setForeground(new java.awt.Color(255, 255, 255));
         bntCriarConta.setText("Criar conta");
         bntCriarConta.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -189,9 +191,10 @@ public class Login extends javax.swing.JFrame {
 
             if (rsUsuarioDao.next()) {
                 // chamar tela
-                if (rsUsuarioDao.getString("nome_perfil").equals("ADMIN")) {
-                    CadastroUsuarios objFrmCadastroFuncionario = new CadastroUsuarios();
-                    objFrmCadastroFuncionario.setVisible(true);
+                if (rsUsuarioDao.getInt("perfil_id")==5) {
+                    
+                   PrincipalAdmin objPrincipalAdmin = new PrincipalAdmin();
+                    objPrincipalAdmin.setVisible(true);
                     this.dispose();
                 } else {
                     JOptionPane.showMessageDialog(null, "Olá, " + rsUsuarioDao.getString("nome_completo"));
