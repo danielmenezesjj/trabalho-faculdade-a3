@@ -7,7 +7,9 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JFormattedTextField;
 import javax.swing.JOptionPane;
+import javax.swing.text.MaskFormatter;
 
 public class CadastroUsuarios extends javax.swing.JFrame {
 
@@ -28,7 +30,6 @@ public class CadastroUsuarios extends javax.swing.JFrame {
         txtNomeCompleto = new javax.swing.JTextField();
         txtEmail = new javax.swing.JTextField();
         bntCadastrar = new javax.swing.JButton();
-        txtCPF = new javax.swing.JTextField();
         txtTelefone = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
@@ -42,11 +43,17 @@ public class CadastroUsuarios extends javax.swing.JFrame {
         optionPsicologo = new javax.swing.JRadioButton();
         optionAgente = new javax.swing.JRadioButton();
         optionAdmin = new javax.swing.JRadioButton();
+        txtCpf = new javax.swing.JFormattedTextField();
 
         jCheckBox1.setText("jCheckBox1");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowActivated(java.awt.event.WindowEvent evt) {
+                formWindowActivated(evt);
+            }
+        });
 
         jLabel1.setFont(new java.awt.Font("Dialog", 0, 28)); // NOI18N
         jLabel1.setText("Cadastro");
@@ -61,12 +68,6 @@ public class CadastroUsuarios extends javax.swing.JFrame {
         bntCadastrar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 bntCadastrarActionPerformed(evt);
-            }
-        });
-
-        txtCPF.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtCPFActionPerformed(evt);
             }
         });
 
@@ -92,7 +93,7 @@ public class CadastroUsuarios extends javax.swing.JFrame {
         optionAgente.setText("Agente");
 
         buttonGroup1.add(optionAdmin);
-        optionAdmin.setText("Admin");
+        optionAdmin.setText("Administrador");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -118,16 +119,15 @@ public class CadastroUsuarios extends javax.swing.JFrame {
                                 .addComponent(txtDtNascimento, javax.swing.GroupLayout.Alignment.LEADING)
                                 .addComponent(jLabel7, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 129, Short.MAX_VALUE)))
                         .addGap(58, 58, 58)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(optionMedico)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(txtCPF)
-                                .addComponent(txtTelefone, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtTelefone, javax.swing.GroupLayout.DEFAULT_SIZE, 170, Short.MAX_VALUE)
                             .addComponent(optionPsicologo)
                             .addComponent(optionAgente)
-                            .addComponent(optionAdmin)))
+                            .addComponent(optionAdmin)
+                            .addComponent(txtCpf)))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(227, 227, 227)
                         .addComponent(bntCadastrar, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)))
@@ -145,7 +145,7 @@ public class CadastroUsuarios extends javax.swing.JFrame {
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(jLabel3)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(txtCPF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(txtCpf, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(jLabel2)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -184,18 +184,14 @@ public class CadastroUsuarios extends javax.swing.JFrame {
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
-           
+
     private void txtNomeCompletoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNomeCompletoActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtNomeCompletoActionPerformed
 
-    private void txtCPFActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtCPFActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtCPFActionPerformed
-
     private void bntCadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bntCadastrarActionPerformed
         try {
-            // TODO add your handling code here:
+
             cadastrar();
         } catch (ParseException ex) {
             Logger.getLogger(CadastroUsuarios.class.getName()).log(Level.SEVERE, null, ex);
@@ -204,20 +200,33 @@ public class CadastroUsuarios extends javax.swing.JFrame {
 
     }//GEN-LAST:event_bntCadastrarActionPerformed
 
+    private void formWindowActivated(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowActivated
+
+        formataCpf();
+    }//GEN-LAST:event_formWindowActivated
+
     private void cadastrar() throws ParseException {
         try {
             String nome, cpf, dt_nascimento, email, telefone, senha;
             int perfil = 0;
 
-            if(optionMedico.isSelected() == true) perfil = 2;
-            if(optionAgente.isSelected() == true) perfil = 3;
-            if(optionPsicologo.isSelected() == true) perfil = 4;
-            if(optionAdmin.isSelected() == true) perfil = 5;
+            if (optionMedico.isSelected() == true) {
+                perfil = 2;
+            }
+            if (optionAgente.isSelected() == true) {
+                perfil = 3;
+            }
+            if (optionPsicologo.isSelected() == true) {
+                perfil = 4;
+            }
+            if (optionAdmin.isSelected() == true) {
+                perfil = 5;
+            }
 
             SimpleDateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy");
 
             nome = txtNomeCompleto.getText();
-            cpf = txtCPF.getText();
+            cpf = txtCpf.getText();
             dt_nascimento = txtDtNascimento.getText();
             email = txtEmail.getText();
             telefone = txtEmail.getText();
@@ -243,6 +252,17 @@ public class CadastroUsuarios extends javax.swing.JFrame {
 
     }
 
+    private void formataCpf() {
+        try {
+            MaskFormatter cpfFormatter = new MaskFormatter("###.###.###-##");
+            cpfFormatter.install(txtCpf);
+            txtCpf.setColumns(10); // Defina o tamanho do campo conforme necessário
+
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+    }
+
     /**
      * @param args the command line arguments
      */
@@ -261,7 +281,7 @@ public class CadastroUsuarios extends javax.swing.JFrame {
         //</editor-fold>
         //</editor-fold>
         //</editor-fold>
-        
+
         //</editor-fold>
         //</editor-fold>
         //</editor-fold>
@@ -293,7 +313,7 @@ public class CadastroUsuarios extends javax.swing.JFrame {
     private javax.swing.JRadioButton optionAgente;
     private javax.swing.JRadioButton optionMedico;
     private javax.swing.JRadioButton optionPsicologo;
-    private javax.swing.JTextField txtCPF;
+    private javax.swing.JFormattedTextField txtCpf;
     private javax.swing.JTextField txtDtNascimento;
     private javax.swing.JTextField txtEmail;
     private javax.swing.JTextField txtNomeCompleto;
