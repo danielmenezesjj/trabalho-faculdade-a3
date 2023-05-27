@@ -195,7 +195,7 @@ public class Login extends javax.swing.JFrame {
 
             if (rsUsuarioDao.next()) {
                 // chamar tela
-                if (rsUsuarioDao.getInt("perfil_id")==5) {
+                if (rsUsuarioDao.getInt("perfil_id") == 5) {
                     
                    
                    UsuariosDTO usuario = new UsuariosDTO();

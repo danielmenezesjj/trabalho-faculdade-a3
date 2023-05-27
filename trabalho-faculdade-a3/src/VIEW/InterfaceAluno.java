@@ -97,7 +97,6 @@ public class InterfaceAluno extends javax.swing.JFrame {
 
     private void btnEmissaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEmissaoActionPerformed
       buscarServico(1);
-
     }//GEN-LAST:event_btnEmissaoActionPerformed
     
   
