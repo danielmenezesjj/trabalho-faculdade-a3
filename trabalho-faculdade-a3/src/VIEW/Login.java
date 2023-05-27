@@ -166,9 +166,8 @@ public class Login extends javax.swing.JFrame {
 
             if (rsUsuarioDao.next()) {
                 // chamar tela
-                if (rsUsuarioDao.getString("nome_perfil").equals("ADMIN")) {
-                    CadastroUsuarios objFrmCadastroFuncionario = new CadastroUsuarios();
-                    objFrmCadastroFuncionario.setVisible(true);
+                if (rsUsuarioDao.getInt("perfil_id") == 5) {
+                    new CadastroUsuarios().setVisible(true);
                     this.dispose();
                 } else {
                     JOptionPane.showMessageDialog(null, "Olá, " + rsUsuarioDao.getString("nome_completo"));
