@@ -31,8 +31,8 @@
           <Group type="102" alignment="1" attributes="0">
               <EmptySpace pref="76" max="32767" attributes="0"/>
               <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                  <Component id="bntResultado" max="32767" attributes="0"/>
-                  <Component id="bntAlunos" max="32767" attributes="0"/>
+                  <Component id="btnResultado" max="32767" attributes="0"/>
+                  <Component id="btnAlunos" max="32767" attributes="0"/>
               </Group>
               <EmptySpace min="-2" pref="82" max="-2" attributes="0"/>
           </Group>
@@ -44,9 +44,9 @@
               <EmptySpace min="-2" pref="44" max="-2" attributes="0"/>
               <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
               <EmptySpace min="-2" pref="44" max="-2" attributes="0"/>
-              <Component id="bntAlunos" min="-2" pref="42" max="-2" attributes="0"/>
+              <Component id="btnAlunos" min="-2" pref="42" max="-2" attributes="0"/>
               <EmptySpace min="-2" pref="35" max="-2" attributes="0"/>
-              <Component id="bntResultado" min="-2" pref="42" max="-2" attributes="0"/>
+              <Component id="btnResultado" min="-2" pref="42" max="-2" attributes="0"/>
               <EmptySpace pref="69" max="32767" attributes="0"/>
           </Group>
       </Group>
@@ -61,7 +61,7 @@
         <Property name="text" type="java.lang.String" value="Ol&#xe1;, #nomeMedico"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JButton" name="bntAlunos">
+    <Component class="javax.swing.JButton" name="btnAlunos">
       <Properties>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Dialog" size="14" style="0"/>
@@ -69,10 +69,10 @@
         <Property name="text" type="java.lang.String" value="Consultar Alunos"/>
       </Properties>
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="bntAlunosActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnAlunosActionPerformed"/>
       </Events>
     </Component>
-    <Component class="javax.swing.JButton" name="bntResultado">
+    <Component class="javax.swing.JButton" name="btnResultado">
       <Properties>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Dialog" size="14" style="0"/>
@@ -80,7 +80,7 @@
         <Property name="text" type="java.lang.String" value="Lan&#xe7;ar Resultado de Exame M&#xe9;dico"/>
       </Properties>
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="bntResultadoActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnResultadoActionPerformed"/>
       </Events>
     </Component>
   </SubComponents>

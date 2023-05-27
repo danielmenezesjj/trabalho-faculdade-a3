@@ -29,7 +29,7 @@ public class ProvaTeorica extends javax.swing.JFrame {
         buttonGroup1 = new javax.swing.ButtonGroup();
         jLabel2 = new javax.swing.JLabel();
         txtQuestao = new javax.swing.JLabel();
-        bntSalvar = new javax.swing.JButton();
+        btnSalvar = new javax.swing.JButton();
         r1 = new javax.swing.JRadioButton();
         r2 = new javax.swing.JRadioButton();
         r3 = new javax.swing.JRadioButton();
@@ -43,12 +43,12 @@ public class ProvaTeorica extends javax.swing.JFrame {
         txtQuestao.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
         txtQuestao.setText("Pergunta");
 
-        bntSalvar.setBackground(new java.awt.Color(102, 227, 57));
-        bntSalvar.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
-        bntSalvar.setText("Salvar");
-        bntSalvar.addActionListener(new java.awt.event.ActionListener() {
+        btnSalvar.setBackground(new java.awt.Color(102, 227, 57));
+        btnSalvar.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+        btnSalvar.setText("Salvar");
+        btnSalvar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                bntSalvarActionPerformed(evt);
+                btnSalvarActionPerformed(evt);
             }
         });
 
@@ -86,7 +86,7 @@ public class ProvaTeorica extends javax.swing.JFrame {
                         .addComponent(jLabel2))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(188, 188, 188)
-                        .addComponent(bntSalvar, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(btnSalvar, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(52, 52, 52)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -113,16 +113,16 @@ public class ProvaTeorica extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addComponent(r3)
                 .addGap(42, 42, 42)
-                .addComponent(bntSalvar, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btnSalvar, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(44, 44, 44))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void bntSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bntSalvarActionPerformed
+    private void btnSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalvarActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_bntSalvarActionPerformed
+    }//GEN-LAST:event_btnSalvarActionPerformed
 
     private void r1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_r1ActionPerformed
         // TODO add your handling code here:
@@ -172,7 +172,7 @@ public class ProvaTeorica extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton bntSalvar;
+    private javax.swing.JButton btnSalvar;
     private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JRadioButton r1;

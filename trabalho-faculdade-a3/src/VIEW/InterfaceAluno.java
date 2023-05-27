@@ -27,28 +27,28 @@ public class InterfaceAluno extends javax.swing.JFrame {
     private void initComponents() {
 
         jLabel1 = new javax.swing.JLabel();
-        bntSegundavia = new javax.swing.JButton();
-        bntEmissao = new javax.swing.JButton();
-        bntRenovação = new javax.swing.JButton();
+        btnSegundavia = new javax.swing.JButton();
+        btnEmissao = new javax.swing.JButton();
+        btnRenovação = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jLabel1.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
         jLabel1.setText("Olá, #nomeAluno");
 
-        bntSegundavia.setText("Segunda via CNH");
+        btnSegundavia.setText("Segunda via CNH");
 
-        bntEmissao.setText("Emissão de nova CNH");
-        bntEmissao.addActionListener(new java.awt.event.ActionListener() {
+        btnEmissao.setText("Emissão de nova CNH");
+        btnEmissao.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                bntEmissaoActionPerformed(evt);
+                btnEmissaoActionPerformed(evt);
             }
         });
 
-        bntRenovação.setText("Renovação CNH");
-        bntRenovação.addActionListener(new java.awt.event.ActionListener() {
+        btnRenovação.setText("Renovação CNH");
+        btnRenovação.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                bntRenovaçãoActionPerformed(evt);
+                btnRenovaçãoActionPerformed(evt);
             }
         });
 
@@ -60,9 +60,9 @@ public class InterfaceAluno extends javax.swing.JFrame {
                 .addGap(151, 151, 151)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
                     .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(bntSegundavia, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(bntEmissao, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(bntRenovação, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(btnSegundavia, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnEmissao, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnRenovação, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap(156, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -71,24 +71,24 @@ public class InterfaceAluno extends javax.swing.JFrame {
                 .addGap(41, 41, 41)
                 .addComponent(jLabel1)
                 .addGap(49, 49, 49)
-                .addComponent(bntEmissao, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btnEmissao, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(29, 29, 29)
-                .addComponent(bntSegundavia, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btnSegundavia, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(32, 32, 32)
-                .addComponent(bntRenovação, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btnRenovação, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(52, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void bntEmissaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bntEmissaoActionPerformed
+    private void btnEmissaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEmissaoActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_bntEmissaoActionPerformed
+    }//GEN-LAST:event_btnEmissaoActionPerformed
 
-    private void bntRenovaçãoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bntRenovaçãoActionPerformed
+    private void btnRenovaçãoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRenovaçãoActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_bntRenovaçãoActionPerformed
+    }//GEN-LAST:event_btnRenovaçãoActionPerformed
 
     /**
      * @param args the command line arguments
@@ -126,9 +126,9 @@ public class InterfaceAluno extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton bntEmissao;
-    private javax.swing.JButton bntRenovação;
-    private javax.swing.JButton bntSegundavia;
+    private javax.swing.JButton btnEmissao;
+    private javax.swing.JButton btnRenovação;
+    private javax.swing.JButton btnSegundavia;
     private javax.swing.JLabel jLabel1;
     // End of variables declaration//GEN-END:variables
 }
