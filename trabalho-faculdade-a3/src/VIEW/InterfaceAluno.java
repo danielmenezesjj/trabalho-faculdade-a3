@@ -43,6 +43,8 @@ public class InterfaceAluno extends javax.swing.JFrame {
         jLabel1.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
         jLabel1.setText("Olá, #nomeAluno");
 
+        btnSegundavia.setBackground(new java.awt.Color(0, 0, 0));
+        btnSegundavia.setForeground(new java.awt.Color(255, 255, 255));
         btnSegundavia.setText("Segunda via CNH");
         btnSegundavia.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -50,6 +52,8 @@ public class InterfaceAluno extends javax.swing.JFrame {
             }
         });
 
+        btnEmissao.setBackground(new java.awt.Color(0, 0, 0));
+        btnEmissao.setForeground(new java.awt.Color(255, 255, 255));
         btnEmissao.setText("Emissão de nova CNH");
         btnEmissao.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -57,6 +61,8 @@ public class InterfaceAluno extends javax.swing.JFrame {
             }
         });
 
+        btnRenovação.setBackground(new java.awt.Color(0, 0, 0));
+        btnRenovação.setForeground(new java.awt.Color(255, 255, 255));
         btnRenovação.setText("Renovação CNH");
         btnRenovação.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
