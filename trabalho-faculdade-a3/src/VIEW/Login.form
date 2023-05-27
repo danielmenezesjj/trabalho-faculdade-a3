@@ -92,7 +92,7 @@
     <Component class="javax.swing.JButton" name="btnEntrar">
       <Properties>
         <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-          <Color blue="e" green="d3" red="33" type="rgb"/>
+          <Color blue="0" green="0" red="0" type="rgb"/>
         </Property>
         <Property name="text" type="java.lang.String" value="Entrar"/>
       </Properties>
@@ -124,7 +124,7 @@
     <Component class="javax.swing.JButton" name="bntCriarConta">
       <Properties>
         <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-          <Color blue="d7" green="ac" red="3c" type="rgb"/>
+          <Color blue="0" green="0" red="0" type="rgb"/>
         </Property>
         <Property name="text" type="java.lang.String" value="Criar conta"/>
       </Properties>

@@ -56,7 +56,7 @@ public class Login extends javax.swing.JFrame {
 
         jLabel2.setText("Senha");
 
-        btnEntrar.setBackground(new java.awt.Color(51, 211, 14));
+        btnEntrar.setBackground(new java.awt.Color(0, 0, 0));
         btnEntrar.setText("Entrar");
         btnEntrar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -80,7 +80,7 @@ public class Login extends javax.swing.JFrame {
             }
         });
 
-        bntCriarConta.setBackground(new java.awt.Color(60, 172, 215));
+        bntCriarConta.setBackground(new java.awt.Color(0, 0, 0));
         bntCriarConta.setText("Criar conta");
         bntCriarConta.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
