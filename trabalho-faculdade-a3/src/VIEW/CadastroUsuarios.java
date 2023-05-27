@@ -37,13 +37,13 @@ public class CadastroUsuarios extends javax.swing.JFrame {
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
         txtSenha = new javax.swing.JPasswordField();
-        txtDtNascimento = new javax.swing.JTextField();
         jLabel7 = new javax.swing.JLabel();
         optionMedico = new javax.swing.JRadioButton();
         optionPsicologo = new javax.swing.JRadioButton();
         optionAgente = new javax.swing.JRadioButton();
         optionAdmin = new javax.swing.JRadioButton();
         txtCpf = new javax.swing.JFormattedTextField();
+        txtDtNascimento = new javax.swing.JFormattedTextField();
 
         jCheckBox1.setText("jCheckBox1");
 
@@ -115,9 +115,8 @@ public class CadastroUsuarios extends javax.swing.JFrame {
                                 .addComponent(txtNomeCompleto, javax.swing.GroupLayout.DEFAULT_SIZE, 210, Short.MAX_VALUE)
                                 .addComponent(txtEmail)
                                 .addComponent(txtSenha, javax.swing.GroupLayout.PREFERRED_SIZE, 181, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                .addComponent(txtDtNascimento, javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(jLabel7, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 129, Short.MAX_VALUE)))
+                            .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtDtNascimento, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(58, 58, 58)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(optionMedico)
@@ -145,7 +144,7 @@ public class CadastroUsuarios extends javax.swing.JFrame {
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(jLabel3)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(txtCpf, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(txtCpf))
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(jLabel2)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -203,6 +202,7 @@ public class CadastroUsuarios extends javax.swing.JFrame {
     private void formWindowActivated(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowActivated
 
         formataCpf();
+        formataData();
     }//GEN-LAST:event_formWindowActivated
 
     private void cadastrar() throws ParseException {
@@ -263,6 +263,17 @@ public class CadastroUsuarios extends javax.swing.JFrame {
         }
     }
 
+    private void formataData() {
+        try {
+            MaskFormatter dataFormatter = new MaskFormatter("##-##-####");
+            dataFormatter.install(txtDtNascimento);
+            txtDtNascimento.setColumns(8); // Defina o tamanho do campo conforme necessário
+
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+    }
+
     /**
      * @param args the command line arguments
      */
@@ -314,7 +325,7 @@ public class CadastroUsuarios extends javax.swing.JFrame {
     private javax.swing.JRadioButton optionMedico;
     private javax.swing.JRadioButton optionPsicologo;
     private javax.swing.JFormattedTextField txtCpf;
-    private javax.swing.JTextField txtDtNascimento;
+    private javax.swing.JFormattedTextField txtDtNascimento;
     private javax.swing.JTextField txtEmail;
     private javax.swing.JTextField txtNomeCompleto;
     private javax.swing.JPasswordField txtSenha;
