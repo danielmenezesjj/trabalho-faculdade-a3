@@ -57,6 +57,7 @@ public class Login extends javax.swing.JFrame {
         jLabel2.setText("Senha");
 
         btnEntrar.setBackground(new java.awt.Color(0, 0, 0));
+        btnEntrar.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
         btnEntrar.setForeground(new java.awt.Color(255, 255, 255));
         btnEntrar.setText("Entrar");
         btnEntrar.addActionListener(new java.awt.event.ActionListener() {
@@ -65,6 +66,7 @@ public class Login extends javax.swing.JFrame {
             }
         });
 
+        jLabel3.setBackground(new java.awt.Color(51, 51, 51));
         jLabel3.setFont(new java.awt.Font("Dialog", 0, 36)); // NOI18N
         jLabel3.setText("Login");
 
@@ -81,7 +83,8 @@ public class Login extends javax.swing.JFrame {
             }
         });
 
-        bntCriarConta.setBackground(new java.awt.Color(0, 0, 0));
+        bntCriarConta.setBackground(new java.awt.Color(0, 51, 102));
+        bntCriarConta.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
         bntCriarConta.setForeground(new java.awt.Color(255, 255, 255));
         bntCriarConta.setText("Criar conta");
         bntCriarConta.addActionListener(new java.awt.event.ActionListener() {
@@ -94,44 +97,45 @@ public class Login extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(168, Short.MAX_VALUE)
-                .addComponent(jLabel3)
-                .addGap(166, 166, 166))
             .addGroup(layout.createSequentialGroup()
+                .addGap(137, 137, 137)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(113, 113, 113)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel1)
                             .addComponent(jLabel2)
-                            .addComponent(txtCpf)
-                            .addComponent(txtSenha, javax.swing.GroupLayout.DEFAULT_SIZE, 172, Short.MAX_VALUE)))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(21, 21, 21)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(btnEntrar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(bntCriarConta, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(38, 38, 38)
+                                .addComponent(jLabel3)))
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(134, 134, 134)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(btnEntrar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(bntCriarConta, javax.swing.GroupLayout.DEFAULT_SIZE, 123, Short.MAX_VALUE))))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(txtSenha, javax.swing.GroupLayout.PREFERRED_SIZE, 172, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtCpf, javax.swing.GroupLayout.PREFERRED_SIZE, 172, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(0, 178, Short.MAX_VALUE))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
                 .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, 123, Short.MAX_VALUE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(12, 12, 12)
                 .addComponent(jLabel1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(txtCpf, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(22, 22, 22)
+                .addComponent(txtCpf, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
                 .addComponent(jLabel2)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(txtSenha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(43, 43, 43)
-                .addComponent(btnEntrar)
+                .addComponent(txtSenha, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(32, 32, 32)
+                .addComponent(btnEntrar, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(bntCriarConta, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(57, 57, 57))
+                .addComponent(bntCriarConta, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(49, 49, 49))
         );
 
         pack();
@@ -191,16 +195,17 @@ public class Login extends javax.swing.JFrame {
 
             if (rsUsuarioDao.next()) {
                 // chamar tela
-<<<<<<< HEAD
-                if (rsUsuarioDao.getInt("perfil_id") == 5) {
-                    new CadastroUsuarios().setVisible(true);
-=======
                 if (rsUsuarioDao.getInt("perfil_id")==5) {
                     
-                   PrincipalAdmin objPrincipalAdmin = new PrincipalAdmin();
-                    objPrincipalAdmin.setVisible(true);
->>>>>>> 7d9d96044160452f04925fd6cd77549675746b62
-                    this.dispose();
+                   
+                   UsuariosDTO usuario = new UsuariosDTO();
+                   usuario.setNome_usuario(rsUsuarioDao.getString("nome_completo"));
+                   PrincipalAdmin principalAdmin = new PrincipalAdmin();
+                   
+                   principalAdmin.getUsuario(usuario);
+                   principalAdmin.setVisible(true);
+                                 
+                   this.dispose();
                 } else {
                     JOptionPane.showMessageDialog(null, "Olá, " + rsUsuarioDao.getString("nome_completo"));
 

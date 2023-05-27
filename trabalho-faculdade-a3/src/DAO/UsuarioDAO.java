@@ -16,6 +16,7 @@ public class UsuarioDAO {
             String sql = "SELECT * FROM usuarios JOIN perfil ON usuarios.perfil_id = perfil.id WHERE usuarios.cpf = ? AND usuarios.senha = ?";
             
             PreparedStatement pstm = conn.prepareStatement(sql);
+            
             pstm.setString(1, objUsuarioDto.getCpf_usuario());
             pstm.setString(2, objUsuarioDto.getSenha_usuario());
             ResultSet rs = pstm.executeQuery();

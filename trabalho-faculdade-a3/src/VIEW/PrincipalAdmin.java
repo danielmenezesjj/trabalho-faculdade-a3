@@ -1,6 +1,9 @@
 package VIEW;
-public class PrincipalAdmin extends javax.swing.JFrame {
 
+import DTO.UsuariosDTO;
+
+public class PrincipalAdmin extends javax.swing.JFrame {
+    String nomeUser;
     public PrincipalAdmin() {
         initComponents();
     }
@@ -22,6 +25,11 @@ public class PrincipalAdmin extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowActivated(java.awt.event.WindowEvent evt) {
+                formWindowActivated(evt);
+            }
+        });
 
         jLabel1.setFont(new java.awt.Font("Dialog", 0, 24)); // NOI18N
 
@@ -76,6 +84,23 @@ public class PrincipalAdmin extends javax.swing.JFrame {
         new CadastroUsuarios().setVisible(true);
     }//GEN-LAST:event_jMenuItem1ActionPerformed
 
+    private void formWindowActivated(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowActivated
+      setOla();
+        
+    }//GEN-LAST:event_formWindowActivated
+    
+    public UsuariosDTO getUsuario(UsuariosDTO usuario){
+        nomeUser = usuario.getNome_usuario();
+        return usuario;
+        
+    }
+    
+    private void setOla(){
+        txtOlaAdmin.setText("Olá, " + nomeUser);
+    }
+    
+    
+    
     /**
      * @param args the command line arguments
      */
