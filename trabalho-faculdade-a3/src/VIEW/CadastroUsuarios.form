@@ -24,6 +24,9 @@
     <SyntheticProperty name="formSizePolicy" type="int" value="1"/>
     <SyntheticProperty name="generateCenter" type="boolean" value="true"/>
   </SyntheticProperties>
+  <Events>
+    <EventHandler event="windowActivated" listener="java.awt.event.WindowListener" parameters="java.awt.event.WindowEvent" handler="formWindowActivated"/>
+  </Events>
   <AuxValues>
     <AuxValue name="FormSettings_autoResourcing" type="java.lang.Integer" value="0"/>
     <AuxValue name="FormSettings_autoSetComponentName" type="java.lang.Boolean" value="false"/>
@@ -63,17 +66,15 @@
                           </Group>
                       </Group>
                       <EmptySpace min="-2" pref="58" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="0" attributes="0">
+                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
                           <Component id="optionMedico" min="-2" max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                              <Component id="jLabel3" min="-2" pref="41" max="-2" attributes="0"/>
-                              <Component id="jLabel5" alignment="0" min="-2" pref="107" max="-2" attributes="0"/>
-                              <Component id="txtCPF" max="32767" attributes="0"/>
-                              <Component id="txtTelefone" alignment="0" min="-2" pref="170" max="-2" attributes="0"/>
-                          </Group>
+                          <Component id="jLabel3" min="-2" pref="41" max="-2" attributes="0"/>
+                          <Component id="jLabel5" alignment="0" min="-2" pref="107" max="-2" attributes="0"/>
+                          <Component id="txtTelefone" alignment="0" pref="170" max="32767" attributes="0"/>
                           <Component id="optionPsicologo" min="-2" max="-2" attributes="0"/>
                           <Component id="optionAgente" alignment="0" min="-2" max="-2" attributes="0"/>
                           <Component id="optionAdmin" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="txtCpf" alignment="0" max="32767" attributes="0"/>
                       </Group>
                   </Group>
                   <Group type="102" alignment="0" attributes="0">
@@ -97,7 +98,7 @@
                           <Group type="102" alignment="1" attributes="0">
                               <Component id="jLabel3" min="-2" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
-                              <Component id="txtCPF" min="-2" max="-2" attributes="0"/>
+                              <Component id="txtCpf" min="-2" pref="24" max="-2" attributes="0"/>
                           </Group>
                           <Group type="102" alignment="1" attributes="0">
                               <Component id="jLabel2" min="-2" max="-2" attributes="0"/>
@@ -168,11 +169,6 @@
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="bntCadastrarActionPerformed"/>
       </Events>
     </Component>
-    <Component class="javax.swing.JTextField" name="txtCPF">
-      <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtCPFActionPerformed"/>
-      </Events>
-    </Component>
     <Component class="javax.swing.JTextField" name="txtTelefone">
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel2">
@@ -240,6 +236,8 @@
         </Property>
         <Property name="text" type="java.lang.String" value="Administrador"/>
       </Properties>
+    </Component>
+    <Component class="javax.swing.JFormattedTextField" name="txtCpf">
     </Component>
   </SubComponents>
 </Form>
