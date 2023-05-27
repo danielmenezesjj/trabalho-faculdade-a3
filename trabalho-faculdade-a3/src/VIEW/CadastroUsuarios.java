@@ -229,7 +229,7 @@ public class CadastroUsuarios extends javax.swing.JFrame {
             cpf = txtCpf.getText();
             dt_nascimento = txtDtNascimento.getText();
             email = txtEmail.getText();
-            telefone = txtEmail.getText();
+            telefone = txtTelefone.getText();
             senha = txtSenha.getText();
 
             Date dt_nascimento_usuario = dateFormat.parse(dt_nascimento);
