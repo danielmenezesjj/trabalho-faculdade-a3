@@ -36,8 +36,8 @@
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" attributes="0">
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="rA" alignment="0" min="-2" pref="110" max="-2" attributes="0"/>
-                          <Component id="rB" alignment="0" min="-2" pref="110" max="-2" attributes="0"/>
+                          <Component id="a" alignment="0" min="-2" pref="110" max="-2" attributes="0"/>
+                          <Component id="b" alignment="0" min="-2" pref="110" max="-2" attributes="0"/>
                           <Component id="rD" alignment="0" min="-2" pref="110" max="-2" attributes="0"/>
                           <Component id="rC" alignment="0" min="-2" pref="110" max="-2" attributes="0"/>
                       </Group>
@@ -76,14 +76,14 @@
               <EmptySpace type="unrelated" max="-2" attributes="0"/>
               <Component id="jScrollPane1" min="-2" pref="192" max="-2" attributes="0"/>
               <EmptySpace type="unrelated" max="-2" attributes="0"/>
-              <Component id="rA" min="-2" max="-2" attributes="0"/>
+              <Component id="a" min="-2" max="-2" attributes="0"/>
               <EmptySpace type="separate" max="-2" attributes="0"/>
-              <Component id="rB" min="-2" max="-2" attributes="0"/>
+              <Component id="b" min="-2" max="-2" attributes="0"/>
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Component id="rC" min="-2" max="-2" attributes="0"/>
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Component id="rD" min="-2" max="-2" attributes="0"/>
-              <EmptySpace pref="43" max="32767" attributes="0"/>
+              <EmptySpace pref="59" max="32767" attributes="0"/>
               <Component id="btnSalvar" min="-2" pref="39" max="-2" attributes="0"/>
               <EmptySpace min="-2" pref="1" max="-2" attributes="0"/>
               <Component id="txtResposta" min="-2" max="-2" attributes="0"/>
@@ -118,18 +118,19 @@
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnSalvarActionPerformed"/>
       </Events>
     </Component>
-    <Component class="javax.swing.JRadioButton" name="rA">
+    <Component class="javax.swing.JRadioButton" name="a">
       <Properties>
         <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
           <ComponentRef name="buttonGroup1"/>
         </Property>
         <Property name="text" type="java.lang.String" value="a"/>
+        <Property name="name" type="java.lang.String" value="" noResource="true"/>
       </Properties>
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="rAActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="aActionPerformed"/>
       </Events>
     </Component>
-    <Component class="javax.swing.JRadioButton" name="rB">
+    <Component class="javax.swing.JRadioButton" name="b">
       <Properties>
         <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
           <ComponentRef name="buttonGroup1"/>
@@ -137,7 +138,7 @@
         <Property name="text" type="java.lang.String" value="b"/>
       </Properties>
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="rBActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="bActionPerformed"/>
       </Events>
     </Component>
     <Component class="javax.swing.JRadioButton" name="rD">
@@ -158,10 +159,13 @@
         </Property>
         <Property name="text" type="java.lang.String" value="c"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="rCActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JLabel" name="txtResposta">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Resposta"/>
+        <Property name="enabled" type="boolean" value="false"/>
       </Properties>
     </Component>
     <Container class="javax.swing.JScrollPane" name="jScrollPane1">

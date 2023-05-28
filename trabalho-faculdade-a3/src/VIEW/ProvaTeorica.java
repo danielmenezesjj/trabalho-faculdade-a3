@@ -14,9 +14,13 @@ import java.util.ArrayList;
 import javax.swing.JOptionPane;
 
 public class ProvaTeorica extends javax.swing.JFrame {
-    
+
     ArrayList<Questao> questoes = new ArrayList<Questao>();
+    ProvaTeoricaDTO provaDto = new ProvaTeoricaDTO();
+
     int i = 0;
+    int acertos = 0;
+    String radioo;
 
     /**
      * Creates new form ProvaTeorica
@@ -37,8 +41,8 @@ public class ProvaTeorica extends javax.swing.JFrame {
         buttonGroup1 = new javax.swing.ButtonGroup();
         jLabel2 = new javax.swing.JLabel();
         btnSalvar = new javax.swing.JButton();
-        rA = new javax.swing.JRadioButton();
-        rB = new javax.swing.JRadioButton();
+        a = new javax.swing.JRadioButton();
+        b = new javax.swing.JRadioButton();
         rD = new javax.swing.JRadioButton();
         rC = new javax.swing.JRadioButton();
         txtResposta = new javax.swing.JLabel();
@@ -68,19 +72,20 @@ public class ProvaTeorica extends javax.swing.JFrame {
             }
         });
 
-        buttonGroup1.add(rA);
-        rA.setText("a");
-        rA.addActionListener(new java.awt.event.ActionListener() {
+        buttonGroup1.add(a);
+        a.setText("a");
+        a.setName(""); // NOI18N
+        a.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                rAActionPerformed(evt);
+                aActionPerformed(evt);
             }
         });
 
-        buttonGroup1.add(rB);
-        rB.setText("b");
-        rB.addActionListener(new java.awt.event.ActionListener() {
+        buttonGroup1.add(b);
+        b.setText("b");
+        b.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                rBActionPerformed(evt);
+                bActionPerformed(evt);
             }
         });
 
@@ -94,8 +99,13 @@ public class ProvaTeorica extends javax.swing.JFrame {
 
         buttonGroup1.add(rC);
         rC.setText("c");
+        rC.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                rCActionPerformed(evt);
+            }
+        });
 
-        txtResposta.setText("Resposta");
+        txtResposta.setEnabled(false);
 
         txtPergunta.setEditable(false);
         txtPergunta.setColumns(20);
@@ -111,8 +121,8 @@ public class ProvaTeorica extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(rA, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(rB, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(a, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(b, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(rD, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(rC, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -140,14 +150,14 @@ public class ProvaTeorica extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 192, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(rA)
+                .addComponent(a)
                 .addGap(18, 18, 18)
-                .addComponent(rB)
+                .addComponent(b)
                 .addGap(18, 18, 18)
                 .addComponent(rC)
                 .addGap(18, 18, 18)
                 .addComponent(rD)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 43, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 59, Short.MAX_VALUE)
                 .addComponent(btnSalvar, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(1, 1, 1)
                 .addComponent(txtResposta)
@@ -159,67 +169,85 @@ public class ProvaTeorica extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalvarActionPerformed
-        
-        if (i == questoes.size() - 1){
-            btnSalvar.setEnabled(false);
-            JOptionPane.showMessageDialog(null, "Prova encerrada.");
-        }else{   
-            i++;
-            alterarQuestao(i);
+        if (buttonGroup1.getSelection() == null) {
+            JOptionPane.showMessageDialog(null, "Selecione uma resposta.");
+        } else {
+            provaDto.setRespostaAluno(radioo);
+
+            if (i == questoes.size() - 1) {
+                btnSalvar.setEnabled(false);
+                JOptionPane.showMessageDialog(null, "Prova encerrada.\n\nNota: " + provaDto.getAcertos());
+            } else {
+                if (provaDto.getRespostaAluno() != null && provaDto.getRespostaAluno().equals(txtResposta.getText())) {
+                    acertos++;
+                    provaDto.setAcertos(acertos);
+                    JOptionPane.showMessageDialog(null, "Acertou!");
+                } else {
+                    JOptionPane.showMessageDialog(null, "Errou.");
+                }
+
+                i++;
+                alterarQuestao(i);
+            }
         }
     }//GEN-LAST:event_btnSalvarActionPerformed
 
-    private void rAActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rAActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_rAActionPerformed
+    private void setRadioSelected(String radio){
+        radioo = radio;
+    }
+    
+    private void aActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_aActionPerformed
+        setRadioSelected("a");
+    }//GEN-LAST:event_aActionPerformed
 
-    private void rBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rBActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_rBActionPerformed
+    private void bActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bActionPerformed
+        setRadioSelected("b");
+    }//GEN-LAST:event_bActionPerformed
 
     private void rDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rDActionPerformed
-        // TODO add your handling code here:
+        setRadioSelected("d");
     }//GEN-LAST:event_rDActionPerformed
 
     private void formWindowActivated(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowActivated
-        
+
 
     }//GEN-LAST:event_formWindowActivated
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
+        txtResposta.setVisible(false);
         try {
-            
+
             QuestoesDAO objQuestoesDao = new QuestoesDAO();
-            ResultSet rsObjQuestoesDao = objQuestoesDao.buscarQuestoes(3);
+            ResultSet rsObjQuestoesDao = objQuestoesDao.buscarQuestoes(5);
 
             // Amrazenando questoes no arrayList
             while (rsObjQuestoesDao.next()) {
                 Questao questao = new Questao();
-                
+
                 String pergunta = rsObjQuestoesDao.getString("pergunta");
                 String resposta = rsObjQuestoesDao.getString("resposta");
-                
+
                 questao.setPergunta(pergunta);
                 questao.setResposta(resposta.charAt(0));
-                
+
                 questoes.add(questao);
-                
-                for (Questao questaoo : questoes) {
-                    System.err.println(questaoo.getPergunta());
-                }
-                
+
                 alterarQuestao(0);
             }
-            
+
         } catch (SQLException erro) {
             JOptionPane.showMessageDialog(null, "ProvaTeorica: " + erro);
         }
     }//GEN-LAST:event_formWindowOpened
-    
+
+    private void rCActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rCActionPerformed
+        setRadioSelected("c");
+    }//GEN-LAST:event_rCActionPerformed
+
     public void alterarQuestao(int indice) {
         String pergunta = questoes.get(indice).getPergunta();
         String resposta = String.valueOf(questoes.get(indice).getResposta());
-        
+
         txtPergunta.setText(pergunta);
         txtResposta.setText(resposta);
     }
@@ -260,12 +288,12 @@ public class ProvaTeorica extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JRadioButton a;
+    private javax.swing.JRadioButton b;
     private javax.swing.JButton btnSalvar;
     private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JRadioButton rA;
-    private javax.swing.JRadioButton rB;
     private javax.swing.JRadioButton rC;
     private javax.swing.JRadioButton rD;
     private javax.swing.JTextArea txtPergunta;

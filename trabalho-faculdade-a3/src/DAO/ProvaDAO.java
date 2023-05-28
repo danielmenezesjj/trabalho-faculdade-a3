@@ -5,5 +5,5 @@
 package DAO;
 
 public class ProvaDAO {
-    
+ 
 }
