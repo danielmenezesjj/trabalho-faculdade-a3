@@ -39,6 +39,8 @@ public class InterfaceRenovacao extends javax.swing.JFrame {
 
         jLabel2.setText("Resultado:");
 
+        btnImprimir.setBackground(new java.awt.Color(0, 0, 0));
+        btnImprimir.setForeground(new java.awt.Color(255, 255, 255));
         btnImprimir.setText("Imprimir carteira");
 
         btnRealizarExameMedico.setBackground(new java.awt.Color(51, 102, 255));
@@ -49,18 +51,18 @@ public class InterfaceRenovacao extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap(122, Short.MAX_VALUE)
+                .addGap(104, 104, 104)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
-                    .addComponent(btnRealizarExameMedico, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel1)
                     .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnImprimir))
-                .addGap(128, 128, 128))
+                    .addComponent(btnImprimir)
+                    .addComponent(btnRealizarExameMedico, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(116, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(34, 34, 34)
+                .addGap(37, 37, 37)
                 .addComponent(jLabel1)
                 .addGap(38, 38, 38)
                 .addComponent(btnRealizarExameMedico, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -68,7 +70,7 @@ public class InterfaceRenovacao extends javax.swing.JFrame {
                 .addComponent(jLabel2)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 39, Short.MAX_VALUE)
                 .addComponent(btnImprimir)
-                .addGap(46, 46, 46))
+                .addGap(43, 43, 43))
         );
 
         pack();
