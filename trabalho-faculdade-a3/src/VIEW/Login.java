@@ -197,23 +197,36 @@ public class Login extends javax.swing.JFrame {
 
             if (rsUsuarioDao.next()) {
                 // chamar tela
-                if (rsUsuarioDao.getInt("perfil_id") == 5) {
+                switch(rsUsuarioDao.getInt("perfil_id")){
                     
-                   
-                   UsuariosDTO usuario = new UsuariosDTO();
-                   usuario.setNome_usuario(rsUsuarioDao.getString("nome_completo"));
-                   PrincipalAdmin principalAdmin = new PrincipalAdmin();
-                   
-                   principalAdmin.getUsuario(usuario);
-                   principalAdmin.setVisible(true);
-                                 
-                   this.dispose();
-                } else {
-                    new InterfaceAluno().setVisible(true);
-
-                    this.dispose();
+                    case 1:
+                        new InterfaceAluno().setVisible(true);
+                        this.dispose();
+                        break;
+                    case 2:
+                        new InterfaceMedico().setVisible(true);
+                        this.dispose();
+                        break;
+                    
+                    case 3:
+                        new InterfaceAgente().setVisible(true);
+                        this.dispose();
+                        break;
+                    
+                    case 4:
+                        new InterfacePsicologo().setVisible(true);
+                        this.dispose();
+                        break;
+                    case 5:
+                        UsuariosDTO usuario = new UsuariosDTO();
+                        usuario.setNome_usuario(rsUsuarioDao.getString("nome_completo"));
+                        PrincipalAdmin principalAdmin = new PrincipalAdmin();
+                        principalAdmin.getUsuario(usuario);
+                        principalAdmin.setVisible(true);
+                        this.dispose();
+                        break;
+                    
                 }
-
             } else {
                 JOptionPane.showMessageDialog(null, "Usuário ou senha incorreto.");
             }
