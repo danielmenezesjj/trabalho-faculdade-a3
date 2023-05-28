@@ -36,7 +36,9 @@ public class InterfaceMedico extends javax.swing.JFrame {
         jLabel1.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
         jLabel1.setText("Olá, #nomeMedico");
 
+        btnAlunos.setBackground(new java.awt.Color(0, 0, 0));
         btnAlunos.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+        btnAlunos.setForeground(new java.awt.Color(255, 255, 255));
         btnAlunos.setText("Consultar Alunos");
         btnAlunos.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -44,7 +46,9 @@ public class InterfaceMedico extends javax.swing.JFrame {
             }
         });
 
+        btnResultado.setBackground(new java.awt.Color(0, 0, 0));
         btnResultado.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+        btnResultado.setForeground(new java.awt.Color(255, 255, 255));
         btnResultado.setText("Lançar Resultado de Exame Médico");
         btnResultado.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {

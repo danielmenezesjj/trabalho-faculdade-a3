@@ -7,5 +7,13 @@ package DTO;
 import java.util.ArrayList;
 
 public class ProvaTeoricaDTO {
-    
+    String[] questoes = new String[2];
+
+    public String[] getQuestoes() {
+        return questoes;
+    }
+
+    public void setQuestoes(String[] questoes) {
+        this.questoes = questoes;
+    }
 }

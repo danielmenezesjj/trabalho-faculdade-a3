@@ -5,10 +5,12 @@
 package VIEW;
 
 import DAO.QuestoesDAO;
+import DTO.ProvaTeoricaDTO;
 import DTO.Questao;
 import java.util.Random;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import javax.swing.JOptionPane;
 
 public class ProvaTeorica extends javax.swing.JFrame {
@@ -31,24 +33,28 @@ public class ProvaTeorica extends javax.swing.JFrame {
 
         buttonGroup1 = new javax.swing.ButtonGroup();
         jLabel2 = new javax.swing.JLabel();
-        txtQuestao = new javax.swing.JLabel();
         btnSalvar = new javax.swing.JButton();
-        r1 = new javax.swing.JRadioButton();
-        r2 = new javax.swing.JRadioButton();
-        r3 = new javax.swing.JRadioButton();
-        r4 = new javax.swing.JRadioButton();
+        rA = new javax.swing.JRadioButton();
+        rB = new javax.swing.JRadioButton();
+        rD = new javax.swing.JRadioButton();
+        rC = new javax.swing.JRadioButton();
+        txtResposta = new javax.swing.JLabel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        txtPergunta = new javax.swing.JTextArea();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setResizable(false);
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowActivated(java.awt.event.WindowEvent evt) {
+                formWindowActivated(evt);
+            }
+        });
 
         jLabel2.setFont(new java.awt.Font("Dialog", 0, 24)); // NOI18N
         jLabel2.setText("Prova Teórica");
 
-        txtQuestao.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
-        txtQuestao.setText("Pergunta");
-
-        btnSalvar.setBackground(new java.awt.Color(102, 227, 57));
+        btnSalvar.setBackground(new java.awt.Color(0, 0, 0));
         btnSalvar.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+        btnSalvar.setForeground(new java.awt.Color(255, 255, 255));
         btnSalvar.setText("Salvar");
         btnSalvar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -56,69 +62,90 @@ public class ProvaTeorica extends javax.swing.JFrame {
             }
         });
 
-        buttonGroup1.add(r1);
-        r1.addActionListener(new java.awt.event.ActionListener() {
+        buttonGroup1.add(rA);
+        rA.setText("a");
+        rA.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                r1ActionPerformed(evt);
+                rAActionPerformed(evt);
             }
         });
 
-        buttonGroup1.add(r2);
-        r2.addActionListener(new java.awt.event.ActionListener() {
+        buttonGroup1.add(rB);
+        rB.setText("b");
+        rB.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                r2ActionPerformed(evt);
+                rBActionPerformed(evt);
             }
         });
 
-        buttonGroup1.add(r3);
-        r3.addActionListener(new java.awt.event.ActionListener() {
+        buttonGroup1.add(rD);
+        rD.setText("d");
+        rD.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                r3ActionPerformed(evt);
+                rDActionPerformed(evt);
             }
         });
 
-        buttonGroup1.add(r4);
+        buttonGroup1.add(rC);
+        rC.setText("c");
+
+        txtResposta.setText("Resposta");
+
+        txtPergunta.setEditable(false);
+        txtPergunta.setColumns(20);
+        txtPergunta.setRows(5);
+        jScrollPane1.setViewportView(txtPergunta);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
+                .addGap(66, 66, 66)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(183, 183, 183)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(rA, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(rB, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(rD, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(rC, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 606, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 87, Short.MAX_VALUE))))
+            .addGroup(layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(264, 264, 264)
                         .addComponent(jLabel2))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(188, 188, 188)
-                        .addComponent(btnSalvar, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(33, 33, 33)
+                        .addComponent(txtResposta, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(52, 52, 52)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(r1, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(r2, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(r4, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(r3, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtQuestao, javax.swing.GroupLayout.PREFERRED_SIZE, 447, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGap(274, 274, 274)
+                        .addComponent(btnSalvar, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(46, 46, 46)
-                .addComponent(jLabel2)
-                .addGap(31, 31, 31)
-                .addComponent(txtQuestao, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 86, Short.MAX_VALUE)
-                .addComponent(r1)
-                .addGap(18, 18, 18)
-                .addComponent(r2)
-                .addGap(18, 18, 18)
-                .addComponent(r4)
-                .addGap(18, 18, 18)
-                .addComponent(r3)
                 .addGap(42, 42, 42)
+                .addComponent(jLabel2)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 192, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(rA)
+                .addGap(18, 18, 18)
+                .addComponent(rB)
+                .addGap(18, 18, 18)
+                .addComponent(rC)
+                .addGap(18, 18, 18)
+                .addComponent(rD)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 43, Short.MAX_VALUE)
                 .addComponent(btnSalvar, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(44, 44, 44))
+                .addGap(1, 1, 1)
+                .addComponent(txtResposta)
+                .addGap(27, 27, 27))
         );
 
         pack();
@@ -126,35 +153,60 @@ public class ProvaTeorica extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalvarActionPerformed
-        try {
-            Random random = new Random();
-            int aleatorio = random.nextInt(4);
-            QuestoesDAO objQuestoesDao = new QuestoesDAO();
-            ResultSet rsObjQuestoesDao = objQuestoesDao.buscarQuestoes(aleatorio);
-            
-            objQuestoesDao.randomizaQuestoes();
-            
-            
-            if (rsObjQuestoesDao.next()) {
-                objQuestoesDao.listar();
-            }
-        } catch (SQLException erro) {
-            JOptionPane.showMessageDialog(null, "ProvaTeorica: " + erro);
-        }
        
     }//GEN-LAST:event_btnSalvarActionPerformed
 
-    private void r1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_r1ActionPerformed
+    private void rAActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rAActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_r1ActionPerformed
+    }//GEN-LAST:event_rAActionPerformed
 
-    private void r2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_r2ActionPerformed
+    private void rBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rBActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_r2ActionPerformed
+    }//GEN-LAST:event_rBActionPerformed
 
-    private void r3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_r3ActionPerformed
+    private void rDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rDActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_r3ActionPerformed
+    }//GEN-LAST:event_rDActionPerformed
+
+    private void formWindowActivated(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowActivated
+         try {
+            
+            QuestoesDAO objQuestoesDao = new QuestoesDAO();   
+            ResultSet rsObjQuestoesDao = objQuestoesDao.buscarQuestoes(3);
+
+            // Amrazenando questoes no arrayList
+            ArrayList<Questao> questoes = new ArrayList<Questao>();
+
+            int i = 0;
+                  
+            if(i > 3){
+                btnSalvar.setEnabled(false);
+            }
+            
+            while (rsObjQuestoesDao.next() && i < 3) {
+                btnSalvar.setEnabled(true);
+                Questao questao = new Questao();
+                
+                
+                String pergunta = rsObjQuestoesDao.getString("pergunta");
+                String resposta = rsObjQuestoesDao.getString("resposta");
+                
+                questao.setPergunta(pergunta);
+                questao.setResposta(resposta.charAt(0));
+                
+                System.out.println(questao.getPergunta());
+                
+                
+                txtPergunta.setText(questao.getPergunta());
+                txtResposta.setText(String.valueOf(questao.getResposta()));   
+                i++;
+            }    
+
+        } catch (SQLException erro) {
+            JOptionPane.showMessageDialog(null, "ProvaTeorica: " + erro);
+        }
+
+    }//GEN-LAST:event_formWindowActivated
 
     /**
      * @param args the command line arguments
@@ -195,10 +247,12 @@ public class ProvaTeorica extends javax.swing.JFrame {
     private javax.swing.JButton btnSalvar;
     private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JRadioButton r1;
-    private javax.swing.JRadioButton r2;
-    private javax.swing.JRadioButton r3;
-    private javax.swing.JRadioButton r4;
-    private javax.swing.JLabel txtQuestao;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JRadioButton rA;
+    private javax.swing.JRadioButton rB;
+    private javax.swing.JRadioButton rC;
+    private javax.swing.JRadioButton rD;
+    private javax.swing.JTextArea txtPergunta;
+    private javax.swing.JLabel txtResposta;
     // End of variables declaration//GEN-END:variables
 }
