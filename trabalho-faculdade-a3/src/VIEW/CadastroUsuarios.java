@@ -194,6 +194,7 @@ public class CadastroUsuarios extends javax.swing.JFrame {
         try {
 
             cadastrar();
+            limpar();
         } catch (ParseException ex) {
             Logger.getLogger(CadastroUsuarios.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -205,6 +206,7 @@ public class CadastroUsuarios extends javax.swing.JFrame {
 
         formataCpf();
         formataData();
+       
     }//GEN-LAST:event_formWindowActivated
 
     private void cadastrar() throws ParseException {
@@ -274,6 +276,17 @@ public class CadastroUsuarios extends javax.swing.JFrame {
         } catch (ParseException e) {
             e.printStackTrace();
         }
+    }
+     public void limpar(){
+        txtNomeCompleto.setText("");
+        txtCpf.setText("");
+        txtDtNascimento.setText("");
+        txtEmail.setText("");
+        txtTelefone.setText("");
+        txtSenha.setText("");
+        
+        txtNomeCompleto.requestFocus();
+        
     }
 
     /**

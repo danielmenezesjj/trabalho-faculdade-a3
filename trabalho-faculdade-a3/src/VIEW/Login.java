@@ -209,7 +209,7 @@ public class Login extends javax.swing.JFrame {
                                  
                    this.dispose();
                 } else {
-                    JOptionPane.showMessageDialog(null, "Olá, " + rsUsuarioDao.getString("nome_completo"));
+                    new InterfaceAluno().setVisible(true);
 
                     this.dispose();
                 }
