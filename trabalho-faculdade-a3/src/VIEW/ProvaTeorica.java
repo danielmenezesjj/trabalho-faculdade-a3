@@ -127,14 +127,15 @@ public class ProvaTeorica extends javax.swing.JFrame {
 
     private void btnSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalvarActionPerformed
         try {
-            Questao questao = new Questao();
             Random random = new Random();
             int aleatorio = random.nextInt(4);
             QuestoesDAO objQuestoesDao = new QuestoesDAO();
             ResultSet rsObjQuestoesDao = objQuestoesDao.buscarQuestoes(aleatorio);
-
+            
+            objQuestoesDao.randomizaQuestoes();
+            
+            
             if (rsObjQuestoesDao.next()) {
-                questao.setPergunta(rsObjQuestoesDao.getString("pergunta"));
                 objQuestoesDao.listar();
             }
         } catch (SQLException erro) {
