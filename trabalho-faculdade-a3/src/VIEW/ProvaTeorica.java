@@ -14,8 +14,9 @@ import java.util.ArrayList;
 import javax.swing.JOptionPane;
 
 public class ProvaTeorica extends javax.swing.JFrame {
-
+    
     ArrayList<Questao> questoes = new ArrayList<Questao>();
+    int i = 0;
 
     /**
      * Creates new form ProvaTeorica
@@ -158,7 +159,12 @@ public class ProvaTeorica extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalvarActionPerformed
-        for (int i = 1; i < questoes.size(); i++) {
+        
+        if (i == questoes.size() - 1){
+            btnSalvar.setEnabled(false);
+            JOptionPane.showMessageDialog(null, "Prova encerrada.");
+        }else{   
+            i++;
             alterarQuestao(i);
         }
     }//GEN-LAST:event_btnSalvarActionPerformed
@@ -176,47 +182,46 @@ public class ProvaTeorica extends javax.swing.JFrame {
     }//GEN-LAST:event_rDActionPerformed
 
     private void formWindowActivated(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowActivated
-
+        
 
     }//GEN-LAST:event_formWindowActivated
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
         try {
-
+            
             QuestoesDAO objQuestoesDao = new QuestoesDAO();
             ResultSet rsObjQuestoesDao = objQuestoesDao.buscarQuestoes(3);
 
             // Amrazenando questoes no arrayList
-            int i = 0;
-
             while (rsObjQuestoesDao.next()) {
                 Questao questao = new Questao();
-
+                
                 String pergunta = rsObjQuestoesDao.getString("pergunta");
                 String resposta = rsObjQuestoesDao.getString("resposta");
-
+                
                 questao.setPergunta(pergunta);
                 questao.setResposta(resposta.charAt(0));
-
+                
                 questoes.add(questao);
-
+                
                 for (Questao questaoo : questoes) {
                     System.err.println(questaoo.getPergunta());
                 }
-
+                
                 alterarQuestao(0);
-
-                i++;
             }
-
+            
         } catch (SQLException erro) {
             JOptionPane.showMessageDialog(null, "ProvaTeorica: " + erro);
         }
     }//GEN-LAST:event_formWindowOpened
-
+    
     public void alterarQuestao(int indice) {
-        txtPergunta.setText(questoes.get(indice).getPergunta());
-        txtResposta.setText(String.valueOf(questoes.get(indice).getResposta()));
+        String pergunta = questoes.get(indice).getPergunta();
+        String resposta = String.valueOf(questoes.get(indice).getResposta());
+        
+        txtPergunta.setText(pergunta);
+        txtResposta.setText(resposta);
     }
 
     /**

@@ -17,27 +17,6 @@ public class QuestoesDAO {
 
     Connection conn = (Connection) new ConexaoDAO().connectDB();
 
-    
-    /*Random random = new Random();
-    int aleatorio = random.nextInt(4);
-    
-    public Questao[] randomizaQuestoes(){
-        for(int i = 0; i < questoes.length; i++){
-            questoes[i] = (Questao) buscarQuestoes(aleatorio);              
-        }
-        return questoes;
-    }
-    
-    public void listar(){
-        for(Questao questao : questoes){
-            System.out.println(questao);
-        }
-    }
-    
-    public void setQuestoes(){
-        Questao questao = new Questao();
-    }*/
-
     public ResultSet buscarQuestoes(int limite) {
         try {
             String sql = "select * from questoes ORDER BY RAND() LIMIT ?";
