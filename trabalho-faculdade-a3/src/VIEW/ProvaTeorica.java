@@ -19,8 +19,8 @@ public class ProvaTeorica extends javax.swing.JFrame {
     ProvaTeoricaDTO provaDto = new ProvaTeoricaDTO();
 
     int i = 0;
-    int acertos = 0;
-    String radioo;
+    int acertos = 1;
+    String respostaAluno;
 
     /**
      * Creates new form ProvaTeorica
@@ -162,7 +162,7 @@ public class ProvaTeorica extends javax.swing.JFrame {
                         .addComponent(rD, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 169, Short.MAX_VALUE)
                         .addComponent(btnSalvar, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(66, 66, 66)))
                 .addComponent(txtResposta)
@@ -174,11 +174,11 @@ public class ProvaTeorica extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalvarActionPerformed
+
         if (buttonGroup1.getSelection() == null) {
             JOptionPane.showMessageDialog(null, "Selecione uma resposta.");
         } else {
-            provaDto.setRespostaAluno(radioo);
-
+            provaDto.setRespostaAluno(respostaAluno);
             if (i == questoes.size() - 1) {
                 btnSalvar.setEnabled(false);
                 JOptionPane.showMessageDialog(null, "Prova encerrada.\n\nNota: " + provaDto.getAcertos());
@@ -198,7 +198,7 @@ public class ProvaTeorica extends javax.swing.JFrame {
     }//GEN-LAST:event_btnSalvarActionPerformed
 
     private void setRadioSelected(String radio){
-        radioo = radio;
+        respostaAluno = radio;
     }
     
     private void aActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_aActionPerformed
