@@ -84,10 +84,16 @@ public class InterfaceNovaCNH extends javax.swing.JFrame {
 
         jLabel10.setText("Resultado:");
 
+        btnFazerProva.setBackground(new java.awt.Color(0, 0, 0));
+        btnFazerProva.setForeground(new java.awt.Color(255, 255, 255));
         btnFazerProva.setText("Fazer Prova Teórica");
 
+        btnImprimir.setBackground(new java.awt.Color(0, 0, 0));
+        btnImprimir.setForeground(new java.awt.Color(255, 255, 255));
         btnImprimir.setText("Imprimir Carteira");
 
+        btnMedico.setBackground(new java.awt.Color(51, 102, 255));
+        btnMedico.setForeground(new java.awt.Color(255, 255, 255));
         btnMedico.setText("Realizar exame");
         btnMedico.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -95,6 +101,8 @@ public class InterfaceNovaCNH extends javax.swing.JFrame {
             }
         });
 
+        btnPsicologo.setBackground(new java.awt.Color(51, 102, 255));
+        btnPsicologo.setForeground(new java.awt.Color(255, 255, 255));
         btnPsicologo.setText("Realizar exame");
         btnPsicologo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -102,6 +110,8 @@ public class InterfaceNovaCNH extends javax.swing.JFrame {
             }
         });
 
+        btnTeorico.setBackground(new java.awt.Color(51, 102, 255));
+        btnTeorico.setForeground(new java.awt.Color(255, 255, 255));
         btnTeorico.setText("Realizar exame");
         btnTeorico.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -109,6 +119,8 @@ public class InterfaceNovaCNH extends javax.swing.JFrame {
             }
         });
 
+        btnPratico.setBackground(new java.awt.Color(51, 102, 255));
+        btnPratico.setForeground(new java.awt.Color(255, 255, 255));
         btnPratico.setText("Realizar exame");
         btnPratico.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {

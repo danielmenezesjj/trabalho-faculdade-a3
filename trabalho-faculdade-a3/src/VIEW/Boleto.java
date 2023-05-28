@@ -118,7 +118,7 @@ public class Boleto extends javax.swing.JFrame {
     }
     
     private void formWindowActivated(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowActivated
-        txtValor.setText(String.valueOf(valor));
+        txtValor.setText("R$"+String.valueOf(valor));
         txtItem.setText(item);
     }//GEN-LAST:event_formWindowActivated
 

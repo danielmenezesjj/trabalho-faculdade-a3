@@ -13,7 +13,7 @@ public class UsuarioDAO {
     
     public ResultSet autenticacaoUsuario(UsuariosDTO objUsuarioDto){
         try{
-            String sql = "SELECT * FROM usuarios JOIN perfil ON usuarios.perfil_id = perfil.id WHERE usuarios.cpf = ? AND usuarios.senha = ?";
+            String sql = "SELECT * FROM usuarios WHERE usuarios.cpf = ? AND usuarios.senha = ?";
             
             PreparedStatement pstm = conn.prepareStatement(sql);
             
@@ -87,6 +87,10 @@ public void cadastrarUsuarioAluno(UsuariosDTO objUsuarioDto) {
     } catch (Exception erro) {
         JOptionPane.showMessageDialog(null, "UsuarioDAO: " + erro);
     }
+}
+
+public void listar(){
+    
 }
     
 }

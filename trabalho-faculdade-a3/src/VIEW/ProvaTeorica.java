@@ -4,10 +4,13 @@
  */
 package VIEW;
 
-/**
- *
- * @author Morgana
- */
+import DAO.QuestoesDAO;
+import DTO.Questao;
+import java.util.Random;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import javax.swing.JOptionPane;
+
 public class ProvaTeorica extends javax.swing.JFrame {
 
     /**
@@ -123,7 +126,21 @@ public class ProvaTeorica extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalvarActionPerformed
-        // TODO add your handling code here:
+        try {
+            Questao questao = new Questao();
+            Random random = new Random();
+            int aleatorio = random.nextInt(4);
+            QuestoesDAO objQuestoesDao = new QuestoesDAO();
+            ResultSet rsObjQuestoesDao = objQuestoesDao.buscarQuestoes(aleatorio);
+
+            if (rsObjQuestoesDao.next()) {
+                questao.setPergunta(rsObjQuestoesDao.getString("pergunta"));
+                objQuestoesDao.listar();
+            }
+        } catch (SQLException erro) {
+            JOptionPane.showMessageDialog(null, "ProvaTeorica: " + erro);
+        }
+       
     }//GEN-LAST:event_btnSalvarActionPerformed
 
     private void r1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_r1ActionPerformed

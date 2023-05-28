@@ -5,10 +5,8 @@
 package DAO;
     
 import DTO.ServicoDTO;
-import DTO.UsuariosDTO;
 import java.sql.PreparedStatement;
 import java.sql.Connection;
-import java.sql.Date;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import javax.swing.JOptionPane;

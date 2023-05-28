@@ -56,6 +56,8 @@ public class ResultadoExame extends javax.swing.JFrame {
 
         jLabel2.setText("CPF");
 
+        btnLancar.setBackground(new java.awt.Color(0, 0, 0));
+        btnLancar.setForeground(new java.awt.Color(255, 255, 255));
         btnLancar.setText("Lançar");
 
         jRadioButton1.setText("Apto");
