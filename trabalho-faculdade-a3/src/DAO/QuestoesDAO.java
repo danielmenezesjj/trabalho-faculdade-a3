@@ -5,6 +5,7 @@
 package DAO;
 
 import DTO.Questao;
+import DTO.Usuario;
 import java.sql.PreparedStatement;
 import java.sql.Connection;
 import java.sql.ResultSet;
@@ -22,7 +23,7 @@ public class QuestoesDAO {
     
     public Questao[] randomizaQuestoes(){
         for(int i = 0; i < questoes.length; i++){
-            questoes[i] = (Questao) buscarQuestoes(aleatorio);
+            questoes[i] = (Questao) buscarQuestoes(aleatorio);              
         }
         return questoes;
     }
@@ -31,6 +32,10 @@ public class QuestoesDAO {
         for(Questao questao : questoes){
             System.out.println(questao);
         }
+    }
+    
+    public void setQuestoes(){
+        Questao questao = new Questao();
     }
 
     public ResultSet buscarQuestoes(int id) {
