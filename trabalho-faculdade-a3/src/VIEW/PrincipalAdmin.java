@@ -36,6 +36,11 @@ public class PrincipalAdmin extends javax.swing.JFrame {
         txtOlaAdmin.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
 
         jMenu1.setText("Usuarios");
+        jMenu1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenu1ActionPerformed(evt);
+            }
+        });
 
         jMenuItem1.setText("Cadastro Usuário");
         jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
@@ -46,6 +51,11 @@ public class PrincipalAdmin extends javax.swing.JFrame {
         jMenu1.add(jMenuItem1);
 
         jMenuItem2.setText("Listar Usuários");
+        jMenuItem2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem2ActionPerformed(evt);
+            }
+        });
         jMenu1.add(jMenuItem2);
 
         jMenuBar1.add(jMenu1);
@@ -88,6 +98,14 @@ public class PrincipalAdmin extends javax.swing.JFrame {
       setOla();
         
     }//GEN-LAST:event_formWindowActivated
+
+    private void jMenu1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenu1ActionPerformed
+
+    }//GEN-LAST:event_jMenu1ActionPerformed
+
+    private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
+        new UsuariosLista().setVisible(true);
+    }//GEN-LAST:event_jMenuItem2ActionPerformed
     
     public UsuariosDTO getUsuario(UsuariosDTO usuario){
         nomeUser = usuario.getNome_usuario();
