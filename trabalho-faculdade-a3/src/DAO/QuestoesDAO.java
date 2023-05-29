@@ -7,6 +7,7 @@ import java.sql.SQLException;
 import javax.swing.JOptionPane;
 
 public class QuestoesDAO {
+
     Connection conn = (Connection) new ConexaoDAO().connectDB();
 
     public ResultSet buscarQuestoes(int limite) {
@@ -17,7 +18,7 @@ public class QuestoesDAO {
             pstm.setInt(1, limite);
 
             ResultSet rs = pstm.executeQuery();
-            
+
             return rs;
         } catch (SQLException erro) {
             JOptionPane.showMessageDialog(null, "QuestoesDAO: " + erro);

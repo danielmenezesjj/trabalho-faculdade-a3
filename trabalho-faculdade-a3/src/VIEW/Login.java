@@ -4,26 +4,25 @@
  */
 package VIEW;
 
+import DTO.Usuario;
 import DAO.UsuarioDAO;
+import DTO.UsuarioAlunoDTO;
 import DTO.UsuariosDTO;
-import java.awt.FlowLayout;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.text.ParseException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-import javax.swing.JFormattedTextField;
 import javax.swing.JOptionPane;
 import javax.swing.text.MaskFormatter;
 
 public class Login extends javax.swing.JFrame {
-
+    public static Usuario usuarioLogado;
+    
     /**
      * Creates new form LoginVIEW
      */
     public Login() {
         initComponents();
-        
+
     }
 
     /**
@@ -144,18 +143,17 @@ public class Login extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    
-    private void formataCpf(){
-           try {
+    private void formataCpf() {
+        try {
             MaskFormatter cpfFormatter = new MaskFormatter("###.###.###-##");
             cpfFormatter.install(txtCpf);
             txtCpf.setColumns(10); // Defina o tamanho do campo conforme necessário
-    
+
         } catch (ParseException e) {
             e.printStackTrace();
         }
     }
-    
+
     private void btnEntrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEntrarActionPerformed
         // TODO add your handling code here:
         logar();
@@ -168,7 +166,7 @@ public class Login extends javax.swing.JFrame {
     private void formWindowActivated(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowActivated
         // TODO add your handling code here:
         formataCpf();
-        
+
     }//GEN-LAST:event_formWindowActivated
 
     private void txtCpfActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtCpfActionPerformed
@@ -197,9 +195,12 @@ public class Login extends javax.swing.JFrame {
 
             if (rsUsuarioDao.next()) {
                 // chamar tela
-                switch(rsUsuarioDao.getInt("perfil_id")){
-                    
+                switch (rsUsuarioDao.getInt("perfil_id")) {
+
                     case 1:
+                        UsuarioAlunoDTO usuarioAluno = new UsuarioAlunoDTO();
+                        usuarioLogado = usuarioAluno;
+                        usuarioAluno.setNome_usuario(rsUsuarioDao.getString("nome_completo"));
                         new InterfaceAluno().setVisible(true);
                         this.dispose();
                         break;
@@ -207,12 +208,12 @@ public class Login extends javax.swing.JFrame {
                         new InterfaceMedico().setVisible(true);
                         this.dispose();
                         break;
-                    
+
                     case 3:
                         new InterfaceAgente().setVisible(true);
                         this.dispose();
                         break;
-                    
+
                     case 4:
                         new InterfacePsicologo().setVisible(true);
                         this.dispose();
