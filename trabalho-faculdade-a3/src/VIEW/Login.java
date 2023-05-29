@@ -4,10 +4,16 @@
  */
 package VIEW;
 
+import VIEW.funcionarios.InterfaceMedico;
+import VIEW.funcionarios.InterfacePsicologo;
+import VIEW.funcionarios.InterfaceAgente;
+import VIEW.admin.PrincipalAdmin;
+import VIEW.aluno.InterfaceAluno;
+import VIEW.aluno.AlunoCadastro;
 import DTO.Usuario;
 import DAO.UsuarioDAO;
 import DTO.UsuarioAlunoDTO;
-import DTO.UsuariosDTO;
+import DTO.UsuarioDTO;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.text.ParseException;
@@ -184,23 +190,26 @@ public class Login extends javax.swing.JFrame {
             cpf_usuario = txtCpf.getText();
             password_usuario = txtSenha.getText();
 
-            UsuariosDTO objUsuarioDto = new UsuariosDTO();
+            UsuarioDTO objUsuarioDto = new UsuarioDTO();
 
             objUsuarioDto.setCpf_usuario(cpf_usuario);
             objUsuarioDto.setSenha_usuario(password_usuario);
 
             UsuarioDAO objUsuarioDao = new UsuarioDAO();
 
-            ResultSet rsUsuarioDao = objUsuarioDao.autenticacaoUsuario(objUsuarioDto);
+            ResultSet rs = objUsuarioDao.autenticacaoUsuario(objUsuarioDto);
 
-            if (rsUsuarioDao.next()) {
+            if (rs.next()) {
                 // chamar tela
-                switch (rsUsuarioDao.getInt("perfil_id")) {
+                switch (rs.getInt("perfil_id")) {
 
                     case 1:
-                        UsuarioAlunoDTO usuarioAluno = new UsuarioAlunoDTO();
+                        UsuarioDTO usuarioAluno = new UsuarioDTO();
+                        usuarioAluno.setNome_usuario(rs.getString("nome_completo"));
+                        usuarioAluno.setId_usuario(rs.getInt("id"));
+                        
                         usuarioLogado = usuarioAluno;
-                        usuarioAluno.setNome_usuario(rsUsuarioDao.getString("nome_completo"));
+                        
                         new InterfaceAluno().setVisible(true);
                         this.dispose();
                         break;
@@ -219,10 +228,11 @@ public class Login extends javax.swing.JFrame {
                         this.dispose();
                         break;
                     case 5:
-                        UsuariosDTO usuario = new UsuariosDTO();
-                        usuario.setNome_usuario(rsUsuarioDao.getString("nome_completo"));
+                        UsuarioDTO usuarioAdmin = new UsuarioDTO();
+                        usuarioAdmin.setNome_usuario(rs.getString("nome_completo"));
+                        
                         PrincipalAdmin principalAdmin = new PrincipalAdmin();
-                        principalAdmin.getUsuario(usuario);
+                        principalAdmin.getUsuario(usuarioAdmin);
                         principalAdmin.setVisible(true);
                         this.dispose();
                         break;

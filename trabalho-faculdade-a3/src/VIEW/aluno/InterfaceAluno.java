@@ -1,21 +1,15 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
-package VIEW;
+package VIEW.aluno;
 
 import DAO.ServicoDAO;
 import DTO.ServicoDTO;
+import VIEW.aluno.servicos.Boleto;
+import VIEW.Login;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import javax.swing.JOptionPane;
 
-/**
- *
- * @author Morgana
- */
 public class InterfaceAluno extends javax.swing.JFrame {
     SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
     Date dataAtual = new Date();

@@ -1,10 +1,11 @@
-package VIEW;
+package VIEW.aluno.servicos;
 
+import VIEW.aluno.servicos.InterfaceNovaCNH;
 import DAO.ProvaTeoricaDAO;
 import DAO.QuestoesDAO;
 import DTO.ProvaTeoricaDTO;
 import DTO.Questao;
-import DTO.UsuarioAlunoDTO;
+import VIEW.Login;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;

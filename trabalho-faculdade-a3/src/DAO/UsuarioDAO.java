@@ -1,6 +1,6 @@
 package DAO;
 
-import DTO.UsuariosDTO;
+import DTO.UsuarioDTO;
 import java.sql.PreparedStatement;
 import java.sql.Connection;
 import java.sql.Date;
@@ -11,7 +11,7 @@ import javax.swing.JOptionPane;
 public class UsuarioDAO {
     Connection  conn = (Connection) new ConexaoDAO().connectDB();
     
-    public ResultSet autenticacaoUsuario(UsuariosDTO objUsuarioDto){
+    public ResultSet autenticacaoUsuario(UsuarioDTO objUsuarioDto){
         try{
             String sql = "SELECT * FROM usuarios WHERE usuarios.cpf = ? AND usuarios.senha = ?";
             
@@ -29,7 +29,7 @@ public class UsuarioDAO {
         }
     }
     
-public void cadastrarUsuario(UsuariosDTO objUsuarioDto) {
+public void cadastrarUsuario(UsuarioDTO objUsuarioDto) {
     try {
         String sql = "INSERT INTO usuarios(nome_completo, dt_nascimento, adm, cpf, email, telefone, senha, perfil_id) values (?, ?, ?, ?, ?, ?, ?, ?)";
         PreparedStatement pstm = conn.prepareStatement(sql);
@@ -59,7 +59,7 @@ public void cadastrarUsuario(UsuariosDTO objUsuarioDto) {
     }
 }
 
-public void cadastrarUsuarioAluno(UsuariosDTO objUsuarioDto) {
+public void cadastrarUsuarioAluno(UsuarioDTO objUsuarioDto) {
     try {
         String sql = "INSERT INTO usuarios(nome_completo, dt_nascimento, adm, cpf, email, telefone, senha, perfil_id) values (?, ?, ?, ?, ?, ?, ?, ?)";
         PreparedStatement pstm = conn.prepareStatement(sql);

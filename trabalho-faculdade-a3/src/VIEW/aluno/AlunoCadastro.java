@@ -2,10 +2,11 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
-package VIEW;
+package VIEW.aluno;
 
 import DAO.UsuarioDAO;
-import DTO.UsuariosDTO;
+import DTO.UsuarioDTO;
+import VIEW.admin.CadastroUsuarios;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -199,7 +200,7 @@ public class AlunoCadastro extends javax.swing.JFrame {
 
             Date dt_nascimento_aluno = dateFormat.parse(dt_nascimento);
 
-            UsuariosDTO objUsuarioDto = new UsuariosDTO();
+            UsuarioDTO objUsuarioDto = new UsuarioDTO();
             objUsuarioDto.setNome_usuario(nome);
             objUsuarioDto.setCpf_usuario(cpf);
             objUsuarioDto.setDt_nascimento_usuario(dt_nascimento_aluno);

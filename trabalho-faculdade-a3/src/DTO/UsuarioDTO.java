@@ -4,7 +4,7 @@
  */
 package DTO;
 
-public class UsuariosDTO extends Usuario {
+public class UsuarioDTO extends Usuario {
 
     private int perfil_usuario;
     private boolean admin;

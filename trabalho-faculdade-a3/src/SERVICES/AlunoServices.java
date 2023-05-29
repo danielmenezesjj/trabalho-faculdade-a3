@@ -4,7 +4,7 @@
  */
 package SERVICES;
 
-import VIEW.ProvaTeorica;
+import VIEW.aluno.servicos.ProvaTeorica;
 
 public class AlunoServices {
     public void fazerProvaTeorica(){

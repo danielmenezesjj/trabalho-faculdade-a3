@@ -1,6 +1,8 @@
-package VIEW;
+package VIEW.admin;
 
-import DTO.UsuariosDTO;
+import VIEW.admin.UsuariosLista;
+import VIEW.admin.CadastroUsuarios;
+import DTO.UsuarioDTO;
 
 public class PrincipalAdmin extends javax.swing.JFrame {
     String nomeUser;
@@ -107,7 +109,7 @@ public class PrincipalAdmin extends javax.swing.JFrame {
         new UsuariosLista().setVisible(true);
     }//GEN-LAST:event_jMenuItem2ActionPerformed
     
-    public UsuariosDTO getUsuario(UsuariosDTO usuario){
+    public UsuarioDTO getUsuario(UsuarioDTO usuario){
         nomeUser = usuario.getNome_usuario();
         return usuario;
         
