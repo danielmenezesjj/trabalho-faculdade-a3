@@ -1,21 +1,18 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
-package VIEW;
+package VIEW.aluno;
 
 import DAO.ServicoDAO;
 import DTO.ServicoDTO;
+import VIEW.aluno.servicos.Boleto;
+import VIEW.Login;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import javax.swing.JOptionPane;
 
-/**
- *
- * @author Morgana
- */
 public class InterfaceAluno extends javax.swing.JFrame {
-
+    SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+    Date dataAtual = new Date();
     /**
      * Creates new form InterfaceAluno
      */
@@ -32,16 +29,22 @@ public class InterfaceAluno extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel1 = new javax.swing.JLabel();
+        txtUsuarioLogado = new javax.swing.JLabel();
         btnSegundavia = new javax.swing.JButton();
         btnEmissao = new javax.swing.JButton();
         btnRenovação = new javax.swing.JButton();
+        txtData = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowOpened(java.awt.event.WindowEvent evt) {
+                formWindowOpened(evt);
+            }
+        });
 
-        jLabel1.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
-        jLabel1.setText("Olá, #nomeAluno");
+        txtUsuarioLogado.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
+        txtUsuarioLogado.setText("Olá, #nomeAluno");
 
         btnSegundavia.setBackground(new java.awt.Color(0, 0, 0));
         btnSegundavia.setForeground(new java.awt.Color(255, 255, 255));
@@ -70,6 +73,9 @@ public class InterfaceAluno extends javax.swing.JFrame {
             }
         });
 
+        txtData.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        txtData.setText("Data");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -77,18 +83,25 @@ public class InterfaceAluno extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGap(151, 151, 151)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
-                    .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(btnSegundavia, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(btnEmissao, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(btnRenovação, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap(156, Short.MAX_VALUE))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(23, 23, 23)
+                .addComponent(txtUsuarioLogado, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(txtData, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(41, 41, 41)
-                .addComponent(jLabel1)
-                .addGap(49, 49, 49)
+                .addGap(19, 19, 19)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(txtUsuarioLogado)
+                    .addComponent(txtData, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(71, 71, 71)
                 .addComponent(btnEmissao, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(29, 29, 29)
                 .addComponent(btnSegundavia, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -113,6 +126,13 @@ public class InterfaceAluno extends javax.swing.JFrame {
     private void btnSegundaviaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSegundaviaActionPerformed
         buscarServico(2);
     }//GEN-LAST:event_btnSegundaviaActionPerformed
+
+    private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
+        txtUsuarioLogado.setText("Olá, " + Login.usuarioLogado.getNome_usuario());
+        
+        String data = String.valueOf(sdf.format(dataAtual));
+        txtData.setText(data);
+    }//GEN-LAST:event_formWindowOpened
     
     private void buscarServico(int id){
     try {
@@ -178,6 +198,7 @@ public class InterfaceAluno extends javax.swing.JFrame {
     private javax.swing.JButton btnEmissao;
     private javax.swing.JButton btnRenovação;
     private javax.swing.JButton btnSegundavia;
-    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel txtData;
+    private javax.swing.JLabel txtUsuarioLogado;
     // End of variables declaration//GEN-END:variables
 }

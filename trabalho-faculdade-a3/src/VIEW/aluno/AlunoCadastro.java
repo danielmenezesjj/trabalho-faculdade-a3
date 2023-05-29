@@ -2,10 +2,11 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
-package VIEW;
+package VIEW.aluno;
 
 import DAO.UsuarioDAO;
 import DTO.UsuariosDTO;
+import VIEW.admin.CadastroUsuarios;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;

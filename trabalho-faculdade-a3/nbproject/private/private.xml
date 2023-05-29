@@ -2,6 +2,7 @@
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
+<<<<<<< HEAD
         <group>
             <file>file:/C:/Users/yasmi/OneDrive/Área%20de%20Trabalho/A3-detran/trabalho-faculdade-a3/trabalho-faculdade-a3/src/VIEW/CadastroUsuarios.java</file>
             <file>file:/C:/Users/yasmi/OneDrive/Área%20de%20Trabalho/A3-detran/trabalho-faculdade-a3/trabalho-faculdade-a3/src/VIEW/InterfaceNovaCNH.java</file>
@@ -28,5 +29,15 @@
             <file>file:/C:/Users/yasmi/OneDrive/Área%20de%20Trabalho/A3-detran/trabalho-faculdade-a3/trabalho-faculdade-a3/src/VIEW/ProvaTeorica.java</file>
             <file>file:/C:/Users/yasmi/OneDrive/Área%20de%20Trabalho/A3-detran/trabalho-faculdade-a3/trabalho-faculdade-a3/src/VIEW/UsuariosLista.java</file>
         </group>
+=======
+<<<<<<< HEAD
+        <group>
+            <file>file:/C:/Users/morga/OneDrive/Documentos/Projeto-Detran/trabalho-faculdade-a3/trabalho-faculdade-a3/src/VIEW/Boleto.java</file>
+            <file>file:/C:/Users/morga/OneDrive/Documentos/Projeto-Detran/trabalho-faculdade-a3/trabalho-faculdade-a3/src/VIEW/InterfaceSegundaVia.java</file>
+        </group>
+=======
+        <group/>
+>>>>>>> c25aafdeca1a3c9c500b82c0b00c61feeb2db704
+>>>>>>> 172a8015e3e892b681ca1a49d3f04fa485219343
     </open-files>
 </project-private>
