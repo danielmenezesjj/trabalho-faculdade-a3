@@ -5,7 +5,7 @@
 package VIEW.aluno;
 
 import DAO.UsuarioDAO;
-import DTO.UsuariosDTO;
+import DTO.UsuarioDTO;
 import VIEW.admin.CadastroUsuarios;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -200,7 +200,7 @@ public class AlunoCadastro extends javax.swing.JFrame {
 
             Date dt_nascimento_aluno = dateFormat.parse(dt_nascimento);
 
-            UsuariosDTO objUsuarioDto = new UsuariosDTO();
+            UsuarioDTO objUsuarioDto = new UsuarioDTO();
             objUsuarioDto.setNome_usuario(nome);
             objUsuarioDto.setCpf_usuario(cpf);
             objUsuarioDto.setDt_nascimento_usuario(dt_nascimento_aluno);

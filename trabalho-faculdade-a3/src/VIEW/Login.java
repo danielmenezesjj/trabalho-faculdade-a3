@@ -12,7 +12,7 @@ import VIEW.aluno.InterfaceAluno;
 import VIEW.aluno.AlunoCadastro;
 import DTO.Usuario;
 import DAO.UsuarioDAO;
-import DTO.UsuariosDTO;
+import DTO.UsuarioDTO;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.text.ParseException;
@@ -22,7 +22,7 @@ import javax.swing.text.MaskFormatter;
 public class Login extends javax.swing.JFrame {
 
     public static Usuario usuarioLogado;
-    UsuariosDTO usuario = new UsuariosDTO();
+    UsuarioDTO usuario = new UsuarioDTO();
 
     /**
      * Creates new form LoginVIEW
@@ -191,7 +191,7 @@ public class Login extends javax.swing.JFrame {
             cpf_usuario = txtCpf.getText();
             password_usuario = txtSenha.getText();
 
-            UsuariosDTO objUsuarioDto = new UsuariosDTO();
+            UsuarioDTO objUsuarioDto = new UsuarioDTO();
 
             objUsuarioDto.setCpf_usuario(cpf_usuario);
             objUsuarioDto.setSenha_usuario(password_usuario);
