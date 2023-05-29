@@ -2,7 +2,7 @@ package VIEW.admin;
 
 import VIEW.admin.UsuariosLista;
 import VIEW.admin.CadastroUsuarios;
-import DTO.UsuarioDTO;
+import DTO.UsuariosDTO;
 
 public class PrincipalAdmin extends javax.swing.JFrame {
     String nomeUser;
@@ -109,7 +109,7 @@ public class PrincipalAdmin extends javax.swing.JFrame {
         new UsuariosLista().setVisible(true);
     }//GEN-LAST:event_jMenuItem2ActionPerformed
     
-    public UsuarioDTO getUsuario(UsuarioDTO usuario){
+    public UsuariosDTO getUsuario(UsuariosDTO usuario){
         nomeUser = usuario.getNome_usuario();
         return usuario;
         

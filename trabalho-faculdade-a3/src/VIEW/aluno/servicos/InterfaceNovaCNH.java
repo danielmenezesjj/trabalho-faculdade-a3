@@ -4,6 +4,8 @@
  */
 package VIEW.aluno.servicos;
 
+import VIEW.aluno.servicos.ProvaTeorica;
+
 /**
  *
  * @author Morgana

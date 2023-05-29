@@ -12,8 +12,7 @@ import VIEW.aluno.InterfaceAluno;
 import VIEW.aluno.AlunoCadastro;
 import DTO.Usuario;
 import DAO.UsuarioDAO;
-import DTO.UsuarioAlunoDTO;
-import DTO.UsuarioDTO;
+import DTO.UsuariosDTO;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.text.ParseException;
@@ -190,7 +189,7 @@ public class Login extends javax.swing.JFrame {
             cpf_usuario = txtCpf.getText();
             password_usuario = txtSenha.getText();
 
-            UsuarioDTO objUsuarioDto = new UsuarioDTO();
+            UsuariosDTO objUsuarioDto = new UsuariosDTO();
 
             objUsuarioDto.setCpf_usuario(cpf_usuario);
             objUsuarioDto.setSenha_usuario(password_usuario);
@@ -204,10 +203,9 @@ public class Login extends javax.swing.JFrame {
                 switch (rs.getInt("perfil_id")) {
 
                     case 1:
-                        UsuarioDTO usuarioAluno = new UsuarioDTO();
+                        UsuariosDTO usuarioAluno = new UsuariosDTO();
                         usuarioAluno.setNome_usuario(rs.getString("nome_completo"));
                         usuarioAluno.setId_usuario(rs.getInt("id"));
-                        
                         usuarioLogado = usuarioAluno;
                         
                         new InterfaceAluno().setVisible(true);
@@ -228,11 +226,10 @@ public class Login extends javax.swing.JFrame {
                         this.dispose();
                         break;
                     case 5:
-                        UsuarioDTO usuarioAdmin = new UsuarioDTO();
-                        usuarioAdmin.setNome_usuario(rs.getString("nome_completo"));
-                        
+                        UsuariosDTO usuario = new UsuariosDTO();
+                        usuario.setNome_usuario(rs.getString("nome_completo"));
                         PrincipalAdmin principalAdmin = new PrincipalAdmin();
-                        principalAdmin.getUsuario(usuarioAdmin);
+                        principalAdmin.getUsuario(usuario);
                         principalAdmin.setVisible(true);
                         this.dispose();
                         break;
