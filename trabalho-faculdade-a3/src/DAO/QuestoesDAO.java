@@ -17,34 +17,13 @@ public class QuestoesDAO {
 
     Connection conn = (Connection) new ConexaoDAO().connectDB();
 
-    Questao[] questoes = new Questao[2];
-    Random random = new Random();
-    int aleatorio = random.nextInt(4);
-    
-    public Questao[] randomizaQuestoes(){
-        for(int i = 0; i < questoes.length; i++){
-            questoes[i] = (Questao) buscarQuestoes(aleatorio);              
-        }
-        return questoes;
-    }
-    
-    public void listar(){
-        for(Questao questao : questoes){
-            System.out.println(questao);
-        }
-    }
-    
-    public void setQuestoes(){
-        Questao questao = new Questao();
-    }
-
-    public ResultSet buscarQuestoes(int id) {
+    public ResultSet buscarQuestoes(int limite) {
         try {
-            String sql = "select * from questoes where id = ? LIMIT ?";
+            String sql = "select * from questoes ORDER BY RAND() LIMIT ?";
 
-            PreparedStatement pstm = conn.prepareCall(sql);
-            pstm.setInt(1, id);
-            pstm.setInt(2, questoes.length);
+            PreparedStatement pstm = conn.prepareStatement(sql);
+            pstm.setInt(1, limite);
+
             ResultSet rs = pstm.executeQuery();
             
             return rs;
