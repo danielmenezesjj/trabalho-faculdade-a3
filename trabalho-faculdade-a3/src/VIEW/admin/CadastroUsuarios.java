@@ -1,4 +1,4 @@
-package VIEW;
+package VIEW.admin;
 
 import DAO.UsuarioDAO;
 import DTO.UsuariosDTO;

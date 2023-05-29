@@ -2,18 +2,18 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
-package VIEW;
+package VIEW.funcionarios;
 
 /**
  *
  * @author Morgana
  */
-public class InterfacePsicologo extends javax.swing.JFrame {
+public class InterfaceAgente extends javax.swing.JFrame {
 
     /**
-     * Creates new form InterfacePsicologo
+     * Creates new form InterfaceAgente
      */
-    public InterfacePsicologo() {
+    public InterfaceAgente() {
         initComponents();
     }
 
@@ -34,7 +34,7 @@ public class InterfacePsicologo extends javax.swing.JFrame {
         setResizable(false);
 
         jLabel1.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
-        jLabel1.setText("Olá, #nomePsicólogo");
+        jLabel1.setText("Olá, #nomeAgente");
 
         btnAlunos.setBackground(new java.awt.Color(0, 0, 0));
         btnAlunos.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
@@ -49,7 +49,7 @@ public class InterfacePsicologo extends javax.swing.JFrame {
         btnResultado.setBackground(new java.awt.Color(0, 0, 0));
         btnResultado.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
         btnResultado.setForeground(new java.awt.Color(255, 255, 255));
-        btnResultado.setText("Lançar Resultado de Exame Psicólogo");
+        btnResultado.setText("Lançar Resultado de Exame Prático");
         btnResultado.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnResultadoActionPerformed(evt);
@@ -113,20 +113,20 @@ public class InterfacePsicologo extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(InterfacePsicologo.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(InterfaceAgente.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(InterfacePsicologo.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(InterfaceAgente.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(InterfacePsicologo.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(InterfaceAgente.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(InterfacePsicologo.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(InterfaceAgente.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new InterfacePsicologo().setVisible(true);
+                new InterfaceAgente().setVisible(true);
             }
         });
     }

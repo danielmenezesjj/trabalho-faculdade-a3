@@ -1,18 +1,41 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package DTO;
 
-import java.util.ArrayList;
+import java.util.Date;
 
 public class ProvaTeoricaDTO {
-
-    int acertos;
-    String respostaAluno;
+    
+    private int idAluno;
+    private int acertos;
+    private String respostaAluno;
+    private Date data_prova;
+    private String resultado;
 
     public int getAcertos() {
         return acertos;
+    }
+
+    public String getResultado() {
+        return resultado;
+    }
+
+    public void setResultado(String resultado) {
+        this.resultado = resultado;
+    }
+
+    public int getIdAluno() {
+        return idAluno;
+    }
+
+    public void setIdAluno(int idAluno) {
+        this.idAluno = idAluno;
+    }
+
+    public Date getData_prova() {
+        return data_prova;
+    }
+
+    public void setData_prova(Date data_prova) {
+        this.data_prova = data_prova;
     }
 
     public void setAcertos(int acertos) {

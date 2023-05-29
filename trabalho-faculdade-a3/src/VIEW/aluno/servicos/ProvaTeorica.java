@@ -1,16 +1,15 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
-package VIEW;
+package VIEW.aluno.servicos;
 
+import VIEW.aluno.servicos.InterfaceNovaCNH;
+import DAO.ProvaTeoricaDAO;
 import DAO.QuestoesDAO;
 import DTO.ProvaTeoricaDTO;
 import DTO.Questao;
-import java.util.Random;
+import VIEW.Login;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Date;
 import javax.swing.JOptionPane;
 
 public class ProvaTeorica extends javax.swing.JFrame {
@@ -21,6 +20,8 @@ public class ProvaTeorica extends javax.swing.JFrame {
     int i = 0;
     int acertos = 1;
     String respostaAluno;
+    
+
 
     /**
      * Creates new form ProvaTeorica
@@ -50,6 +51,7 @@ public class ProvaTeorica extends javax.swing.JFrame {
         txtPergunta = new javax.swing.JTextArea();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setMinimumSize(new java.awt.Dimension(850, 650));
         setResizable(false);
         addWindowListener(new java.awt.event.WindowAdapter() {
             public void windowActivated(java.awt.event.WindowEvent evt) {
@@ -124,24 +126,26 @@ public class ProvaTeorica extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(33, 33, 33)
-                        .addComponent(txtResposta, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
                         .addGap(318, 318, 318)
-                        .addComponent(jLabel2)))
-                .addGap(0, 0, Short.MAX_VALUE))
-            .addGroup(layout.createSequentialGroup()
-                .addGap(66, 66, 66)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(a, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(b, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jLabel2))
                     .addGroup(layout.createSequentialGroup()
+                        .addGap(66, 66, 66)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 696, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(66, 66, 66)
+                        .addComponent(a, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(66, 66, 66)
+                        .addComponent(b, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(66, 66, 66)
+                        .addComponent(rC, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(66, 66, 66)
                         .addComponent(rD, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(122, 122, 122)
-                        .addComponent(btnSalvar, javax.swing.GroupLayout.PREFERRED_SIZE, 201, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(rC, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 696, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(76, Short.MAX_VALUE))
+                        .addGap(121, 121, 121)
+                        .addComponent(btnSalvar, javax.swing.GroupLayout.PREFERRED_SIZE, 201, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(73, 73, 73))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -156,13 +160,15 @@ public class ProvaTeorica extends javax.swing.JFrame {
                 .addComponent(b, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(rC, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(rD, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(btnSalvar, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(92, 92, 92)
-                .addComponent(txtResposta)
-                .addContainerGap())
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(18, 18, 18)
+                        .addComponent(rD, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(59, 59, 59))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btnSalvar, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(28, 28, 28))))
         );
 
         pack();
@@ -175,16 +181,35 @@ public class ProvaTeorica extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "Selecione uma resposta.");
         } else {
             provaDto.setRespostaAluno(respostaAluno);
+            
             if (i == questoes.size() - 1) {
                 btnSalvar.setEnabled(false);
-                JOptionPane.showMessageDialog(null, "Prova encerrada.\n\nNota: " + provaDto.getAcertos());
+                int notaAluno = provaDto.getAcertos();
+                Date dataAtual = new Date();
+                
+                
+                provaDto.setAcertos(notaAluno);
+                provaDto.setData_prova(dataAtual);
+                provaDto.setIdAluno(Login.usuarioLogado.getId_usuario());
+                
+                if(acertos >= 2){
+                    provaDto.setResultado("Aprovado");
+                }else{
+                    provaDto.setResultado("Reprovado");
+                }
+                
+                JOptionPane.showMessageDialog(null, "Prova encerrada.\n\nNota: " +notaAluno + "\n" + provaDto.getResultado());
+                
+                new ProvaTeoricaDAO().cadastrarProvaTeorica(provaDto);
+                
+                new InterfaceNovaCNH().setVisible(true);
+                this.dispose();
+                
             } else {
-                if (provaDto.getRespostaAluno() != null && provaDto.getRespostaAluno().equals(txtResposta.getText())) {
+                String respostaAluno = provaDto.getRespostaAluno();
+                if (provaDto.getRespostaAluno() != null && respostaAluno.equals(txtResposta.getText())) {
                     acertos++;
-                    provaDto.setAcertos(acertos);
-                    JOptionPane.showMessageDialog(null, "Acertou!");
-                } else {
-                    JOptionPane.showMessageDialog(null, "Errou.");
+                    provaDto.setAcertos(acertos);                   
                 }
 
                 i++;
@@ -193,10 +218,10 @@ public class ProvaTeorica extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_btnSalvarActionPerformed
 
-    private void setRadioSelected(String radio){
+    private void setRadioSelected(String radio) {
         respostaAluno = radio;
     }
-    
+
     private void aActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_aActionPerformed
         setRadioSelected("a");
     }//GEN-LAST:event_aActionPerformed
@@ -215,7 +240,7 @@ public class ProvaTeorica extends javax.swing.JFrame {
     }//GEN-LAST:event_formWindowActivated
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
-        txtResposta.setVisible(false);
+        txtResposta.setVisible(true);
         try {
 
             QuestoesDAO objQuestoesDao = new QuestoesDAO();

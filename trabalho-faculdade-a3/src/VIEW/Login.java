@@ -4,26 +4,30 @@
  */
 package VIEW;
 
+import VIEW.funcionarios.InterfaceMedico;
+import VIEW.funcionarios.InterfacePsicologo;
+import VIEW.funcionarios.InterfaceAgente;
+import VIEW.admin.PrincipalAdmin;
+import VIEW.aluno.InterfaceAluno;
+import VIEW.aluno.AlunoCadastro;
+import DTO.Usuario;
 import DAO.UsuarioDAO;
 import DTO.UsuariosDTO;
-import java.awt.FlowLayout;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.text.ParseException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-import javax.swing.JFormattedTextField;
 import javax.swing.JOptionPane;
 import javax.swing.text.MaskFormatter;
 
 public class Login extends javax.swing.JFrame {
-
+    public static Usuario usuarioLogado;
+    
     /**
      * Creates new form LoginVIEW
      */
     public Login() {
         initComponents();
-        
+
     }
 
     /**
@@ -144,18 +148,17 @@ public class Login extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    
-    private void formataCpf(){
-           try {
+    private void formataCpf() {
+        try {
             MaskFormatter cpfFormatter = new MaskFormatter("###.###.###-##");
             cpfFormatter.install(txtCpf);
             txtCpf.setColumns(10); // Defina o tamanho do campo conforme necessário
-    
+
         } catch (ParseException e) {
             e.printStackTrace();
         }
     }
-    
+
     private void btnEntrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEntrarActionPerformed
         // TODO add your handling code here:
         logar();
@@ -168,7 +171,7 @@ public class Login extends javax.swing.JFrame {
     private void formWindowActivated(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowActivated
         // TODO add your handling code here:
         formataCpf();
-        
+
     }//GEN-LAST:event_formWindowActivated
 
     private void txtCpfActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtCpfActionPerformed
@@ -193,13 +196,18 @@ public class Login extends javax.swing.JFrame {
 
             UsuarioDAO objUsuarioDao = new UsuarioDAO();
 
-            ResultSet rsUsuarioDao = objUsuarioDao.autenticacaoUsuario(objUsuarioDto);
+            ResultSet rs = objUsuarioDao.autenticacaoUsuario(objUsuarioDto);
 
-            if (rsUsuarioDao.next()) {
+            if (rs.next()) {
                 // chamar tela
-                switch(rsUsuarioDao.getInt("perfil_id")){
-                    
+                switch (rs.getInt("perfil_id")) {
+
                     case 1:
+                        UsuariosDTO usuarioAluno = new UsuariosDTO();
+                        usuarioAluno.setNome_usuario(rs.getString("nome_completo"));
+                        usuarioAluno.setId_usuario(rs.getInt("id"));
+                        usuarioLogado = usuarioAluno;
+                        
                         new InterfaceAluno().setVisible(true);
                         this.dispose();
                         break;
@@ -207,19 +215,19 @@ public class Login extends javax.swing.JFrame {
                         new InterfaceMedico().setVisible(true);
                         this.dispose();
                         break;
-                    
+
                     case 3:
                         new InterfaceAgente().setVisible(true);
                         this.dispose();
                         break;
-                    
+
                     case 4:
                         new InterfacePsicologo().setVisible(true);
                         this.dispose();
                         break;
                     case 5:
                         UsuariosDTO usuario = new UsuariosDTO();
-                        usuario.setNome_usuario(rsUsuarioDao.getString("nome_completo"));
+                        usuario.setNome_usuario(rs.getString("nome_completo"));
                         PrincipalAdmin principalAdmin = new PrincipalAdmin();
                         principalAdmin.getUsuario(usuario);
                         principalAdmin.setVisible(true);
