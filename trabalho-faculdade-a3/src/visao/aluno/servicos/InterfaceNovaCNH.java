@@ -40,7 +40,6 @@ public class InterfaceNovaCNH extends javax.swing.JFrame {
         jLabel8 = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
         jLabel10 = new javax.swing.JLabel();
-        btnFazerProva = new javax.swing.JButton();
         btnImprimir = new javax.swing.JButton();
         btnMedico = new javax.swing.JButton();
         btnPsicologo = new javax.swing.JButton();
@@ -91,18 +90,14 @@ public class InterfaceNovaCNH extends javax.swing.JFrame {
 
         jLabel10.setText("Resultado:");
 
-        btnFazerProva.setBackground(new java.awt.Color(0, 0, 0));
-        btnFazerProva.setForeground(new java.awt.Color(255, 255, 255));
-        btnFazerProva.setText("Fazer Prova Teórica");
-        btnFazerProva.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnFazerProvaActionPerformed(evt);
-            }
-        });
-
         btnImprimir.setBackground(new java.awt.Color(0, 0, 0));
         btnImprimir.setForeground(new java.awt.Color(255, 255, 255));
         btnImprimir.setText("Imprimir Carteira");
+        btnImprimir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnImprimirActionPerformed(evt);
+            }
+        });
 
         btnMedico.setBackground(new java.awt.Color(51, 102, 255));
         btnMedico.setForeground(new java.awt.Color(255, 255, 255));
@@ -169,17 +164,15 @@ public class InterfaceNovaCNH extends javax.swing.JFrame {
                             .addComponent(jLabel10)
                             .addComponent(jLabel8)))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(165, 165, 165)
-                        .addComponent(txtUsuarioLogado))
-                    .addGroup(layout.createSequentialGroup()
                         .addGap(209, 209, 209)
-                        .addComponent(jLabel2)))
+                        .addComponent(jLabel2))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(165, 165, 165)
+                        .addComponent(txtUsuarioLogado)))
                 .addGap(120, 120, Short.MAX_VALUE))
             .addGroup(layout.createSequentialGroup()
-                .addGap(169, 169, 169)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(btnImprimir, javax.swing.GroupLayout.PREFERRED_SIZE, 143, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnFazerProva, javax.swing.GroupLayout.PREFERRED_SIZE, 143, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(171, 171, 171)
+                .addComponent(btnImprimir, javax.swing.GroupLayout.PREFERRED_SIZE, 143, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -209,11 +202,9 @@ public class InterfaceNovaCNH extends javax.swing.JFrame {
                     .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnPratico))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 41, Short.MAX_VALUE)
-                .addComponent(btnFazerProva, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 44, Short.MAX_VALUE)
                 .addComponent(btnImprimir, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(26, 26, 26))
+                .addGap(41, 41, 41))
         );
 
         pack();
@@ -244,13 +235,13 @@ public class InterfaceNovaCNH extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_btnPraticoActionPerformed
 
-    private void btnFazerProvaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFazerProvaActionPerformed
-        new ProvaTeorica().setVisible(true);
-    }//GEN-LAST:event_btnFazerProvaActionPerformed
-
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
         txtUsuarioLogado.setText("Olá, " + Login.usuarioLogado.getNome_usuario());
     }//GEN-LAST:event_formWindowOpened
+
+    private void btnImprimirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnImprimirActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnImprimirActionPerformed
 
     private String pegarResultado(){
         
@@ -316,7 +307,6 @@ public class InterfaceNovaCNH extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnFazerProva;
     private javax.swing.JButton btnImprimir;
     private javax.swing.JButton btnMedico;
     private javax.swing.JButton btnPratico;

@@ -2,6 +2,7 @@ package visao.admin;
 
 import visao.admin.UsuariosLista;
 import modelo.UsuarioDTO;
+import visao.Login;
 
 public class PrincipalAdmin extends javax.swing.JFrame {
     String nomeUser;
@@ -15,7 +16,7 @@ public class PrincipalAdmin extends javax.swing.JFrame {
         jMenu5 = new javax.swing.JMenu();
         jSeparator1 = new javax.swing.JSeparator();
         jLabel1 = new javax.swing.JLabel();
-        txtOlaAdmin = new javax.swing.JLabel();
+        txtUsuarioLogado = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         jMenuItem1 = new javax.swing.JMenuItem();
@@ -30,11 +31,15 @@ public class PrincipalAdmin extends javax.swing.JFrame {
             public void windowActivated(java.awt.event.WindowEvent evt) {
                 formWindowActivated(evt);
             }
+            public void windowOpened(java.awt.event.WindowEvent evt) {
+                formWindowOpened(evt);
+            }
         });
 
         jLabel1.setFont(new java.awt.Font("Dialog", 0, 24)); // NOI18N
 
-        txtOlaAdmin.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
+        txtUsuarioLogado.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
+        txtUsuarioLogado.setText("Olá, #NomeUsuario");
 
         jMenu1.setText("Usuarios");
         jMenu1.addActionListener(new java.awt.event.ActionListener() {
@@ -73,16 +78,16 @@ public class PrincipalAdmin extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGap(99, 99, 99)
                 .addComponent(jLabel1)
-                .addGap(18, 18, 18)
-                .addComponent(txtOlaAdmin, javax.swing.GroupLayout.PREFERRED_SIZE, 163, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(125, Short.MAX_VALUE))
+                .addGap(27, 27, 27)
+                .addComponent(txtUsuarioLogado, javax.swing.GroupLayout.PREFERRED_SIZE, 163, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(116, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(39, 39, 39)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(txtOlaAdmin, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtUsuarioLogado, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel1))
                 .addContainerGap(237, Short.MAX_VALUE))
         );
@@ -107,6 +112,10 @@ public class PrincipalAdmin extends javax.swing.JFrame {
     private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
         new UsuariosLista().setVisible(true);
     }//GEN-LAST:event_jMenuItem2ActionPerformed
+
+    private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
+        txtUsuarioLogado.setText("Olá, " + Login.usuarioLogado.getNome_usuario());
+    }//GEN-LAST:event_formWindowOpened
     
     public UsuarioDTO getUsuario(UsuarioDTO usuario){
         nomeUser = usuario.getNome_usuario();
@@ -115,7 +124,7 @@ public class PrincipalAdmin extends javax.swing.JFrame {
     }
     
     private void setOla(){
-        txtOlaAdmin.setText("Olá, " + nomeUser);
+        txtUsuarioLogado.setText("Olá, " + nomeUser);
     }
     
     
@@ -160,6 +169,6 @@ public class PrincipalAdmin extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JSeparator jSeparator1;
-    private javax.swing.JLabel txtOlaAdmin;
+    private javax.swing.JLabel txtUsuarioLogado;
     // End of variables declaration//GEN-END:variables
 }

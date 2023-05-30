@@ -4,6 +4,14 @@
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
 <<<<<<< HEAD
+<<<<<<< HEAD
+            <file>file:/C:/Users/morga/OneDrive/Documentos/Projeto-Detran/trabalho-faculdade-a3/trabalho-faculdade-a3/src/DTO/UsuariosDTO.java</file>
+            <file>file:/C:/Users/morga/OneDrive/Documentos/Projeto-Detran/trabalho-faculdade-a3/trabalho-faculdade-a3/src/VIEW/InterfaceNovaCNH.java</file>
+            <file>file:/C:/Users/morga/OneDrive/Documentos/Projeto-Detran/trabalho-faculdade-a3/trabalho-faculdade-a3/src/DTO/UsuarioAlunoDTO.java</file>
+            <file>file:/C:/Users/morga/OneDrive/Documentos/Projeto-Detran/trabalho-faculdade-a3/trabalho-faculdade-a3/src/VIEW/InterfaceAluno.java</file>
+            <file>file:/C:/Users/morga/OneDrive/Documentos/Projeto-Detran/trabalho-faculdade-a3/trabalho-faculdade-a3/src/VIEW/ProvaTeorica.java</file>
+            <file>file:/C:/Users/morga/OneDrive/Documentos/Projeto-Detran/trabalho-faculdade-a3/trabalho-faculdade-a3/src/VIEW/AlunoCadastro.java</file>
+=======
             <file>file:/C:/Users/user/Desktop/A3-swing/trabalho-faculdade-a3/trabalho-faculdade-a3/src/VIEW/aluno/servicos/Boleto.java</file>
             <file>file:/C:/Users/user/Desktop/A3-swing/trabalho-faculdade-a3/trabalho-faculdade-a3/src/DAO/QuestoesDAO.java</file>
             <file>file:/C:/Users/user/Desktop/A3-swing/trabalho-faculdade-a3/trabalho-faculdade-a3/src/VIEW/aluno/servicos/InterfaceRenovacao.java</file>
@@ -27,6 +35,7 @@
             <file>file:/C:/Users/user/Desktop/A3-swing/trabalho-faculdade-a3/trabalho-faculdade-a3/src/VIEW/aluno/InterfaceAluno.java</file>
             <file>file:/C:/Users/user/Desktop/A3-swing/trabalho-faculdade-a3/trabalho-faculdade-a3/src/DTO/UsuarioAlunoDTO.java</file>
         </group>
+>>>>>>> f3592f79fa51fffb0ef201476328fcdd6496a3d7
 =======
             <file>file:/C:/Users/yasmi/OneDrive/Área%20de%20Trabalho/A3-detran/trabalho-faculdade-a3/trabalho-faculdade-a3/src/VIEW/CadastroUsuarios.java</file>
             <file>file:/C:/Users/yasmi/OneDrive/Área%20de%20Trabalho/A3-detran/trabalho-faculdade-a3/trabalho-faculdade-a3/src/VIEW/InterfaceNovaCNH.java</file>
@@ -56,13 +65,24 @@
 =======
 <<<<<<< HEAD
         <group>
+>>>>>>> aac17ef5f55db13a58c575eee9bbc6538bcadcf6
             <file>file:/C:/Users/morga/OneDrive/Documentos/Projeto-Detran/trabalho-faculdade-a3/trabalho-faculdade-a3/src/VIEW/Boleto.java</file>
             <file>file:/C:/Users/morga/OneDrive/Documentos/Projeto-Detran/trabalho-faculdade-a3/trabalho-faculdade-a3/src/VIEW/InterfaceSegundaVia.java</file>
+            <file>file:/C:/Users/morga/OneDrive/Documentos/Projeto-Detran/trabalho-faculdade-a3/trabalho-faculdade-a3/src/DAO/ProvaDAO.java</file>
+            <file>file:/C:/Users/morga/OneDrive/Documentos/Projeto-Detran/trabalho-faculdade-a3/trabalho-faculdade-a3/src/VIEW/InterfaceRenovacao.java</file>
+            <file>file:/C:/Users/morga/OneDrive/Documentos/Projeto-Detran/trabalho-faculdade-a3/trabalho-faculdade-a3/src/DAO/ConexaoDAO.java</file>
+            <file>file:/C:/Users/morga/OneDrive/Documentos/Projeto-Detran/trabalho-faculdade-a3/trabalho-faculdade-a3/src/DTO/Usuario.java</file>
         </group>
+<<<<<<< HEAD
+=======
 =======
         <group/>
 >>>>>>> c25aafdeca1a3c9c500b82c0b00c61feeb2db704
 >>>>>>> 172a8015e3e892b681ca1a49d3f04fa485219343
+<<<<<<< HEAD
+>>>>>>> aac17ef5f55db13a58c575eee9bbc6538bcadcf6
+=======
 >>>>>>> aceede04b2e03fb03a38ad69434f293cb40ae12a
+>>>>>>> f3592f79fa51fffb0ef201476328fcdd6496a3d7
     </open-files>
 </project-private>

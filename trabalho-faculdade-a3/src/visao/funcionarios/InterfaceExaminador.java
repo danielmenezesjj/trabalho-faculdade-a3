@@ -1,11 +1,13 @@
 package visao.funcionarios;
 
-public class InterfacePsicologo extends javax.swing.JFrame {
+import visao.Login;
+
+public class InterfaceExaminador extends javax.swing.JFrame {
 
     /**
-     * Creates new form InterfacePsicologo
+     * Creates new form InterfaceAgente
      */
-    public InterfacePsicologo() {
+    public InterfaceExaminador() {
         initComponents();
     }
 
@@ -18,15 +20,20 @@ public class InterfacePsicologo extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel1 = new javax.swing.JLabel();
+        txtUsuarioLogado = new javax.swing.JLabel();
         btnAlunos = new javax.swing.JButton();
         btnResultado = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowOpened(java.awt.event.WindowEvent evt) {
+                formWindowOpened(evt);
+            }
+        });
 
-        jLabel1.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
-        jLabel1.setText("Olá, #nomePsicólogo");
+        txtUsuarioLogado.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
+        txtUsuarioLogado.setText("Olá, #nomeUsuario");
 
         btnAlunos.setBackground(new java.awt.Color(0, 0, 0));
         btnAlunos.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
@@ -41,7 +48,7 @@ public class InterfacePsicologo extends javax.swing.JFrame {
         btnResultado.setBackground(new java.awt.Color(0, 0, 0));
         btnResultado.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
         btnResultado.setForeground(new java.awt.Color(255, 255, 255));
-        btnResultado.setText("Lançar Resultado de Exame Psicólogo");
+        btnResultado.setText("Lançar Resultado de Exame Prático");
         btnResultado.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnResultadoActionPerformed(evt);
@@ -53,27 +60,23 @@ public class InterfacePsicologo extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(115, 115, 115)
-                        .addComponent(jLabel1))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(69, 69, 69)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(btnResultado, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(btnAlunos, javax.swing.GroupLayout.PREFERRED_SIZE, 258, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(73, Short.MAX_VALUE))
+                .addGap(69, 69, 69)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
+                    .addComponent(btnResultado, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(txtUsuarioLogado)
+                    .addComponent(btnAlunos, javax.swing.GroupLayout.PREFERRED_SIZE, 258, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(73, 73, 73))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(44, 44, 44)
-                .addComponent(jLabel1)
+                .addGap(54, 54, 54)
+                .addComponent(txtUsuarioLogado)
                 .addGap(44, 44, 44)
                 .addComponent(btnAlunos, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(35, 35, 35)
                 .addComponent(btnResultado, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(69, Short.MAX_VALUE))
+                .addContainerGap(59, Short.MAX_VALUE))
         );
 
         pack();
@@ -87,6 +90,12 @@ public class InterfacePsicologo extends javax.swing.JFrame {
     private void btnResultadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnResultadoActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_btnResultadoActionPerformed
+
+    private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
+        txtUsuarioLogado.setText("Olá, " + Login.usuarioLogado.getNome_usuario());
+
+
+    }//GEN-LAST:event_formWindowOpened
 
     /**
      * @param args the command line arguments
@@ -105,20 +114,21 @@ public class InterfacePsicologo extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(InterfacePsicologo.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(InterfaceExaminador.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(InterfacePsicologo.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(InterfaceExaminador.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(InterfacePsicologo.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(InterfaceExaminador.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(InterfacePsicologo.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(InterfaceExaminador.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new InterfacePsicologo().setVisible(true);
+                new InterfaceExaminador().setVisible(true);
             }
         });
     }
@@ -126,6 +136,6 @@ public class InterfacePsicologo extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAlunos;
     private javax.swing.JButton btnResultado;
-    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel txtUsuarioLogado;
     // End of variables declaration//GEN-END:variables
 }
