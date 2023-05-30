@@ -1,0 +1,35 @@
+package controle;
+
+import modelo.ProvaTeoricaDTO;
+import java.sql.Connection;
+import java.sql.Date;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
+import javax.swing.JOptionPane;
+import java.sql.ResultSet;
+import modelo.PagamentoDTO;
+
+public class PagamentoDAO {
+     Connection  conn = (Connection) new ConexaoDAO().connectDB();
+     
+     public void cadastrar(PagamentoDTO pgmtDto){
+         try {
+             String sql = "INSERT INTO pagamentos (item_id, aluno_id) values (?,?)";
+            PreparedStatement pstm = conn.prepareStatement(sql);
+            
+            pstm.setInt(1, pgmtDto.getItem_id());
+            pstm.setInt(2, pgmtDto.getUsuario_id());
+            
+            int rowsAffected = pstm.executeUpdate();
+            
+            if(rowsAffected > 0)
+                JOptionPane.showMessageDialog(null,"Pagamento feito!");
+            else
+                JOptionPane.showMessageDialog(null,"Erro ao fazer pagamento", "Erro", JOptionPane.ERROR_MESSAGE);
+            
+         } catch (SQLException e) {
+             JOptionPane.showMessageDialog(null,"PagamentoDAO: " + e, "Erro", JOptionPane.ERROR_MESSAGE);       
+         }     
+         
+     }
+}

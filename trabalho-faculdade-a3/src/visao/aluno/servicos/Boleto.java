@@ -1,9 +1,12 @@
 package visao.aluno.servicos;
 
+import controle.PagamentoDAO;
 import visao.aluno.servicos.InterfaceRenovacao;
 import visao.aluno.servicos.InterfaceSegundaVia;
 import modelo.ServicoDTO;
 import javax.swing.JOptionPane;
+import modelo.PagamentoDTO;
+import visao.Login;
 
 public class Boleto extends javax.swing.JFrame {
 double valor;
@@ -121,8 +124,8 @@ int id;
     }//GEN-LAST:event_formWindowActivated
 
     private void btnPagarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPagarActionPerformed
-        JOptionPane.showMessageDialog(null, "Boleto Pago");
-        if(id == 1){
+
+        if(id == 1){         
             new InterfaceNovaCNH().setVisible(true);
         }
         if (id == 2){
@@ -131,6 +134,11 @@ int id;
         if(id == 3){
             new InterfaceRenovacao().setVisible(true);
         }
+        // Salvando pagamento no banco
+        PagamentoDTO pgmtDto = new PagamentoDTO();
+        pgmtDto.setItem_id(id);
+        pgmtDto.setUsuario_id(Login.usuarioLogado.getId_usuario());      
+        new PagamentoDAO().cadastrar(pgmtDto);   
     }//GEN-LAST:event_btnPagarActionPerformed
 public ServicoDTO getServico(ServicoDTO servico){
         valor = servico.getValor();
