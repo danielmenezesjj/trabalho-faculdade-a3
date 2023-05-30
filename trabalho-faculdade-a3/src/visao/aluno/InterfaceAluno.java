@@ -1,9 +1,10 @@
-package VIEW.aluno;
+package visao.aluno;
 
+import visao.aluno.servicos.Boleto;
 import controle.ServicoDAO;
 import modelo.ServicoDTO;
-import VIEW.aluno.servicos.Boleto;
-import VIEW.Login;
+
+import visao.Login;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.text.SimpleDateFormat;

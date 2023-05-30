@@ -1,16 +1,11 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
-package VIEW;
+package visao;
 
+import VIEW.admin.PrincipalAdmin;
+import VIEW.aluno.AlunoCadastro;
+import VIEW.funcionarios.InterfaceAgente;
 import VIEW.funcionarios.InterfaceMedico;
 import VIEW.funcionarios.InterfacePsicologo;
-import VIEW.funcionarios.InterfaceAgente;
-import VIEW.admin.PrincipalAdmin;
-import VIEW.admin.PrincipalAdmin;
-import VIEW.aluno.InterfaceAluno;
-import VIEW.aluno.AlunoCadastro;
+import visao.aluno.InterfaceAluno;
 import modelo.Usuario;
 import controle.UsuarioDAO;
 import modelo.UsuarioDTO;

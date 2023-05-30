@@ -1,4 +1,4 @@
-import VIEW.Login;
+import visao.Login;
 
 public class Detran {
     public static void main(String[] args){

@@ -2,10 +2,10 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
-package VIEW.aluno.servicos;
+package visao.aluno.servicos;
 
-import VIEW.Login;
-import VIEW.aluno.servicos.ProvaTeorica;
+import visao.Login;
+import visao.aluno.servicos.ProvaTeorica;
 
 /**
  *

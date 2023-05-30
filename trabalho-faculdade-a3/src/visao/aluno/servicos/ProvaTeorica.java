@@ -1,10 +1,10 @@
-package VIEW.aluno.servicos;
+package visao.aluno.servicos;
 
 import controle.ProvaTeoricaDAO;
 import controle.QuestoesDAO;
 import modelo.ProvaTeoricaDTO;
 import modelo.Questao;
-import VIEW.Login;
+import visao.Login;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;

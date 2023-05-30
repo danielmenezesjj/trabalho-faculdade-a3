@@ -1,19 +1,11 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
-package VIEW.aluno.servicos;
+package visao.aluno.servicos;
 
-import VIEW.aluno.servicos.InterfaceSegundaVia;
+
 import VIEW.aluno.servicos.InterfaceRenovacao;
-import VIEW.aluno.servicos.InterfaceNovaCNH;
+import VIEW.aluno.servicos.InterfaceSegundaVia;
 import modelo.ServicoDTO;
 import javax.swing.JOptionPane;
 
-/**
- *
- * @author Morgana
- */
 public class Boleto extends javax.swing.JFrame {
 double valor;
 String item;
