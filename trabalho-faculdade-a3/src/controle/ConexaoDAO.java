@@ -1,4 +1,4 @@
-package DAO;
+package controle;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -16,8 +16,7 @@ public class ConexaoDAO{
         try{
             String url = "jdbc:mysql://localhost:3306/detran?user=root&password=root";
             conn = DriverManager.getConnection(url);
-
-            System.out.println("DB connected!");
+            
         }catch(SQLException erro){
             JOptionPane.showMessageDialog(null, erro);
         }

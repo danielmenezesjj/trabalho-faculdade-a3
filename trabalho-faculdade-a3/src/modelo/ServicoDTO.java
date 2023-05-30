@@ -1,17 +1,12 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
-package DTO;
+package modelo;
 
-/**
- *
- * @author yasmi
- */
 public class ServicoDTO {
     private int id;
     private double valor;
     private String item;
+
+    public ServicoDTO() {
+    }
 
     public int getId() {
         return id;

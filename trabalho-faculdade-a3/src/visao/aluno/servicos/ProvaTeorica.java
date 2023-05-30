@@ -1,10 +1,9 @@
 package VIEW.aluno.servicos;
 
-import VIEW.aluno.servicos.InterfaceNovaCNH;
-import DAO.ProvaTeoricaDAO;
-import DAO.QuestoesDAO;
-import DTO.ProvaTeoricaDTO;
-import DTO.Questao;
+import controle.ProvaTeoricaDAO;
+import controle.QuestoesDAO;
+import modelo.ProvaTeoricaDTO;
+import modelo.Questao;
 import VIEW.Login;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -20,8 +19,6 @@ public class ProvaTeorica extends javax.swing.JFrame {
     int i = 0;
     int acertos = 1;
     String respostaAluno;
-    
-
 
     /**
      * Creates new form ProvaTeorica
@@ -181,35 +178,35 @@ public class ProvaTeorica extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "Selecione uma resposta.");
         } else {
             provaDto.setRespostaAluno(respostaAluno);
-            
+
             if (i == questoes.size() - 1) {
                 btnSalvar.setEnabled(false);
                 int notaAluno = provaDto.getAcertos();
                 Date dataAtual = new Date();
-                
-                
+
                 provaDto.setAcertos(notaAluno);
                 provaDto.setData_prova(dataAtual);
                 provaDto.setIdAluno(Login.usuarioLogado.getId_usuario());
-                
-                if(acertos >= 2){
+
+                if (acertos >= 2) {
                     provaDto.setResultado("Aprovado");
-                }else{
+                } else {
                     provaDto.setResultado("Reprovado");
                 }
-                
-                JOptionPane.showMessageDialog(null, "Prova encerrada.\n\nNota: " +notaAluno + "\n" + provaDto.getResultado());
-                
+
+                JOptionPane.showMessageDialog(null, "Prova encerrada.\n\nNota: " + notaAluno + "\n" + provaDto.getResultado());
+
                 new ProvaTeoricaDAO().cadastrarProvaTeorica(provaDto);
-                
+
                 new InterfaceNovaCNH().setVisible(true);
                 this.dispose();
-                
+
             } else {
                 String respostaAluno = provaDto.getRespostaAluno();
+                
                 if (provaDto.getRespostaAluno() != null && respostaAluno.equals(txtResposta.getText())) {
                     acertos++;
-                    provaDto.setAcertos(acertos);                   
+                    provaDto.setAcertos(acertos);
                 }
 
                 i++;

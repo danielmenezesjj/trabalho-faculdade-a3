@@ -1,6 +1,6 @@
-package DAO;
+package controle;
 
-import DTO.ProvaTeoricaDTO;
+import modelo.ProvaTeoricaDTO;
 import java.sql.Connection;
 import java.sql.Date;
 import java.sql.PreparedStatement;

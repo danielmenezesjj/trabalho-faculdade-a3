@@ -1,13 +1,9 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
 package VIEW.admin;
 
-/**
- *
- * @author yasmi
- */
+import controle.UsuarioDAO;
+import modelo.UsuarioDTO;
+import javax.swing.table.DefaultTableModel;
+
 public class UsuariosLista extends javax.swing.JFrame {
 
     /**
@@ -15,6 +11,7 @@ public class UsuariosLista extends javax.swing.JFrame {
      */
     public UsuariosLista() {
         initComponents();
+        listarUsuarios();
     }
 
     /**
@@ -27,14 +24,14 @@ public class UsuariosLista extends javax.swing.JFrame {
     private void initComponents() {
 
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        jTUsuarios = new javax.swing.JTable();
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setResizable(false);
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        jTUsuarios.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
@@ -50,7 +47,7 @@ public class UsuariosLista extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
-        jScrollPane1.setViewportView(jTable1);
+        jScrollPane1.setViewportView(jTUsuarios);
 
         jButton1.setText("Excluir");
 
@@ -87,6 +84,21 @@ public class UsuariosLista extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
+    private void listarUsuarios(){
+        DefaultTableModel modelo = (DefaultTableModel) jTUsuarios.getModel();
+        
+        UsuarioDAO usDao = new UsuarioDAO();
+        
+        for(UsuarioDTO u : usDao.listarUsuarios()){
+            modelo.addRow(new Object[]{
+                u.getId_usuario(),
+                u.getNome_usuario(),
+                u.getCpf_usuario(),
+                u.getTipo_perfil()
+            });
+        }
+    }
+    
     /**
      * @param args the command line arguments
      */
@@ -126,6 +138,6 @@ public class UsuariosLista extends javax.swing.JFrame {
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
+    private javax.swing.JTable jTUsuarios;
     // End of variables declaration//GEN-END:variables
 }

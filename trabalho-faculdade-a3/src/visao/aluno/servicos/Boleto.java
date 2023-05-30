@@ -7,7 +7,7 @@ package VIEW.aluno.servicos;
 import VIEW.aluno.servicos.InterfaceSegundaVia;
 import VIEW.aluno.servicos.InterfaceRenovacao;
 import VIEW.aluno.servicos.InterfaceNovaCNH;
-import DTO.ServicoDTO;
+import modelo.ServicoDTO;
 import javax.swing.JOptionPane;
 
 /**

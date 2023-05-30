@@ -2,12 +2,21 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package DTO;
+package modelo;
 
-public class UsuariosDTO extends Usuario {
+public class UsuarioDTO extends Usuario {
 
     private int perfil_usuario;
     private boolean admin;
+    private String tipo_perfil;
+
+    public String getTipo_perfil() {
+        return tipo_perfil;
+    }
+
+    public void setTipo_perfil(String tipo_perfil) {
+        this.tipo_perfil = tipo_perfil;
+    }
 
     public int getPerfil_usuario() {
         return perfil_usuario;

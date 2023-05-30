@@ -1,7 +1,7 @@
 package VIEW.aluno;
 
-import DAO.ServicoDAO;
-import DTO.ServicoDTO;
+import controle.ServicoDAO;
+import modelo.ServicoDTO;
 import VIEW.aluno.servicos.Boleto;
 import VIEW.Login;
 import java.sql.ResultSet;

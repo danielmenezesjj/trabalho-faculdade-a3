@@ -8,11 +8,12 @@ import VIEW.funcionarios.InterfaceMedico;
 import VIEW.funcionarios.InterfacePsicologo;
 import VIEW.funcionarios.InterfaceAgente;
 import VIEW.admin.PrincipalAdmin;
+import VIEW.admin.PrincipalAdmin;
 import VIEW.aluno.InterfaceAluno;
 import VIEW.aluno.AlunoCadastro;
-import DTO.Usuario;
-import DAO.UsuarioDAO;
-import DTO.UsuariosDTO;
+import modelo.Usuario;
+import controle.UsuarioDAO;
+import modelo.UsuarioDTO;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.text.ParseException;
@@ -20,14 +21,16 @@ import javax.swing.JOptionPane;
 import javax.swing.text.MaskFormatter;
 
 public class Login extends javax.swing.JFrame {
+
     public static Usuario usuarioLogado;
-    
+    UsuarioDTO usuario = new UsuarioDTO();
+
     /**
      * Creates new form LoginVIEW
      */
     public Login() {
         initComponents();
-
+        formataCpf();
     }
 
     /**
@@ -112,11 +115,8 @@ public class Login extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addGap(142, 142, 142)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel1)
-                                    .addComponent(jLabel2))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 46, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jLabel1)
+                            .addComponent(jLabel2)
                             .addComponent(txtSenha, javax.swing.GroupLayout.PREFERRED_SIZE, 172, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(txtCpf, javax.swing.GroupLayout.PREFERRED_SIZE, 172, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(layout.createSequentialGroup()
@@ -169,9 +169,7 @@ public class Login extends javax.swing.JFrame {
     }//GEN-LAST:event_txtSenhaActionPerformed
 
     private void formWindowActivated(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowActivated
-        // TODO add your handling code here:
-        formataCpf();
-
+        // TODO add your handling code here 
     }//GEN-LAST:event_formWindowActivated
 
     private void txtCpfActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtCpfActionPerformed
@@ -189,7 +187,7 @@ public class Login extends javax.swing.JFrame {
             cpf_usuario = txtCpf.getText();
             password_usuario = txtSenha.getText();
 
-            UsuariosDTO objUsuarioDto = new UsuariosDTO();
+            UsuarioDTO objUsuarioDto = new UsuarioDTO();
 
             objUsuarioDto.setCpf_usuario(cpf_usuario);
             objUsuarioDto.setSenha_usuario(password_usuario);
@@ -199,15 +197,15 @@ public class Login extends javax.swing.JFrame {
             ResultSet rs = objUsuarioDao.autenticacaoUsuario(objUsuarioDto);
 
             if (rs.next()) {
-                // chamar tela
+                // Verifanco tipo de perfil e renderizando telas conrrespondentes
+                
+                usuario.setNome_usuario(rs.getString("nome_completo"));
+                usuario.setId_usuario(rs.getInt("id"));
+                usuario.setPerfil_usuario(rs.getInt("perfil_id"));
+                usuarioLogado = usuario;
+                
                 switch (rs.getInt("perfil_id")) {
-
                     case 1:
-                        UsuariosDTO usuarioAluno = new UsuariosDTO();
-                        usuarioAluno.setNome_usuario(rs.getString("nome_completo"));
-                        usuarioAluno.setId_usuario(rs.getInt("id"));
-                        usuarioLogado = usuarioAluno;
-                        
                         new InterfaceAluno().setVisible(true);
                         this.dispose();
                         break;
@@ -226,11 +224,7 @@ public class Login extends javax.swing.JFrame {
                         this.dispose();
                         break;
                     case 5:
-                        UsuariosDTO usuario = new UsuariosDTO();
-                        usuario.setNome_usuario(rs.getString("nome_completo"));
-                        PrincipalAdmin principalAdmin = new PrincipalAdmin();
-                        principalAdmin.getUsuario(usuario);
-                        principalAdmin.setVisible(true);
+                        new PrincipalAdmin().setVisible(true);
                         this.dispose();
                         break;
                 }

@@ -1,7 +1,7 @@
 package VIEW.admin;
 
-import DAO.UsuarioDAO;
-import DTO.UsuariosDTO;
+import controle.UsuarioDAO;
+import modelo.UsuarioDTO;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -238,7 +238,7 @@ public class CadastroUsuarios extends javax.swing.JFrame {
 
             Date dt_nascimento_usuario = dateFormat.parse(dt_nascimento);
 
-            UsuariosDTO objUsuarioDto = new UsuariosDTO();
+            UsuarioDTO objUsuarioDto = new UsuarioDTO();
             objUsuarioDto.setNome_usuario(nome);
             objUsuarioDto.setCpf_usuario(cpf);
             objUsuarioDto.setDt_nascimento_usuario(dt_nascimento_usuario);
