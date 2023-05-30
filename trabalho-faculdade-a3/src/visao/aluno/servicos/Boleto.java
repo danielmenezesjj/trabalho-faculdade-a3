@@ -1,8 +1,7 @@
 package visao.aluno.servicos;
 
-
-import VIEW.aluno.servicos.InterfaceRenovacao;
-import VIEW.aluno.servicos.InterfaceSegundaVia;
+import visao.aluno.servicos.InterfaceRenovacao;
+import visao.aluno.servicos.InterfaceSegundaVia;
 import modelo.ServicoDTO;
 import javax.swing.JOptionPane;
 

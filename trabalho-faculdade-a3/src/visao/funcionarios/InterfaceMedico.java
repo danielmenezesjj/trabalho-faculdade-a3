@@ -1,13 +1,5 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
-package VIEW.funcionarios;
+package visao.funcionarios;
 
-/**
- *
- * @author Morgana
- */
 public class InterfaceMedico extends javax.swing.JFrame {
 
     /**

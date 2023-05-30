@@ -1,12 +1,7 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
-package VIEW.aluno;
+package visao.aluno;
 
 import controle.UsuarioDAO;
 import modelo.UsuarioDTO;
-import VIEW.admin.CadastroUsuarios;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -15,6 +10,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import javax.swing.text.MaskFormatter;
+import visao.admin.CadastroUsuarios;
 
 public class AlunoCadastro extends javax.swing.JFrame {
 

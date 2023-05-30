@@ -1,4 +1,4 @@
-package VIEW.admin;
+package visao.admin;
 
 import controle.UsuarioDAO;
 import modelo.UsuarioDTO;

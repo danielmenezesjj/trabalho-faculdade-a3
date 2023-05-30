@@ -1,10 +1,5 @@
 package visao;
 
-import VIEW.admin.PrincipalAdmin;
-import VIEW.aluno.AlunoCadastro;
-import VIEW.funcionarios.InterfaceAgente;
-import VIEW.funcionarios.InterfaceMedico;
-import VIEW.funcionarios.InterfacePsicologo;
 import visao.aluno.InterfaceAluno;
 import modelo.Usuario;
 import controle.UsuarioDAO;
@@ -14,6 +9,11 @@ import java.sql.SQLException;
 import java.text.ParseException;
 import javax.swing.JOptionPane;
 import javax.swing.text.MaskFormatter;
+import visao.admin.PrincipalAdmin;
+import visao.aluno.AlunoCadastro;
+import visao.funcionarios.InterfaceAgente;
+import visao.funcionarios.InterfaceMedico;
+import visao.funcionarios.InterfacePsicologo;
 
 public class Login extends javax.swing.JFrame {
 
