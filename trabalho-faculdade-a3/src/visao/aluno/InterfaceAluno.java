@@ -1,5 +1,6 @@
 package visao.aluno;
 
+import controle.PagamentoDAO;
 import visao.aluno.servicos.Boleto;
 import controle.ServicoDAO;
 import modelo.ServicoDTO;
@@ -9,7 +10,10 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
+import visao.aluno.servicos.InterfaceNovaCNH;
 
 public class InterfaceAluno extends javax.swing.JFrame {
     SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
@@ -116,9 +120,18 @@ public class InterfaceAluno extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnEmissaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEmissaoActionPerformed
-      buscarServico(1);
+        ResultSet rsPgmDAO = new PagamentoDAO().buscar(Login.usuarioLogado.getId_usuario());
+        
+        try {
+            if(rsPgmDAO.next()){ 
+                new InterfaceNovaCNH().setVisible(true);
+            }else{
+                buscarServico(1);
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(InterfaceAluno.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_btnEmissaoActionPerformed
-    
   
     private void btnRenovaçãoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRenovaçãoActionPerformed
         buscarServico(3);
