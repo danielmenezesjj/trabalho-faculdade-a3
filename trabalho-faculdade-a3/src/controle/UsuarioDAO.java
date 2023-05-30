@@ -89,7 +89,22 @@ public class UsuarioDAO {
         } catch (Exception erro) {
             JOptionPane.showMessageDialog(null, "UsuarioDAO: " + erro);
         }
-    }       
+    }
+    public boolean excluirUsuario(int idUsuario) {
+        try {
+            String sql = "DELETE FROM usuarios WHERE id = ?";
+            PreparedStatement pstm = conn.prepareStatement(sql);
+            pstm.setInt(1, idUsuario);
+
+            int rowsAffected = pstm.executeUpdate();
+
+            return rowsAffected > 0;
+
+        } catch (SQLException erro) {
+            JOptionPane.showMessageDialog(null, "UsuarioDAO: " + erro);
+            return false;
+        }
+    }
 
     public ArrayList<UsuarioDTO> listarUsuarios() {
         try {
