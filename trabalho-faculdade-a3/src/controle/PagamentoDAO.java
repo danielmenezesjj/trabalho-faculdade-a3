@@ -30,6 +30,21 @@ public class PagamentoDAO {
          } catch (SQLException e) {
              JOptionPane.showMessageDialog(null,"PagamentoDAO: " + e, "Erro", JOptionPane.ERROR_MESSAGE);       
          }     
-         
+     }
+     
+     public ResultSet buscar(int usuario_id){
+         try {
+             String sql = "SELECT * FROM pagamentos WHERE aluno_id = ?";
+             PreparedStatement pstm = conn.prepareStatement(sql);
+             
+             pstm.setInt(1, usuario_id);
+             
+             ResultSet rs = pstm.executeQuery();
+             
+             return rs;
+         } catch (SQLException e) {
+             JOptionPane.showMessageDialog(null,"PagamentoDAO: " + e, "Erro", JOptionPane.ERROR_MESSAGE);
+             return null;
+         }
      }
 }
