@@ -1,6 +1,6 @@
 package visao.admin;
 
-import VIEW.admin.UsuariosLista;
+import visao.admin.UsuariosLista;
 import modelo.UsuarioDTO;
 
 public class PrincipalAdmin extends javax.swing.JFrame {

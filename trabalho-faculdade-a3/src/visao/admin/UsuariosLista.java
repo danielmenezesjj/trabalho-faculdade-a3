@@ -1,6 +1,7 @@
-package VIEW.admin;
+package visao.admin;
 
 import controle.UsuarioDAO;
+import javax.swing.JOptionPane;
 import modelo.UsuarioDTO;
 import javax.swing.table.DefaultTableModel;
 
@@ -25,7 +26,7 @@ public class UsuariosLista extends javax.swing.JFrame {
 
         jScrollPane1 = new javax.swing.JScrollPane();
         jTUsuarios = new javax.swing.JTable();
-        jButton1 = new javax.swing.JButton();
+        excluirUsuario = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
@@ -49,7 +50,12 @@ public class UsuariosLista extends javax.swing.JFrame {
         });
         jScrollPane1.setViewportView(jTUsuarios);
 
-        jButton1.setText("Excluir");
+        excluirUsuario.setText("Excluir");
+        excluirUsuario.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                excluirUsuario(evt);
+            }
+        });
 
         jButton2.setText("Editar");
 
@@ -61,7 +67,7 @@ public class UsuariosLista extends javax.swing.JFrame {
                 .addGap(119, 119, 119)
                 .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(33, 33, 33)
-                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(excluirUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(141, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -73,7 +79,7 @@ public class UsuariosLista extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addGap(25, 25, 25)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(excluirUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 307, Short.MAX_VALUE)
@@ -84,12 +90,32 @@ public class UsuariosLista extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void listarUsuarios(){
+    private void excluirUsuario(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_excluirUsuario
+        System.out.println("Apertou no botao");
+        int rowIndex = jTUsuarios.getSelectedRow();
+        if (rowIndex == -1) {
+            JOptionPane.showMessageDialog(this, "Selecione um usuário para excluir.", "Usuário não selecionado", JOptionPane.WARNING_MESSAGE);
+            return;
+        }
+        int idUsuario = (int) jTUsuarios.getValueAt(rowIndex, 0);
+
+        UsuarioDAO usuarioDao = new UsuarioDAO();
+        boolean excluido = usuarioDao.excluirUsuario(idUsuario);
+        if (excluido) {
+            DefaultTableModel modelo = (DefaultTableModel) jTUsuarios.getModel();
+            modelo.removeRow(rowIndex);
+            JOptionPane.showMessageDialog(this, "Usuário excluído com sucesso.", "Usuário excluído", JOptionPane.INFORMATION_MESSAGE);
+        } else {
+            JOptionPane.showMessageDialog(this, "Falha ao excluir o usuário.", "Erro ao excluir", JOptionPane.ERROR_MESSAGE);
+        }
+    }//GEN-LAST:event_excluirUsuario
+
+    private void listarUsuarios() {
         DefaultTableModel modelo = (DefaultTableModel) jTUsuarios.getModel();
-        
+
         UsuarioDAO usDao = new UsuarioDAO();
-        
-        for(UsuarioDTO u : usDao.listarUsuarios()){
+
+        for (UsuarioDTO u : usDao.listarUsuarios()) {
             modelo.addRow(new Object[]{
                 u.getId_usuario(),
                 u.getNome_usuario(),
@@ -98,7 +124,7 @@ public class UsuariosLista extends javax.swing.JFrame {
             });
         }
     }
-    
+
     /**
      * @param args the command line arguments
      */
@@ -135,7 +161,7 @@ public class UsuariosLista extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
+    private javax.swing.JButton excluirUsuario;
     private javax.swing.JButton jButton2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTUsuarios;
