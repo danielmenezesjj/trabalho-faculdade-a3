@@ -20,8 +20,10 @@ import javax.swing.JOptionPane;
 import javax.swing.text.MaskFormatter;
 
 public class Login extends javax.swing.JFrame {
+
     public static Usuario usuarioLogado;
-    
+    UsuariosDTO usuario = new UsuariosDTO();
+
     /**
      * Creates new form LoginVIEW
      */
@@ -199,15 +201,15 @@ public class Login extends javax.swing.JFrame {
             ResultSet rs = objUsuarioDao.autenticacaoUsuario(objUsuarioDto);
 
             if (rs.next()) {
-                // chamar tela
-                switch (rs.getInt("perfil_id")) {
+                // Verifanco tipo de perfil e renderizando telas conrrespondentes
 
+                switch (rs.getInt("perfil_id")) {
                     case 1:
-                        UsuariosDTO usuarioAluno = new UsuariosDTO();
-                        usuarioAluno.setNome_usuario(rs.getString("nome_completo"));
-                        usuarioAluno.setId_usuario(rs.getInt("id"));
-                        usuarioLogado = usuarioAluno;
-                        
+                        usuario.setNome_usuario(rs.getString("nome_completo"));
+                        usuario.setId_usuario(rs.getInt("id"));
+
+                        usuarioLogado = usuario;
+
                         new InterfaceAluno().setVisible(true);
                         this.dispose();
                         break;
@@ -226,11 +228,7 @@ public class Login extends javax.swing.JFrame {
                         this.dispose();
                         break;
                     case 5:
-                        UsuariosDTO usuario = new UsuariosDTO();
-                        usuario.setNome_usuario(rs.getString("nome_completo"));
-                        PrincipalAdmin principalAdmin = new PrincipalAdmin();
-                        principalAdmin.getUsuario(usuario);
-                        principalAdmin.setVisible(true);
+                        new PrincipalAdmin().setVisible(true);
                         this.dispose();
                         break;
                 }
