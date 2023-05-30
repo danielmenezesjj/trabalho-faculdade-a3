@@ -2,7 +2,6 @@ package SERVICES;
 
 import controle.PagamentoDAO;
 import modelo.PagamentoDTO;
-import visao.Login;
 import visao.aluno.servicos.ProvaTeorica;
 
 public class AlunoServices {
