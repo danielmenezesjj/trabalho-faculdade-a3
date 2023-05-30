@@ -91,7 +91,6 @@ public class UsuariosLista extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void excluirUsuario(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_excluirUsuario
-        System.out.println("Apertou no botao");
         int rowIndex = jTUsuarios.getSelectedRow();
         if (rowIndex == -1) {
             JOptionPane.showMessageDialog(this, "Selecione um usuário para excluir.", "Usuário não selecionado", JOptionPane.WARNING_MESSAGE);

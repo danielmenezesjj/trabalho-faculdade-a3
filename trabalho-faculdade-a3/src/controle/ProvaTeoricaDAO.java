@@ -6,6 +6,7 @@ import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import javax.swing.JOptionPane;
+import java.sql.ResultSet;
 
 public class ProvaTeoricaDAO {
 
@@ -33,6 +34,21 @@ public class ProvaTeoricaDAO {
         } catch (SQLException e) {
             JOptionPane.showMessageDialog(null, "ProvaTeoricaDAO: " + e);
         }
-
     }
+    
+    public ResultSet buscarProva(int id){
+        try {
+            String sql = "SELECT * FROM provas_teorica WHERE aluno_id = ?";
+            PreparedStatement pstm = conn.prepareStatement(sql);
+            
+            pstm.setInt(1, id);
+            
+            ResultSet rs = pstm.executeQuery();        
+            return rs;
+        } catch (Exception e) {          
+            JOptionPane.showMessageDialog(null, "ProvaTeoricaDAO: " + e);
+            return null;
+        }
+    }
+    
 }
