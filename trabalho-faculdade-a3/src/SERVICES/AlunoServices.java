@@ -1,6 +1,6 @@
 package SERVICES;
 
-import VIEW.aluno.servicos.ProvaTeorica;
+import visao.aluno.servicos.ProvaTeorica;
 
 public class AlunoServices {
 
