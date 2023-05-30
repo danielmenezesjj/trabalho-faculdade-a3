@@ -1,5 +1,6 @@
 package visao.aluno.servicos;
 
+import SERVICES.AlunoServices;
 import controle.PagamentoDAO;
 import visao.aluno.servicos.InterfaceRenovacao;
 import visao.aluno.servicos.InterfaceSegundaVia;
@@ -11,7 +12,7 @@ import visao.Login;
 public class Boleto extends javax.swing.JFrame {
 double valor;
 String item;
-int id;
+int idItem;
 
     /**
      * Creates new form Boleto
@@ -119,35 +120,32 @@ int id;
     }// </editor-fold>//GEN-END:initComponents
 
     private void formWindowActivated(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowActivated
-       txtValor.setText("R$"+String.valueOf(valor));
+       txtValor.setText("R$"+ String.valueOf(valor));
         txtItem.setText(item);
     }//GEN-LAST:event_formWindowActivated
 
     private void btnPagarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPagarActionPerformed
 
-        if(id == 1){         
+        if(idItem == 1){         
             new InterfaceNovaCNH().setVisible(true);
         }
-        if (id == 2){
+        if (idItem == 2){
             new InterfaceSegundaVia().setVisible(true);
         }
-        if(id == 3){
+        if(idItem == 3){
             new InterfaceRenovacao().setVisible(true);
         }
+        
+        int alunoId = Login.usuarioLogado.getId_usuario();
         // Salvando pagamento no banco
-        PagamentoDTO pgmtDto = new PagamentoDTO();
-        pgmtDto.setItem_id(id);
-        pgmtDto.setUsuario_id(Login.usuarioLogado.getId_usuario());      
-        new PagamentoDAO().cadastrar(pgmtDto);   
+        new AlunoServices().pagarBoleto(idItem, alunoId);
     }//GEN-LAST:event_btnPagarActionPerformed
 public ServicoDTO getServico(ServicoDTO servico){
         valor = servico.getValor();
         item = servico.getItem();
-        id = servico.getId();
+        idItem = servico.getId();
         return servico;
-    }
-    
-                               
+    }                              
         
    
     /**
