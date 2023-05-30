@@ -52,7 +52,8 @@ public class ProvaTeorica extends javax.swing.JFrame {
         txtNumQuestao = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setMinimumSize(new java.awt.Dimension(850, 650));
+        setMinimumSize(new java.awt.Dimension(860, 650));
+        setPreferredSize(new java.awt.Dimension(900, 622));
         setResizable(false);
         addWindowListener(new java.awt.event.WindowAdapter() {
             public void windowActivated(java.awt.event.WindowEvent evt) {
@@ -62,9 +63,12 @@ public class ProvaTeorica extends javax.swing.JFrame {
                 formWindowOpened(evt);
             }
         });
+        getContentPane().setLayout(null);
 
         jLabel2.setFont(new java.awt.Font("Dialog", 0, 24)); // NOI18N
         jLabel2.setText("Prova Teórica");
+        getContentPane().add(jLabel2);
+        jLabel2.setBounds(340, 50, 146, 32);
 
         btnSalvar.setBackground(new java.awt.Color(0, 0, 0));
         btnSalvar.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
@@ -75,6 +79,8 @@ public class ProvaTeorica extends javax.swing.JFrame {
                 btnSalvarActionPerformed(evt);
             }
         });
+        getContentPane().add(btnSalvar);
+        btnSalvar.setBounds(290, 530, 170, 40);
 
         buttonGroup1.add(a);
         a.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
@@ -85,6 +91,8 @@ public class ProvaTeorica extends javax.swing.JFrame {
                 aActionPerformed(evt);
             }
         });
+        getContentPane().add(a);
+        a.setBounds(40, 400, 110, 30);
 
         buttonGroup1.add(b);
         b.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
@@ -94,6 +102,8 @@ public class ProvaTeorica extends javax.swing.JFrame {
                 bActionPerformed(evt);
             }
         });
+        getContentPane().add(b);
+        b.setBounds(40, 450, 110, 30);
 
         buttonGroup1.add(rD);
         rD.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
@@ -103,6 +113,8 @@ public class ProvaTeorica extends javax.swing.JFrame {
                 rDActionPerformed(evt);
             }
         });
+        getContentPane().add(rD);
+        rD.setBounds(40, 550, 110, 30);
 
         buttonGroup1.add(rC);
         rC.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
@@ -112,73 +124,28 @@ public class ProvaTeorica extends javax.swing.JFrame {
                 rCActionPerformed(evt);
             }
         });
+        getContentPane().add(rC);
+        rC.setBounds(40, 500, 110, 30);
 
         txtResposta.setEnabled(false);
+        getContentPane().add(txtResposta);
+        txtResposta.setBounds(0, 0, 0, 0);
 
         txtPergunta.setEditable(false);
+        txtPergunta.setBackground(new java.awt.Color(255, 255, 255));
         txtPergunta.setColumns(20);
-        txtPergunta.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        txtPergunta.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+        txtPergunta.setForeground(new java.awt.Color(51, 51, 51));
         txtPergunta.setRows(5);
         jScrollPane1.setViewportView(txtPergunta);
 
-        txtNumQuestao.setText("1");
+        getContentPane().add(jScrollPane1);
+        jScrollPane1.setBounds(40, 120, 810, 267);
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(66, 66, 66)
-                        .addComponent(a, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(66, 66, 66)
-                        .addComponent(b, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(66, 66, 66)
-                        .addComponent(rC, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(66, 66, 66)
-                        .addComponent(rD, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(121, 121, 121)
-                        .addComponent(btnSalvar, javax.swing.GroupLayout.PREFERRED_SIZE, 201, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(318, 318, 318)
-                        .addComponent(jLabel2))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(31, 31, 31)
-                        .addComponent(txtNumQuestao, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 696, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(36, 36, 36)
-                .addComponent(jLabel2)
-                .addGap(48, 48, 48)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 267, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(a, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(b, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(rC, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(18, 18, 18)
-                                .addComponent(rD, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(59, 59, 59))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(btnSalvar, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(28, 28, 28))))
-                    .addComponent(txtNumQuestao, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)))
-        );
+        txtNumQuestao.setFont(new java.awt.Font("Dialog", 0, 16)); // NOI18N
+        txtNumQuestao.setText("Questão 1");
+        getContentPane().add(txtNumQuestao);
+        txtNumQuestao.setBounds(40, 90, 90, 23);
 
         pack();
         setLocationRelativeTo(null);
@@ -224,7 +191,7 @@ public class ProvaTeorica extends javax.swing.JFrame {
                 }
 
                 i++;
-                txtNumQuestao.setText(String.valueOf(i + 1));
+                txtNumQuestao.setText("Questão " + (i + 1));
                 alterarQuestao(i);
             }
         }
