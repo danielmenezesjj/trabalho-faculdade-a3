@@ -19,12 +19,15 @@ public class ProvaTeorica extends javax.swing.JFrame {
     int i = 0;
     int acertos = 1;
     String respostaAluno;
+    int notaMinima = 14;
+    int qtQuestoes = 20;
 
     /**
      * Creates new form ProvaTeorica
      */
     public ProvaTeorica() {
         initComponents();
+        buscarQuestoes();
     }
 
     /**
@@ -188,16 +191,17 @@ public class ProvaTeorica extends javax.swing.JFrame {
                 provaDto.setData_prova(dataAtual);
                 provaDto.setIdAluno(Login.usuarioLogado.getId_usuario());
 
-                if (acertos >= 2) {
+                if (acertos >= notaMinima) {
                     provaDto.setResultado("Aprovado");
                 } else {
                     provaDto.setResultado("Reprovado");
                 }
 
-                JOptionPane.showMessageDialog(null, "Prova encerrada.\n\nNota: " + notaAluno + "\n" + provaDto.getResultado());
-
+                JOptionPane.showMessageDialog(null, "Prova encerrada.\n\nNota: " + notaAluno + "\n" + provaDto.getResultado());           
+                
+                // Salvando prova no banco
                 new ProvaTeoricaDAO().cadastrarProvaTeorica(provaDto);
-
+                
                 new InterfaceNovaCNH().setVisible(true);
                 this.dispose();
 
@@ -233,15 +237,18 @@ public class ProvaTeorica extends javax.swing.JFrame {
 
     private void formWindowActivated(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowActivated
 
-
     }//GEN-LAST:event_formWindowActivated
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
-        txtResposta.setVisible(true);
+      
+    }//GEN-LAST:event_formWindowOpened
+
+    private void buscarQuestoes(){
+          txtResposta.setVisible(false);
         try {
 
             QuestoesDAO objQuestoesDao = new QuestoesDAO();
-            ResultSet rsObjQuestoesDao = objQuestoesDao.buscarQuestoes(5);
+            ResultSet rsObjQuestoesDao = objQuestoesDao.buscarQuestoes(qtQuestoes);
 
             // Amrazenando questoes no arrayList
             while (rsObjQuestoesDao.next()) {
@@ -261,8 +268,8 @@ public class ProvaTeorica extends javax.swing.JFrame {
         } catch (SQLException erro) {
             JOptionPane.showMessageDialog(null, "ProvaTeorica: " + erro);
         }
-    }//GEN-LAST:event_formWindowOpened
-
+    }
+    
     private void rCActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rCActionPerformed
         setRadioSelected("c");
     }//GEN-LAST:event_rCActionPerformed

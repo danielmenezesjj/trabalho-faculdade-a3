@@ -1,6 +1,7 @@
 package visao.aluno.servicos;
 
 import controle.ProvaTeoricaDAO;
+import java.awt.Color;
 import visao.Login;
 import visao.aluno.servicos.ProvaTeorica;
 import java.sql.ResultSet;
@@ -260,8 +261,15 @@ public class InterfaceNovaCNH extends javax.swing.JFrame {
         try {
             if(rsPDAO.next()){
                 String resultadoProva = rsPDAO.getString("resultado");
-                jLabel10.setText("Resultado: " + resultadoProva);
+                int notaProva = rsPDAO.getInt("nota");
                 
+                jLabel10.setText("Resultado: " + resultadoProva + " - " + (notaProva * 5) + "%");
+                jLabel10.setForeground(new Color(0,102,0,255));
+                
+                if(resultadoProva.equals("Reprovado")){
+                    jLabel10.setForeground(Color.RED);
+                }
+               
                 return resultadoProva;
             }
         } catch (SQLException ex) {
