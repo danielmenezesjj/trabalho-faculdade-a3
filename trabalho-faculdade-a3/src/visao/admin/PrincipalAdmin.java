@@ -2,6 +2,7 @@ package visao.admin;
 
 import visao.admin.UsuariosLista;
 import modelo.UsuarioDTO;
+import visao.Login;
 
 public class PrincipalAdmin extends javax.swing.JFrame {
     String nomeUser;
@@ -29,6 +30,9 @@ public class PrincipalAdmin extends javax.swing.JFrame {
         addWindowListener(new java.awt.event.WindowAdapter() {
             public void windowActivated(java.awt.event.WindowEvent evt) {
                 formWindowActivated(evt);
+            }
+            public void windowOpened(java.awt.event.WindowEvent evt) {
+                formWindowOpened(evt);
             }
         });
 
@@ -108,6 +112,10 @@ public class PrincipalAdmin extends javax.swing.JFrame {
     private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
         new UsuariosLista().setVisible(true);
     }//GEN-LAST:event_jMenuItem2ActionPerformed
+
+    private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
+        txtUsuarioLogado.setText("Olá, " + Login.usuarioLogado.getNome_usuario());
+    }//GEN-LAST:event_formWindowOpened
     
     public UsuarioDTO getUsuario(UsuarioDTO usuario){
         nomeUser = usuario.getNome_usuario();

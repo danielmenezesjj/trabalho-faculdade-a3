@@ -1,11 +1,13 @@
 package visao.funcionarios;
 
-public class InterfaceAgente extends javax.swing.JFrame {
+import visao.Login;
+
+public class InterfaceExaminador extends javax.swing.JFrame {
 
     /**
      * Creates new form InterfaceAgente
      */
-    public InterfaceAgente() {
+    public InterfaceExaminador() {
         initComponents();
     }
 
@@ -24,9 +26,14 @@ public class InterfaceAgente extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowOpened(java.awt.event.WindowEvent evt) {
+                formWindowOpened(evt);
+            }
+        });
 
         txtUsuarioLogado.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
-        txtUsuarioLogado.setText("Olá, #nomeAgente");
+        txtUsuarioLogado.setText("Olá, #nomeUsuario");
 
         btnAlunos.setBackground(new java.awt.Color(0, 0, 0));
         btnAlunos.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
@@ -84,6 +91,12 @@ public class InterfaceAgente extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_btnResultadoActionPerformed
 
+    private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
+        txtUsuarioLogado.setText("Olá, " + Login.usuarioLogado.getNome_usuario());
+
+
+    }//GEN-LAST:event_formWindowOpened
+
     /**
      * @param args the command line arguments
      */
@@ -101,20 +114,21 @@ public class InterfaceAgente extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(InterfaceAgente.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(InterfaceExaminador.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(InterfaceAgente.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(InterfaceExaminador.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(InterfaceAgente.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(InterfaceExaminador.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(InterfaceAgente.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(InterfaceExaminador.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new InterfaceAgente().setVisible(true);
+                new InterfaceExaminador().setVisible(true);
             }
         });
     }
