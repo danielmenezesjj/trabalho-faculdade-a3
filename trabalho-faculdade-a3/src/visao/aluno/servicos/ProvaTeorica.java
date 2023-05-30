@@ -117,6 +117,7 @@ public class ProvaTeorica extends javax.swing.JFrame {
 
         txtPergunta.setEditable(false);
         txtPergunta.setColumns(20);
+        txtPergunta.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         txtPergunta.setRows(5);
         jScrollPane1.setViewportView(txtPergunta);
 
@@ -157,7 +158,7 @@ public class ProvaTeorica extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGap(36, 36, 36)
                 .addComponent(jLabel2)
-                .addGap(57, 57, 57)
+                .addGap(48, 48, 48)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 267, javax.swing.GroupLayout.PREFERRED_SIZE)
