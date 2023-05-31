@@ -51,7 +51,6 @@ public class ProvaTeorica extends javax.swing.JFrame {
         txtPergunta = new javax.swing.JTextArea();
         txtNumQuestao = new javax.swing.JLabel();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMinimumSize(new java.awt.Dimension(860, 650));
         setPreferredSize(new java.awt.Dimension(900, 622));
         setResizable(false);

@@ -4,7 +4,7 @@ public class ExameDTO {
     private int id;
     private int tipo_exame_id;
     private int aluno_id;
-    private String resultado = "aguardando...";
+    private String resultado;
 
     public int getId() {
         return id;

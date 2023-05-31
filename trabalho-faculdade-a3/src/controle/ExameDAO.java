@@ -1,5 +1,6 @@
 package controle;
 
+import java.sql.ResultSet;
 import java.sql.PreparedStatement;
 import java.sql.Connection;
 import java.sql.SQLException;
@@ -27,6 +28,23 @@ public class ExameDAO {
         } catch (SQLException e) {
             JOptionPane.showMessageDialog(null, "ExameDAO: " + e, "Erro", JOptionPane.ERROR_MESSAGE);
         }
-
     }
+    
+    public ResultSet buscarExame(int idAluno){
+        try {
+            String sql = "SELECT * FROM exames WHERE exames.aluno_id = ?";
+            PreparedStatement pstm = conn.prepareStatement(sql);
+            
+            pstm.setInt(1, idAluno);
+            
+            ResultSet rs = pstm.executeQuery();
+            return rs;
+            
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "ExameDAO: " + e, "Erro", JOptionPane.ERROR_MESSAGE);
+            return null;
+        }
+    }
+    
+    
 }
