@@ -2,42 +2,16 @@
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
-<<<<<<< HEAD
         <group>
-            <file>file:/C:/Users/yasmi/OneDrive/Área%20de%20Trabalho/A3-detran/trabalho-faculdade-a3/trabalho-faculdade-a3/src/VIEW/CadastroUsuarios.java</file>
-            <file>file:/C:/Users/yasmi/OneDrive/Área%20de%20Trabalho/A3-detran/trabalho-faculdade-a3/trabalho-faculdade-a3/src/VIEW/InterfaceNovaCNH.java</file>
-            <file>file:/C:/Users/yasmi/OneDrive/Área%20de%20Trabalho/A3-detran/trabalho-faculdade-a3/trabalho-faculdade-a3/src/VIEW/InterfaceMedico.java</file>
-            <file>file:/C:/Users/yasmi/OneDrive/Área%20de%20Trabalho/A3-detran/trabalho-faculdade-a3/trabalho-faculdade-a3/src/VIEW/Login.java</file>
-            <file>file:/C:/Users/yasmi/OneDrive/Área%20de%20Trabalho/A3-detran/trabalho-faculdade-a3/trabalho-faculdade-a3/src/VIEW/InterfaceSegundaVia.java</file>
-            <file>file:/C:/Users/yasmi/OneDrive/Área%20de%20Trabalho/A3-detran/trabalho-faculdade-a3/trabalho-faculdade-a3/src/DAO/ProvaDAO.java</file>
-            <file>file:/C:/Users/yasmi/OneDrive/Área%20de%20Trabalho/A3-detran/trabalho-faculdade-a3/trabalho-faculdade-a3/src/DTO/Usuario.java</file>
-            <file>file:/C:/Users/yasmi/OneDrive/Área%20de%20Trabalho/A3-detran/trabalho-faculdade-a3/trabalho-faculdade-a3/src/VIEW/InterfaceAgente.java</file>
-            <file>file:/C:/Users/yasmi/OneDrive/Área%20de%20Trabalho/A3-detran/trabalho-faculdade-a3/trabalho-faculdade-a3/src/VIEW/InterfaceRenovacao.java</file>
-            <file>file:/C:/Users/yasmi/OneDrive/Área%20de%20Trabalho/A3-detran/trabalho-faculdade-a3/trabalho-faculdade-a3/src/VIEW/Boleto.java</file>
-            <file>file:/C:/Users/yasmi/OneDrive/Área%20de%20Trabalho/A3-detran/trabalho-faculdade-a3/trabalho-faculdade-a3/src/DTO/ServicoDTO.java</file>
-            <file>file:/C:/Users/yasmi/OneDrive/Área%20de%20Trabalho/A3-detran/trabalho-faculdade-a3/trabalho-faculdade-a3/src/VIEW/ResultadoExame.java</file>
-            <file>file:/C:/Users/yasmi/OneDrive/Área%20de%20Trabalho/A3-detran/trabalho-faculdade-a3/trabalho-faculdade-a3/src/DTO/ProvaTeoricaDTO.java</file>
-            <file>file:/C:/Users/yasmi/OneDrive/Área%20de%20Trabalho/A3-detran/trabalho-faculdade-a3/trabalho-faculdade-a3/src/VIEW/InterfaceAluno.java</file>
-            <file>file:/C:/Users/yasmi/OneDrive/Área%20de%20Trabalho/A3-detran/trabalho-faculdade-a3/trabalho-faculdade-a3/src/VIEW/AlunoCadastro.java</file>
-            <file>file:/C:/Users/yasmi/OneDrive/Área%20de%20Trabalho/A3-detran/trabalho-faculdade-a3/trabalho-faculdade-a3/src/DAO/QuestoesDAO.java</file>
-            <file>file:/C:/Users/yasmi/OneDrive/Área%20de%20Trabalho/A3-detran/trabalho-faculdade-a3/trabalho-faculdade-a3/src/DAO/ConexaoDAO.java</file>
-            <file>file:/C:/Users/yasmi/OneDrive/Área%20de%20Trabalho/A3-detran/trabalho-faculdade-a3/trabalho-faculdade-a3/src/DTO/UsuariosDTO.java</file>
-            <file>file:/C:/Users/yasmi/OneDrive/Área%20de%20Trabalho/A3-detran/trabalho-faculdade-a3/trabalho-faculdade-a3/src/VIEW/PrincipalAdmin.java</file>
-            <file>file:/C:/Users/yasmi/OneDrive/Área%20de%20Trabalho/A3-detran/trabalho-faculdade-a3/trabalho-faculdade-a3/src/DAO/ServicoDAO.java</file>
-            <file>file:/C:/Users/yasmi/OneDrive/Área%20de%20Trabalho/A3-detran/trabalho-faculdade-a3/trabalho-faculdade-a3/src/DTO/Questao.java</file>
-            <file>file:/C:/Users/yasmi/OneDrive/Área%20de%20Trabalho/A3-detran/trabalho-faculdade-a3/trabalho-faculdade-a3/src/DAO/UsuarioDAO.java</file>
-            <file>file:/C:/Users/yasmi/OneDrive/Área%20de%20Trabalho/A3-detran/trabalho-faculdade-a3/trabalho-faculdade-a3/src/VIEW/ProvaTeorica.java</file>
-            <file>file:/C:/Users/yasmi/OneDrive/Área%20de%20Trabalho/A3-detran/trabalho-faculdade-a3/trabalho-faculdade-a3/src/VIEW/UsuariosLista.java</file>
+            <file>file:/C:/Users/morga/OneDrive/Documentos/Projeto-Detran/trabalho-faculdade-a3/trabalho-faculdade-a3/src/visao/Login.java</file>
+            <file>file:/C:/Users/morga/OneDrive/Documentos/Projeto-Detran/trabalho-faculdade-a3/trabalho-faculdade-a3/src/visao/admin/PrincipalAdmin.java</file>
+            <file>file:/C:/Users/morga/OneDrive/Documentos/Projeto-Detran/trabalho-faculdade-a3/trabalho-faculdade-a3/src/visao/funcionarios/InterfaceExaminador.java</file>
+            <file>file:/C:/Users/morga/OneDrive/Documentos/Projeto-Detran/trabalho-faculdade-a3/trabalho-faculdade-a3/src/visao/aluno/servicos/Boleto.java</file>
+            <file>file:/C:/Users/morga/OneDrive/Documentos/Projeto-Detran/trabalho-faculdade-a3/trabalho-faculdade-a3/src/visao/aluno/servicos/InterfaceNovaCNH.java</file>
+            <file>file:/C:/Users/morga/OneDrive/Documentos/Projeto-Detran/trabalho-faculdade-a3/trabalho-faculdade-a3/src/visao/aluno/servicos/ProvaTeorica.java</file>
+            <file>file:/C:/Users/morga/OneDrive/Documentos/Projeto-Detran/trabalho-faculdade-a3/trabalho-faculdade-a3/src/visao/aluno/AlunoCadastro.java</file>
+            <file>file:/C:/Users/morga/OneDrive/Documentos/Projeto-Detran/trabalho-faculdade-a3/trabalho-faculdade-a3/src/visao/aluno/InterfaceAluno.java</file>
+            <file>file:/C:/Users/morga/OneDrive/Documentos/Projeto-Detran/trabalho-faculdade-a3/trabalho-faculdade-a3/src/controle/ConexaoDAO.java</file>
         </group>
-=======
-<<<<<<< HEAD
-        <group>
-            <file>file:/C:/Users/morga/OneDrive/Documentos/Projeto-Detran/trabalho-faculdade-a3/trabalho-faculdade-a3/src/VIEW/Boleto.java</file>
-            <file>file:/C:/Users/morga/OneDrive/Documentos/Projeto-Detran/trabalho-faculdade-a3/trabalho-faculdade-a3/src/VIEW/InterfaceSegundaVia.java</file>
-        </group>
-=======
-        <group/>
->>>>>>> c25aafdeca1a3c9c500b82c0b00c61feeb2db704
->>>>>>> 172a8015e3e892b681ca1a49d3f04fa485219343
     </open-files>
 </project-private>
