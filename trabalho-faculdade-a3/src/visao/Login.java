@@ -11,7 +11,7 @@ import javax.swing.JOptionPane;
 import javax.swing.text.MaskFormatter;
 import visao.admin.PrincipalAdmin;
 import visao.aluno.AlunoCadastro;
-import visao.funcionarios.InterfaceExaminador;
+import visao.examinadores.InterfaceExaminador;
 
 public class Login extends javax.swing.JFrame {
 

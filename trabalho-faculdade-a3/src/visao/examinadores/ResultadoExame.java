@@ -1,4 +1,4 @@
-package visao.funcionarios;
+package visao.examinadores;
 
 public class ResultadoExame extends javax.swing.JFrame {
 

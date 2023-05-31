@@ -90,6 +90,7 @@ public class UsuarioDAO {
             JOptionPane.showMessageDialog(null, "UsuarioDAO: " + erro);
         }
     }
+
     public boolean excluirUsuario(int idUsuario) {
         try {
             String sql = "DELETE FROM usuarios WHERE id = ?";
@@ -112,25 +113,43 @@ public class UsuarioDAO {
             PreparedStatement pstm = conn.prepareStatement(sql);
 
             ArrayList usuarios = new ArrayList<UsuarioDTO>();
-            
+
             ResultSet rs = pstm.executeQuery();
-            
-            while(rs.next()){
+
+            while (rs.next()) {
                 UsuarioDTO usuarioDto = new UsuarioDTO();
                 usuarioDto.setId_usuario(rs.getInt("id"));
                 usuarioDto.setNome_usuario(rs.getString("nome_completo"));
                 usuarioDto.setCpf_usuario(rs.getString("cpf"));
                 usuarioDto.setPerfil_usuario(rs.getInt("perfil_id"));
                 usuarioDto.setTipo_perfil(rs.getString("nome_perfil"));
-               
+
                 usuarios.add(usuarioDto);
             }
-            
+
             return usuarios;
         } catch (SQLException erro) {
             JOptionPane.showMessageDialog(null, "UsuarioDAO: " + erro);
             return null;
         }
+    }
+
+    public void editarUsuario(UsuarioDTO usuario) {
+        try {
+            String sql = "UPDATE ";
+            PreparedStatement pstm = conn.prepareStatement(sql);
+            int rowsAffected = pstm.executeUpdate(sql);
+            
+              if (rowsAffected > 0) {
+                JOptionPane.showMessageDialog(null, "Usuário atualizado com sucesso!");
+            } else {
+                JOptionPane.showMessageDialog(null, "Falha ao alterar usuário.");
+            }
+
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null, "UsuarioDAO: " + e);
+        }
+
     }
 
 }
