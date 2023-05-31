@@ -1,5 +1,6 @@
 package visao.aluno.servicos;
 
+import SERVICES.AlunoServices;
 import controle.ProvaTeoricaDAO;
 import java.awt.Color;
 import visao.Login;
@@ -10,6 +11,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 public class InterfaceNovaCNH extends javax.swing.JFrame {
+    AlunoServices alunoService = new AlunoServices();
 
     /**
      * Creates new form InterfaceNovaCNH
@@ -212,15 +214,17 @@ public class InterfaceNovaCNH extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnMedicoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMedicoActionPerformed
-        // TODO add your handling code here:
+        // Fazer exame médico
+        alunoService.fazerExame(1);
     }//GEN-LAST:event_btnMedicoActionPerformed
 
     private void btnPsicologoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPsicologoActionPerformed
-        // TODO add your handling code here:
+        // Fazer exame psicológico
+        alunoService.fazerExame(2);
     }//GEN-LAST:event_btnPsicologoActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-        // TODO add your handling code here:
+        // Fazer exame teórico
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void btnTeoricoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTeoricoActionPerformed
@@ -232,7 +236,8 @@ public class InterfaceNovaCNH extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton5ActionPerformed
 
     private void btnPraticoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPraticoActionPerformed
-        // TODO add your handling code here:
+        // Fazer exame prático
+        alunoService.fazerExame(4);
     }//GEN-LAST:event_btnPraticoActionPerformed
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened

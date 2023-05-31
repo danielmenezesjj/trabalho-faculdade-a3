@@ -31,8 +31,30 @@ public class UsuarioDAO {
         }
     }
 
+    public boolean buscarUsuario(String cpf) {
+        try {
+            String sql = "SELECT * FROM usuarios WHERE usuarios.cpf = ?";
+            PreparedStatement pstm = conn.prepareStatement(sql);
+            pstm.setString(1, cpf);
+
+            ResultSet rs = pstm.executeQuery();
+            return rs.next();
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null, "Erro ao buscar usuário." + e, "Erro", JOptionPane.ERROR_MESSAGE);
+            return false;
+        }
+    }
+
     public void cadastrarUsuario(UsuarioDTO objUsuarioDto) {
         try {
+
+            boolean rsBuscaUsuario = buscarUsuario(objUsuarioDto.getCpf_usuario());
+
+            if (rsBuscaUsuario) {
+                JOptionPane.showMessageDialog(null, "Usuário já cadastrado!", "Erro", JOptionPane.ERROR_MESSAGE);
+                return;
+            }
+
             String sql = "INSERT INTO usuarios(nome_completo, dt_nascimento, adm, cpf, email, telefone, senha, perfil_id) values (?, ?, ?, ?, ?, ?, ?, ?)";
             PreparedStatement pstm = conn.prepareStatement(sql);
 
@@ -63,6 +85,14 @@ public class UsuarioDAO {
 
     public void cadastrarUsuarioAluno(UsuarioDTO objUsuarioDto) {
         try {
+
+            boolean rsBuscaUsuario = buscarUsuario(objUsuarioDto.getCpf_usuario());
+
+            if (rsBuscaUsuario) {
+                JOptionPane.showMessageDialog(null, "Usuário já cadastrado!", "Erro", JOptionPane.ERROR_MESSAGE);
+                return;
+            }
+
             String sql = "INSERT INTO usuarios(nome_completo, dt_nascimento, adm, cpf, email, telefone, senha, perfil_id) values (?, ?, ?, ?, ?, ?, ?, ?)";
             PreparedStatement pstm = conn.prepareStatement(sql);
 
@@ -139,8 +169,8 @@ public class UsuarioDAO {
             String sql = "UPDATE ";
             PreparedStatement pstm = conn.prepareStatement(sql);
             int rowsAffected = pstm.executeUpdate(sql);
-            
-              if (rowsAffected > 0) {
+
+            if (rowsAffected > 0) {
                 JOptionPane.showMessageDialog(null, "Usuário atualizado com sucesso!");
             } else {
                 JOptionPane.showMessageDialog(null, "Falha ao alterar usuário.");
