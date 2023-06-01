@@ -1,4 +1,4 @@
-package SERVICES;
+package services;
 
 import controle.ExameDAO;
 import controle.PagamentoDAO;

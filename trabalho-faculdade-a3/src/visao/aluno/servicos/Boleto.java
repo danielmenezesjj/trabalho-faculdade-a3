@@ -1,6 +1,6 @@
 package visao.aluno.servicos;
 
-import SERVICES.AlunoServices;
+import services.AlunoServices;
 import controle.PagamentoDAO;
 import visao.aluno.servicos.InterfaceRenovacao;
 import visao.aluno.servicos.InterfaceSegundaVia;
