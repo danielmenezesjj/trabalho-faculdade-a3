@@ -14,7 +14,6 @@ public class LancarResultadoExame extends javax.swing.JFrame {
      */
     public LancarResultadoExame() {
         initComponents();
-        listarExames();
     }
     
     private void listarExamesEmTabela(int idTipoExame){
@@ -52,6 +51,29 @@ public class LancarResultadoExame extends javax.swing.JFrame {
             listarExamesEmTabela(4);
         }
     }
+    
+    private void lancarResultado(){     
+        int rowIndex = jTExames.getSelectedRow();
+        if(rowIndex == -1){
+            JOptionPane.showMessageDialog(null, "Selecione um exame para lançar o resultado.");
+            return;
+        }
+        
+        int idExame = (int) jTExames.getValueAt(rowIndex, 0);
+        
+        ExameDTO exameDto = new ExameDTO();
+        exameDto.setId(idExame);
+        
+        if(jRApto.isSelected()){
+            exameDto.setResultado("Aprovado");
+        }
+        
+        if(jRInapto.isSelected()){
+            exameDto.setResultado("Reprovado");
+        }
+        
+        new ExaminadorDAO().editarResultado(exameDto);
+    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -71,8 +93,8 @@ public class LancarResultadoExame extends javax.swing.JFrame {
         optionPsicologo1 = new javax.swing.JRadioButton();
         jLabel1 = new javax.swing.JLabel();
         btnLancar = new javax.swing.JButton();
-        jRadioButton1 = new javax.swing.JRadioButton();
-        jRadioButton2 = new javax.swing.JRadioButton();
+        jRApto = new javax.swing.JRadioButton();
+        jRInapto = new javax.swing.JRadioButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTExames = new javax.swing.JTable();
 
@@ -84,9 +106,14 @@ public class LancarResultadoExame extends javax.swing.JFrame {
 
         optionPsicologo1.setText("Psicólogo");
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setMinimumSize(new java.awt.Dimension(614, 470));
         setResizable(false);
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowActivated(java.awt.event.WindowEvent evt) {
+                formWindowActivated(evt);
+            }
+        });
         getContentPane().setLayout(null);
 
         jLabel1.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
@@ -97,18 +124,23 @@ public class LancarResultadoExame extends javax.swing.JFrame {
         btnLancar.setBackground(new java.awt.Color(0, 0, 0));
         btnLancar.setForeground(new java.awt.Color(255, 255, 255));
         btnLancar.setText("Lançar");
+        btnLancar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnLancarActionPerformed(evt);
+            }
+        });
         getContentPane().add(btnLancar);
         btnLancar.setBounds(360, 90, 85, 24);
 
-        buttonGroup1.add(jRadioButton1);
-        jRadioButton1.setText("Apto");
-        getContentPane().add(jRadioButton1);
-        jRadioButton1.setBounds(80, 90, 110, 28);
+        buttonGroup1.add(jRApto);
+        jRApto.setText("Apto");
+        getContentPane().add(jRApto);
+        jRApto.setBounds(80, 90, 110, 28);
 
-        buttonGroup1.add(jRadioButton2);
-        jRadioButton2.setText("Inapto");
-        getContentPane().add(jRadioButton2);
-        jRadioButton2.setBounds(200, 90, 110, 28);
+        buttonGroup1.add(jRInapto);
+        jRInapto.setText("Inapto");
+        getContentPane().add(jRInapto);
+        jRInapto.setBounds(200, 90, 110, 28);
 
         jTExames.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -134,6 +166,14 @@ public class LancarResultadoExame extends javax.swing.JFrame {
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btnLancarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLancarActionPerformed
+        lancarResultado();
+    }//GEN-LAST:event_btnLancarActionPerformed
+
+    private void formWindowActivated(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowActivated
+        listarExames();
+    }//GEN-LAST:event_formWindowActivated
 
     /**
      * @param args the command line arguments
@@ -177,8 +217,8 @@ public class LancarResultadoExame extends javax.swing.JFrame {
     private javax.swing.ButtonGroup buttonGroup2;
     private javax.swing.ButtonGroup buttonGroup3;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JRadioButton jRadioButton1;
-    private javax.swing.JRadioButton jRadioButton2;
+    private javax.swing.JRadioButton jRApto;
+    private javax.swing.JRadioButton jRInapto;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTExames;
     private javax.swing.JRadioButton optionMedico;
