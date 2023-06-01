@@ -18,10 +18,7 @@ public class InterfaceNovaCNH extends javax.swing.JFrame {
      * Creates new form InterfaceNovaCNH
      */
     public InterfaceNovaCNH() {
-        initComponents();
-        pegarResultadoProvaTeorica();
-        pegarResultadosExames();
-        buscaExame();
+        initComponents();   
     }
 
     /**
@@ -68,6 +65,9 @@ public class InterfaceNovaCNH extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setResizable(false);
         addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowActivated(java.awt.event.WindowEvent evt) {
+                formWindowActivated(evt);
+            }
             public void windowOpened(java.awt.event.WindowEvent evt) {
                 formWindowOpened(evt);
             }
@@ -252,6 +252,12 @@ public class InterfaceNovaCNH extends javax.swing.JFrame {
     private void btnImprimirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnImprimirActionPerformed
 
     }//GEN-LAST:event_btnImprimirActionPerformed
+
+    private void formWindowActivated(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowActivated
+        buscaExame();
+        pegarResultadoProvaTeorica();
+        pegarResultadosExames();
+    }//GEN-LAST:event_formWindowActivated
 
     private void buscaExame() {
         try {
