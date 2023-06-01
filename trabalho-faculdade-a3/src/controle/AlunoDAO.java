@@ -8,6 +8,7 @@ import java.sql.SQLException;
 import java.util.concurrent.TimeUnit;
 import javax.swing.JOptionPane;
 import modelo.AlunoDTO;
+import modelo.ExameDTO;
 import modelo.UsuarioDTO;
 
 public class AlunoDAO {
@@ -79,7 +80,25 @@ public class AlunoDAO {
                     e.printStackTrace();
                 }
             }
-
+        }
+    }
+    
+    public void fazerExame(int tipo_exame) {
+        try {
+            String sql = "INSERT INTO exames (tipo_exame_id, aluno_id, resultado) VALUES (?,?,?)";
+            PreparedStatement pstm = conn.prepareStatement(sql);
+            
+            pstm.setInt(1, tipo_exame);
+            pstm.setInt(2, UsuarioDTO.usuarioLogado.getId_usuario());
+            pstm.setString(3, null);
+            
+            int arrowsAfected = pstm.executeUpdate();
+            
+            if(arrowsAfected > 0)
+                JOptionPane.showMessageDialog(null, "Exame lançado!", "Exame", JOptionPane.PLAIN_MESSAGE);
+            
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null, "ExameDAO: " + e, "Erro", JOptionPane.ERROR_MESSAGE);
         }
     }
 
