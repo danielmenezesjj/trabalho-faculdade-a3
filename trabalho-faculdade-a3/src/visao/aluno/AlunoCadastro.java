@@ -1,6 +1,6 @@
 package visao.aluno;
 
-import controle.AdminDAO;
+import controle.AlunoDAO;
 import modelo.UsuarioDTO;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -210,8 +210,8 @@ public class AlunoCadastro extends javax.swing.JFrame {
             if (idadeAluno < 18) {
                 JOptionPane.showMessageDialog(null, "Aluno precisa ser maior de idade.");
             } else {
-                AdminDAO objUsuarioDao = new AdminDAO();
-                objUsuarioDao.cadastrarUsuarioAluno(objUsuarioDto);
+                AlunoDAO alunoDao = new AlunoDAO();
+                alunoDao.cadastrarUsuarioAluno(objUsuarioDto);
             }
 
         } catch (Exception e) {

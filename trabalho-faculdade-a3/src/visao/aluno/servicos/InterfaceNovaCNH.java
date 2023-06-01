@@ -9,6 +9,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import modelo.UsuarioDTO;
 
 public class InterfaceNovaCNH extends javax.swing.JFrame {
 
@@ -246,7 +247,7 @@ public class InterfaceNovaCNH extends javax.swing.JFrame {
     }//GEN-LAST:event_btnPraticoActionPerformed
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
-        txtUsuarioLogado.setText("Olá, " + Login.usuarioLogado.getNome_usuario());
+        txtUsuarioLogado.setText("Olá, " + UsuarioDTO.usuarioLogado.getNome_usuario());
     }//GEN-LAST:event_formWindowOpened
 
     private void btnImprimirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnImprimirActionPerformed
@@ -261,7 +262,7 @@ public class InterfaceNovaCNH extends javax.swing.JFrame {
 
     private void buscaExame() {
         try {
-            ResultSet rsExDao = new ExameDAO().buscarExame(Login.usuarioLogado.getId_usuario());
+            ResultSet rsExDao = new ExameDAO().buscarExame(UsuarioDTO.usuarioLogado.getId_usuario());
             
             while (rsExDao.next()) {   
                 int tipo_exame = rsExDao.getInt("tipo_exame_id");
@@ -275,7 +276,7 @@ public class InterfaceNovaCNH extends javax.swing.JFrame {
     }
 
     private void pegarResultadosExames() {
-        ResultSet rsExDao = new ExameDAO().buscarExame(Login.usuarioLogado.getId_usuario());
+        ResultSet rsExDao = new ExameDAO().buscarExame(UsuarioDTO.usuarioLogado.getId_usuario());
 
         try {
             if (rsExDao.next()) {
@@ -294,7 +295,7 @@ public class InterfaceNovaCNH extends javax.swing.JFrame {
 
         ProvaTeoricaDAO pDao = new ProvaTeoricaDAO();
 
-        ResultSet rsPDAO = pDao.buscarProva(Login.usuarioLogado.getId_usuario());
+        ResultSet rsPDAO = pDao.buscarProva(UsuarioDTO.usuarioLogado.getId_usuario());
 
         try {
             if (rsPDAO.next()) {

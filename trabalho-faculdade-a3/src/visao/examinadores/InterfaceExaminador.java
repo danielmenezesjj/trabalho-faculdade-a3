@@ -1,6 +1,6 @@
 package visao.examinadores;
 
-import visao.Login;
+import modelo.UsuarioDTO;
 
 public class InterfaceExaminador extends javax.swing.JFrame {
 
@@ -92,7 +92,7 @@ public class InterfaceExaminador extends javax.swing.JFrame {
     }//GEN-LAST:event_btnResultadoActionPerformed
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
-        txtUsuarioLogado.setText("Olá, " + Login.usuarioLogado.getNome_usuario());
+        txtUsuarioLogado.setText("Olá, " + UsuarioDTO.usuarioLogado.getNome_usuario());
 
 
     }//GEN-LAST:event_formWindowOpened

@@ -1,8 +1,6 @@
 package visao.admin;
 
-import visao.admin.UsuariosLista;
 import modelo.UsuarioDTO;
-import visao.Login;
 
 public class PrincipalAdmin extends javax.swing.JFrame {
     String nomeUser;
@@ -114,7 +112,7 @@ public class PrincipalAdmin extends javax.swing.JFrame {
     }//GEN-LAST:event_jMenuItem2ActionPerformed
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
-        txtUsuarioLogado.setText("Olá, " + Login.usuarioLogado.getNome_usuario());
+        txtUsuarioLogado.setText("Olá, " + UsuarioDTO.usuarioLogado.getNome_usuario());
     }//GEN-LAST:event_formWindowOpened
     
     public UsuarioDTO getUsuario(UsuarioDTO usuario){

@@ -4,12 +4,12 @@ import controle.ProvaTeoricaDAO;
 import controle.QuestoesDAO;
 import modelo.ProvaTeoricaDTO;
 import modelo.Questao;
-import visao.Login;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Date;
 import javax.swing.JOptionPane;
+import modelo.UsuarioDTO;
 
 public class ProvaTeorica extends javax.swing.JFrame {
 
@@ -164,7 +164,7 @@ public class ProvaTeorica extends javax.swing.JFrame {
 
                 provaDto.setAcertos(notaAluno);
                 provaDto.setData_prova(dataAtual);
-                provaDto.setIdAluno(Login.usuarioLogado.getId_usuario());
+                provaDto.setIdAluno(UsuarioDTO.usuarioLogado.getId_usuario());
 
                 if (acertos >= notaMinima) {
                     provaDto.setResultado("Aprovado");

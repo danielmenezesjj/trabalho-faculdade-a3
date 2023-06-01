@@ -4,7 +4,7 @@ import controle.ExameDAO;
 import controle.PagamentoDAO;
 import modelo.ExameDTO;
 import modelo.PagamentoDTO;
-import visao.Login;
+import modelo.UsuarioDTO;
 import visao.aluno.servicos.ProvaTeorica;
 
 public class AlunoServices {
@@ -22,7 +22,7 @@ public class AlunoServices {
     
     public void fazerExame(int tipoExameId){
         ExameDTO exameDto = new ExameDTO();
-        exameDto.setAluno_id(Login.usuarioLogado.getId_usuario());
+        exameDto.setAluno_id(UsuarioDTO.usuarioLogado.getId_usuario());
         exameDto.setTipo_exame_id(tipoExameId);
         
         new ExameDAO().cadastrarExame(exameDto);

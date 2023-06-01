@@ -7,6 +7,7 @@ import visao.aluno.servicos.InterfaceSegundaVia;
 import modelo.ServicoDTO;
 import javax.swing.JOptionPane;
 import modelo.PagamentoDTO;
+import modelo.UsuarioDTO;
 import visao.Login;
 
 public class Boleto extends javax.swing.JFrame {
@@ -136,7 +137,7 @@ int idItem;
             new InterfaceRenovacao().setVisible(true);
         }
         
-        int alunoId = Login.usuarioLogado.getId_usuario();
+        int alunoId = UsuarioDTO.usuarioLogado.getId_usuario();
         // Salvando pagamento no banco
         new AlunoServices().pagarBoleto(idItem, alunoId);
     }//GEN-LAST:event_btnPagarActionPerformed
