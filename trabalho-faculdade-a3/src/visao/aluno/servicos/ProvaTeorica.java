@@ -67,7 +67,7 @@ public class ProvaTeorica extends javax.swing.JFrame {
         jLabel2.setFont(new java.awt.Font("Dialog", 0, 24)); // NOI18N
         jLabel2.setText("Prova Teórica");
         getContentPane().add(jLabel2);
-        jLabel2.setBounds(340, 50, 146, 32);
+        jLabel2.setBounds(340, 50, 160, 32);
 
         btnSalvar.setBackground(new java.awt.Color(0, 0, 0));
         btnSalvar.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
