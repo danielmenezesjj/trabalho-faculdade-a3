@@ -14,6 +14,7 @@ public class LancarResultadoExame extends javax.swing.JFrame {
      */
     public LancarResultadoExame() {
         initComponents();
+        listarExames();
     }
     
     private void listarExamesEmTabela(int idTipoExame){
@@ -172,7 +173,7 @@ public class LancarResultadoExame extends javax.swing.JFrame {
     }//GEN-LAST:event_btnLancarActionPerformed
 
     private void formWindowActivated(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowActivated
-        listarExames();
+
     }//GEN-LAST:event_formWindowActivated
 
     /**

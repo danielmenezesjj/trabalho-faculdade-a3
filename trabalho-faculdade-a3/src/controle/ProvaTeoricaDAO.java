@@ -45,7 +45,7 @@ public class ProvaTeoricaDAO {
             
             ResultSet rs = pstm.executeQuery();        
             return rs;
-        } catch (Exception e) {          
+        } catch (SQLException e) {          
             JOptionPane.showMessageDialog(null, "ProvaTeoricaDAO: " + e);
             return null;
         }

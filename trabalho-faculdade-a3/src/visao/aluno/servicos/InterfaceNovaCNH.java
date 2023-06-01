@@ -2,14 +2,14 @@ package visao.aluno.servicos;
 
 import controle.AlunoDAO;
 import controle.ExaminadorDAO;
-import services.AlunoServices;
 import controle.ProvaTeoricaDAO;
 import java.awt.Color;
-import visao.Login;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JOptionPane;
+import modelo.AlunoDTO;
 import modelo.UsuarioDTO;
 
 public class InterfaceNovaCNH extends javax.swing.JFrame {
@@ -20,7 +20,7 @@ public class InterfaceNovaCNH extends javax.swing.JFrame {
      * Creates new form InterfaceNovaCNH
      */
     public InterfaceNovaCNH() {
-        initComponents();   
+        initComponents();
     }
 
     /**
@@ -233,7 +233,7 @@ public class InterfaceNovaCNH extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void btnTeoricoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTeoricoActionPerformed
-        new ProvaTeorica().setVisible(true);
+       new ProvaTeorica().setVisible(true);       
     }//GEN-LAST:event_btnTeoricoActionPerformed
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
@@ -257,17 +257,38 @@ public class InterfaceNovaCNH extends javax.swing.JFrame {
         buscaExame();
         pegarResultadoProvaTeorica();
         pegarResultadosExames();
+        verificaSeJaFezProva();
     }//GEN-LAST:event_formWindowActivated
+    
+    private void verificaSeJaFezProva(){
+        try {
+            // validar se já existe prova com id de usuario
+            ProvaTeoricaDAO provaDao = new ProvaTeoricaDAO();
+            ResultSet rsPDao = provaDao.buscarProva(AlunoDTO.usuarioLogado.getId_usuario());
 
+            if (rsPDao.next()) {
+                btnTeorico.setEnabled(false);
+            } 
+        } catch (SQLException ex) {
+            Logger.getLogger(InterfaceNovaCNH.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    
     private void buscaExame() {
         try {
             ResultSet rsExDao = new ExaminadorDAO().buscarExame(UsuarioDTO.usuarioLogado.getId_usuario());
-            
-            while (rsExDao.next()) {   
+
+            while (rsExDao.next()) {
                 int tipo_exame = rsExDao.getInt("tipo_exame_id");
-                    if(tipo_exame == 1) btnMedico.setEnabled(false);
-                    if(tipo_exame == 2) btnPsicologo.setEnabled(false);
-                    if(tipo_exame == 4) btnPratico.setEnabled(false);              
+                if (tipo_exame == 1) {
+                    btnMedico.setEnabled(false);
+                }
+                if (tipo_exame == 2) {
+                    btnPsicologo.setEnabled(false);
+                }
+                if (tipo_exame == 4) {
+                    btnPratico.setEnabled(false);
+                }
             }
         } catch (SQLException ex) {
             Logger.getLogger(InterfaceNovaCNH.class.getName()).log(Level.SEVERE, null, ex);
