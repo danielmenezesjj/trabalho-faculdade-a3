@@ -5,6 +5,24 @@ public class ExameDTO {
     private int tipo_exame_id;
     private int aluno_id;
     private String resultado;
+    private String aluno_nome;
+    private String aluno_cpf;
+
+    public String getAluno_cpf() {
+        return aluno_cpf;
+    }
+
+    public void setAluno_cpf(String aluno_cpf) {
+        this.aluno_cpf = aluno_cpf;
+    }
+
+    public String getAluno_nome() {
+        return aluno_nome;
+    }
+
+    public void setAluno_nome(String aluno_nome) {
+        this.aluno_nome = aluno_nome;
+    }
 
     public int getId() {
         return id;

@@ -11,7 +11,7 @@ import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
-import modelo.UsuarioDTO;
+import modelo.Usuario;
 import visao.aluno.servicos.InterfaceNovaCNH;
 
 public class InterfaceAluno extends javax.swing.JFrame {
@@ -119,7 +119,7 @@ public class InterfaceAluno extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnEmissaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEmissaoActionPerformed
-        ResultSet rsPgmDAO = new PagamentoDAO().buscar(UsuarioDTO.usuarioLogado.getId_usuario());
+        ResultSet rsPgmDAO = new PagamentoDAO().buscar(Usuario.usuarioLogado.getId_usuario());
         
         try {
             if(rsPgmDAO.next()){ 
@@ -141,7 +141,7 @@ public class InterfaceAluno extends javax.swing.JFrame {
     }//GEN-LAST:event_btnSegundaviaActionPerformed
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
-        txtUsuarioLogado.setText("Olá, " + UsuarioDTO.usuarioLogado.getNome_usuario());
+        txtUsuarioLogado.setText("Olá, " + Usuario.usuarioLogado.getNome_usuario());
         
         String data = String.valueOf(sdf.format(dataAtual));
         txtData.setText(data);

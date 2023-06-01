@@ -164,10 +164,12 @@ public class Login extends javax.swing.JFrame {
     
     public void logar(){
         UsuarioDTO usuarioDto = new UsuarioDTO();
+        
         usuarioDto.setCpf_usuario(txtCpf.getText());
         usuarioDto.setSenha_usuario(txtSenha.getText());
         
         new UsuarioDAO().logar(usuarioDto);
+        this.dispose();
     }
     
     /**

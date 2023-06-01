@@ -3,7 +3,8 @@ package modelo;
 import java.util.Date;
 
 public abstract class Usuario {
-
+    public static Usuario usuarioLogado;
+    
     private int id_usuario;
     private String nome_usuario;
     private Date dt_nascimento_usuario;
@@ -11,6 +12,15 @@ public abstract class Usuario {
     private String cpf_usuario;
     private String senha_usuario;
     private String telefone_usuario;
+    private int perfil_usuario;
+
+    public int getPerfil_usuario() {
+        return perfil_usuario;
+    }
+
+    public void setPerfil_usuario(int perfil_usuario) {
+        this.perfil_usuario = perfil_usuario;
+    }
 
     public int getId_usuario() {
         return id_usuario;

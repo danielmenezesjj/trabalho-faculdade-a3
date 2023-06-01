@@ -1,6 +1,6 @@
 package visao.examinadores;
 
-import modelo.UsuarioDTO;
+import modelo.Usuario;
 
 public class InterfaceExaminador extends javax.swing.JFrame {
 
@@ -24,7 +24,7 @@ public class InterfaceExaminador extends javax.swing.JFrame {
         btnAlunos = new javax.swing.JButton();
         btnResultado = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setResizable(false);
         addWindowListener(new java.awt.event.WindowAdapter() {
             public void windowOpened(java.awt.event.WindowEvent evt) {
@@ -48,7 +48,7 @@ public class InterfaceExaminador extends javax.swing.JFrame {
         btnResultado.setBackground(new java.awt.Color(0, 0, 0));
         btnResultado.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
         btnResultado.setForeground(new java.awt.Color(255, 255, 255));
-        btnResultado.setText("Lançar Resultado de Exame Prático");
+        btnResultado.setText("Lançar Resultado de Exames");
         btnResultado.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnResultadoActionPerformed(evt);
@@ -88,11 +88,11 @@ public class InterfaceExaminador extends javax.swing.JFrame {
     }//GEN-LAST:event_btnAlunosActionPerformed
 
     private void btnResultadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnResultadoActionPerformed
-        // TODO add your handling code here:
+        new LancarResultadoExame().setVisible(true);
     }//GEN-LAST:event_btnResultadoActionPerformed
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
-        txtUsuarioLogado.setText("Olá, " + UsuarioDTO.usuarioLogado.getNome_usuario());
+        txtUsuarioLogado.setText("Olá, " + Usuario.usuarioLogado.getNome_usuario());
 
 
     }//GEN-LAST:event_formWindowOpened

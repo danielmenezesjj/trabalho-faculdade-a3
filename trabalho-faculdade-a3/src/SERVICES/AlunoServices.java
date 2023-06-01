@@ -1,6 +1,6 @@
 package services;
 
-import controle.ExameDAO;
+import controle.ExaminadorDAO;
 import controle.PagamentoDAO;
 import modelo.ExameDTO;
 import modelo.PagamentoDTO;

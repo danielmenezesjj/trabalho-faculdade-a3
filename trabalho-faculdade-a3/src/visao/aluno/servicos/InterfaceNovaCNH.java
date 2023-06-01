@@ -1,7 +1,7 @@
 package visao.aluno.servicos;
 
 import controle.AlunoDAO;
-import controle.ExameDAO;
+import controle.ExaminadorDAO;
 import services.AlunoServices;
 import controle.ProvaTeoricaDAO;
 import java.awt.Color;
@@ -229,13 +229,11 @@ public class InterfaceNovaCNH extends javax.swing.JFrame {
     }//GEN-LAST:event_btnPsicologoActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-        // Fazer exame teórico
+
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void btnTeoricoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTeoricoActionPerformed
         new ProvaTeorica().setVisible(true);
-        
-
     }//GEN-LAST:event_btnTeoricoActionPerformed
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
@@ -263,7 +261,7 @@ public class InterfaceNovaCNH extends javax.swing.JFrame {
 
     private void buscaExame() {
         try {
-            ResultSet rsExDao = new ExameDAO().buscarExame(UsuarioDTO.usuarioLogado.getId_usuario());
+            ResultSet rsExDao = new ExaminadorDAO().buscarExame(UsuarioDTO.usuarioLogado.getId_usuario());
             
             while (rsExDao.next()) {   
                 int tipo_exame = rsExDao.getInt("tipo_exame_id");
@@ -277,7 +275,7 @@ public class InterfaceNovaCNH extends javax.swing.JFrame {
     }
 
     private void pegarResultadosExames() {
-        ResultSet rsExDao = new ExameDAO().buscarExame(UsuarioDTO.usuarioLogado.getId_usuario());
+        ResultSet rsExDao = new ExaminadorDAO().buscarExame(UsuarioDTO.usuarioLogado.getId_usuario());
 
         try {
             if (rsExDao.next()) {

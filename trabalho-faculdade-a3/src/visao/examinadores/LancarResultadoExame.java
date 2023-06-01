@@ -1,12 +1,56 @@
 package visao.examinadores;
 
-public class ResultadoExame extends javax.swing.JFrame {
+import controle.ExaminadorDAO;
+import java.sql.SQLException;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
+import modelo.ExameDTO;
+import modelo.UsuarioDTO;
+
+public class LancarResultadoExame extends javax.swing.JFrame {
 
     /**
      * Creates new form ResultadoExame
      */
-    public ResultadoExame() {
+    public LancarResultadoExame() {
         initComponents();
+        listarExames();
+    }
+    
+    private void listarExamesEmTabela(int idTipoExame){
+        try {
+            
+            DefaultTableModel modelo = (DefaultTableModel) jTExames.getModel();
+            
+            ExaminadorDAO examinadorDAO = new ExaminadorDAO();
+            
+            for(ExameDTO exame : examinadorDAO.listarExamesSemResultado(idTipoExame)){
+                modelo.addRow(new Object[]{
+                    exame.getId(),
+                    exame.getAluno_nome(),
+                    exame.getAluno_cpf(),
+                    exame.getResultado()
+                });
+            }
+            
+            
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null, e);
+        }
+    }
+    
+    private void listarExames(){
+        if(UsuarioDTO.usuarioLogado.getPerfil_usuario() == 2){
+            listarExamesEmTabela(1);
+        }
+        
+        if(UsuarioDTO.usuarioLogado.getPerfil_usuario() == 4){
+            listarExamesEmTabela(2);
+        }
+        
+        if(UsuarioDTO.usuarioLogado.getPerfil_usuario() == 3){
+            listarExamesEmTabela(4);
+        }
     }
 
     /**
@@ -26,11 +70,11 @@ public class ResultadoExame extends javax.swing.JFrame {
         optionMedico1 = new javax.swing.JRadioButton();
         optionPsicologo1 = new javax.swing.JRadioButton();
         jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
-        txtCPF = new javax.swing.JTextField();
         btnLancar = new javax.swing.JButton();
         jRadioButton1 = new javax.swing.JRadioButton();
         jRadioButton2 = new javax.swing.JRadioButton();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jTExames = new javax.swing.JTable();
 
         optionMedico.setText("Médico");
 
@@ -41,63 +85,51 @@ public class ResultadoExame extends javax.swing.JFrame {
         optionPsicologo1.setText("Psicólogo");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setMinimumSize(new java.awt.Dimension(614, 470));
         setResizable(false);
+        getContentPane().setLayout(null);
 
         jLabel1.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
         jLabel1.setText("Lançar resultado de exame");
-
-        jLabel2.setText("CPF");
+        getContentPane().add(jLabel1);
+        jLabel1.setBounds(172, 37, 216, 24);
 
         btnLancar.setBackground(new java.awt.Color(0, 0, 0));
         btnLancar.setForeground(new java.awt.Color(255, 255, 255));
         btnLancar.setText("Lançar");
+        getContentPane().add(btnLancar);
+        btnLancar.setBounds(360, 90, 85, 24);
 
+        buttonGroup1.add(jRadioButton1);
         jRadioButton1.setText("Apto");
+        getContentPane().add(jRadioButton1);
+        jRadioButton1.setBounds(80, 90, 110, 28);
 
+        buttonGroup1.add(jRadioButton2);
         jRadioButton2.setText("Inapto");
+        getContentPane().add(jRadioButton2);
+        jRadioButton2.setBounds(200, 90, 110, 28);
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(97, Short.MAX_VALUE)
-                .addComponent(jLabel1)
-                .addGap(83, 83, 83))
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(113, 113, 113)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jRadioButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jRadioButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(112, 112, 112)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtCPF, javax.swing.GroupLayout.PREFERRED_SIZE, 168, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(155, 155, 155)
-                        .addComponent(btnLancar, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(40, 40, 40)
-                .addComponent(jLabel1)
-                .addGap(30, 30, 30)
-                .addComponent(jLabel2)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(txtCPF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(jRadioButton1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jRadioButton2)
-                .addGap(18, 18, 18)
-                .addComponent(btnLancar)
-                .addContainerGap(43, Short.MAX_VALUE))
-        );
+        jTExames.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "ID", "Aluno", "CPF", "Resutado"
+            }
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        jScrollPane1.setViewportView(jTExames);
+
+        getContentPane().add(jScrollPane1);
+        jScrollPane1.setBounds(20, 130, 570, 290);
 
         pack();
         setLocationRelativeTo(null);
@@ -120,20 +152,21 @@ public class ResultadoExame extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(ResultadoExame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(LancarResultadoExame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(ResultadoExame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(LancarResultadoExame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(ResultadoExame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(LancarResultadoExame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(ResultadoExame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(LancarResultadoExame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new ResultadoExame().setVisible(true);
+                new LancarResultadoExame().setVisible(true);
             }
         });
     }
@@ -144,13 +177,13 @@ public class ResultadoExame extends javax.swing.JFrame {
     private javax.swing.ButtonGroup buttonGroup2;
     private javax.swing.ButtonGroup buttonGroup3;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
     private javax.swing.JRadioButton jRadioButton1;
     private javax.swing.JRadioButton jRadioButton2;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTable jTExames;
     private javax.swing.JRadioButton optionMedico;
     private javax.swing.JRadioButton optionMedico1;
     private javax.swing.JRadioButton optionPsicologo;
     private javax.swing.JRadioButton optionPsicologo1;
-    private javax.swing.JTextField txtCPF;
     // End of variables declaration//GEN-END:variables
 }

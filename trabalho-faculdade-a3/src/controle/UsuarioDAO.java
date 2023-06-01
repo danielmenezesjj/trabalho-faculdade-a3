@@ -5,7 +5,8 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import javax.swing.JOptionPane;
-import modelo.UsuarioDTO;
+import modelo.AlunoDTO;
+import modelo.Usuario;
 import visao.admin.PrincipalAdmin;
 import visao.aluno.InterfaceAluno;
 import visao.examinadores.InterfaceExaminador;
@@ -13,14 +14,14 @@ import visao.examinadores.InterfaceExaminador;
 public class UsuarioDAO {
     Connection conn = (Connection) new ConexaoDAO().connectDB();
     
-       private ResultSet autenticacaoUsuario(UsuarioDTO objUsuarioDto) {
+       private ResultSet autenticacaoUsuario(Usuario usuario) {
         try {
             String sql = "SELECT * FROM usuarios WHERE usuarios.cpf = ? AND usuarios.senha = ?";
 
             PreparedStatement pstm = conn.prepareStatement(sql);
 
-            pstm.setString(1, objUsuarioDto.getCpf_usuario());
-            pstm.setString(2, objUsuarioDto.getSenha_usuario());
+            pstm.setString(1, usuario.getCpf_usuario());
+            pstm.setString(2, usuario.getSenha_usuario());
             ResultSet rs = pstm.executeQuery();
 
             return rs;
@@ -31,7 +32,7 @@ public class UsuarioDAO {
         }
     }
     
-    public void logar(UsuarioDTO usuario) {
+    public void logar(Usuario usuario) {
         try {         
             // Autenticação
             ResultSet rs = autenticacaoUsuario(usuario);
@@ -41,6 +42,7 @@ public class UsuarioDAO {
                 usuario.setNome_usuario(rs.getString("nome_completo"));
                 usuario.setId_usuario(rs.getInt("id"));
                 usuario.setPerfil_usuario(rs.getInt("perfil_id"));
+                
                 usuario.usuarioLogado = usuario;
                 
                 switch (rs.getInt("perfil_id")) {
