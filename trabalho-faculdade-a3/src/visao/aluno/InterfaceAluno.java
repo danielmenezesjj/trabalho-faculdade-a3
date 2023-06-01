@@ -4,8 +4,6 @@ import controle.PagamentoDAO;
 import visao.aluno.servicos.Boleto;
 import controle.ServicoDAO;
 import modelo.ServicoDTO;
-
-import visao.Login;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.text.SimpleDateFormat;
@@ -41,7 +39,7 @@ public class InterfaceAluno extends javax.swing.JFrame {
         btnRenovação = new javax.swing.JButton();
         txtData = new javax.swing.JLabel();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setResizable(false);
         addWindowListener(new java.awt.event.WindowAdapter() {
             public void windowOpened(java.awt.event.WindowEvent evt) {

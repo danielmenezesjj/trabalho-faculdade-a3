@@ -10,6 +10,8 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import javax.swing.text.MaskFormatter;
+import modelo.AlunoDTO;
+import visao.Login;
 import visao.admin.CadastroUsuarios;
 
 public class AlunoCadastro extends javax.swing.JFrame {
@@ -162,8 +164,8 @@ public class AlunoCadastro extends javax.swing.JFrame {
     private void btnCadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCadastrarActionPerformed
         try {
             // TODO add your handling code here:
-            cadastrarAluno();
-            limpar();
+            cadastrarAluno();     
+            new Login().setVisible(true);
         } catch (ParseException ex) {
             Logger.getLogger(CadastroUsuarios.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -180,58 +182,39 @@ public class AlunoCadastro extends javax.swing.JFrame {
     }//GEN-LAST:event_formWindowActivated
 
     private void cadastrarAluno() throws ParseException {
-        Date dataAtual = new Date();
-        
+        SimpleDateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy");
         try {
-            String nome, cpf, dt_nascimento, email, telefone, senha;
 
-            SimpleDateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy");
+            AlunoDTO alunoDto = new AlunoDTO();
 
-            nome = txtNomeCompleto.getText();
-            cpf = txtCpf.getText();
-            dt_nascimento = txtDtNascimento.getText();
-            email = txtEmail.getText();
-            telefone = txtEmail.getText();
-            senha = txtSenha.getText();
+            java.util.Date dt_nascimento_aluno = dateFormat.parse(txtDtNascimento.getText());
 
-            Date dt_nascimento_aluno = dateFormat.parse(dt_nascimento);
-
-            UsuarioDTO objUsuarioDto = new UsuarioDTO();
-            objUsuarioDto.setNome_usuario(nome);
-            objUsuarioDto.setCpf_usuario(cpf);
-            objUsuarioDto.setDt_nascimento_usuario(dt_nascimento_aluno);
-            objUsuarioDto.setEmail_usuario(email);
-            objUsuarioDto.setTelefone_usuario(telefone);
-            objUsuarioDto.setSenha_usuario(senha);
-
-            long diferenca = dataAtual.getTime() - objUsuarioDto.getDt_nascimento_usuario().getTime();
-            long idadeAluno = TimeUnit.DAYS.convert(diferenca, TimeUnit.MILLISECONDS) / 365;
-           
-            if (idadeAluno < 18) {
-                JOptionPane.showMessageDialog(null, "Aluno precisa ser maior de idade.");
-            } else {
-                AlunoDAO alunoDao = new AlunoDAO();
-                alunoDao.cadastrarUsuarioAluno(objUsuarioDto);
-            }
-
+            alunoDto.setNome_usuario(txtNomeCompleto.getText());
+            alunoDto.setDt_nascimento_usuario(dt_nascimento_aluno);
+            alunoDto.setCpf_usuario(txtCpf.getText());
+            alunoDto.setEmail_usuario(txtEmail.getText());
+            alunoDto.setTelefone_usuario(txtTelefone.getText());
+            alunoDto.setSenha_usuario(txtSenha.getText());
+            
+            new AlunoDAO().cadastrarAluno(alunoDto);         
         } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, e);
+            JOptionPane.showMessageDialog(null, e, "Erro", JOptionPane.ERROR_MESSAGE);
         }
-
     }
-    
-    public void limpar(){
+
+    public void limpar() {
         txtNomeCompleto.setText("");
         txtCpf.setText("");
         txtDtNascimento.setText("");
         txtEmail.setText("");
         txtTelefone.setText("");
         txtSenha.setText("");
-        
+
         txtNomeCompleto.requestFocus();
-        
+
     }
- private void formataCpf() {
+
+    private void formataCpf() {
         try {
             MaskFormatter cpfFormatter = new MaskFormatter("###.###.###-##");
             cpfFormatter.install(txtCpf);
@@ -241,7 +224,8 @@ public class AlunoCadastro extends javax.swing.JFrame {
             e.printStackTrace();
         }
     }
- private void formataData() {
+
+    private void formataData() {
         try {
             MaskFormatter dataFormatter = new MaskFormatter("##-##-####");
             dataFormatter.install(txtDtNascimento);
@@ -251,6 +235,7 @@ public class AlunoCadastro extends javax.swing.JFrame {
             e.printStackTrace();
         }
     }
+
     /**
      * @param args the command line arguments
      */

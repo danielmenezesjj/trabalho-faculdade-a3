@@ -10,6 +10,7 @@ import java.util.logging.Logger;
 import javax.swing.JFormattedTextField;
 import javax.swing.JOptionPane;
 import javax.swing.text.MaskFormatter;
+import visao.Login;
 
 public class CadastroUsuarios extends javax.swing.JFrame {
 
@@ -192,9 +193,9 @@ public class CadastroUsuarios extends javax.swing.JFrame {
 
     private void btnCadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCadastrarActionPerformed
         try {
-
             cadastrar();
             limpar();
+            new Login().setVisible(true);
         } catch (ParseException ex) {
             Logger.getLogger(CadastroUsuarios.class.getName()).log(Level.SEVERE, null, ex);
         }

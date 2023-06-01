@@ -1,19 +1,10 @@
 package visao;
 
-import visao.aluno.InterfaceAluno;
-import modelo.Usuario;
-import controle.AdminDAO;
 import controle.UsuarioDAO;
 import modelo.UsuarioDTO;
-import java.sql.ResultSet;
-import java.sql.SQLException;
 import java.text.ParseException;
-import javax.swing.JOptionPane;
 import javax.swing.text.MaskFormatter;
-import visao.admin.PrincipalAdmin;
 import visao.aluno.AlunoCadastro;
-import visao.examinadores.InterfaceExaminador;
-
 public class Login extends javax.swing.JFrame {
     /**
      * Creates new form LoginVIEW
@@ -40,7 +31,7 @@ public class Login extends javax.swing.JFrame {
         txtCpf = new javax.swing.JFormattedTextField();
         bntCriarConta = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setName("frameLogin"); // NOI18N
         setResizable(false);
         addWindowListener(new java.awt.event.WindowAdapter() {

@@ -5,13 +5,15 @@ import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.concurrent.TimeUnit;
 import javax.swing.JOptionPane;
+import modelo.AlunoDTO;
 import modelo.UsuarioDTO;
 
 public class AlunoDAO {
 
     Connection conn = new ConexaoDAO().connectDB();
-    
+
     public boolean buscarUsuario(String cpf) {
         try {
             String sql = "SELECT * FROM usuarios WHERE usuarios.cpf = ?";
@@ -26,41 +28,59 @@ public class AlunoDAO {
         }
     }
 
-    public void cadastrarUsuarioAluno(UsuarioDTO objUsuarioDto) {
+    public void cadastrarAluno(AlunoDTO alunoDto) {
         try {
-
-            boolean rsBuscaUsuario = buscarUsuario(objUsuarioDto.getCpf_usuario());
+            boolean rsBuscaUsuario = buscarUsuario(alunoDto.getCpf_usuario());
 
             if (rsBuscaUsuario) {
                 JOptionPane.showMessageDialog(null, "Usuário já cadastrado!", "Erro", JOptionPane.ERROR_MESSAGE);
                 return;
             }
 
-            String sql = "INSERT INTO usuarios(nome_completo, dt_nascimento, adm, cpf, email, telefone, senha, perfil_id) values (?, ?, ?, ?, ?, ?, ?, ?)";
+            String sql = "INSERT INTO usuarios(nome_completo, dt_nascimento, cpf, email, telefone, senha, perfil_id) values (?, ?, ?, ?, ?, ?, ?)";
             PreparedStatement pstm = conn.prepareStatement(sql);
 
-            pstm.setString(1, objUsuarioDto.getNome_usuario());
-
-            Date sqlDate = new java.sql.Date(objUsuarioDto.getDt_nascimento_usuario().getTime());
-
+            Date sqlDate = new java.sql.Date(alunoDto.getDt_nascimento_usuario().getTime());
+            
+            pstm.setString(1, alunoDto.getNome_usuario());
             pstm.setDate(2, sqlDate);
-            pstm.setBoolean(3, false);
-            pstm.setString(4, objUsuarioDto.getCpf_usuario());
-            pstm.setString(5, objUsuarioDto.getEmail_usuario());
-            pstm.setString(6, objUsuarioDto.getTelefone_usuario());
-            pstm.setString(7, objUsuarioDto.getSenha_usuario());
-            pstm.setInt(8, 1);
+            pstm.setString(3, alunoDto.getCpf_usuario());
+            pstm.setString(4, alunoDto.getEmail_usuario());
+            pstm.setString(5, alunoDto.getTelefone_usuario());
+            pstm.setString(6, alunoDto.getSenha_usuario());
+            pstm.setInt(7, 1);
+
+            java.util.Date dataAtual = new java.util.Date();
+
+            long diferenca = dataAtual.getTime() - alunoDto.getDt_nascimento_usuario().getTime();
+            long idadeAluno = TimeUnit.DAYS.convert(diferenca, TimeUnit.MILLISECONDS) / 365;
+
+            if (idadeAluno < 18) {
+                JOptionPane.showMessageDialog(null, "Aluno precisa ser maior de idade.");
+                return;
+            }
 
             int rowsAffected = pstm.executeUpdate();
 
             if (rowsAffected > 0) {
-                JOptionPane.showMessageDialog(null, "Aluno cadastrado!" + "\nNome: " + objUsuarioDto.getNome_usuario());
+                JOptionPane.showMessageDialog(null, "Aluno cadastrado!" + "\nNome: " + alunoDto.getNome_usuario());
             } else {
                 JOptionPane.showMessageDialog(null, "Falha ao cadastrar usuário!");
             }
 
-        } catch (Exception erro) {
-            JOptionPane.showMessageDialog(null, "UsuarioDAO: " + erro);
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null, "AlunoDAO: " + e, "AlunoDAO", JOptionPane.ERROR_MESSAGE);
+        } finally {
+            // Fechar conexão
+            if (conn != null) {
+                try {
+                    conn.close();
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
+            }
+
         }
     }
+
 }
