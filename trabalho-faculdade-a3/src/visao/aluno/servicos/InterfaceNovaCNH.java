@@ -100,6 +100,7 @@ public class InterfaceNovaCNH extends javax.swing.JFrame {
         btnImprimir.setBackground(new java.awt.Color(0, 0, 0));
         btnImprimir.setForeground(new java.awt.Color(255, 255, 255));
         btnImprimir.setText("Imprimir Carteira");
+        btnImprimir.setEnabled(false);
         btnImprimir.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnImprimirActionPerformed(evt);
@@ -250,7 +251,7 @@ public class InterfaceNovaCNH extends javax.swing.JFrame {
     }//GEN-LAST:event_formWindowOpened
 
     private void btnImprimirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnImprimirActionPerformed
-
+       new Carteira().setVisible(true);
     }//GEN-LAST:event_btnImprimirActionPerformed
 
     private void formWindowActivated(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowActivated
