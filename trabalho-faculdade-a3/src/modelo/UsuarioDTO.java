@@ -2,6 +2,8 @@ package modelo;
 
 public class UsuarioDTO extends Usuario {
 
+    public static Usuario usuarioLogado;
+    
     private int perfil_usuario;
     private boolean admin;
     private String tipo_perfil;

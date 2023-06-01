@@ -1,6 +1,6 @@
 package visao.admin;
 
-import controle.UsuarioDAO;
+import controle.AdminDAO;
 import javax.swing.JOptionPane;
 import modelo.UsuarioDTO;
 import javax.swing.table.DefaultTableModel;
@@ -98,7 +98,7 @@ public class UsuariosLista extends javax.swing.JFrame {
         }
         int idUsuario = (int) jTUsuarios.getValueAt(rowIndex, 0);
 
-        UsuarioDAO usuarioDao = new UsuarioDAO();
+        AdminDAO usuarioDao = new AdminDAO();
         boolean excluido = usuarioDao.excluirUsuario(idUsuario);
         if (excluido) {
             DefaultTableModel modelo = (DefaultTableModel) jTUsuarios.getModel();
@@ -112,7 +112,7 @@ public class UsuariosLista extends javax.swing.JFrame {
     private void listarUsuarios() {
         DefaultTableModel modelo = (DefaultTableModel) jTUsuarios.getModel();
 
-        UsuarioDAO usDao = new UsuarioDAO();
+        AdminDAO usDao = new AdminDAO();
 
         for (UsuarioDTO u : usDao.listarUsuarios()) {
             modelo.addRow(new Object[]{

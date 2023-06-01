@@ -2,6 +2,7 @@ package visao;
 
 import visao.aluno.InterfaceAluno;
 import modelo.Usuario;
+import controle.AdminDAO;
 import controle.UsuarioDAO;
 import modelo.UsuarioDTO;
 import java.sql.ResultSet;
@@ -14,10 +15,6 @@ import visao.aluno.AlunoCadastro;
 import visao.examinadores.InterfaceExaminador;
 
 public class Login extends javax.swing.JFrame {
-
-    public static Usuario usuarioLogado;
-    UsuarioDTO usuario = new UsuarioDTO();
-
     /**
      * Creates new form LoginVIEW
      */
@@ -173,64 +170,15 @@ public class Login extends javax.swing.JFrame {
     private void bntCriarContaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bntCriarContaActionPerformed
         new AlunoCadastro().setVisible(true);
     }//GEN-LAST:event_bntCriarContaActionPerformed
-
-    private void logar() {
-        try {
-            String cpf_usuario, password_usuario;
-
-            cpf_usuario = txtCpf.getText();
-            password_usuario = txtSenha.getText();
-
-            UsuarioDTO objUsuarioDto = new UsuarioDTO();
-
-            objUsuarioDto.setCpf_usuario(cpf_usuario);
-            objUsuarioDto.setSenha_usuario(password_usuario);
-
-            UsuarioDAO objUsuarioDao = new UsuarioDAO();
-
-            ResultSet rs = objUsuarioDao.autenticacaoUsuario(objUsuarioDto);
-
-            if (rs.next()) {
-                // Verifanco tipo de perfil e renderizando telas conrrespondentes
-                
-                usuario.setNome_usuario(rs.getString("nome_completo"));
-                usuario.setId_usuario(rs.getInt("id"));
-                usuario.setPerfil_usuario(rs.getInt("perfil_id"));
-                usuarioLogado = usuario;
-                
-                switch (rs.getInt("perfil_id")) {
-                    case 1:
-                        new InterfaceAluno().setVisible(true);
-                        this.dispose();
-                        break;
-                    case 2:
-                        new InterfaceExaminador().setVisible(true);
-                        this.dispose();
-                        break;
-
-                    case 3:
-                        new InterfaceExaminador().setVisible(true);
-                        this.dispose();
-                        break;
-
-                    case 4:
-                        new InterfaceExaminador().setVisible(true);
-                        this.dispose();
-                        break;
-                    case 5:
-                        new PrincipalAdmin().setVisible(true);
-                        this.dispose();
-                        break;
-                }
-            } else {
-                JOptionPane.showMessageDialog(null, "Usuário ou senha incorreto.");
-            }
-        } catch (SQLException erro) {
-            JOptionPane.showMessageDialog(null, "Login: " + erro);
-
-        }
+    
+    public void logar(){
+        UsuarioDTO usuarioDto = new UsuarioDTO();
+        usuarioDto.setCpf_usuario(txtCpf.getText());
+        usuarioDto.setSenha_usuario(txtSenha.getText());
+        
+        new UsuarioDAO().logar(usuarioDto);
     }
-
+    
     /**
      * @param args the command line arguments
      */

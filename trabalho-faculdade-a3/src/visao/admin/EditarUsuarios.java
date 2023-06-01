@@ -1,6 +1,6 @@
 package visao.admin;
 
-import controle.UsuarioDAO;
+import controle.AdminDAO;
 import modelo.UsuarioDTO;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -247,7 +247,7 @@ public class EditarUsuarios extends javax.swing.JFrame {
             objUsuarioDto.setSenha_usuario(senha);
             objUsuarioDto.setPerfil_usuario(perfil);
 
-            UsuarioDAO objUsuarioDao = new UsuarioDAO();
+            AdminDAO objUsuarioDao = new AdminDAO();
             objUsuarioDao.cadastrarUsuario(objUsuarioDto);
 
         } catch (Exception e) {

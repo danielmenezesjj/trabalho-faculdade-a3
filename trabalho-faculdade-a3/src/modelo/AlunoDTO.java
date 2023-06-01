@@ -1,6 +1,6 @@
 package modelo;
 
-public class UsuarioAlunoDTO extends Usuario {
+public class AlunoDTO extends Usuario {
 
     private String resultado_exMedico;
     private String resultado_exPsicologico;
