@@ -27,6 +27,9 @@ O objetivo do trabalho é oferecer a oportunidade dos alunos da UC de Programaç
 ## Requisitos funcionais e não funcionais
 ![Requisitos ](https://i.imgur.com/9YDVM57.png)
 
+## Diagrama de Classes
+![Classes ](https://i.imgur.com/9JNojO6.png)
+
 
 ## Primeiros passos
     Executar o script que está no repositorio com nome de `modela_banco.sql`
