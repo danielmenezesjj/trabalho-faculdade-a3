@@ -169,7 +169,6 @@ public class Login extends javax.swing.JFrame {
         usuarioDto.setSenha_usuario(txtSenha.getText());
         
         new UsuarioDAO().logar(usuarioDto);
-        this.dispose();
     }
     
     /**

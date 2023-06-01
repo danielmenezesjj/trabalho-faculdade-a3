@@ -233,7 +233,7 @@ public class InterfaceNovaCNH extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void btnTeoricoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTeoricoActionPerformed
-       new ProvaTeorica().setVisible(true);       
+        new ProvaTeorica().setVisible(true);
     }//GEN-LAST:event_btnTeoricoActionPerformed
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
@@ -259,8 +259,8 @@ public class InterfaceNovaCNH extends javax.swing.JFrame {
         pegarResultadosExames();
         verificaSeJaFezProva();
     }//GEN-LAST:event_formWindowActivated
-    
-    private void verificaSeJaFezProva(){
+
+    private void verificaSeJaFezProva() {
         try {
             // validar se já existe prova com id de usuario
             ProvaTeoricaDAO provaDao = new ProvaTeoricaDAO();
@@ -268,12 +268,12 @@ public class InterfaceNovaCNH extends javax.swing.JFrame {
 
             if (rsPDao.next()) {
                 btnTeorico.setEnabled(false);
-            } 
+            }
         } catch (SQLException ex) {
             Logger.getLogger(InterfaceNovaCNH.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-    
+
     private void buscaExame() {
         try {
             ResultSet rsExDao = new ExaminadorDAO().buscarExame(UsuarioDTO.usuarioLogado.getId_usuario());
@@ -296,15 +296,20 @@ public class InterfaceNovaCNH extends javax.swing.JFrame {
     }
 
     private void pegarResultadosExames() {
-        ResultSet rsExDao = new ExaminadorDAO().buscarExame(UsuarioDTO.usuarioLogado.getId_usuario());
+        ResultSet rsAlunoDao = alunoDao.consultarExame();
 
         try {
-            if (rsExDao.next()) {
-                if (rsExDao.getString("resultado") != null) {
-                    txtResultadoMedico.setText(rsExDao.getString("resultado"));
-                    txtResultadoPsicologico.setText(rsExDao.getString("resultado"));
-                    txtResultadoPratico.setText(rsExDao.getString("resultado"));
+            while (rsAlunoDao.next()) {
+                if (rsAlunoDao.getInt("tipo_exame_id") == 1) {
+                    txtResultadoMedico.setText("Resultado: " + rsAlunoDao.getString("resultado"));
                 }
+                if (rsAlunoDao.getInt("tipo_exame_id") == 2) {
+                    txtResultadoPsicologico.setText("Resultado: " + rsAlunoDao.getString("resultado"));
+                }
+                if (rsAlunoDao.getInt("tipo_exame_id") == 4) {
+                    txtResultadoPratico.setText("Resultado: " + rsAlunoDao.getString("resultado"));
+                }
+
             }
         } catch (SQLException ex) {
             Logger.getLogger(InterfaceNovaCNH.class.getName()).log(Level.SEVERE, null, ex);
