@@ -1,16 +1,17 @@
 package visao.aluno.servicos;
 
 import controle.AlunoDAO;
+import controle.CarteiraDAO;
 import controle.ExaminadorDAO;
 import controle.ProvaTeoricaDAO;
 import java.awt.Color;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.time.LocalDate;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 import modelo.AlunoDTO;
 import modelo.CarteiraDTO;
 import modelo.UsuarioDTO;
@@ -22,6 +23,8 @@ public class InterfaceNovaCNH extends javax.swing.JFrame {
     boolean examePratAprovado = false;
     boolean provaTeoriAprovado = false;
     AlunoDAO alunoDao = new AlunoDAO();
+    
+    int alunoLogadoId = UsuarioDTO.usuarioLogado.getId_usuario();
 
     /**
      * Creates new form InterfaceNovaCNH
@@ -30,6 +33,7 @@ public class InterfaceNovaCNH extends javax.swing.JFrame {
         initComponents();
         verificaResultados();
         ativarBotao();
+        
     }
 
     /**
@@ -259,12 +263,12 @@ public class InterfaceNovaCNH extends javax.swing.JFrame {
     }//GEN-LAST:event_formWindowOpened
 
     private void btnImprimirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnImprimirActionPerformed
-        ativarBotao();
+        cadastrarCarteira();
         new Carteira().setVisible(true);
     }//GEN-LAST:event_btnImprimirActionPerformed
 
     private void formWindowActivated(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowActivated
-        buscaExame();
+        verificaSeJaFezExames();
         pegarResultadoProvaTeorica();
         pegarResultadosExames();
         verificaSeJaFezProva();
@@ -274,7 +278,7 @@ public class InterfaceNovaCNH extends javax.swing.JFrame {
         try {
             // validar se já existe prova com id de usuario
             ProvaTeoricaDAO provaDao = new ProvaTeoricaDAO();
-            ResultSet rsPDao = provaDao.buscarProva(AlunoDTO.usuarioLogado.getId_usuario());
+            ResultSet rsPDao = provaDao.buscarProva(alunoLogadoId);
 
             if (rsPDao.next()) {
                 btnTeorico.setEnabled(false);
@@ -284,9 +288,9 @@ public class InterfaceNovaCNH extends javax.swing.JFrame {
         }
     }
 
-    private void buscaExame() {
+    private void verificaSeJaFezExames() {
         try {
-            ResultSet rsExDao = new ExaminadorDAO().buscarExame(UsuarioDTO.usuarioLogado.getId_usuario());
+            ResultSet rsExDao = new ExaminadorDAO().buscarExame(alunoLogadoId);
 
             while (rsExDao.next()) {
                 int tipo_exame = rsExDao.getInt("tipo_exame_id");
@@ -332,7 +336,7 @@ public class InterfaceNovaCNH extends javax.swing.JFrame {
 
         ProvaTeoricaDAO pDao = new ProvaTeoricaDAO();
 
-        ResultSet rsPDAO = pDao.buscarProva(UsuarioDTO.usuarioLogado.getId_usuario());
+        ResultSet rsPDAO = pDao.buscarProva(alunoLogadoId);
 
         try {
             if (rsPDAO.next()) {
@@ -357,14 +361,7 @@ public class InterfaceNovaCNH extends javax.swing.JFrame {
     }
 
     // Cadastrar carteira 
-    private boolean verificaResultados() {
-
-        ExaminadorDAO examinadorDao = new ExaminadorDAO();
-        int idAluno = AlunoDTO.usuarioLogado.getId_usuario();
-
-        ResultSet rsProvaDao = new ProvaTeoricaDAO().buscarProva(idAluno);
-        ResultSet rsExDao = examinadorDao.buscarExame(idAluno);
-
+    private void cadastrarCarteira() {
         Date dataAtual = new Date();
 
         Calendar calendar = Calendar.getInstance();
@@ -373,6 +370,29 @@ public class InterfaceNovaCNH extends javax.swing.JFrame {
         calendar.add(Calendar.DAY_OF_MONTH, 4);
 
         Date dataVencimento = calendar.getTime();
+        
+        if(verificaResultados()){
+            CarteiraDTO carteiraDto = new CarteiraDTO();
+            
+            carteiraDto.setAluno_nome(AlunoDTO.usuarioLogado.getNome_usuario());
+            carteiraDto.setDt_emissao(dataAtual);
+            carteiraDto.setDt_vencimento(dataVencimento);
+            carteiraDto.setAluno_id(alunoLogadoId);
+            carteiraDto.setAluno_cpf(AlunoDTO.usuarioLogado.getCpf_usuario());
+            
+            new CarteiraDAO().cadastrarCarteira(carteiraDto);
+            
+            JOptionPane.showMessageDialog(null, "Carteira já disponível!");
+        }
+    }
+
+    private boolean verificaResultados() {
+
+        ExaminadorDAO examinadorDao = new ExaminadorDAO();
+        int idAluno = AlunoDTO.usuarioLogado.getId_usuario();
+
+        ResultSet rsProvaDao = new ProvaTeoricaDAO().buscarProva(idAluno);
+        ResultSet rsExDao = examinadorDao.buscarExame(idAluno);
 
         try {
             while (rsExDao.next()) {

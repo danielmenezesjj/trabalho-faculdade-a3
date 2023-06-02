@@ -13,7 +13,7 @@ public class CarteiraDAO {
 
     public void cadastrarCarteira(CarteiraDTO carteira) {
         try {
-            String sql = "INSER INTO carteira (dt_emissao, dt_vencimento, aluno_id) values (?,?,?)";
+            String sql = "INSERT INTO carteira (dt_emissao, dt_vencimento, aluno_id) values (?,?,?)";
 
             PreparedStatement pstm = conn.prepareStatement(sql);
             Date sqlDateDt_emissao = new java.sql.Date(carteira.getDt_emissao().getTime());
@@ -26,7 +26,7 @@ public class CarteiraDAO {
             int rowsAffect = pstm.executeUpdate();
 
             if (rowsAffect > 0) {
-                JOptionPane.showMessageDialog(null, "Carteira cadastrada!");
+                JOptionPane.showMessageDialog(null, "Carteira já disponível!");
             }
         } catch (SQLException e) {
             JOptionPane.showMessageDialog(null, "CarteiraDAO: " + e, "Erro", JOptionPane.ERROR_MESSAGE);
