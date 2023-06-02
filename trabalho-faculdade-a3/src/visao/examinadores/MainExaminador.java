@@ -9,6 +9,7 @@ public class MainExaminador extends javax.swing.JFrame {
      */
     public MainExaminador() {
         initComponents();
+        txtUsuarioLogado.setText("Olá, " + Usuario.usuarioLogado.getNome_usuario());
     }
 
     /**
@@ -48,7 +49,7 @@ public class MainExaminador extends javax.swing.JFrame {
         btnLancarResultado.setBackground(new java.awt.Color(0, 0, 0));
         btnLancarResultado.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
         btnLancarResultado.setForeground(new java.awt.Color(255, 255, 255));
-        btnLancarResultado.setText("Lançar Resultado de Exame Prático");
+        btnLancarResultado.setText("Lançar Resultado de Exame");
         btnLancarResultado.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnLancarResultadoActionPerformed(evt);
@@ -92,9 +93,7 @@ public class MainExaminador extends javax.swing.JFrame {
     }//GEN-LAST:event_btnLancarResultadoActionPerformed
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
-        txtUsuarioLogado.setText("Olá, " + Usuario.usuarioLogado.getNome_usuario());
-
-
+        
     }//GEN-LAST:event_formWindowOpened
 
     /**
