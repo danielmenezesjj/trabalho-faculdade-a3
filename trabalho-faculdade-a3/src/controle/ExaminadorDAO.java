@@ -14,7 +14,7 @@ public class ExaminadorDAO {
 
     public ResultSet buscarExame(int idAluno) {
         try {
-            String sql = "SELECT * FROM exames WHERE exames.aluno_id = ?";
+            String sql = "SELECT * FROM exames WHERE aluno_id = ?";
             PreparedStatement pstm = conn.prepareStatement(sql);
 
             pstm.setInt(1, idAluno);

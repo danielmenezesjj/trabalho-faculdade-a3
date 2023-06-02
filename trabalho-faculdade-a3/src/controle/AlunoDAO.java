@@ -42,7 +42,7 @@ public class AlunoDAO {
             PreparedStatement pstm = conn.prepareStatement(sql);
 
             Date sqlDate = new java.sql.Date(alunoDto.getDt_nascimento_usuario().getTime());
-            
+
             pstm.setString(1, alunoDto.getNome_usuario());
             pstm.setDate(2, sqlDate);
             pstm.setString(3, alunoDto.getCpf_usuario());
@@ -82,23 +82,39 @@ public class AlunoDAO {
             }
         }
     }
-    
+
     public void fazerExame(int tipo_exame) {
         try {
             String sql = "INSERT INTO exames (tipo_exame_id, aluno_id, resultado) VALUES (?,?,?)";
             PreparedStatement pstm = conn.prepareStatement(sql);
-            
+
             pstm.setInt(1, tipo_exame);
             pstm.setInt(2, UsuarioDTO.usuarioLogado.getId_usuario());
             pstm.setString(3, null);
-            
+
             int arrowsAfected = pstm.executeUpdate();
-            
-            if(arrowsAfected > 0)
+
+            if (arrowsAfected > 0) {
                 JOptionPane.showMessageDialog(null, "Exame lançado!", "Exame", JOptionPane.PLAIN_MESSAGE);
-            
+            }
+
         } catch (SQLException e) {
             JOptionPane.showMessageDialog(null, "ExameDAO: " + e, "Erro", JOptionPane.ERROR_MESSAGE);
+        }
+    }
+
+    public ResultSet consultarExame() {
+        try {
+            String sql = "SELECT * FROM exames WHERE aluno_id = ? AND resultado IS NOT NULL";
+            PreparedStatement pstm = conn.prepareStatement(sql);
+
+            pstm.setInt(1, AlunoDTO.usuarioLogado.getId_usuario());
+
+            ResultSet rs = pstm.executeQuery();
+            return rs;
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null, "ExameDAO: " + e, "Erro", JOptionPane.ERROR_MESSAGE);
+            return null;
         }
     }
 

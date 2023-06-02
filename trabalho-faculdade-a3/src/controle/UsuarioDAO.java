@@ -5,7 +5,6 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import javax.swing.JOptionPane;
-import modelo.AlunoDTO;
 import modelo.Usuario;
 import visao.admin.PrincipalAdmin;
 import visao.aluno.InterfaceAluno;

@@ -1,10 +1,7 @@
 package services;
 
-import controle.ExaminadorDAO;
 import controle.PagamentoDAO;
-import modelo.ExameDTO;
 import modelo.PagamentoDTO;
-import modelo.UsuarioDTO;
 import visao.aluno.servicos.ProvaTeorica;
 
 public class AlunoServices {
@@ -19,6 +16,5 @@ public class AlunoServices {
         pgmtDto.setUsuario_id(idAluno);    
         
         new PagamentoDAO().cadastrar(pgmtDto); 
-    }
-    
+    }    
 }

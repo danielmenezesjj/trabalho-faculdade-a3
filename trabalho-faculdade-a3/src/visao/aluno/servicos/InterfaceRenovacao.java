@@ -1,7 +1,10 @@
 package visao.aluno.servicos;
 
+import controle.AlunoDAO;
+
 public class InterfaceRenovacao extends javax.swing.JFrame {
 
+    AlunoDAO alunoDao = new AlunoDAO();
     /**
      * Creates new form InterfaceRenovação
      */
@@ -37,6 +40,11 @@ public class InterfaceRenovacao extends javax.swing.JFrame {
 
         btnRealizarExameMedico.setBackground(new java.awt.Color(51, 102, 255));
         btnRealizarExameMedico.setText("Realizar Exame Médico");
+        btnRealizarExameMedico.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnRealizarExameMedicoActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -68,6 +76,10 @@ public class InterfaceRenovacao extends javax.swing.JFrame {
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btnRealizarExameMedicoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRealizarExameMedicoActionPerformed
+        alunoDao.fazerExame(1);
+    }//GEN-LAST:event_btnRealizarExameMedicoActionPerformed
 
     /**
      * @param args the command line arguments

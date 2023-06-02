@@ -24,7 +24,7 @@ public class InterfaceExaminador extends javax.swing.JFrame {
         btnResultadosLancados = new javax.swing.JButton();
         btnLancarResultado = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setResizable(false);
         addWindowListener(new java.awt.event.WindowAdapter() {
             public void windowOpened(java.awt.event.WindowEvent evt) {
