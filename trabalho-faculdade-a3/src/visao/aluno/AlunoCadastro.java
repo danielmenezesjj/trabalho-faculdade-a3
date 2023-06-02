@@ -1,11 +1,8 @@
 package visao.aluno;
 
 import controle.AlunoDAO;
-import modelo.UsuarioDTO;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.Date;
-import java.util.concurrent.TimeUnit;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
@@ -164,7 +161,7 @@ public class AlunoCadastro extends javax.swing.JFrame {
     private void btnCadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCadastrarActionPerformed
         try {
             // TODO add your handling code here:
-            cadastrarAluno();     
+            cadastrarAluno();
             new Login().setVisible(true);
         } catch (ParseException ex) {
             Logger.getLogger(CadastroUsuarios.class.getName()).log(Level.SEVERE, null, ex);
@@ -195,8 +192,8 @@ public class AlunoCadastro extends javax.swing.JFrame {
             alunoDto.setEmail_usuario(txtEmail.getText());
             alunoDto.setTelefone_usuario(txtTelefone.getText());
             alunoDto.setSenha_usuario(txtSenha.getText());
-            
-            new AlunoDAO().cadastrarAluno(alunoDto);         
+
+            new AlunoDAO().cadastrarAluno(alunoDto);
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, e, "Erro", JOptionPane.ERROR_MESSAGE);
         }
