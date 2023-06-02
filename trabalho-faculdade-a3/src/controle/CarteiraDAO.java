@@ -27,7 +27,7 @@ public class CarteiraDAO {
             int rowsAffect = pstm.executeUpdate();
 
             if (rowsAffect > 0) {
-                JOptionPane.showMessageDialog(null, "Carteira já disponível!");
+                JOptionPane.showMessageDialog(null, "Carteira disponível para imprimir!");
             }
         } catch (SQLException e) {
             JOptionPane.showMessageDialog(null, "CarteiraDAO: " + e, "Erro", JOptionPane.ERROR_MESSAGE);
@@ -36,7 +36,7 @@ public class CarteiraDAO {
 
     public ResultSet buscaCarteira(int alunoId) {
         try {
-            String sql = "SELECT * FROM carteira WHERE aluno_id = ?";
+            String sql = "SELECT * FROM carteira JOIN usuarios ON aluno_id = usuarios.id WHERE aluno_id = ?";
             PreparedStatement pstm = conn.prepareStatement(sql);
 
             pstm.setInt(1, alunoId);

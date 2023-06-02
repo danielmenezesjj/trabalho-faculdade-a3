@@ -57,7 +57,7 @@ public class InterfaceNovaCNH extends javax.swing.JFrame {
         txtResultadoPratico = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
         jLabel10 = new javax.swing.JLabel();
-        btnImprimir = new javax.swing.JButton();
+        btnSolicitarCarteira = new javax.swing.JButton();
         btnMedico = new javax.swing.JButton();
         btnPsicologo = new javax.swing.JButton();
         btnTeorico = new javax.swing.JButton();
@@ -111,13 +111,13 @@ public class InterfaceNovaCNH extends javax.swing.JFrame {
 
         jLabel10.setText("Resultado:");
 
-        btnImprimir.setBackground(new java.awt.Color(0, 0, 0));
-        btnImprimir.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        btnImprimir.setForeground(new java.awt.Color(255, 255, 255));
-        btnImprimir.setText("Imprimir Carteira");
-        btnImprimir.addActionListener(new java.awt.event.ActionListener() {
+        btnSolicitarCarteira.setBackground(new java.awt.Color(0, 0, 0));
+        btnSolicitarCarteira.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        btnSolicitarCarteira.setForeground(new java.awt.Color(255, 255, 255));
+        btnSolicitarCarteira.setText("Solicitar Carteira");
+        btnSolicitarCarteira.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnImprimirActionPerformed(evt);
+                btnSolicitarCarteiraActionPerformed(evt);
             }
         });
 
@@ -160,7 +160,7 @@ public class InterfaceNovaCNH extends javax.swing.JFrame {
         btnVisualizar.setBackground(new java.awt.Color(0, 0, 0));
         btnVisualizar.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         btnVisualizar.setForeground(new java.awt.Color(255, 255, 255));
-        btnVisualizar.setText("Visualizar Carteira");
+        btnVisualizar.setText("Imprimir Carteira");
         btnVisualizar.setEnabled(false);
         btnVisualizar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -177,39 +177,38 @@ public class InterfaceNovaCNH extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addGap(68, 68, 68)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel7)
                             .addGroup(layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel7)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                .addComponent(jLabel3)
-                                                .addComponent(jLabel5, javax.swing.GroupLayout.Alignment.TRAILING))
-                                            .addComponent(jLabel9))
-                                        .addGap(18, 18, 18)
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(btnTeorico)
-                                            .addComponent(btnPsicologo)
-                                            .addComponent(btnPratico)
-                                            .addComponent(btnMedico))))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(txtResultadoPsicologico)
-                                    .addComponent(txtResultadoMedico)
-                                    .addComponent(jLabel10)
-                                    .addComponent(txtResultadoPratico)))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(btnImprimir, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(36, 36, 36)
-                                .addComponent(btnVisualizar, javax.swing.GroupLayout.PREFERRED_SIZE, 164, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(0, 0, Short.MAX_VALUE))))
+                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(jLabel3)
+                                        .addComponent(jLabel5, javax.swing.GroupLayout.Alignment.TRAILING))
+                                    .addComponent(jLabel9))
+                                .addGap(18, 18, 18)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(btnTeorico)
+                                    .addComponent(btnPsicologo)
+                                    .addComponent(btnPratico)
+                                    .addComponent(btnMedico))))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(txtResultadoPsicologico)
+                            .addComponent(txtResultadoMedico)
+                            .addComponent(jLabel10)
+                            .addComponent(txtResultadoPratico))
+                        .addGap(20, 20, 20))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(209, 209, 209)
                         .addComponent(jLabel2))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(165, 165, 165)
-                        .addComponent(txtUsuarioLogado)))
-                .addGap(77, 77, 77))
+                        .addComponent(txtUsuarioLogado))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(41, 41, 41)
+                        .addComponent(btnSolicitarCarteira, javax.swing.GroupLayout.PREFERRED_SIZE, 181, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(36, 36, 36)
+                        .addComponent(btnVisualizar, javax.swing.GroupLayout.PREFERRED_SIZE, 184, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(57, 57, 57))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -241,7 +240,7 @@ public class InterfaceNovaCNH extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 47, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(btnVisualizar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(btnImprimir, javax.swing.GroupLayout.DEFAULT_SIZE, 42, Short.MAX_VALUE))
+                    .addComponent(btnSolicitarCarteira, javax.swing.GroupLayout.DEFAULT_SIZE, 42, Short.MAX_VALUE))
                 .addGap(38, 38, 38))
         );
 
@@ -280,10 +279,9 @@ public class InterfaceNovaCNH extends javax.swing.JFrame {
         txtUsuarioLogado.setText("Olá, " + UsuarioDTO.usuarioLogado.getNome_usuario());
     }//GEN-LAST:event_formWindowOpened
 
-    private void btnImprimirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnImprimirActionPerformed
+    private void btnSolicitarCarteiraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSolicitarCarteiraActionPerformed
         cadastrarCarteira();
-        new Carteira().setVisible(true);
-    }//GEN-LAST:event_btnImprimirActionPerformed
+    }//GEN-LAST:event_btnSolicitarCarteiraActionPerformed
 
     private void formWindowActivated(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowActivated
         verficaSeJatemCarteira();
@@ -405,7 +403,7 @@ public class InterfaceNovaCNH extends javax.swing.JFrame {
             
             new CarteiraDAO().cadastrarCarteira(carteiraDto);
             
-            JOptionPane.showMessageDialog(null, "Carteira já disponível!");
+            JOptionPane.showMessageDialog(null, "Solicitação feita!");
         }
     }
 
@@ -457,9 +455,9 @@ public class InterfaceNovaCNH extends javax.swing.JFrame {
 
     private void ativarBotao() {
         if (verificaResultados()) {
-            btnImprimir.setEnabled(true);
+            btnSolicitarCarteira.setEnabled(true);
         } else {
-            btnImprimir.setEnabled(false);
+            btnSolicitarCarteira.setEnabled(false);
         }
     }
     
@@ -468,7 +466,7 @@ public class InterfaceNovaCNH extends javax.swing.JFrame {
             ResultSet rsCarteira = new CarteiraDAO().buscaCarteira(alunoLogadoId);
             
             if(rsCarteira.next()){
-                btnImprimir.setEnabled(false);
+                btnSolicitarCarteira.setEnabled(false);
                 btnVisualizar.setEnabled(true);
             }
             
@@ -512,10 +510,10 @@ public class InterfaceNovaCNH extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnImprimir;
     private javax.swing.JButton btnMedico;
     private javax.swing.JButton btnPratico;
     private javax.swing.JButton btnPsicologo;
+    private javax.swing.JButton btnSolicitarCarteira;
     private javax.swing.JButton btnTeorico;
     private javax.swing.JButton btnVisualizar;
     private javax.swing.JButton jButton3;
