@@ -62,6 +62,7 @@ public class InterfaceNovaCNH extends javax.swing.JFrame {
         btnPsicologo = new javax.swing.JButton();
         btnTeorico = new javax.swing.JButton();
         btnPratico = new javax.swing.JButton();
+        btnVisualizar = new javax.swing.JButton();
 
         jButton3.setText("Realizar exame");
         jButton3.addActionListener(new java.awt.event.ActionListener() {
@@ -111,6 +112,7 @@ public class InterfaceNovaCNH extends javax.swing.JFrame {
         jLabel10.setText("Resultado:");
 
         btnImprimir.setBackground(new java.awt.Color(0, 0, 0));
+        btnImprimir.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         btnImprimir.setForeground(new java.awt.Color(255, 255, 255));
         btnImprimir.setText("Imprimir Carteira");
         btnImprimir.addActionListener(new java.awt.event.ActionListener() {
@@ -155,6 +157,17 @@ public class InterfaceNovaCNH extends javax.swing.JFrame {
             }
         });
 
+        btnVisualizar.setBackground(new java.awt.Color(0, 0, 0));
+        btnVisualizar.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        btnVisualizar.setForeground(new java.awt.Color(255, 255, 255));
+        btnVisualizar.setText("Visualizar Carteira");
+        btnVisualizar.setEnabled(false);
+        btnVisualizar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnVisualizarActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -164,36 +177,39 @@ public class InterfaceNovaCNH extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addGap(68, 68, 68)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel7)
                             .addGroup(layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(jLabel3)
-                                        .addComponent(jLabel5, javax.swing.GroupLayout.Alignment.TRAILING))
-                                    .addComponent(jLabel9))
-                                .addGap(18, 18, 18)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(btnTeorico)
-                                    .addComponent(btnPsicologo)
-                                    .addComponent(btnPratico)
-                                    .addComponent(btnMedico))))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 31, Short.MAX_VALUE)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(txtResultadoPsicologico)
-                            .addComponent(txtResultadoMedico)
-                            .addComponent(jLabel10)
-                            .addComponent(txtResultadoPratico)))
+                                    .addComponent(jLabel7)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                .addComponent(jLabel3)
+                                                .addComponent(jLabel5, javax.swing.GroupLayout.Alignment.TRAILING))
+                                            .addComponent(jLabel9))
+                                        .addGap(18, 18, 18)
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(btnTeorico)
+                                            .addComponent(btnPsicologo)
+                                            .addComponent(btnPratico)
+                                            .addComponent(btnMedico))))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(txtResultadoPsicologico)
+                                    .addComponent(txtResultadoMedico)
+                                    .addComponent(jLabel10)
+                                    .addComponent(txtResultadoPratico)))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(btnImprimir, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(36, 36, 36)
+                                .addComponent(btnVisualizar, javax.swing.GroupLayout.PREFERRED_SIZE, 164, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(0, 0, Short.MAX_VALUE))))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(209, 209, 209)
                         .addComponent(jLabel2))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(165, 165, 165)
                         .addComponent(txtUsuarioLogado)))
-                .addGap(120, 120, Short.MAX_VALUE))
-            .addGroup(layout.createSequentialGroup()
-                .addGap(171, 171, 171)
-                .addComponent(btnImprimir, javax.swing.GroupLayout.PREFERRED_SIZE, 143, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(77, 77, 77))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -222,9 +238,11 @@ public class InterfaceNovaCNH extends javax.swing.JFrame {
                     .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txtResultadoPratico, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnPratico))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 44, Short.MAX_VALUE)
-                .addComponent(btnImprimir, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(41, 41, 41))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 47, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(btnVisualizar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnImprimir, javax.swing.GroupLayout.DEFAULT_SIZE, 42, Short.MAX_VALUE))
+                .addGap(38, 38, 38))
         );
 
         pack();
@@ -268,11 +286,16 @@ public class InterfaceNovaCNH extends javax.swing.JFrame {
     }//GEN-LAST:event_btnImprimirActionPerformed
 
     private void formWindowActivated(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowActivated
+        verficaSeJatemCarteira();
         verificaSeJaFezExames();
         pegarResultadoProvaTeorica();
         pegarResultadosExames();
         verificaSeJaFezProva();
     }//GEN-LAST:event_formWindowActivated
+
+    private void btnVisualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVisualizarActionPerformed
+        new Carteira().setVisible(true);
+    }//GEN-LAST:event_btnVisualizarActionPerformed
 
     private void verificaSeJaFezProva() {
         try {
@@ -439,6 +462,19 @@ public class InterfaceNovaCNH extends javax.swing.JFrame {
             btnImprimir.setEnabled(false);
         }
     }
+    
+    private void verficaSeJatemCarteira(){
+        try {
+            ResultSet rsCarteira = new CarteiraDAO().buscaCarteira(alunoLogadoId);
+            
+            if(rsCarteira.next()){
+                btnImprimir.setEnabled(false);
+                btnVisualizar.setEnabled(true);
+            }
+            
+        } catch (Exception e) {
+        }
+    }
 
     /**
      * @param args the command line arguments
@@ -481,6 +517,7 @@ public class InterfaceNovaCNH extends javax.swing.JFrame {
     private javax.swing.JButton btnPratico;
     private javax.swing.JButton btnPsicologo;
     private javax.swing.JButton btnTeorico;
+    private javax.swing.JButton btnVisualizar;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton5;
     private javax.swing.JLabel jLabel10;
