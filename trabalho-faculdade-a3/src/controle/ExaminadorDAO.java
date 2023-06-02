@@ -25,7 +25,7 @@ public class ExaminadorDAO {
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, "ExameDAO: " + e, "Erro", JOptionPane.ERROR_MESSAGE);
             return null;
-        }
+        } 
     }
 
     public ArrayList<ExameDTO> listarExamesSemResultado(int tipoExame) throws SQLException {
@@ -33,7 +33,7 @@ public class ExaminadorDAO {
             String sql = "SELECT * FROM exames JOIN usuarios ON aluno_id = usuarios.id WHERE tipo_exame_id = ? AND resultado IS NULL";
             PreparedStatement pstm = conn.prepareStatement(sql);
             pstm.setInt(1, tipoExame);
-            
+
             ArrayList exames = new ArrayList<ExameDTO>();
 
             ResultSet rs = pstm.executeQuery();
@@ -52,19 +52,15 @@ public class ExaminadorDAO {
         } catch (SQLException e) {
             JOptionPane.showMessageDialog(null, "ExaminadorDAO: " + e);
             return null;
-        } finally {
-            if (conn != null) {
-                conn.close();
-            }
         }
     }
-    
-     public ArrayList<ExameDTO> listarExamesComResultado(int tipoExame) throws SQLException {
+
+    public ArrayList<ExameDTO> listarExamesComResultado(int tipoExame) throws SQLException {
         try {
             String sql = "SELECT * FROM exames JOIN usuarios ON aluno_id = usuarios.id WHERE tipo_exame_id = ? AND resultado IS NOT NULL";
             PreparedStatement pstm = conn.prepareStatement(sql);
             pstm.setInt(1, tipoExame);
-            
+
             ArrayList exames = new ArrayList<ExameDTO>();
 
             ResultSet rs = pstm.executeQuery();
@@ -84,14 +80,8 @@ public class ExaminadorDAO {
         } catch (SQLException e) {
             JOptionPane.showMessageDialog(null, "ExaminadorDAO: " + e);
             return null;
-        } finally {
-            if (conn != null) {
-                conn.close();
-            }
-        }
+        } 
     }
-    
-    
 
     public void editarResultado(ExameDTO exameDto) {
         try {

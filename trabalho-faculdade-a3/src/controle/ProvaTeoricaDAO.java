@@ -33,22 +33,23 @@ public class ProvaTeoricaDAO {
             }
         } catch (SQLException e) {
             JOptionPane.showMessageDialog(null, "ProvaTeoricaDAO: " + e);
-        }
+        } 
     }
-    
-    public ResultSet buscarProva(int id){
+
+    public ResultSet buscarProva(int id) {
         try {
             String sql = "SELECT * FROM provas_teorica WHERE aluno_id = ?";
             PreparedStatement pstm = conn.prepareStatement(sql);
-            
+
             pstm.setInt(1, id);
-            
-            ResultSet rs = pstm.executeQuery();        
+
+            ResultSet rs = pstm.executeQuery();
             return rs;
-        } catch (SQLException e) {          
+        } catch (SQLException e) {
             JOptionPane.showMessageDialog(null, "ProvaTeoricaDAO: " + e);
             return null;
         }
+
     }
-    
+
 }

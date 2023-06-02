@@ -28,6 +28,7 @@ public class InterfaceNovaCNH extends javax.swing.JFrame {
      */
     public InterfaceNovaCNH() {
         initComponents();
+        verificaResultados();
         ativarBotao();
     }
 
@@ -320,6 +321,8 @@ public class InterfaceNovaCNH extends javax.swing.JFrame {
                 }
 
             }
+
+            rsAlunoDao.close();
         } catch (SQLException ex) {
             Logger.getLogger(InterfaceNovaCNH.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -354,7 +357,7 @@ public class InterfaceNovaCNH extends javax.swing.JFrame {
     }
 
     // Cadastrar carteira 
-    private void ativarBotao() {
+    private boolean verificaResultados() {
 
         ExaminadorDAO examinadorDao = new ExaminadorDAO();
         int idAluno = AlunoDTO.usuarioLogado.getId_usuario();
@@ -373,46 +376,49 @@ public class InterfaceNovaCNH extends javax.swing.JFrame {
 
         try {
             while (rsExDao.next()) {
-                if (rsExDao.getString("resultado").equals("Aprovado") && rsExDao.getInt("tipo_exame_id") == 1) {
+                String resultado = rsExDao.getString("resultado");
+                int tipoExameId = rsExDao.getInt("tipo_exame_id");
+
+                if ("Aprovado".equals(resultado) && tipoExameId == 1) {
                     exameMedAprovado = true;
                 }
 
-                if (rsExDao.getString("resultado").equals("Aprovado") && rsExDao.getInt("tipo_exame_id") == 2) {
+                if ("Aprovado".equals(resultado) && tipoExameId == 2) {
                     examePsiAprovado = true;
                 }
 
-                if (rsExDao.getString("resultado").equals("Aprovado") && rsExDao.getInt("tipo_exame_id") == 4) { 
+                if ("Aprovado".equals(resultado) && tipoExameId == 4) {
                     examePratAprovado = true;
                 }
             }
 
             while (rsProvaDao.next()) {
-                if (rsProvaDao.getString("resultado").equals("Aprovado")) {
+                String resultado = rsProvaDao.getString("resultado");
+
+                if ("Aprovado".equals(resultado)) {
                     provaTeoriAprovado = true;
                 }
             }
 
             if (exameMedAprovado && examePratAprovado && examePsiAprovado && provaTeoriAprovado) {
-
-                btnImprimir.setEnabled(true);
-
-                /*CarteiraDTO carteiraDto = new CarteiraDTO();
-                carteiraDto.setAluno_nome(AlunoDTO.usuarioLogado.getNome_usuario());
-                carteiraDto.setDt_emissao(dataAtual);
-                carteiraDto.setDt_vencimento(dataVencimento);*/
-            }else{
-                btnImprimir.setEnabled(false);
+                return true;
+            } else {
+                return false;
             }
+
         } catch (SQLException e) {
             Logger.getLogger(InterfaceNovaCNH.class.getName()).log(Level.SEVERE, null, e);
+            return false;
         }
     }
 
-    /*private void ativarBotao() {
-        if (exameMedAprovado && examePsiAprovado && examePratAprovado && provaTeoriAprovado) {
+    private void ativarBotao() {
+        if (verificaResultados()) {
             btnImprimir.setEnabled(true);
+        } else {
+            btnImprimir.setEnabled(false);
         }
-    }*/
+    }
 
     /**
      * @param args the command line arguments
