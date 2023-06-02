@@ -388,7 +388,7 @@ public class InterfaceNovaCNH extends javax.swing.JFrame {
         Calendar calendar = Calendar.getInstance();
         calendar.setTime(dataAtual);
 
-        calendar.add(Calendar.DAY_OF_MONTH, 4);
+        calendar.add(Calendar.YEAR, 4);
 
         Date dataVencimento = calendar.getTime();
         
@@ -401,9 +401,10 @@ public class InterfaceNovaCNH extends javax.swing.JFrame {
             carteiraDto.setAluno_id(alunoLogadoId);
             carteiraDto.setAluno_cpf(AlunoDTO.usuarioLogado.getCpf_usuario());
             
-            new CarteiraDAO().cadastrarCarteira(carteiraDto);
-            
             JOptionPane.showMessageDialog(null, "Solicitação feita!");
+            
+            new CarteiraDAO().cadastrarCarteira(carteiraDto);
+               
         }
     }
 
