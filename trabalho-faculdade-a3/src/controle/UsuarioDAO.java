@@ -6,9 +6,9 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import javax.swing.JOptionPane;
 import modelo.Usuario;
-import visao.admin.PrincipalAdmin;
-import visao.aluno.InterfaceAluno;
-import visao.examinadores.InterfaceExaminador;
+import visao.admin.MainAdmin;
+import visao.aluno.MainAluno;
+import visao.examinadores.MainExaminador;
 
 public class UsuarioDAO {
     Connection conn = (Connection) new ConexaoDAO().connectDB();
@@ -46,21 +46,21 @@ public class UsuarioDAO {
                 
                 switch (rs.getInt("perfil_id")) {
                     case 1:
-                        new InterfaceAluno().setVisible(true);
+                        new MainAluno().setVisible(true);
                         break;
                     case 2:
-                        new InterfaceExaminador().setVisible(true);
+                        new MainExaminador().setVisible(true);
                         break;
 
                     case 3:
-                        new InterfaceExaminador().setVisible(true);
+                        new MainExaminador().setVisible(true);
                         break;
 
                     case 4:
-                        new InterfaceExaminador().setVisible(true);
+                        new MainExaminador().setVisible(true);
                         break;
                     case 5:
-                        new PrincipalAdmin().setVisible(true);
+                        new MainAdmin().setVisible(true);
                         break;
                 }
             } else {
