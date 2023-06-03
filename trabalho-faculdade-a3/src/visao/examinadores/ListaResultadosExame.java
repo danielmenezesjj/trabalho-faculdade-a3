@@ -22,6 +22,7 @@ public class ListaResultadosExame extends javax.swing.JFrame {
      */
     public ListaResultadosExame() {
         initComponents();
+        listarExames();
     }
     
      private void listarExamesEmTabela(int idTipoExame){
@@ -118,7 +119,7 @@ public class ListaResultadosExame extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void formWindowActivated(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowActivated
-        listarExames();
+        
     }//GEN-LAST:event_formWindowActivated
 
     /**
