@@ -32,8 +32,7 @@ public class LancarResultadoExame extends javax.swing.JFrame {
                     exame.getResultado()
                 });
             }
-            
-            
+         
         } catch (SQLException e) {
             JOptionPane.showMessageDialog(null, e);
         }
@@ -169,7 +168,13 @@ public class LancarResultadoExame extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnLancarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLancarActionPerformed
-        lancarResultado();
+        
+        if(jRApto.isSelected() || jRInapto.isSelected()){
+            lancarResultado();
+        }else{
+            JOptionPane.showMessageDialog(null, "Selecione Apto ou Inapto.");
+        }
+        
     }//GEN-LAST:event_btnLancarActionPerformed
 
     private void formWindowActivated(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowActivated

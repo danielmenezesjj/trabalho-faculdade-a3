@@ -140,6 +140,7 @@ int idItem;
         int alunoId = UsuarioDTO.usuarioLogado.getId_usuario();
         // Salvando pagamento no banco
         new AlunoServices().pagarBoleto(idItem, alunoId);
+        this.dispose();
     }//GEN-LAST:event_btnPagarActionPerformed
 public ServicoDTO getServico(ServicoDTO servico){
         valor = servico.getValor();

@@ -1,26 +1,39 @@
 package visao.aluno.servicos;
 
 import controle.AlunoDAO;
+import controle.CarteiraDAO;
 import controle.ExaminadorDAO;
 import controle.ProvaTeoricaDAO;
 import java.awt.Color;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import modelo.AlunoDTO;
+import modelo.CarteiraDTO;
 import modelo.UsuarioDTO;
 
 public class InterfaceNovaCNH extends javax.swing.JFrame {
 
+    boolean exameMedAprovado = false;
+    boolean examePsiAprovado = false;
+    boolean examePratAprovado = false;
+    boolean provaTeoriAprovado = false;
     AlunoDAO alunoDao = new AlunoDAO();
+    
+    int alunoLogadoId = UsuarioDTO.usuarioLogado.getId_usuario();
 
     /**
      * Creates new form InterfaceNovaCNH
      */
     public InterfaceNovaCNH() {
         initComponents();
+        verificaResultados();
+        ativarBotao();
+        
     }
 
     /**
@@ -44,11 +57,12 @@ public class InterfaceNovaCNH extends javax.swing.JFrame {
         txtResultadoPratico = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
         jLabel10 = new javax.swing.JLabel();
-        btnImprimir = new javax.swing.JButton();
+        btnSolicitarCarteira = new javax.swing.JButton();
         btnMedico = new javax.swing.JButton();
         btnPsicologo = new javax.swing.JButton();
         btnTeorico = new javax.swing.JButton();
         btnPratico = new javax.swing.JButton();
+        btnVisualizar = new javax.swing.JButton();
 
         jButton3.setText("Realizar exame");
         jButton3.addActionListener(new java.awt.event.ActionListener() {
@@ -97,13 +111,13 @@ public class InterfaceNovaCNH extends javax.swing.JFrame {
 
         jLabel10.setText("Resultado:");
 
-        btnImprimir.setBackground(new java.awt.Color(0, 0, 0));
-        btnImprimir.setForeground(new java.awt.Color(255, 255, 255));
-        btnImprimir.setText("Imprimir Carteira");
-        btnImprimir.setEnabled(false);
-        btnImprimir.addActionListener(new java.awt.event.ActionListener() {
+        btnSolicitarCarteira.setBackground(new java.awt.Color(0, 0, 0));
+        btnSolicitarCarteira.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        btnSolicitarCarteira.setForeground(new java.awt.Color(255, 255, 255));
+        btnSolicitarCarteira.setText("Solicitar Carteira");
+        btnSolicitarCarteira.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnImprimirActionPerformed(evt);
+                btnSolicitarCarteiraActionPerformed(evt);
             }
         });
 
@@ -143,6 +157,17 @@ public class InterfaceNovaCNH extends javax.swing.JFrame {
             }
         });
 
+        btnVisualizar.setBackground(new java.awt.Color(0, 0, 0));
+        btnVisualizar.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        btnVisualizar.setForeground(new java.awt.Color(255, 255, 255));
+        btnVisualizar.setText("Imprimir Carteira");
+        btnVisualizar.setEnabled(false);
+        btnVisualizar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnVisualizarActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -165,23 +190,25 @@ public class InterfaceNovaCNH extends javax.swing.JFrame {
                                     .addComponent(btnPsicologo)
                                     .addComponent(btnPratico)
                                     .addComponent(btnMedico))))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 31, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(txtResultadoPsicologico)
                             .addComponent(txtResultadoMedico)
                             .addComponent(jLabel10)
-                            .addComponent(txtResultadoPratico)))
+                            .addComponent(txtResultadoPratico))
+                        .addGap(20, 20, 20))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(209, 209, 209)
                         .addComponent(jLabel2))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(165, 165, 165)
-                        .addComponent(txtUsuarioLogado)))
-                .addGap(120, 120, Short.MAX_VALUE))
-            .addGroup(layout.createSequentialGroup()
-                .addGap(171, 171, 171)
-                .addComponent(btnImprimir, javax.swing.GroupLayout.PREFERRED_SIZE, 143, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addComponent(txtUsuarioLogado))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(41, 41, 41)
+                        .addComponent(btnSolicitarCarteira, javax.swing.GroupLayout.PREFERRED_SIZE, 181, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(36, 36, 36)
+                        .addComponent(btnVisualizar, javax.swing.GroupLayout.PREFERRED_SIZE, 184, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(57, 57, 57))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -210,9 +237,11 @@ public class InterfaceNovaCNH extends javax.swing.JFrame {
                     .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txtResultadoPratico, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnPratico))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 44, Short.MAX_VALUE)
-                .addComponent(btnImprimir, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(41, 41, 41))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 47, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(btnVisualizar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnSolicitarCarteira, javax.swing.GroupLayout.DEFAULT_SIZE, 42, Short.MAX_VALUE))
+                .addGap(38, 38, 38))
         );
 
         pack();
@@ -250,22 +279,27 @@ public class InterfaceNovaCNH extends javax.swing.JFrame {
         txtUsuarioLogado.setText("Olá, " + UsuarioDTO.usuarioLogado.getNome_usuario());
     }//GEN-LAST:event_formWindowOpened
 
-    private void btnImprimirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnImprimirActionPerformed
-       new Carteira().setVisible(true);
-    }//GEN-LAST:event_btnImprimirActionPerformed
+    private void btnSolicitarCarteiraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSolicitarCarteiraActionPerformed
+        cadastrarCarteira();
+    }//GEN-LAST:event_btnSolicitarCarteiraActionPerformed
 
     private void formWindowActivated(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowActivated
-        buscaExame();
+        verficaSeJatemCarteira();
+        verificaSeJaFezExames();
         pegarResultadoProvaTeorica();
         pegarResultadosExames();
         verificaSeJaFezProva();
     }//GEN-LAST:event_formWindowActivated
 
+    private void btnVisualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVisualizarActionPerformed
+        new Carteira().setVisible(true);
+    }//GEN-LAST:event_btnVisualizarActionPerformed
+
     private void verificaSeJaFezProva() {
         try {
             // validar se já existe prova com id de usuario
             ProvaTeoricaDAO provaDao = new ProvaTeoricaDAO();
-            ResultSet rsPDao = provaDao.buscarProva(AlunoDTO.usuarioLogado.getId_usuario());
+            ResultSet rsPDao = provaDao.buscarProva(alunoLogadoId);
 
             if (rsPDao.next()) {
                 btnTeorico.setEnabled(false);
@@ -275,9 +309,9 @@ public class InterfaceNovaCNH extends javax.swing.JFrame {
         }
     }
 
-    private void buscaExame() {
+    private void verificaSeJaFezExames() {
         try {
-            ResultSet rsExDao = new ExaminadorDAO().buscarExame(UsuarioDTO.usuarioLogado.getId_usuario());
+            ResultSet rsExDao = new ExaminadorDAO().buscarExame(alunoLogadoId);
 
             while (rsExDao.next()) {
                 int tipo_exame = rsExDao.getInt("tipo_exame_id");
@@ -312,6 +346,8 @@ public class InterfaceNovaCNH extends javax.swing.JFrame {
                 }
 
             }
+
+            rsAlunoDao.close();
         } catch (SQLException ex) {
             Logger.getLogger(InterfaceNovaCNH.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -321,7 +357,7 @@ public class InterfaceNovaCNH extends javax.swing.JFrame {
 
         ProvaTeoricaDAO pDao = new ProvaTeoricaDAO();
 
-        ResultSet rsPDAO = pDao.buscarProva(UsuarioDTO.usuarioLogado.getId_usuario());
+        ResultSet rsPDAO = pDao.buscarProva(alunoLogadoId);
 
         try {
             if (rsPDAO.next()) {
@@ -343,6 +379,100 @@ public class InterfaceNovaCNH extends javax.swing.JFrame {
         }
 
         return "";
+    }
+
+    // Cadastrar carteira 
+    private void cadastrarCarteira() {
+        Date dataAtual = new Date();
+
+        Calendar calendar = Calendar.getInstance();
+        calendar.setTime(dataAtual);
+
+        calendar.add(Calendar.YEAR, 4);
+
+        Date dataVencimento = calendar.getTime();
+        
+        if(verificaResultados()){
+            CarteiraDTO carteiraDto = new CarteiraDTO();
+            
+            carteiraDto.setAluno_nome(AlunoDTO.usuarioLogado.getNome_usuario());
+            carteiraDto.setDt_emissao(dataAtual);
+            carteiraDto.setDt_vencimento(dataVencimento);
+            carteiraDto.setAluno_id(alunoLogadoId);
+            carteiraDto.setAluno_cpf(AlunoDTO.usuarioLogado.getCpf_usuario());
+            
+            JOptionPane.showMessageDialog(null, "Solicitação feita!");
+            
+            new CarteiraDAO().cadastrarCarteira(carteiraDto);
+               
+        }
+    }
+
+    private boolean verificaResultados() {
+
+        ExaminadorDAO examinadorDao = new ExaminadorDAO();
+        int idAluno = AlunoDTO.usuarioLogado.getId_usuario();
+
+        ResultSet rsProvaDao = new ProvaTeoricaDAO().buscarProva(idAluno);
+        ResultSet rsExDao = examinadorDao.buscarExame(idAluno);
+
+        try {
+            while (rsExDao.next()) {
+                String resultado = rsExDao.getString("resultado");
+                int tipoExameId = rsExDao.getInt("tipo_exame_id");
+
+                if ("Aprovado".equals(resultado) && tipoExameId == 1) {
+                    exameMedAprovado = true;
+                }
+
+                if ("Aprovado".equals(resultado) && tipoExameId == 2) {
+                    examePsiAprovado = true;
+                }
+
+                if ("Aprovado".equals(resultado) && tipoExameId == 4) {
+                    examePratAprovado = true;
+                }
+            }
+
+            while (rsProvaDao.next()) {
+                String resultado = rsProvaDao.getString("resultado");
+
+                if ("Aprovado".equals(resultado)) {
+                    provaTeoriAprovado = true;
+                }
+            }
+
+            if (exameMedAprovado && examePratAprovado && examePsiAprovado && provaTeoriAprovado) {
+                return true;
+            } else {
+                return false;
+            }
+
+        } catch (SQLException e) {
+            Logger.getLogger(InterfaceNovaCNH.class.getName()).log(Level.SEVERE, null, e);
+            return false;
+        }
+    }
+
+    private void ativarBotao() {
+        if (verificaResultados()) {
+            btnSolicitarCarteira.setEnabled(true);
+        } else {
+            btnSolicitarCarteira.setEnabled(false);
+        }
+    }
+    
+    private void verficaSeJatemCarteira(){
+        try {
+            ResultSet rsCarteira = new CarteiraDAO().buscaCarteira(alunoLogadoId);
+            
+            if(rsCarteira.next()){
+                btnSolicitarCarteira.setEnabled(false);
+                btnVisualizar.setEnabled(true);
+            }
+            
+        } catch (Exception e) {
+        }
     }
 
     /**
@@ -381,11 +511,12 @@ public class InterfaceNovaCNH extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnImprimir;
     private javax.swing.JButton btnMedico;
     private javax.swing.JButton btnPratico;
     private javax.swing.JButton btnPsicologo;
+    private javax.swing.JButton btnSolicitarCarteira;
     private javax.swing.JButton btnTeorico;
+    private javax.swing.JButton btnVisualizar;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton5;
     private javax.swing.JLabel jLabel10;

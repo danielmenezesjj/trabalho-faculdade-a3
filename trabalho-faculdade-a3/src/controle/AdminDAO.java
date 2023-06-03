@@ -7,6 +7,8 @@ import java.sql.Date;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 
 public class AdminDAO {
@@ -40,7 +42,7 @@ public class AdminDAO {
             String sql = "INSERT INTO usuarios(nome_completo, dt_nascimento, cpf, email, telefone, senha, perfil_id) values (?, ?, ?, ?, ?, ?, ?)";
             PreparedStatement pstm = conn.prepareStatement(sql);
             Date sqlDate = new java.sql.Date(objUsuarioDto.getDt_nascimento_usuario().getTime());
-            
+
             pstm.setString(1, objUsuarioDto.getNome_usuario());
             pstm.setDate(2, sqlDate);
             pstm.setString(3, objUsuarioDto.getCpf_usuario());
@@ -59,6 +61,14 @@ public class AdminDAO {
 
         } catch (Exception erro) {
             JOptionPane.showMessageDialog(null, "UsuarioDAO: " + erro);
+        } finally {
+            if (conn != null) {
+                try {
+                    conn.close();
+                } catch (SQLException ex) {
+                    Logger.getLogger(ExaminadorDAO.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
         }
     }
 
@@ -75,6 +85,14 @@ public class AdminDAO {
         } catch (SQLException erro) {
             JOptionPane.showMessageDialog(null, "UsuarioDAO: " + erro);
             return false;
+        } finally {
+            if (conn != null) {
+                try {
+                    conn.close();
+                } catch (SQLException ex) {
+                    Logger.getLogger(ExaminadorDAO.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
         }
     }
 
@@ -119,6 +137,14 @@ public class AdminDAO {
 
         } catch (SQLException e) {
             JOptionPane.showMessageDialog(null, "UsuarioDAO: " + e);
+        } finally {
+            if (conn != null) {
+                try {
+                    conn.close();
+                } catch (SQLException ex) {
+                    Logger.getLogger(ExaminadorDAO.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
         }
 
     }

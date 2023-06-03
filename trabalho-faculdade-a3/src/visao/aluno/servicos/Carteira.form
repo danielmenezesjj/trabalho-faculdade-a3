@@ -39,8 +39,9 @@
                       <Group type="103" groupAlignment="0" max="-2" attributes="0">
                           <Component id="txtNomeAluno" max="32767" attributes="0"/>
                           <Component id="txtDtNascimentoAluno" alignment="0" pref="300" max="32767" attributes="0"/>
-                          <Component id="txtDataAtual" alignment="0" max="32767" attributes="0"/>
+                          <Component id="txtDtEmissao" alignment="0" max="32767" attributes="0"/>
                           <Component id="txtValidade" alignment="0" max="32767" attributes="0"/>
+                          <Component id="txtCpfAluno" alignment="0" max="32767" attributes="0"/>
                       </Group>
                   </Group>
               </Group>
@@ -53,12 +54,14 @@
           <Group type="102" alignment="0" attributes="0">
               <EmptySpace min="-2" pref="33" max="-2" attributes="0"/>
               <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
-              <EmptySpace min="-2" pref="44" max="-2" attributes="0"/>
+              <EmptySpace type="separate" max="-2" attributes="0"/>
               <Component id="txtNomeAluno" min="-2" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="10" max="-2" attributes="0"/>
+              <Component id="txtCpfAluno" min="-2" max="-2" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
               <Component id="txtDtNascimentoAluno" min="-2" max="-2" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
-              <Component id="txtDataAtual" min="-2" pref="22" max="-2" attributes="0"/>
+              <Component id="txtDtEmissao" min="-2" pref="22" max="-2" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
               <Component id="txtValidade" min="-2" max="-2" attributes="0"/>
               <EmptySpace pref="43" max="32767" attributes="0"/>
@@ -84,7 +87,7 @@
         <Property name="text" type="java.lang.String" value="Nome: #nomeAluno"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JLabel" name="txtDataAtual">
+    <Component class="javax.swing.JLabel" name="txtDtEmissao">
       <Properties>
         <Property name="text" type="java.lang.String" value="Emiss&#xe3;o: DataAtual"/>
       </Properties>
@@ -107,6 +110,11 @@
     <Component class="javax.swing.JLabel" name="jLabel7">
       <Properties>
         <Property name="text" type="java.lang.String" value="Assinatura"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="txtCpfAluno">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Nome: #nomeAluno"/>
       </Properties>
     </Component>
   </SubComponents>

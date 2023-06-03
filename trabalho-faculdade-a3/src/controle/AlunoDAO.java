@@ -8,7 +8,6 @@ import java.sql.SQLException;
 import java.util.concurrent.TimeUnit;
 import javax.swing.JOptionPane;
 import modelo.AlunoDTO;
-import modelo.ExameDTO;
 import modelo.UsuarioDTO;
 
 public class AlunoDAO {

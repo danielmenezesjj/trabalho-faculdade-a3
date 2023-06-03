@@ -4,17 +4,19 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
-import modelo.AlunoDTO;
 import modelo.Usuario;
-import visao.admin.PrincipalAdmin;
-import visao.aluno.InterfaceAluno;
-import visao.examinadores.InterfaceExaminador;
+import visao.admin.MainAdmin;
+import visao.aluno.MainAluno;
+import visao.examinadores.MainExaminador;
 
 public class UsuarioDAO {
+
     Connection conn = (Connection) new ConexaoDAO().connectDB();
-    
-       private ResultSet autenticacaoUsuario(Usuario usuario) {
+
+    private ResultSet autenticacaoUsuario(Usuario usuario) {
         try {
             String sql = "SELECT * FROM usuarios WHERE usuarios.cpf = ? AND usuarios.senha = ?";
 
@@ -31,9 +33,9 @@ public class UsuarioDAO {
             return null;
         }
     }
-    
+
     public void logar(Usuario usuario) {
-        try {         
+        try {
             // Autenticação
             ResultSet rs = autenticacaoUsuario(usuario);
 
@@ -42,26 +44,26 @@ public class UsuarioDAO {
                 usuario.setNome_usuario(rs.getString("nome_completo"));
                 usuario.setId_usuario(rs.getInt("id"));
                 usuario.setPerfil_usuario(rs.getInt("perfil_id"));
-                
+
                 usuario.usuarioLogado = usuario;
-                
+
                 switch (rs.getInt("perfil_id")) {
                     case 1:
-                        new InterfaceAluno().setVisible(true);
+                        new MainAluno().setVisible(true);
                         break;
                     case 2:
-                        new InterfaceExaminador().setVisible(true);
+                        new MainExaminador().setVisible(true);
                         break;
 
                     case 3:
-                        new InterfaceExaminador().setVisible(true);
+                        new MainExaminador().setVisible(true);
                         break;
 
                     case 4:
-                        new InterfaceExaminador().setVisible(true);
+                        new MainExaminador().setVisible(true);
                         break;
                     case 5:
-                        new PrincipalAdmin().setVisible(true);
+                        new MainAdmin().setVisible(true);
                         break;
                 }
             } else {
@@ -70,6 +72,14 @@ public class UsuarioDAO {
         } catch (SQLException erro) {
             JOptionPane.showMessageDialog(null, "Login: " + erro);
 
+        } finally {
+            if (conn != null) {
+                try {
+                    conn.close();
+                } catch (SQLException ex) {
+                    Logger.getLogger(ExaminadorDAO.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
         }
     }
 }
