@@ -12,9 +12,9 @@ import javax.swing.JOptionPane;
 import javax.swing.text.MaskFormatter;
 import visao.Login;
 
-public class CadastroUsuarios extends javax.swing.JFrame {
+public class CadastrarUsuario extends javax.swing.JFrame {
 
-    public CadastroUsuarios() {
+    public CadastrarUsuario() {
         initComponents();
     }
 
@@ -196,7 +196,7 @@ public class CadastroUsuarios extends javax.swing.JFrame {
             cadastrar();
             new Login().setVisible(true);
         } catch (ParseException ex) {
-            Logger.getLogger(CadastroUsuarios.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(CadastrarUsuario.class.getName()).log(Level.SEVERE, null, ex);
         }
 
 
@@ -300,8 +300,12 @@ public class CadastroUsuarios extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException | InstantiationException | IllegalAccessException | javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(CadastroUsuarios.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(CadastrarUsuario.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
         //</editor-fold>
@@ -315,7 +319,7 @@ public class CadastroUsuarios extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new CadastroUsuarios().setVisible(true);
+                new CadastrarUsuario().setVisible(true);
             }
         });
     }

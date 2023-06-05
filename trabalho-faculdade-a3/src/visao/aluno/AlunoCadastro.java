@@ -9,7 +9,7 @@ import javax.swing.JOptionPane;
 import javax.swing.text.MaskFormatter;
 import modelo.AlunoDTO;
 import visao.Login;
-import visao.admin.CadastroUsuarios;
+import visao.admin.CadastrarUsuario;
 
 public class AlunoCadastro extends javax.swing.JFrame {
 
@@ -164,7 +164,7 @@ public class AlunoCadastro extends javax.swing.JFrame {
             cadastrarAluno();
             new Login().setVisible(true);
         } catch (ParseException ex) {
-            Logger.getLogger(CadastroUsuarios.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(CadastrarUsuario.class.getName()).log(Level.SEVERE, null, ex);
         }
 
     }//GEN-LAST:event_btnCadastrarActionPerformed

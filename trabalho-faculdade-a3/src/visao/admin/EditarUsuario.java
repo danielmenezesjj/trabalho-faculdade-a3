@@ -4,19 +4,19 @@ import controle.admin.AdminDAO;
 import modelo.UsuarioDTO;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javax.swing.JOptionPane;
+import javax.swing.event.DocumentEvent;
+import javax.swing.event.DocumentListener;
 import javax.swing.text.MaskFormatter;
 
-public class EditarUsuarios extends javax.swing.JFrame {
+public class EditarUsuario extends javax.swing.JFrame {
 
-    public EditarUsuarios() {
+    public EditarUsuario() {
         initComponents();
     }
 
-    public EditarUsuarios(UsuarioDTO usuario) {
+    public EditarUsuario(UsuarioDTO usuario) {
         initComponents();
 
         SimpleDateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy");
@@ -48,7 +48,6 @@ public class EditarUsuarios extends javax.swing.JFrame {
             default:
                 throw new AssertionError();
         }
-
     }
 
     @SuppressWarnings("unchecked")
@@ -63,7 +62,7 @@ public class EditarUsuarios extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         txtNomeCompleto = new javax.swing.JTextField();
         txtEmail = new javax.swing.JTextField();
-        btnCadastrar = new javax.swing.JButton();
+        btnSalvar = new javax.swing.JButton();
         txtTelefone = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
@@ -99,12 +98,12 @@ public class EditarUsuarios extends javax.swing.JFrame {
             }
         });
 
-        btnCadastrar.setBackground(new java.awt.Color(0, 0, 0));
-        btnCadastrar.setForeground(new java.awt.Color(255, 255, 255));
-        btnCadastrar.setText("Cadastrar");
-        btnCadastrar.addActionListener(new java.awt.event.ActionListener() {
+        btnSalvar.setBackground(new java.awt.Color(0, 0, 0));
+        btnSalvar.setForeground(new java.awt.Color(255, 255, 255));
+        btnSalvar.setText("Salvar");
+        btnSalvar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnCadastrarActionPerformed(evt);
+                btnSalvarActionPerformed(evt);
             }
         });
 
@@ -131,6 +130,57 @@ public class EditarUsuarios extends javax.swing.JFrame {
 
         buttonGroup1.add(rAluno);
         rAluno.setText("Aluno");
+
+        txtCpf.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                txtCpfFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                txtCpfFocusLost(evt);
+            }
+        });
+        txtCpf.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                txtCpfMouseEntered(evt);
+            }
+        });
+        txtCpf.addInputMethodListener(new java.awt.event.InputMethodListener() {
+            public void caretPositionChanged(java.awt.event.InputMethodEvent evt) {
+                txtCpfCaretPositionChanged(evt);
+            }
+            public void inputMethodTextChanged(java.awt.event.InputMethodEvent evt) {
+                txtCpfInputMethodTextChanged(evt);
+            }
+        });
+        txtCpf.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtCpfActionPerformed(evt);
+            }
+        });
+        txtCpf.addPropertyChangeListener(new java.beans.PropertyChangeListener() {
+            public void propertyChange(java.beans.PropertyChangeEvent evt) {
+                txtCpfPropertyChange(evt);
+            }
+        });
+        txtCpf.addVetoableChangeListener(new java.beans.VetoableChangeListener() {
+            public void vetoableChange(java.beans.PropertyChangeEvent evt)throws java.beans.PropertyVetoException {
+                txtCpfVetoableChange(evt);
+            }
+        });
+
+        txtDtNascimento.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                txtDtNascimentoFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                txtDtNascimentoFocusLost(evt);
+            }
+        });
+        txtDtNascimento.addPropertyChangeListener(new java.beans.PropertyChangeListener() {
+            public void propertyChange(java.beans.PropertyChangeEvent evt) {
+                txtDtNascimentoPropertyChange(evt);
+            }
+        });
 
         buttonGroup1.add(rAdmin);
         rAdmin.setText("Administrador");
@@ -170,7 +220,7 @@ public class EditarUsuarios extends javax.swing.JFrame {
                             .addComponent(rAdmin)))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(237, 237, 237)
-                        .addComponent(btnCadastrar, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(btnSalvar, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(99, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -220,7 +270,7 @@ public class EditarUsuarios extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(rAluno, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(48, 48, 48)))
-                .addComponent(btnCadastrar, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btnSalvar, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(40, 40, 40))
         );
 
@@ -232,34 +282,80 @@ public class EditarUsuarios extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtNomeCompletoActionPerformed
 
-    private void btnCadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCadastrarActionPerformed
+    private void btnSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalvarActionPerformed
 
-    }//GEN-LAST:event_btnCadastrarActionPerformed
+    }//GEN-LAST:event_btnSalvarActionPerformed
 
     private void formWindowActivated(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowActivated
 
-        //formataCpf();
-        //formataData();
-
     }//GEN-LAST:event_formWindowActivated
 
-    private void formataCpf() {
-        try {
-            MaskFormatter cpfFormatter = new MaskFormatter("###.###.###-##");
-            cpfFormatter.install(txtCpf);
-            txtCpf.setColumns(10); // Defina o tamanho do campo conforme necessário
+    private void txtCpfFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtCpfFocusLost
+    
+    }//GEN-LAST:event_txtCpfFocusLost
 
-        } catch (ParseException e) {
-            e.printStackTrace();
+    private void txtCpfFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtCpfFocusGained
+
+    }//GEN-LAST:event_txtCpfFocusGained
+
+    private void txtCpfInputMethodTextChanged(java.awt.event.InputMethodEvent evt) {//GEN-FIRST:event_txtCpfInputMethodTextChanged
+
+    }//GEN-LAST:event_txtCpfInputMethodTextChanged
+
+    private void txtCpfCaretPositionChanged(java.awt.event.InputMethodEvent evt) {//GEN-FIRST:event_txtCpfCaretPositionChanged
+
+    }//GEN-LAST:event_txtCpfCaretPositionChanged
+
+    private void txtCpfActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtCpfActionPerformed
+
+    }//GEN-LAST:event_txtCpfActionPerformed
+
+    private void txtDtNascimentoFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtDtNascimentoFocusLost
+      
+
+    }//GEN-LAST:event_txtDtNascimentoFocusLost
+
+    private void txtDtNascimentoFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtDtNascimentoFocusGained
+        
+    }//GEN-LAST:event_txtDtNascimentoFocusGained
+
+    private void txtCpfMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtCpfMouseEntered
+
+    }//GEN-LAST:event_txtCpfMouseEntered
+
+    private void txtCpfPropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_txtCpfPropertyChange
+         if (txtCpf.getText().isEmpty()) {
+            formataCpf();
+        }
+    }//GEN-LAST:event_txtCpfPropertyChange
+
+    private void txtCpfVetoableChange(java.beans.PropertyChangeEvent evt)throws java.beans.PropertyVetoException {//GEN-FIRST:event_txtCpfVetoableChange
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtCpfVetoableChange
+
+    private void txtDtNascimentoPropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_txtDtNascimentoPropertyChange
+        if(txtDtNascimento.getText().isEmpty()){
+            formataData();
+        }
+    }//GEN-LAST:event_txtDtNascimentoPropertyChange
+
+    private void formataCpf() {
+        MaskFormatter cpfFormatter;
+        try {
+            cpfFormatter = new MaskFormatter("###.###.###-##");
+            cpfFormatter.install(txtCpf);
+            txtCpf.setColumns(10);
+        } catch (ParseException ex) {
+            Logger.getLogger(EditarUsuario.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
     private void formataData() {
         try {
-            MaskFormatter dataFormatter = new MaskFormatter("##-##-####");
-            dataFormatter.install(txtDtNascimento);
-            txtDtNascimento.setColumns(8); // Defina o tamanho do campo conforme necessário
-
+                MaskFormatter dataFormatter = new MaskFormatter("##-##-####");
+                dataFormatter.install(txtDtNascimento);
+                txtDtNascimento.setColumns(8); // Defina o tamanho do campo conforme necessário
+            
         } catch (ParseException e) {
             e.printStackTrace();
         }
@@ -289,8 +385,16 @@ public class EditarUsuarios extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException | InstantiationException | IllegalAccessException | javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(EditarUsuarios.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(EditarUsuario.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
         //</editor-fold>
@@ -308,13 +412,13 @@ public class EditarUsuarios extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new EditarUsuarios().setVisible(true);
+                new EditarUsuario().setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnCadastrar;
+    private javax.swing.JButton btnSalvar;
     private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.ButtonGroup buttonGroup2;
     private javax.swing.ButtonGroup buttonGroup3;
