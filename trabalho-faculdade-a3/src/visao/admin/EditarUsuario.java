@@ -1,13 +1,11 @@
 package visao.admin;
 
-import controle.admin.AdminDAO;
 import modelo.UsuarioDTO;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javax.swing.event.DocumentEvent;
-import javax.swing.event.DocumentListener;
 import javax.swing.text.MaskFormatter;
 
 public class EditarUsuario extends javax.swing.JFrame {
@@ -291,7 +289,7 @@ public class EditarUsuario extends javax.swing.JFrame {
     }//GEN-LAST:event_formWindowActivated
 
     private void txtCpfFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtCpfFocusLost
-    
+
     }//GEN-LAST:event_txtCpfFocusLost
 
     private void txtCpfFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtCpfFocusGained
@@ -311,12 +309,12 @@ public class EditarUsuario extends javax.swing.JFrame {
     }//GEN-LAST:event_txtCpfActionPerformed
 
     private void txtDtNascimentoFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtDtNascimentoFocusLost
-      
+
 
     }//GEN-LAST:event_txtDtNascimentoFocusLost
 
     private void txtDtNascimentoFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtDtNascimentoFocusGained
-        
+
     }//GEN-LAST:event_txtDtNascimentoFocusGained
 
     private void txtCpfMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtCpfMouseEntered
@@ -324,7 +322,7 @@ public class EditarUsuario extends javax.swing.JFrame {
     }//GEN-LAST:event_txtCpfMouseEntered
 
     private void txtCpfPropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_txtCpfPropertyChange
-         if (txtCpf.getText().isEmpty()) {
+        if (txtCpf.getText().isEmpty()) {
             formataCpf();
         }
     }//GEN-LAST:event_txtCpfPropertyChange
@@ -334,10 +332,31 @@ public class EditarUsuario extends javax.swing.JFrame {
     }//GEN-LAST:event_txtCpfVetoableChange
 
     private void txtDtNascimentoPropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_txtDtNascimentoPropertyChange
-        if(txtDtNascimento.getText().isEmpty()){
+        if (txtDtNascimento.getText().isEmpty()) {
             formataData();
         }
     }//GEN-LAST:event_txtDtNascimentoPropertyChange
+
+    private void editarUsuario() {
+
+        SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
+        try {
+            Date dtNascimento = format.parse(txtDtNascimento.getText());
+
+            UsuarioDTO usuarioDto = new UsuarioDTO();
+            usuarioDto.setNome_usuario(txtNomeCompleto.getText());
+            usuarioDto.setCpf_usuario(txtCpf.getText());
+            usuarioDto.setEmail_usuario(txtEmail.getText());
+            usuarioDto.setDt_nascimento_usuario(dtNascimento);
+            usuarioDto.setSenha_usuario(txtSenha.getText());
+            usuarioDto.setTelefone_usuario(txtTelefone.getText());
+            usuarioDto.setPerfil_usuario();
+
+        } catch (ParseException ex) {
+            Logger.getLogger(EditarUsuario.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+    }
 
     private void formataCpf() {
         MaskFormatter cpfFormatter;
@@ -352,10 +371,10 @@ public class EditarUsuario extends javax.swing.JFrame {
 
     private void formataData() {
         try {
-                MaskFormatter dataFormatter = new MaskFormatter("##-##-####");
-                dataFormatter.install(txtDtNascimento);
-                txtDtNascimento.setColumns(8); // Defina o tamanho do campo conforme necessário
-            
+            MaskFormatter dataFormatter = new MaskFormatter("##-##-####");
+            dataFormatter.install(txtDtNascimento);
+            txtDtNascimento.setColumns(8); // Defina o tamanho do campo conforme necessário
+
         } catch (ParseException e) {
             e.printStackTrace();
         }
