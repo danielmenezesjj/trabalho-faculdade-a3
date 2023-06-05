@@ -4,6 +4,10 @@ import controle.admin.AdminDAO;
 import javax.swing.JOptionPane;
 import modelo.UsuarioDTO;
 import javax.swing.table.DefaultTableModel;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class UsuariosLista extends javax.swing.JFrame {
 
@@ -27,7 +31,7 @@ public class UsuariosLista extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         jTUsuarios = new javax.swing.JTable();
         excluirUsuario = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        btnEditar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setResizable(false);
@@ -57,7 +61,12 @@ public class UsuariosLista extends javax.swing.JFrame {
             }
         });
 
-        jButton2.setText("Editar");
+        btnEditar.setText("Editar");
+        btnEditar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEditarActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -65,7 +74,7 @@ public class UsuariosLista extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(119, 119, 119)
-                .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btnEditar, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(33, 33, 33)
                 .addComponent(excluirUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(141, Short.MAX_VALUE))
@@ -80,7 +89,7 @@ public class UsuariosLista extends javax.swing.JFrame {
                 .addGap(25, 25, 25)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(excluirUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(btnEditar, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 307, Short.MAX_VALUE)
                 .addGap(18, 18, 18))
@@ -109,6 +118,32 @@ public class UsuariosLista extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_excluirUsuario
 
+    private void btnEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditarActionPerformed
+
+        int rowIndex = jTUsuarios.getSelectedRow();
+
+        String cpfUsuario = (String) jTUsuarios.getValueAt(rowIndex, 2);
+
+        if (rowIndex == -1) {
+            JOptionPane.showMessageDialog(this, "Selecione um usuário para editar.", "Usuário não selecionado", JOptionPane.WARNING_MESSAGE);
+            return;
+        }
+
+        ResultSet rsUsuario = new AdminDAO().buscarUsuario(cpfUsuario);
+
+        try {
+            if (rsUsuario.next()) {
+                UsuarioDTO usuarioDto = new UsuarioDTO();
+
+                usuarioDto.setNome_usuario(rsUsuario.getString("nome_completo"));
+
+                new EditarUsuarios(usuarioDto).setVisible(true);
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(UsuariosLista.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_btnEditarActionPerformed
+
     private void listarUsuarios() {
         DefaultTableModel modelo = (DefaultTableModel) jTUsuarios.getModel();
 
@@ -122,6 +157,10 @@ public class UsuariosLista extends javax.swing.JFrame {
                 u.getTipo_perfil()
             });
         }
+    }
+
+    private void buscarUsuario() {
+
     }
 
     /**
@@ -160,8 +199,8 @@ public class UsuariosLista extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnEditar;
     private javax.swing.JButton excluirUsuario;
-    private javax.swing.JButton jButton2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTUsuarios;
     // End of variables declaration//GEN-END:variables

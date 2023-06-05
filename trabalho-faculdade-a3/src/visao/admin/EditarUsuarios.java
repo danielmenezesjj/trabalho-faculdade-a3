@@ -11,9 +11,14 @@ import javax.swing.JOptionPane;
 import javax.swing.text.MaskFormatter;
 
 public class EditarUsuarios extends javax.swing.JFrame {
-
+    
     public EditarUsuarios() {
+        
+    }
+    
+    public EditarUsuarios(UsuarioDTO usuario){
         initComponents();
+        txtNomeCompleto.setText(usuario.getNome_usuario());
     }
 
     @SuppressWarnings("unchecked")
@@ -190,14 +195,6 @@ public class EditarUsuarios extends javax.swing.JFrame {
     }//GEN-LAST:event_txtNomeCompletoActionPerformed
 
     private void btnCadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCadastrarActionPerformed
-        try {
-
-            cadastrar();
-            limpar();
-        } catch (ParseException ex) {
-            Logger.getLogger(EditarUsuarios.class.getName()).log(Level.SEVERE, null, ex);
-        }
-
 
     }//GEN-LAST:event_btnCadastrarActionPerformed
 
@@ -205,54 +202,11 @@ public class EditarUsuarios extends javax.swing.JFrame {
 
         formataCpf();
         formataData();
-       
+
     }//GEN-LAST:event_formWindowActivated
 
-    private void cadastrar() throws ParseException {
-        try {
-            String nome, cpf, dt_nascimento, email, telefone, senha;
-            int perfil = 0;
-
-            if (optionMedico.isSelected() == true) {
-                perfil = 2;
-            }
-            if (optionAgente.isSelected() == true) {
-                perfil = 3;
-            }
-            if (optionPsicologo.isSelected() == true) {
-                perfil = 4;
-            }
-            if (optionAdmin.isSelected() == true) {
-                perfil = 5;
-            }
-
-            SimpleDateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy");
-
-            nome = txtNomeCompleto.getText();
-            cpf = txtCpf.getText();
-            dt_nascimento = txtDtNascimento.getText();
-            email = txtEmail.getText();
-            telefone = txtTelefone.getText();
-            senha = txtSenha.getText();
-
-            Date dt_nascimento_usuario = dateFormat.parse(dt_nascimento);
-
-            UsuarioDTO objUsuarioDto = new UsuarioDTO();
-            objUsuarioDto.setNome_usuario(nome);
-            objUsuarioDto.setCpf_usuario(cpf);
-            objUsuarioDto.setDt_nascimento_usuario(dt_nascimento_usuario);
-            objUsuarioDto.setEmail_usuario(email);
-            objUsuarioDto.setTelefone_usuario(telefone);
-            objUsuarioDto.setSenha_usuario(senha);
-            objUsuarioDto.setPerfil_usuario(perfil);
-
-            AdminDAO objUsuarioDao = new AdminDAO();
-            objUsuarioDao.cadastrarUsuario(objUsuarioDto);
-
-        } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, e);
-        }
-
+    private void buscarUsuario(){
+       
     }
 
     private void formataCpf() {
@@ -276,16 +230,17 @@ public class EditarUsuarios extends javax.swing.JFrame {
             e.printStackTrace();
         }
     }
-     public void limpar(){
+
+    public void limpar() {
         txtNomeCompleto.setText("");
         txtCpf.setText("");
         txtDtNascimento.setText("");
         txtEmail.setText("");
         txtTelefone.setText("");
         txtSenha.setText("");
-        
+
         txtNomeCompleto.requestFocus();
-        
+
     }
 
     /**

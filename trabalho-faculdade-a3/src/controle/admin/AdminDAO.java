@@ -17,26 +17,26 @@ public class AdminDAO {
 
     Connection conn = (Connection) new ConexaoDAO().connectDB();
 
-    public boolean buscarUsuario(String cpf) {
+    public ResultSet buscarUsuario(String cpf) {
         try {
             String sql = "SELECT * FROM usuarios WHERE usuarios.cpf = ?";
             PreparedStatement pstm = conn.prepareStatement(sql);
             pstm.setString(1, cpf);
 
             ResultSet rs = pstm.executeQuery();
-            return rs.next();
+            return rs;
         } catch (SQLException e) {
             JOptionPane.showMessageDialog(null, "Erro ao buscar usuário." + e, "Erro", JOptionPane.ERROR_MESSAGE);
-            return false;
+            return null;
         }
     }
 
     public void cadastrarUsuario(UsuarioDTO objUsuarioDto) {
         try {
 
-            boolean rsBuscaUsuario = buscarUsuario(objUsuarioDto.getCpf_usuario());
+            ResultSet rsBuscaUsuario = buscarUsuario(objUsuarioDto.getCpf_usuario());
 
-            if (rsBuscaUsuario) {
+            if (rsBuscaUsuario.next()) {
                 JOptionPane.showMessageDialog(null, "Usuário já cadastrado!", "Erro", JOptionPane.ERROR_MESSAGE);
                 return;
             }
@@ -127,8 +127,20 @@ public class AdminDAO {
 
     public void editarUsuario(UsuarioDTO usuario) {
         try {
-            String sql = "UPDATE ";
+            String sql = "UPDATE * FROM usuarios SET nome_completo = ?, dt_nascimento = ?, cpf = ?, email = ?, telefone = ?, senha = ?, perfil_id = ? WHERE id = ?";
             PreparedStatement pstm = conn.prepareStatement(sql);
+            
+            Date sqlDate = new java.sql.Date(usuario.getDt_nascimento_usuario().getTime());
+            
+            pstm.setString(1, usuario.getNome_usuario());
+            pstm.setDate(2, sqlDate);
+            pstm.setString(3, usuario.getCpf_usuario());
+            pstm.setString(4, usuario.getEmail_usuario());
+            pstm.setString(5, usuario.getTelefone_usuario());
+            pstm.setString(6, usuario.getSenha_usuario());
+            pstm.setInt(7, usuario.getPerfil_usuario());
+            pstm.setInt(8, usuario.getId_usuario());
+            
             int rowsAffected = pstm.executeUpdate(sql);
 
             if (rowsAffected > 0) {

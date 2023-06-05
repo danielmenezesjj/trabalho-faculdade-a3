@@ -1,4 +1,4 @@
-package controle.admin;
+package controle;
 
 import controle.ConexaoDAO;
 import controle.examinador.ExaminadorDAO;

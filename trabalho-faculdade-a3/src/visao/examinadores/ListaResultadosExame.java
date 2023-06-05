@@ -11,10 +11,6 @@ import javax.swing.table.DefaultTableModel;
 import modelo.ExameDTO;
 import modelo.UsuarioDTO;
 
-/**
- *
- * @author user
- */
 public class ListaResultadosExame extends javax.swing.JFrame {
 
     /**
