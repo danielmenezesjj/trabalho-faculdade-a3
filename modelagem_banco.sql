@@ -1,4 +1,7 @@
 create database detran;
+
+select * from Usuarios;
+
 use detran;
 
 CREATE TABLE perfil(
@@ -34,9 +37,11 @@ dt_vencimento date NOT NULL,
 aluno_id int NOT NULL,
 foreign key (aluno_id) references usuarios(id)
 );
-insert into perfil(nome_perfil) value ("ADMIN");
+
 INSERT INTO usuarios(nome_completo, dt_nascimento, adm, cpf, email, telefone, senha, perfil_id) value("daniel menezes", '2000-12-25', true, "123456", "danielmenezes2512@outlook.com", "12356791", "123", 1);
+insert into perfil(nome_perfil) value ("ADMIN");
 insert servicos(nome_item, preco_item) value("Renovação ", 230.45);
+
 
 
 
