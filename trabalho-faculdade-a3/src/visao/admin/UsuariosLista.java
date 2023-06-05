@@ -134,8 +134,18 @@ public class UsuariosLista extends javax.swing.JFrame {
         try {
             if (rsUsuario.next()) {
                 UsuarioDTO usuarioDto = new UsuarioDTO();
-
+                java.sql.Date sqlDate = rsUsuario.getDate("dt_nascimento");
+                long milliseconds = sqlDate.getTime();
+                java.util.Date date = new java.util.Date(milliseconds);
+                
+                
                 usuarioDto.setNome_usuario(rsUsuario.getString("nome_completo"));
+                usuarioDto.setCpf_usuario(rsUsuario.getString("cpf"));
+                usuarioDto.setEmail_usuario(rsUsuario.getString("email"));
+                usuarioDto.setDt_nascimento_usuario(date);
+                usuarioDto.setSenha_usuario(rsUsuario.getString("senha"));
+                usuarioDto.setTelefone_usuario(rsUsuario.getString("telefone"));
+                usuarioDto.setPerfil_usuario(rsUsuario.getInt("perfil_id"));
 
                 new EditarUsuarios(usuarioDto).setVisible(true);
             }

@@ -13,12 +13,24 @@ import javax.swing.text.MaskFormatter;
 public class EditarUsuarios extends javax.swing.JFrame {
     
     public EditarUsuarios() {
-        
+        initComponents();
     }
     
     public EditarUsuarios(UsuarioDTO usuario){
         initComponents();
+        
+        SimpleDateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy");
+        String dataNascimento = dateFormat.format(usuario.getDt_nascimento_usuario());
+        
+        
         txtNomeCompleto.setText(usuario.getNome_usuario());
+        txtCpf.setText(usuario.getCpf_usuario());
+        txtDtNascimento.setText(dataNascimento);
+        txtSenha.setText(usuario.getSenha_usuario());
+        txtEmail.setText(usuario.getEmail_usuario());
+        txtTelefone.setText(usuario.getTelefone_usuario());
+        
+        
     }
 
     @SuppressWarnings("unchecked")
@@ -42,12 +54,13 @@ public class EditarUsuarios extends javax.swing.JFrame {
         jLabel6 = new javax.swing.JLabel();
         txtSenha = new javax.swing.JPasswordField();
         jLabel7 = new javax.swing.JLabel();
-        optionMedico = new javax.swing.JRadioButton();
-        optionPsicologo = new javax.swing.JRadioButton();
-        optionAgente = new javax.swing.JRadioButton();
-        optionAdmin = new javax.swing.JRadioButton();
+        rMedico = new javax.swing.JRadioButton();
+        rPsicologo = new javax.swing.JRadioButton();
+        rAgente = new javax.swing.JRadioButton();
+        rAluno = new javax.swing.JRadioButton();
         txtCpf = new javax.swing.JFormattedTextField();
         txtDtNascimento = new javax.swing.JFormattedTextField();
+        rAdmin = new javax.swing.JRadioButton();
 
         jCheckBox1.setText("jCheckBox1");
 
@@ -89,17 +102,20 @@ public class EditarUsuarios extends javax.swing.JFrame {
 
         jLabel7.setText("Data de Nascimento");
 
-        buttonGroup1.add(optionMedico);
-        optionMedico.setText("Médico");
+        buttonGroup1.add(rMedico);
+        rMedico.setText("Médico");
 
-        buttonGroup1.add(optionPsicologo);
-        optionPsicologo.setText("Psicólogo");
+        buttonGroup1.add(rPsicologo);
+        rPsicologo.setText("Psicólogo");
 
-        buttonGroup1.add(optionAgente);
-        optionAgente.setText("Agente");
+        buttonGroup1.add(rAgente);
+        rAgente.setText("Agente");
 
-        buttonGroup1.add(optionAdmin);
-        optionAdmin.setText("Administrador");
+        buttonGroup1.add(rAluno);
+        rAluno.setText("Aluno");
+
+        buttonGroup1.add(rAdmin);
+        rAdmin.setText("Administrador");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -125,14 +141,15 @@ public class EditarUsuarios extends javax.swing.JFrame {
                             .addComponent(txtDtNascimento, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(58, 58, 58)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(optionMedico)
+                            .addComponent(rMedico)
                             .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(txtTelefone, javax.swing.GroupLayout.DEFAULT_SIZE, 170, Short.MAX_VALUE)
-                            .addComponent(optionPsicologo)
-                            .addComponent(optionAgente)
-                            .addComponent(optionAdmin)
-                            .addComponent(txtCpf)))
+                            .addComponent(rPsicologo)
+                            .addComponent(rAgente)
+                            .addComponent(rAluno)
+                            .addComponent(txtCpf)
+                            .addComponent(rAdmin)))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(237, 237, 237)
                         .addComponent(btnCadastrar, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)))
@@ -164,7 +181,7 @@ public class EditarUsuarios extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(txtTelefone, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(33, 33, 33)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabel6)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -172,18 +189,21 @@ public class EditarUsuarios extends javax.swing.JFrame {
                         .addGap(36, 36, 36)
                         .addComponent(jLabel7)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(txtDtNascimento, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(optionMedico, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(txtDtNascimento, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(rMedico, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(optionPsicologo, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(rPsicologo, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(optionAgente, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(rAgente, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(rAdmin, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(optionAdmin, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 66, Short.MAX_VALUE)
+                        .addComponent(rAluno, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(48, 48, 48)))
                 .addComponent(btnCadastrar, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(56, 56, 56))
+                .addGap(40, 40, 40))
         );
 
         pack();
@@ -200,14 +220,11 @@ public class EditarUsuarios extends javax.swing.JFrame {
 
     private void formWindowActivated(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowActivated
 
-        formataCpf();
-        formataData();
+        //formataCpf();
+        //formataData();
 
     }//GEN-LAST:event_formWindowActivated
 
-    private void buscarUsuario(){
-       
-    }
 
     private void formataCpf() {
         try {
@@ -293,10 +310,11 @@ public class EditarUsuarios extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
-    private javax.swing.JRadioButton optionAdmin;
-    private javax.swing.JRadioButton optionAgente;
-    private javax.swing.JRadioButton optionMedico;
-    private javax.swing.JRadioButton optionPsicologo;
+    private javax.swing.JRadioButton rAdmin;
+    private javax.swing.JRadioButton rAgente;
+    private javax.swing.JRadioButton rAluno;
+    private javax.swing.JRadioButton rMedico;
+    private javax.swing.JRadioButton rPsicologo;
     private javax.swing.JFormattedTextField txtCpf;
     private javax.swing.JFormattedTextField txtDtNascimento;
     private javax.swing.JTextField txtEmail;
