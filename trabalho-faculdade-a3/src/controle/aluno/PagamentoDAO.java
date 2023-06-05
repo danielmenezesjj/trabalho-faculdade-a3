@@ -1,5 +1,6 @@
-package controle;
+package controle.aluno;
 
+import controle.ConexaoDAO;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;

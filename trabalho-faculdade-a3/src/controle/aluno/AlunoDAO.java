@@ -1,5 +1,6 @@
-package controle;
+package controle.aluno;
 
+import controle.ConexaoDAO;
 import java.sql.Connection;
 import java.sql.Date;
 import java.sql.PreparedStatement;
@@ -94,7 +95,7 @@ public class AlunoDAO {
             int arrowsAfected = pstm.executeUpdate();
 
             if (arrowsAfected > 0) {
-                JOptionPane.showMessageDialog(null, "Exame lançado!", "Exame", JOptionPane.PLAIN_MESSAGE);
+                JOptionPane.showMessageDialog(null, "Exame lançado! Aguarde o resultado.", "Exame", JOptionPane.PLAIN_MESSAGE);
             }
 
         } catch (SQLException e) {

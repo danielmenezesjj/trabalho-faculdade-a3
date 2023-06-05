@@ -1,6 +1,6 @@
 package visao.admin;
 
-import controle.AdminDAO;
+import controle.admin.AdminDAO;
 import modelo.UsuarioDTO;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;

@@ -1,6 +1,6 @@
 package visao.aluno.servicos;
 
-import controle.CarteiraDAO;
+import controle.detran.CarteiraDAO;
 import modelo.AlunoDTO;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -117,7 +117,7 @@ public class Carteira extends javax.swing.JFrame {
                 
                 txtNomeAluno.setText("Nome: " + nome);
                 txtCpfAluno.setText("CPF: " + cpf);
-                txtDtNascimentoAluno.setText("Data nasciemnto: " + dtNascimento);
+                txtDtNascimentoAluno.setText("Data nascimento: " + dtNascimento);
                 txtDtEmissao.setText("Emissão: " + dtEmissao);
                 txtValidade.setText("Vencimento: " + dtVencimento);
             }

@@ -1,5 +1,7 @@
-package controle;
+package controle.admin;
 
+import controle.ConexaoDAO;
+import controle.examinador.ExaminadorDAO;
 import modelo.UsuarioDTO;
 import java.sql.PreparedStatement;
 import java.sql.Connection;

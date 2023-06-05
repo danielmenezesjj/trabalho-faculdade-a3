@@ -1,6 +1,6 @@
 package visao.aluno;
 
-import controle.AlunoDAO;
+import controle.aluno.AlunoDAO;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.logging.Level;

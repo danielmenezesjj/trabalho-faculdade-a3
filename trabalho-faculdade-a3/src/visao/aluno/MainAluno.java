@@ -1,8 +1,8 @@
 package visao.aluno;
 
-import controle.PagamentoDAO;
+import controle.aluno.PagamentoDAO;
 import visao.aluno.servicos.Boleto;
-import controle.ServicoDAO;
+import controle.detran.ServicoDAO;
 import modelo.ServicoDTO;
 import java.sql.ResultSet;
 import java.sql.SQLException;

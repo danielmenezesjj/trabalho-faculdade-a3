@@ -1,6 +1,6 @@
 package services;
 
-import controle.PagamentoDAO;
+import controle.aluno.PagamentoDAO;
 import modelo.PagamentoDTO;
 import visao.aluno.servicos.ProvaTeorica;
 

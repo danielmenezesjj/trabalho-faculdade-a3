@@ -1,6 +1,6 @@
 package visao.admin;
 
-import controle.AdminDAO;
+import controle.admin.AdminDAO;
 import javax.swing.JOptionPane;
 import modelo.UsuarioDTO;
 import javax.swing.table.DefaultTableModel;

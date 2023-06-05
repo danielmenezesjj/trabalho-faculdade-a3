@@ -1,7 +1,7 @@
 package visao.aluno.servicos;
 
-import controle.ProvaTeoricaDAO;
-import controle.QuestoesDAO;
+import controle.detran.ProvaTeoricaDAO;
+import controle.detran.QuestoesDAO;
 import modelo.ProvaTeoricaDTO;
 import modelo.Questao;
 import java.sql.ResultSet;

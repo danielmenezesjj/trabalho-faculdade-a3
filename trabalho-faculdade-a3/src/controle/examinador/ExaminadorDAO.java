@@ -1,5 +1,6 @@
-package controle;
+package controle.examinador;
 
+import controle.ConexaoDAO;
 import java.sql.ResultSet;
 import java.sql.PreparedStatement;
 import java.sql.Connection;

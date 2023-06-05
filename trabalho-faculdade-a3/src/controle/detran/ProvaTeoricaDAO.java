@@ -1,5 +1,6 @@
-package controle;
+package controle.detran;
 
+import controle.ConexaoDAO;
 import modelo.ProvaTeoricaDTO;
 import java.sql.Connection;
 import java.sql.Date;

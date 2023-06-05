@@ -1,6 +1,6 @@
 package visao.aluno.servicos;
 
-import controle.AlunoDAO;
+import controle.aluno.AlunoDAO;
 
 public class InterfaceRenovacao extends javax.swing.JFrame {
 

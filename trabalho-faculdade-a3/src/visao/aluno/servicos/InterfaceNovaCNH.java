@@ -1,9 +1,9 @@
 package visao.aluno.servicos;
 
-import controle.AlunoDAO;
-import controle.CarteiraDAO;
-import controle.ExaminadorDAO;
-import controle.ProvaTeoricaDAO;
+import controle.aluno.AlunoDAO;
+import controle.detran.CarteiraDAO;
+import controle.examinador.ExaminadorDAO;
+import controle.detran.ProvaTeoricaDAO;
 import java.awt.Color;
 import java.sql.ResultSet;
 import java.sql.SQLException;

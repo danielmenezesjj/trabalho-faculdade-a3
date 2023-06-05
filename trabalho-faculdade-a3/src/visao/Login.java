@@ -1,6 +1,6 @@
 package visao;
 
-import controle.UsuarioDAO;
+import controle.admin.UsuarioDAO;
 import modelo.UsuarioDTO;
 import java.text.ParseException;
 import javax.swing.text.MaskFormatter;

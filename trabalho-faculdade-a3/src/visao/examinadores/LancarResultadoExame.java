@@ -1,6 +1,6 @@
 package visao.examinadores;
 
-import controle.ExaminadorDAO;
+import controle.examinador.ExaminadorDAO;
 import java.sql.SQLException;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
@@ -32,8 +32,7 @@ public class LancarResultadoExame extends javax.swing.JFrame {
                     exame.getResultado()
                 });
             }
-            
-            
+         
         } catch (SQLException e) {
             JOptionPane.showMessageDialog(null, e);
         }
