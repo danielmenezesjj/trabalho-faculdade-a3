@@ -11,26 +11,44 @@ import javax.swing.JOptionPane;
 import javax.swing.text.MaskFormatter;
 
 public class EditarUsuarios extends javax.swing.JFrame {
-    
+
     public EditarUsuarios() {
         initComponents();
     }
-    
-    public EditarUsuarios(UsuarioDTO usuario){
+
+    public EditarUsuarios(UsuarioDTO usuario) {
         initComponents();
-        
+
         SimpleDateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy");
         String dataNascimento = dateFormat.format(usuario.getDt_nascimento_usuario());
-        
-        
+
         txtNomeCompleto.setText(usuario.getNome_usuario());
         txtCpf.setText(usuario.getCpf_usuario());
         txtDtNascimento.setText(dataNascimento);
         txtSenha.setText(usuario.getSenha_usuario());
         txtEmail.setText(usuario.getEmail_usuario());
         txtTelefone.setText(usuario.getTelefone_usuario());
-        
-        
+
+        switch (usuario.getPerfil_usuario()) {
+            case 1:
+                rAluno.setSelected(true);
+                break;
+            case 2:
+                rMedico.setSelected(true);
+                break;
+            case 3:
+                rAgente.setSelected(true);
+                break;
+            case 4:
+                rPsicologo.setSelected(true);
+                break;
+            case 5:
+                rAdmin.setSelected(true);
+                break;
+            default:
+                throw new AssertionError();
+        }
+
     }
 
     @SuppressWarnings("unchecked")
@@ -224,7 +242,6 @@ public class EditarUsuarios extends javax.swing.JFrame {
         //formataData();
 
     }//GEN-LAST:event_formWindowActivated
-
 
     private void formataCpf() {
         try {
