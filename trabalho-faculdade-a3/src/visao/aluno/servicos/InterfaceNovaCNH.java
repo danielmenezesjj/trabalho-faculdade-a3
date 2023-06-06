@@ -2,6 +2,7 @@ package visao.aluno.servicos;
 
 import controle.aluno.AlunoDAO;
 import controle.detran.CarteiraDAO;
+import controle.detran.ExamesDAO;
 import controle.examinador.ExaminadorDAO;
 import controle.detran.ProvaTeoricaDAO;
 import java.awt.Color;
@@ -22,8 +23,9 @@ public class InterfaceNovaCNH extends javax.swing.JFrame {
     boolean examePsiAprovado = false;
     boolean examePratAprovado = false;
     boolean provaTeoriAprovado = false;
+    boolean chance = false;
     AlunoDAO alunoDao = new AlunoDAO();
-    
+
     int alunoLogadoId = UsuarioDTO.usuarioLogado.getId_usuario();
 
     /**
@@ -31,9 +33,9 @@ public class InterfaceNovaCNH extends javax.swing.JFrame {
      */
     public InterfaceNovaCNH() {
         initComponents();
-        verificaResultados();
-        ativarBotao();
-        
+
+        ativarBotaoSolicitarCarteira();
+
     }
 
     /**
@@ -62,7 +64,7 @@ public class InterfaceNovaCNH extends javax.swing.JFrame {
         btnPsicologo = new javax.swing.JButton();
         btnTeorico = new javax.swing.JButton();
         btnPratico = new javax.swing.JButton();
-        btnVisualizar = new javax.swing.JButton();
+        btnImprimirCarteira = new javax.swing.JButton();
 
         jButton3.setText("Realizar exame");
         jButton3.addActionListener(new java.awt.event.ActionListener() {
@@ -157,14 +159,14 @@ public class InterfaceNovaCNH extends javax.swing.JFrame {
             }
         });
 
-        btnVisualizar.setBackground(new java.awt.Color(0, 0, 0));
-        btnVisualizar.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        btnVisualizar.setForeground(new java.awt.Color(255, 255, 255));
-        btnVisualizar.setText("Imprimir Carteira");
-        btnVisualizar.setEnabled(false);
-        btnVisualizar.addActionListener(new java.awt.event.ActionListener() {
+        btnImprimirCarteira.setBackground(new java.awt.Color(0, 0, 0));
+        btnImprimirCarteira.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        btnImprimirCarteira.setForeground(new java.awt.Color(255, 255, 255));
+        btnImprimirCarteira.setText("Imprimir Carteira");
+        btnImprimirCarteira.setEnabled(false);
+        btnImprimirCarteira.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnVisualizarActionPerformed(evt);
+                btnImprimirCarteiraActionPerformed(evt);
             }
         });
 
@@ -207,7 +209,7 @@ public class InterfaceNovaCNH extends javax.swing.JFrame {
                         .addGap(41, 41, 41)
                         .addComponent(btnSolicitarCarteira, javax.swing.GroupLayout.PREFERRED_SIZE, 181, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(36, 36, 36)
-                        .addComponent(btnVisualizar, javax.swing.GroupLayout.PREFERRED_SIZE, 184, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(btnImprimirCarteira, javax.swing.GroupLayout.PREFERRED_SIZE, 184, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(57, 57, 57))
         );
         layout.setVerticalGroup(
@@ -239,7 +241,7 @@ public class InterfaceNovaCNH extends javax.swing.JFrame {
                     .addComponent(btnPratico))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 47, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(btnVisualizar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnImprimirCarteira, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(btnSolicitarCarteira, javax.swing.GroupLayout.DEFAULT_SIZE, 42, Short.MAX_VALUE))
                 .addGap(38, 38, 38))
         );
@@ -284,16 +286,28 @@ public class InterfaceNovaCNH extends javax.swing.JFrame {
     }//GEN-LAST:event_btnSolicitarCarteiraActionPerformed
 
     private void formWindowActivated(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowActivated
+
         verficaSeJatemCarteira();
         verificaSeJaFezExames();
         pegarResultadoProvaTeorica();
         pegarResultadosExames();
+        verificaResultados();
+
+        obterQuantidadeReprovacao();
         verificaSeJaFezProva();
+        verificarChance();
+        try {
+            habilitarChance();
+        } catch (SQLException ex) {
+            Logger.getLogger(InterfaceNovaCNH.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+
     }//GEN-LAST:event_formWindowActivated
 
-    private void btnVisualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVisualizarActionPerformed
+    private void btnImprimirCarteiraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnImprimirCarteiraActionPerformed
         new Carteira().setVisible(true);
-    }//GEN-LAST:event_btnVisualizarActionPerformed
+    }//GEN-LAST:event_btnImprimirCarteiraActionPerformed
 
     private void verificaSeJaFezProva() {
         try {
@@ -311,7 +325,7 @@ public class InterfaceNovaCNH extends javax.swing.JFrame {
 
     private void verificaSeJaFezExames() {
         try {
-            ResultSet rsExDao = new ExaminadorDAO().buscarExame(alunoLogadoId);
+            ResultSet rsExDao = new ExaminadorDAO().buscarExameSendoFeito(alunoLogadoId);
 
             while (rsExDao.next()) {
                 int tipo_exame = rsExDao.getInt("tipo_exame_id");
@@ -391,45 +405,48 @@ public class InterfaceNovaCNH extends javax.swing.JFrame {
         calendar.add(Calendar.YEAR, 4);
 
         Date dataVencimento = calendar.getTime();
-        
-        if(verificaResultados()){
+
+        if (verificaResultados()) {
             CarteiraDTO carteiraDto = new CarteiraDTO();
-            
+
             carteiraDto.setAluno_nome(AlunoDTO.usuarioLogado.getNome_usuario());
             carteiraDto.setDt_emissao(dataAtual);
             carteiraDto.setDt_vencimento(dataVencimento);
             carteiraDto.setAluno_id(alunoLogadoId);
             carteiraDto.setAluno_cpf(AlunoDTO.usuarioLogado.getCpf_usuario());
-            
+
             JOptionPane.showMessageDialog(null, "Solicitação feita!");
-            
+
             new CarteiraDAO().cadastrarCarteira(carteiraDto);
-               
+
         }
     }
 
     private boolean verificaResultados() {
 
-        ExaminadorDAO examinadorDao = new ExaminadorDAO();
-        int idAluno = AlunoDTO.usuarioLogado.getId_usuario();
-
-        ResultSet rsProvaDao = new ProvaTeoricaDAO().buscarProva(idAluno);
-        ResultSet rsExDao = examinadorDao.buscarExame(idAluno);
+        ResultSet rsProvaDao = new ProvaTeoricaDAO().buscarProva(alunoLogadoId);
+        ResultSet rsExDao = new ExamesDAO().buscarExames(alunoLogadoId);
 
         try {
+            if (!rsExDao.next()) {
+                return false;
+            }
             while (rsExDao.next()) {
                 String resultado = rsExDao.getString("resultado");
                 int tipoExameId = rsExDao.getInt("tipo_exame_id");
 
                 if ("Aprovado".equals(resultado) && tipoExameId == 1) {
+                    btnMedico.setEnabled(false);
                     exameMedAprovado = true;
                 }
 
                 if ("Aprovado".equals(resultado) && tipoExameId == 2) {
+                    btnPsicologo.setEnabled(false);
                     examePsiAprovado = true;
                 }
 
                 if ("Aprovado".equals(resultado) && tipoExameId == 4) {
+                    btnPratico.setEnabled(false);
                     examePratAprovado = true;
                 }
             }
@@ -454,25 +471,66 @@ public class InterfaceNovaCNH extends javax.swing.JFrame {
         }
     }
 
-    private void ativarBotao() {
+    private void ativarBotaoSolicitarCarteira() {
         if (verificaResultados()) {
             btnSolicitarCarteira.setEnabled(true);
         } else {
             btnSolicitarCarteira.setEnabled(false);
         }
     }
-    
-    private void verficaSeJatemCarteira(){
+
+    private void verficaSeJatemCarteira() {
         try {
             ResultSet rsCarteira = new CarteiraDAO().buscaCarteira(alunoLogadoId);
-            
-            if(rsCarteira.next()){
+
+            if (rsCarteira.next()) {
                 btnSolicitarCarteira.setEnabled(false);
-                btnVisualizar.setEnabled(true);
+                btnImprimirCarteira.setEnabled(true);
             }
-            
-        } catch (Exception e) {
+
+        } catch (SQLException e) {
         }
+    }
+
+    private void habilitarChance() throws SQLException {
+        if (chance) {
+            ResultSet rsExames = new ExamesDAO().buscarExames(alunoLogadoId);
+            if (rsExames.next() && rsExames.getString("resultado").equals("Reprovado")) {
+                JOptionPane.showMessageDialog(null, "Você tem mais uma chance para fazer o " + rsExames.getString("tipo_exame.nome"));
+
+                switch (rsExames.getInt("tipo_exame_id")) {
+                    case 1:
+                        btnMedico.setEnabled(true);
+                        break;
+                    case 2:
+                        btnPsicologo.setEnabled(true);
+                        break;
+                    case 4:
+                        btnPratico.setEnabled(true);
+                        break;
+                    default:
+                        break;
+                }
+            }
+        }
+    }
+
+    private void verificarChance() {
+        int contadorReprovacao = obterQuantidadeReprovacao();
+        chance = contadorReprovacao == 1;
+    }
+
+    private int obterQuantidadeReprovacao() {
+        int contadorReprovacao = 0;
+        try {
+            ResultSet rsExames = new ExamesDAO().buscarExames(alunoLogadoId);
+
+            while (rsExames.next()) {
+                contadorReprovacao++;
+            }
+        } catch (SQLException e) {
+        }
+        return contadorReprovacao;
     }
 
     /**
@@ -511,12 +569,12 @@ public class InterfaceNovaCNH extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnImprimirCarteira;
     private javax.swing.JButton btnMedico;
     private javax.swing.JButton btnPratico;
     private javax.swing.JButton btnPsicologo;
     private javax.swing.JButton btnSolicitarCarteira;
     private javax.swing.JButton btnTeorico;
-    private javax.swing.JButton btnVisualizar;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton5;
     private javax.swing.JLabel jLabel10;

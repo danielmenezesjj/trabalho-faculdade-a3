@@ -13,9 +13,9 @@ public class ExaminadorDAO {
 
     Connection conn = (Connection) new ConexaoDAO().connectDB();
 
-    public ResultSet buscarExame(int idAluno) {
+    public ResultSet buscarExameSendoFeito(int idAluno) {
         try {
-            String sql = "SELECT * FROM exames WHERE aluno_id = ?";
+            String sql = "SELECT * FROM exames WHERE aluno_id = ? AND resultado IS NULL";
             PreparedStatement pstm = conn.prepareStatement(sql);
 
             pstm.setInt(1, idAluno);

@@ -90,7 +90,7 @@
                       <EmptySpace min="-2" pref="41" max="-2" attributes="0"/>
                       <Component id="btnSolicitarCarteira" min="-2" pref="181" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="36" max="-2" attributes="0"/>
-                      <Component id="btnVisualizar" min="-2" pref="184" max="-2" attributes="0"/>
+                      <Component id="btnImprimirCarteira" min="-2" pref="184" max="-2" attributes="0"/>
                   </Group>
               </Group>
               <EmptySpace min="-2" pref="57" max="-2" attributes="0"/>
@@ -130,7 +130,7 @@
               </Group>
               <EmptySpace pref="47" max="32767" attributes="0"/>
               <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                  <Component id="btnVisualizar" max="32767" attributes="0"/>
+                  <Component id="btnImprimirCarteira" max="32767" attributes="0"/>
                   <Component id="btnSolicitarCarteira" pref="42" max="32767" attributes="0"/>
               </Group>
               <EmptySpace min="-2" pref="38" max="-2" attributes="0"/>
@@ -268,7 +268,7 @@
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnPraticoActionPerformed"/>
       </Events>
     </Component>
-    <Component class="javax.swing.JButton" name="btnVisualizar">
+    <Component class="javax.swing.JButton" name="btnImprimirCarteira">
       <Properties>
         <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
           <Color blue="0" green="0" red="0" type="rgb"/>
@@ -283,7 +283,7 @@
         <Property name="enabled" type="boolean" value="false"/>
       </Properties>
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnVisualizarActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnImprimirCarteiraActionPerformed"/>
       </Events>
     </Component>
   </SubComponents>
