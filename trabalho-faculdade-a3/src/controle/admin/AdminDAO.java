@@ -127,11 +127,20 @@ public class AdminDAO {
 
     public void editarUsuario(UsuarioDTO usuario) {
         try {
-            String sql = "UPDATE * FROM usuarios SET nome_completo = ?, dt_nascimento = ?, cpf = ?, email = ?, telefone = ?, senha = ?, perfil_id = ? WHERE id = ?";
+            String sql = "UPDATE usuarios"
+                    + " SET nome_completo = ?, "
+                    + "dt_nascimento = ?, "
+                    + "cpf = ?, "
+                    + "email = ?, "
+                    + "telefone = ?, "
+                    + "senha = ?, "
+                    + "perfil_id = ? "
+                    + "WHERE id = ?";
+
             PreparedStatement pstm = conn.prepareStatement(sql);
-            
+
             Date sqlDate = new java.sql.Date(usuario.getDt_nascimento_usuario().getTime());
-            
+
             pstm.setString(1, usuario.getNome_usuario());
             pstm.setDate(2, sqlDate);
             pstm.setString(3, usuario.getCpf_usuario());
@@ -140,8 +149,8 @@ public class AdminDAO {
             pstm.setString(6, usuario.getSenha_usuario());
             pstm.setInt(7, usuario.getPerfil_usuario());
             pstm.setInt(8, usuario.getId_usuario());
-            
-            int rowsAffected = pstm.executeUpdate(sql);
+
+            int rowsAffected = pstm.executeUpdate();
 
             if (rowsAffected > 0) {
                 JOptionPane.showMessageDialog(null, "Usuário atualizado com sucesso!");
@@ -151,14 +160,6 @@ public class AdminDAO {
 
         } catch (SQLException e) {
             JOptionPane.showMessageDialog(null, "UsuarioDAO: " + e);
-        } finally {
-            if (conn != null) {
-                try {
-                    conn.close();
-                } catch (SQLException ex) {
-                    Logger.getLogger(ExaminadorDAO.class.getName()).log(Level.SEVERE, null, ex);
-                }
-            }
         }
 
     }

@@ -146,6 +146,7 @@ public class ListarUsuarios extends javax.swing.JFrame {
                 usuarioDto.setSenha_usuario(rsUsuario.getString("senha"));
                 usuarioDto.setTelefone_usuario(rsUsuario.getString("telefone"));
                 usuarioDto.setPerfil_usuario(rsUsuario.getInt("perfil_id"));
+                usuarioDto.setId_usuario(rsUsuario.getInt("id"));
 
                 new EditarUsuario(usuarioDto).setVisible(true);
             }

@@ -1,5 +1,6 @@
 package visao.admin;
 
+import controle.admin.AdminDAO;
 import modelo.UsuarioDTO;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -26,6 +27,7 @@ public class EditarUsuario extends javax.swing.JFrame {
         txtSenha.setText(usuario.getSenha_usuario());
         txtEmail.setText(usuario.getEmail_usuario());
         txtTelefone.setText(usuario.getTelefone_usuario());
+        txtIdUsuario.setText(String.valueOf(usuario.getId_usuario()));
 
         switch (usuario.getPerfil_usuario()) {
             case 1:
@@ -76,6 +78,8 @@ public class EditarUsuario extends javax.swing.JFrame {
         txtCpf = new javax.swing.JFormattedTextField();
         txtDtNascimento = new javax.swing.JFormattedTextField();
         rAdmin = new javax.swing.JRadioButton();
+        txtIdUsuario = new javax.swing.JLabel();
+        jLabel8 = new javax.swing.JLabel();
 
         jCheckBox1.setText("jCheckBox1");
 
@@ -183,6 +187,10 @@ public class EditarUsuario extends javax.swing.JFrame {
         buttonGroup1.add(rAdmin);
         rAdmin.setText("Administrador");
 
+        txtIdUsuario.setText("id");
+
+        jLabel8.setText("ID:");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -190,7 +198,7 @@ public class EditarUsuario extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addGap(0, 0, Short.MAX_VALUE)
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 218, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(168, 168, 168))
+                .addGap(145, 145, 145))
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
@@ -204,7 +212,11 @@ public class EditarUsuario extends javax.swing.JFrame {
                                 .addComponent(txtEmail)
                                 .addComponent(txtSenha, javax.swing.GroupLayout.PREFERRED_SIZE, 181, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtDtNascimento, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(txtDtNascimento, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jLabel8)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(txtIdUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addGap(58, 58, 58)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(rMedico)
@@ -247,8 +259,8 @@ public class EditarUsuario extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(txtTelefone, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(33, 33, 33)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
                         .addComponent(jLabel6)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(txtSenha, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -256,8 +268,11 @@ public class EditarUsuario extends javax.swing.JFrame {
                         .addComponent(jLabel7)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(txtDtNascimento, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(txtIdUsuario)
+                            .addComponent(jLabel8)))
+                    .addGroup(layout.createSequentialGroup()
                         .addComponent(rMedico, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(rPsicologo, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -266,8 +281,8 @@ public class EditarUsuario extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(rAdmin, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(rAluno, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(48, 48, 48)))
+                        .addComponent(rAluno, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(48, 48, 48)
                 .addComponent(btnSalvar, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(40, 40, 40))
         );
@@ -281,7 +296,7 @@ public class EditarUsuario extends javax.swing.JFrame {
     }//GEN-LAST:event_txtNomeCompletoActionPerformed
 
     private void btnSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalvarActionPerformed
-
+        editarUsuario();
     }//GEN-LAST:event_btnSalvarActionPerformed
 
     private void formWindowActivated(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowActivated
@@ -338,8 +353,7 @@ public class EditarUsuario extends javax.swing.JFrame {
     }//GEN-LAST:event_txtDtNascimentoPropertyChange
 
     private void editarUsuario() {
-
-        SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
+        SimpleDateFormat format = new SimpleDateFormat("dd-MM-yyyy");
         try {
             Date dtNascimento = format.parse(txtDtNascimento.getText());
 
@@ -350,12 +364,36 @@ public class EditarUsuario extends javax.swing.JFrame {
             usuarioDto.setDt_nascimento_usuario(dtNascimento);
             usuarioDto.setSenha_usuario(txtSenha.getText());
             usuarioDto.setTelefone_usuario(txtTelefone.getText());
-            usuarioDto.setPerfil_usuario();
+            usuarioDto.setPerfil_usuario(getPefil());
+            usuarioDto.setId_usuario(Integer.parseInt(txtIdUsuario.getText()));
 
+            new AdminDAO().editarUsuario(usuarioDto);
         } catch (ParseException ex) {
             Logger.getLogger(EditarUsuario.class.getName()).log(Level.SEVERE, null, ex);
         }
 
+    }
+
+    private int getPefil() {
+        int idPerfil = 0;
+
+        if (rAluno.isSelected()) {
+            idPerfil = 1;
+        }
+        if (rMedico.isSelected()) {
+            idPerfil = 2;
+        }
+        if (rAgente.isSelected()) {
+            idPerfil = 3;
+        }
+        if (rPsicologo.isSelected()) {
+            idPerfil = 4;
+        }
+        if (rAdmin.isSelected()) {
+            idPerfil = 5;
+        }
+
+        return idPerfil;
     }
 
     private void formataCpf() {
@@ -450,6 +488,7 @@ public class EditarUsuario extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
     private javax.swing.JRadioButton rAdmin;
     private javax.swing.JRadioButton rAgente;
     private javax.swing.JRadioButton rAluno;
@@ -458,6 +497,7 @@ public class EditarUsuario extends javax.swing.JFrame {
     private javax.swing.JFormattedTextField txtCpf;
     private javax.swing.JFormattedTextField txtDtNascimento;
     private javax.swing.JTextField txtEmail;
+    private javax.swing.JLabel txtIdUsuario;
     private javax.swing.JTextField txtNomeCompleto;
     private javax.swing.JPasswordField txtSenha;
     private javax.swing.JTextField txtTelefone;
