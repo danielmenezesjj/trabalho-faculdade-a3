@@ -20,12 +20,12 @@ import modelo.UsuarioDTO;
 public class InterfaceNovaCNH extends javax.swing.JFrame {
 
     boolean refazerExame = false;
+    boolean refazerProva = false;
 
     boolean exameMedAprovado = false;
     boolean examePsiAprovado = false;
     boolean examePratAprovado = false;
     boolean provaTeoriAprovado = false;
-    boolean chance = false;
     AlunoDAO alunoDao = new AlunoDAO();
 
     int alunoLogadoId = UsuarioDTO.usuarioLogado.getId_usuario();
@@ -36,7 +36,7 @@ public class InterfaceNovaCNH extends javax.swing.JFrame {
     public InterfaceNovaCNH() {
         initComponents();
         obterQuantidadeReprovacao();
-
+        habilitarChance();
     }
 
     /**
@@ -307,19 +307,16 @@ public class InterfaceNovaCNH extends javax.swing.JFrame {
 
     private void formWindowActivated(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowActivated
         verificaSeEstaFazendoExame();
-        
+
         pegarResultadosExames();
 
         ativarBotaoSolicitarCarteira();
-        habilitarChance();
 
         verificaSeJaFezProva();
 
         verficaSeJatemCarteira();
 
         pegarResultadoProvaTeorica();
-
-        
 
         verificaAprovados();
 
@@ -334,7 +331,7 @@ public class InterfaceNovaCNH extends javax.swing.JFrame {
         try {
             // validar se já existe prova com id de usuario
             ProvaTeoricaDAO provaDao = new ProvaTeoricaDAO();
-            ResultSet rsPDao = provaDao.buscarProva(alunoLogadoId);
+            ResultSet rsPDao = provaDao.buscarProvasAprovadas(alunoLogadoId);
 
             if (rsPDao.next()) {
                 btnTeorico.setEnabled(false);
@@ -397,20 +394,31 @@ public class InterfaceNovaCNH extends javax.swing.JFrame {
         ProvaTeoricaDAO pDao = new ProvaTeoricaDAO();
 
         ResultSet rsPDAO = pDao.buscarProva(alunoLogadoId);
+        ResultSet rsPDaoAprovado = pDao.buscarProvasAprovadas(alunoLogadoId);
 
         try {
-            if (rsPDAO.next()) {
-                String resultadoProva = rsPDAO.getString("resultado");
-                int notaProva = rsPDAO.getInt("nota");
+            if (rsPDaoAprovado.next()) {
+                String resultadoProva = rsPDaoAprovado.getString("resultado");
+                int notaProva = rsPDaoAprovado.getInt("nota");
 
                 jLabel10.setText("Resultado: " + resultadoProva + " - " + (notaProva * 5) + "%");
                 jLabel10.setForeground(new Color(0, 102, 0, 255));
 
-                if (resultadoProva.equals("Reprovado")) {
-                    jLabel10.setForeground(Color.RED);
-                }
-
                 return resultadoProva;
+            } else {
+                if (rsPDAO.next()) {
+                    String resultadoProva = rsPDAO.getString("resultado");
+                    int notaProva = rsPDAO.getInt("nota");
+
+                    jLabel10.setText("Resultado: " + resultadoProva + " - " + (notaProva * 5) + "%");
+                    jLabel10.setForeground(new Color(0, 102, 0, 255));
+
+                    if (resultadoProva.equals("Reprovado")) {
+                        jLabel10.setForeground(Color.RED);
+                    }
+
+                    return resultadoProva;
+                }
             }
         } catch (SQLException ex) {
             Logger.getLogger(InterfaceNovaCNH.class.getName()).log(Level.SEVERE, null, ex);
@@ -511,24 +519,30 @@ public class InterfaceNovaCNH extends javax.swing.JFrame {
 
     private void habilitarChance() {
         int contadorReprovacao = obterQuantidadeReprovacao();
-        
-        try {        
-            if(contadorReprovacao > 1){
+
+        try {
+            if (contadorReprovacao > 1) {
                 txtMessagem.setText("Reprovado. Tente novamente em 6 meses.");
 
                 btnMedico.setEnabled(false);
                 btnPratico.setEnabled(false);
                 btnPsicologo.setEnabled(false);
                 btnTeorico.setEnabled(false);
-                
+
                 return;
             }
-            
-            if (contadorReprovacao == 1) {
-                refazerExame = true;
 
+            if (contadorReprovacao == 1) {
+
+                refazerProva = true;
                 ExamesDAO exDao = new ExamesDAO();
                 ResultSet rsExames = exDao.buscarExamesReprovados(alunoLogadoId);
+                ResultSet rsProvas = new ProvaTeoricaDAO().buscarProvasReprovadas(alunoLogadoId);
+
+                if (rsProvas.next()) {
+                    btnTeorico.setText("Refazer exame");
+                    btnTeorico.setEnabled(true);
+                }
 
                 if (rsExames.next()) {
                     switch (rsExames.getInt("tipo_exame_id")) {
@@ -553,13 +567,18 @@ public class InterfaceNovaCNH extends javax.swing.JFrame {
         }
 
     }
+
     private int obterQuantidadeReprovacao() {
         int contadorReprovacao = 0;
 
         try {
             ResultSet rsExames = new ExamesDAO().buscarExamesReprovados(alunoLogadoId);
+            ResultSet rsProvas = new ProvaTeoricaDAO().buscarProvasReprovadas(alunoLogadoId);
 
             while (rsExames.next()) {
+                contadorReprovacao++;
+            }
+            while (rsProvas.next()) {
                 contadorReprovacao++;
             }
 
