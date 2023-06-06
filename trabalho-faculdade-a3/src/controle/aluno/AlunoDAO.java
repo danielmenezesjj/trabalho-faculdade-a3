@@ -102,6 +102,24 @@ public class AlunoDAO {
             JOptionPane.showMessageDialog(null, "ExameDAO: " + e, "Erro", JOptionPane.ERROR_MESSAGE);
         }
     }
+    
+    public void refazerExame(int idAluno,int tipoExameId){
+        try {
+            String sql = "UPDATE exames SET resultado = null WHERE aluno_id = ? AND tipo_exame_id = ?";
+            PreparedStatement pstm = conn.prepareStatement(sql);
+            pstm.setInt(1, idAluno);
+            pstm.setInt(2, tipoExameId);
+            
+            int rowsAffected = pstm.executeUpdate();
+            
+            if(rowsAffected > 0){
+                JOptionPane.showMessageDialog(null, "Exame sendo refeito.");
+            }
+            
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null, "ExameDAO: " + e, "Erro", JOptionPane.ERROR_MESSAGE);
+        }
+    }
 
     public ResultSet consultarExame() {
         try {
@@ -113,7 +131,7 @@ public class AlunoDAO {
             ResultSet rs = pstm.executeQuery();
             return rs;
         } catch (SQLException e) {
-            JOptionPane.showMessageDialog(null, "ExameDAO: " + e, "Erro", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(null, "AlunoDAO: " + e, "Erro", JOptionPane.ERROR_MESSAGE);
             return null;
         }
     }

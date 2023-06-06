@@ -162,11 +162,9 @@ public class AlunoCadastro extends javax.swing.JFrame {
         try {
             // TODO add your handling code here:
             cadastrarAluno();
-            new Login().setVisible(true);
         } catch (ParseException ex) {
             Logger.getLogger(CadastrarUsuario.class.getName()).log(Level.SEVERE, null, ex);
         }
-
     }//GEN-LAST:event_btnCadastrarActionPerformed
 
     private void txtNomeCompletoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNomeCompletoActionPerformed
