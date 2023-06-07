@@ -15,8 +15,10 @@ import modelo.Usuario;
 import visao.aluno.servicos.InterfaceNovaCNH;
 
 public class MainAluno extends javax.swing.JFrame {
+
     SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
     Date dataAtual = new Date();
+
     /**
      * Creates new form InterfaceAluno
      */
@@ -120,18 +122,18 @@ public class MainAluno extends javax.swing.JFrame {
 
     private void btnEmissaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEmissaoActionPerformed
         ResultSet rsPgmDAO = new PagamentoDAO().buscar(Usuario.usuarioLogado.getId_usuario());
-        
+
         try {
-            if(rsPgmDAO.next()){ 
+            if (rsPgmDAO.next()) {
                 new InterfaceNovaCNH().setVisible(true);
-            }else{
+            } else {
                 buscarServico(1);
             }
         } catch (SQLException ex) {
             Logger.getLogger(MainAluno.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_btnEmissaoActionPerformed
-  
+
     private void btnRenovaçãoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRenovaçãoActionPerformed
         buscarServico(3);
     }//GEN-LAST:event_btnRenovaçãoActionPerformed
@@ -142,13 +144,13 @@ public class MainAluno extends javax.swing.JFrame {
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
         txtUsuarioLogado.setText("Olá, " + Usuario.usuarioLogado.getNome_usuario());
-        
+
         String data = String.valueOf(sdf.format(dataAtual));
         txtData.setText(data);
     }//GEN-LAST:event_formWindowOpened
-    
-    private void buscarServico(int id){
-    try {
+
+    private void buscarServico(int id) {
+        try {
             ServicoDTO objServicoDto = new ServicoDTO();
             objServicoDto.setId(id);
 
@@ -158,20 +160,19 @@ public class MainAluno extends javax.swing.JFrame {
             if (rsServicoDao.next()) {
                 objServicoDto.setValor(rsServicoDao.getDouble("preco_item"));
                 objServicoDto.setItem(rsServicoDao.getString("nome_item"));
-                
+
                 Boleto objBoleto = new Boleto();
                 objBoleto.getServico(objServicoDto);
-                objBoleto.setVisible(true);             
+                objBoleto.setVisible(true);
             } else {
                 JOptionPane.showMessageDialog(null, "Serviço não encontrado.");
             }
 
-            
         } catch (SQLException erro) {
             JOptionPane.showMessageDialog(null, "InterfaceALuno: " + erro);
         }
     }
-    
+
     /**
      * @param args the command line arguments
      */
