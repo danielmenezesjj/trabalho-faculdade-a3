@@ -233,7 +233,7 @@ public class CadastrarUsuario extends javax.swing.JFrame {
 
         formataCpf();
         formataData();
-       
+
     }//GEN-LAST:event_formWindowActivated
 
     private void btnFecharSistemaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFecharSistemaActionPerformed
@@ -283,8 +283,14 @@ public class CadastrarUsuario extends javax.swing.JFrame {
             objUsuarioDto.setSenha_usuario(senha);
             objUsuarioDto.setPerfil_usuario(perfil);
 
-            AdminDAO objUsuarioDao = new AdminDAO();
-            objUsuarioDao.cadastrarUsuario(objUsuarioDto);
+            
+
+            if (buttonGroup1.getSelection() == null) {
+                JOptionPane.showMessageDialog(null, "Selecione um perfil.");
+                return;
+            }
+            
+            new AdminDAO().cadastrarUsuario(objUsuarioDto);
 
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, e);
@@ -313,14 +319,15 @@ public class CadastrarUsuario extends javax.swing.JFrame {
             e.printStackTrace();
         }
     }
-     public void limpar(){
+
+    public void limpar() {
         txtNomeCompleto.setText("");
         txtCpf.setText("");
         txtDtNascimento.setText("");
         txtEmail.setText("");
         txtTelefone.setText("");
         txtSenha.setText("");
-        
+
         txtNomeCompleto.requestFocus();
     }
 
