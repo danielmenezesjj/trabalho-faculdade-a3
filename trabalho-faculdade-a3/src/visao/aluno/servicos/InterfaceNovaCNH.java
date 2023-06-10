@@ -16,11 +16,11 @@ import javax.swing.JOptionPane;
 import modelo.AlunoDTO;
 import modelo.CarteiraDTO;
 import modelo.UsuarioDTO;
+import visao.aluno.MainAluno;
 
 public class InterfaceNovaCNH extends javax.swing.JFrame {
 
     boolean refazerExame = false;
-    boolean refazerProva = false;
 
     boolean exameMedAprovado = false;
     boolean examePsiAprovado = false;
@@ -67,6 +67,7 @@ public class InterfaceNovaCNH extends javax.swing.JFrame {
         btnPratico = new javax.swing.JButton();
         btnImprimirCarteira = new javax.swing.JButton();
         txtMessagem = new javax.swing.JLabel();
+        btnVoltar = new javax.swing.JButton();
 
         jButton3.setText("Realizar exame");
         jButton3.addActionListener(new java.awt.event.ActionListener() {
@@ -83,6 +84,8 @@ public class InterfaceNovaCNH extends javax.swing.JFrame {
         });
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setUndecorated(true);
+        setPreferredSize(new java.awt.Dimension(500, 420));
         setResizable(false);
         addWindowListener(new java.awt.event.WindowAdapter() {
             public void windowActivated(java.awt.event.WindowEvent evt) {
@@ -174,11 +177,39 @@ public class InterfaceNovaCNH extends javax.swing.JFrame {
 
         txtMessagem.setForeground(new java.awt.Color(153, 0, 0));
 
+        btnVoltar.setBackground(new java.awt.Color(255, 51, 51));
+        btnVoltar.setForeground(new java.awt.Color(255, 255, 255));
+        btnVoltar.setText("Voltar");
+        btnVoltar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnVoltarActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(15, 15, 15)
+                        .addComponent(btnVoltar, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(64, 64, 64)
+                        .addComponent(txtUsuarioLogado))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(214, 214, 214)
+                        .addComponent(jLabel2))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(41, 41, 41)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(txtMessagem, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(btnSolicitarCarteira, javax.swing.GroupLayout.PREFERRED_SIZE, 181, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(36, 36, 36)
+                                .addComponent(btnImprimirCarteira, javax.swing.GroupLayout.PREFERRED_SIZE, 184, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                .addGap(47, 47, 47))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addGap(68, 68, 68)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel7)
@@ -194,40 +225,27 @@ public class InterfaceNovaCNH extends javax.swing.JFrame {
                             .addComponent(btnPratico, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(btnMedico, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(btnTeorico, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 39, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(txtResultadoPsicologico)
                     .addComponent(txtResultadoMedico)
                     .addComponent(jLabel10)
                     .addComponent(txtResultadoPratico))
-                .addGap(77, 77, 77))
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(txtMessagem, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGap(169, 169, 169))
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(165, 165, 165)
-                        .addComponent(txtUsuarioLogado))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(41, 41, 41)
-                        .addComponent(btnSolicitarCarteira, javax.swing.GroupLayout.PREFERRED_SIZE, 181, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(36, 36, 36)
-                        .addComponent(btnImprimirCarteira, javax.swing.GroupLayout.PREFERRED_SIZE, 184, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(214, 214, 214)
-                        .addComponent(jLabel2)))
-                .addGap(57, 57, 57))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(34, 34, 34)
-                .addComponent(txtUsuarioLogado)
-                .addGap(12, 12, 12)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(34, 34, 34)
+                        .addComponent(txtUsuarioLogado))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(19, 19, 19)
+                        .addComponent(btnVoltar)))
+                .addGap(18, 18, 18)
                 .addComponent(txtMessagem, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel2)
                 .addGap(9, 9, 9)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -326,6 +344,11 @@ public class InterfaceNovaCNH extends javax.swing.JFrame {
     private void btnImprimirCarteiraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnImprimirCarteiraActionPerformed
         new Carteira().setVisible(true);
     }//GEN-LAST:event_btnImprimirCarteiraActionPerformed
+
+    private void btnVoltarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVoltarActionPerformed
+        this.dispose();
+        new MainAluno().setVisible(true);
+    }//GEN-LAST:event_btnVoltarActionPerformed
 
     private void verificaSeJaFezProva() {
         try {
@@ -533,8 +556,6 @@ public class InterfaceNovaCNH extends javax.swing.JFrame {
             }
 
             if (contadorReprovacao == 1) {
-
-                refazerProva = true;
                 ExamesDAO exDao = new ExamesDAO();
                 ResultSet rsExames = exDao.buscarExamesReprovados(alunoLogadoId);
                 ResultSet rsProvas = new ProvaTeoricaDAO().buscarProvasReprovadas(alunoLogadoId);
@@ -617,7 +638,7 @@ public class InterfaceNovaCNH extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new InterfaceNovaCNH().setVisible(true);
+                new InterfaceNovaCNH().setVisible(true);              
             }
         });
     }
@@ -629,6 +650,7 @@ public class InterfaceNovaCNH extends javax.swing.JFrame {
     private javax.swing.JButton btnPsicologo;
     private javax.swing.JButton btnSolicitarCarteira;
     private javax.swing.JButton btnTeorico;
+    private javax.swing.JButton btnVoltar;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton5;
     private javax.swing.JLabel jLabel10;

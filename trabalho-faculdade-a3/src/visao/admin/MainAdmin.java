@@ -1,14 +1,19 @@
 package visao.admin;
 
+import javax.swing.JFrame;
 import modelo.UsuarioDTO;
 import visao.Login;
 
 public class MainAdmin extends javax.swing.JFrame {
+
     String nomeUser;
+
     public MainAdmin() {
         initComponents();
         setOla();
+        this.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
     }
+
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -117,7 +122,7 @@ public class MainAdmin extends javax.swing.JFrame {
     }//GEN-LAST:event_jMenuItem1ActionPerformed
 
     private void formWindowActivated(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowActivated
-  
+
     }//GEN-LAST:event_formWindowActivated
 
     private void jMenu1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenu1ActionPerformed
@@ -133,20 +138,20 @@ public class MainAdmin extends javax.swing.JFrame {
     }//GEN-LAST:event_formWindowOpened
 
     private void btnFecharSistemaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFecharSistemaActionPerformed
-          new Login().setVisible(true);
-          this.dispose();
+        new Login().setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_btnFecharSistemaActionPerformed
-    
-    public UsuarioDTO getUsuario(UsuarioDTO usuario){
+
+    public UsuarioDTO getUsuario(UsuarioDTO usuario) {
         nomeUser = usuario.getNome_usuario();
         return usuario;
-        
+
     }
-    
-    private void setOla(){
+
+    private void setOla() {
         txtUsuarioLogado.setText("Olá, " + nomeUser);
     }
-    
+
     /**
      * @param args the command line arguments
      */
