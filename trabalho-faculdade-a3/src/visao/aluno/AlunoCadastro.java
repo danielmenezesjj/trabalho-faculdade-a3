@@ -210,6 +210,7 @@ public class AlunoCadastro extends javax.swing.JFrame {
 
     private void btnFecharSistemaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFecharSistemaActionPerformed
           new Login().setVisible(true);
+          this.dispose();
     }//GEN-LAST:event_btnFecharSistemaActionPerformed
 
     private void btnLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLoginActionPerformed

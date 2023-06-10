@@ -165,6 +165,7 @@ public class MainAluno extends javax.swing.JFrame {
 
     private void btnFecharSistemaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFecharSistemaActionPerformed
          new Login().setVisible(true);
+         this.dispose();
     }//GEN-LAST:event_btnFecharSistemaActionPerformed
 
     private void buscarServico(int id) {
