@@ -1,12 +1,15 @@
 package visao;
 
 import controle.UsuarioDAO;
+import java.awt.event.KeyEvent;
 import modelo.UsuarioDTO;
 import java.text.ParseException;
 import javax.swing.JOptionPane;
 import javax.swing.text.MaskFormatter;
 import visao.aluno.AlunoCadastro;
+
 public class Login extends javax.swing.JFrame {
+
     /**
      * Creates new form LoginVIEW
      */
@@ -69,6 +72,11 @@ public class Login extends javax.swing.JFrame {
         txtSenha.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtSenhaActionPerformed(evt);
+            }
+        });
+        txtSenha.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                txtSenhaKeyPressed(evt);
             }
         });
 
@@ -171,7 +179,7 @@ public class Login extends javax.swing.JFrame {
     }//GEN-LAST:event_btnEntrarActionPerformed
 
     private void txtSenhaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtSenhaActionPerformed
-        // TODO add your handling code here:
+        
     }//GEN-LAST:event_txtSenhaActionPerformed
 
     private void formWindowActivated(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowActivated
@@ -187,27 +195,35 @@ public class Login extends javax.swing.JFrame {
     }//GEN-LAST:event_bntCriarContaActionPerformed
 
     private void btnSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSairActionPerformed
-        JOptionPane.showMessageDialog(null,"Você está encerrando o sistema");
+        JOptionPane.showMessageDialog(null, "Você está encerrando o sistema");
         System.exit(0);
     }//GEN-LAST:event_btnSairActionPerformed
 
     private void formKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_formKeyPressed
         // TODO add your handling code here:
     }//GEN-LAST:event_formKeyPressed
-    
-    public void logar(){
-        UsuarioDTO usuarioDto = new UsuarioDTO();
+
+    private void txtSenhaKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtSenhaKeyPressed
+        int KeyCode = evt.getKeyCode();
         
+        if (KeyCode == KeyEvent.VK_ENTER) {
+            logar();
+        }
+    }//GEN-LAST:event_txtSenhaKeyPressed
+
+    public void logar() {
+        UsuarioDTO usuarioDto = new UsuarioDTO();
+
         usuarioDto.setCpf_usuario(txtCpf.getText());
         usuarioDto.setSenha_usuario(txtSenha.getText());
-        
+
         boolean logar = new UsuarioDAO().logar(usuarioDto);
-        
-        if(logar){
+
+        if (logar) {
             this.dispose();
         }
     }
-    
+
     /**
      * @param args the command line arguments
      */
@@ -222,16 +238,24 @@ public class Login extends javax.swing.JFrame {
                 if ("Nimbus".equals(info.getName())) {
                     javax.swing.UIManager.setLookAndFeel(info.getClassName());
                     break;
+
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Login.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Login.class
+                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
+
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Login.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Login.class
+                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
+
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Login.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Login.class
+                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
+
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Login.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Login.class
+                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
         //</editor-fold>
