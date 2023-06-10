@@ -17,7 +17,7 @@ public class MainAdmin extends javax.swing.JFrame {
         jSeparator1 = new javax.swing.JSeparator();
         jLabel1 = new javax.swing.JLabel();
         txtUsuarioLogado = new javax.swing.JLabel();
-        bntTrocarUsuário = new javax.swing.JButton();
+        btnFecharSistema = new javax.swing.JButton();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         jMenuItem1 = new javax.swing.JMenuItem();
@@ -42,12 +42,12 @@ public class MainAdmin extends javax.swing.JFrame {
         txtUsuarioLogado.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
         txtUsuarioLogado.setText("Olá, #NomeUsuario");
 
-        bntTrocarUsuário.setBackground(new java.awt.Color(0, 0, 0));
-        bntTrocarUsuário.setForeground(new java.awt.Color(255, 255, 255));
-        bntTrocarUsuário.setText("Trocar Usuário");
-        bntTrocarUsuário.addActionListener(new java.awt.event.ActionListener() {
+        btnFecharSistema.setBackground(new java.awt.Color(255, 51, 51));
+        btnFecharSistema.setForeground(new java.awt.Color(255, 255, 255));
+        btnFecharSistema.setText("Sair");
+        btnFecharSistema.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                bntTrocarUsuárioActionPerformed(evt);
+                btnFecharSistemaActionPerformed(evt);
             }
         });
 
@@ -89,10 +89,12 @@ public class MainAdmin extends javax.swing.JFrame {
                 .addGap(99, 99, 99)
                 .addComponent(jLabel1)
                 .addGap(27, 27, 27)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
-                    .addComponent(bntTrocarUsuário)
-                    .addComponent(txtUsuarioLogado, javax.swing.GroupLayout.PREFERRED_SIZE, 163, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(txtUsuarioLogado, javax.swing.GroupLayout.PREFERRED_SIZE, 163, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(116, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(btnFecharSistema, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(166, 166, 166))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -101,9 +103,9 @@ public class MainAdmin extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(txtUsuarioLogado, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel1))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 177, Short.MAX_VALUE)
-                .addComponent(bntTrocarUsuário)
-                .addGap(36, 36, 36))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 178, Short.MAX_VALUE)
+                .addComponent(btnFecharSistema)
+                .addGap(35, 35, 35))
         );
 
         pack();
@@ -130,9 +132,9 @@ public class MainAdmin extends javax.swing.JFrame {
         txtUsuarioLogado.setText("Olá, " + UsuarioDTO.usuarioLogado.getNome_usuario());
     }//GEN-LAST:event_formWindowOpened
 
-    private void bntTrocarUsuárioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bntTrocarUsuárioActionPerformed
-         new Login().setVisible(true);
-    }//GEN-LAST:event_bntTrocarUsuárioActionPerformed
+    private void btnFecharSistemaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFecharSistemaActionPerformed
+          new Login().setVisible(true);
+    }//GEN-LAST:event_btnFecharSistemaActionPerformed
     
     public UsuarioDTO getUsuario(UsuarioDTO usuario){
         nomeUser = usuario.getNome_usuario();
@@ -178,7 +180,7 @@ public class MainAdmin extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton bntTrocarUsuário;
+    private javax.swing.JButton btnFecharSistema;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;

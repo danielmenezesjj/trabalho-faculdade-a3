@@ -9,6 +9,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import javax.swing.text.MaskFormatter;
+import visao.Login;
 
 public class CadastrarUsuario extends javax.swing.JFrame {
 
@@ -43,7 +44,8 @@ public class CadastrarUsuario extends javax.swing.JFrame {
         optionAdmin = new javax.swing.JRadioButton();
         txtCpf = new javax.swing.JFormattedTextField();
         txtDtNascimento = new javax.swing.JFormattedTextField();
-        FecharSistema = new javax.swing.JButton();
+        btnFecharSistema = new javax.swing.JButton();
+        btnLogin = new javax.swing.JButton();
 
         jCheckBox1.setText("jCheckBox1");
 
@@ -97,12 +99,21 @@ public class CadastrarUsuario extends javax.swing.JFrame {
         buttonGroup1.add(optionAdmin);
         optionAdmin.setText("Administrador");
 
-        FecharSistema.setBackground(new java.awt.Color(255, 51, 51));
-        FecharSistema.setForeground(new java.awt.Color(255, 255, 255));
-        FecharSistema.setText("Sair");
-        FecharSistema.addActionListener(new java.awt.event.ActionListener() {
+        btnFecharSistema.setBackground(new java.awt.Color(255, 51, 51));
+        btnFecharSistema.setForeground(new java.awt.Color(255, 255, 255));
+        btnFecharSistema.setText("Sair");
+        btnFecharSistema.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                FecharSistemaActionPerformed(evt);
+                btnFecharSistemaActionPerformed(evt);
+            }
+        });
+
+        btnLogin.setBackground(new java.awt.Color(0, 0, 0));
+        btnLogin.setForeground(new java.awt.Color(255, 255, 255));
+        btnLogin.setText("Login");
+        btnLogin.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnLoginActionPerformed(evt);
             }
         });
 
@@ -139,18 +150,20 @@ public class CadastrarUsuario extends javax.swing.JFrame {
                             .addComponent(optionAdmin)
                             .addComponent(txtCpf)))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(237, 237, 237)
-                        .addComponent(btnCadastrar, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
                         .addGap(20, 20, 20)
-                        .addComponent(FecharSistema, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(btnFecharSistema, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(243, 243, 243)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(btnLogin, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(btnCadastrar, javax.swing.GroupLayout.DEFAULT_SIZE, 130, Short.MAX_VALUE))))
                 .addContainerGap(99, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(17, 17, 17)
-                .addComponent(FecharSistema)
+                .addComponent(btnFecharSistema)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel1)
                 .addGap(52, 52, 52)
@@ -191,9 +204,11 @@ public class CadastrarUsuario extends javax.swing.JFrame {
                         .addComponent(optionAgente, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(optionAdmin, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 66, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 54, Short.MAX_VALUE)
                 .addComponent(btnCadastrar, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(56, 56, 56))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(btnLogin, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(20, 20, 20))
         );
 
         pack();
@@ -221,10 +236,13 @@ public class CadastrarUsuario extends javax.swing.JFrame {
        
     }//GEN-LAST:event_formWindowActivated
 
-    private void FecharSistemaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_FecharSistemaActionPerformed
-        JOptionPane.showMessageDialog(null,"Você está encerrando o sistema");
-        System.exit(0);
-    }//GEN-LAST:event_FecharSistemaActionPerformed
+    private void btnFecharSistemaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFecharSistemaActionPerformed
+        new Login().setVisible(true);
+    }//GEN-LAST:event_btnFecharSistemaActionPerformed
+
+    private void btnLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLoginActionPerformed
+        new Login().setVisible(true);
+    }//GEN-LAST:event_btnLoginActionPerformed
 
     private void cadastrar() throws ParseException {
         try {
@@ -342,8 +360,9 @@ public class CadastrarUsuario extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton FecharSistema;
     private javax.swing.JButton btnCadastrar;
+    private javax.swing.JButton btnFecharSistema;
+    private javax.swing.JButton btnLogin;
     private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.ButtonGroup buttonGroup2;
     private javax.swing.ButtonGroup buttonGroup3;

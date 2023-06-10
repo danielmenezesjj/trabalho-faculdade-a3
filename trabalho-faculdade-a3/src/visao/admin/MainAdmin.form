@@ -81,11 +81,13 @@
               <EmptySpace min="-2" pref="99" max="-2" attributes="0"/>
               <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
               <EmptySpace min="-2" pref="27" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="2" attributes="0">
-                  <Component id="bntTrocarUsuário" alignment="2" min="-2" max="-2" attributes="0"/>
-                  <Component id="txtUsuarioLogado" alignment="2" min="-2" pref="163" max="-2" attributes="0"/>
-              </Group>
+              <Component id="txtUsuarioLogado" min="-2" pref="163" max="-2" attributes="0"/>
               <EmptySpace pref="116" max="32767" attributes="0"/>
+          </Group>
+          <Group type="102" alignment="1" attributes="0">
+              <EmptySpace max="32767" attributes="0"/>
+              <Component id="btnFecharSistema" min="-2" pref="71" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="166" max="-2" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -97,9 +99,9 @@
                   <Component id="txtUsuarioLogado" min="-2" pref="38" max="-2" attributes="0"/>
                   <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace pref="177" max="32767" attributes="0"/>
-              <Component id="bntTrocarUsuário" min="-2" max="-2" attributes="0"/>
-              <EmptySpace min="-2" pref="36" max="-2" attributes="0"/>
+              <EmptySpace pref="178" max="32767" attributes="0"/>
+              <Component id="btnFecharSistema" min="-2" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="35" max="-2" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -120,18 +122,18 @@
         <Property name="text" type="java.lang.String" value="Ol&#xe1;, #NomeUsuario"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JButton" name="bntTrocarUsu&#xe1;rio">
+    <Component class="javax.swing.JButton" name="btnFecharSistema">
       <Properties>
         <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-          <Color blue="0" green="0" red="0" type="rgb"/>
+          <Color blue="33" green="33" red="ff" type="rgb"/>
         </Property>
         <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
           <Color blue="ff" green="ff" red="ff" type="rgb"/>
         </Property>
-        <Property name="text" type="java.lang.String" value="Trocar Usu&#xe1;rio"/>
+        <Property name="text" type="java.lang.String" value="Sair"/>
       </Properties>
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="bntTrocarUsu&#xe1;rioActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnFecharSistemaActionPerformed"/>
       </Events>
     </Component>
   </SubComponents>

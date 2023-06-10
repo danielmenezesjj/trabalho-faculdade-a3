@@ -41,7 +41,7 @@ public class MainAluno extends javax.swing.JFrame {
         btnEmissao = new javax.swing.JButton();
         btnRenovação = new javax.swing.JButton();
         txtData = new javax.swing.JLabel();
-        bntTrocarUsuário = new javax.swing.JButton();
+        btnFecharSistema = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setResizable(false);
@@ -84,12 +84,12 @@ public class MainAluno extends javax.swing.JFrame {
         txtData.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         txtData.setText("Data");
 
-        bntTrocarUsuário.setBackground(new java.awt.Color(0, 0, 0));
-        bntTrocarUsuário.setForeground(new java.awt.Color(255, 255, 255));
-        bntTrocarUsuário.setText("Trocar Usuário");
-        bntTrocarUsuário.addActionListener(new java.awt.event.ActionListener() {
+        btnFecharSistema.setBackground(new java.awt.Color(255, 51, 51));
+        btnFecharSistema.setForeground(new java.awt.Color(255, 255, 255));
+        btnFecharSistema.setText("Sair");
+        btnFecharSistema.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                bntTrocarUsuárioActionPerformed(evt);
+                btnFecharSistemaActionPerformed(evt);
             }
         });
 
@@ -103,7 +103,7 @@ public class MainAluno extends javax.swing.JFrame {
                     .addComponent(btnSegundavia, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(btnEmissao, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(btnRenovação, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(bntTrocarUsuário))
+                    .addComponent(btnFecharSistema, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(156, Short.MAX_VALUE))
             .addGroup(layout.createSequentialGroup()
                 .addGap(23, 23, 23)
@@ -125,9 +125,9 @@ public class MainAluno extends javax.swing.JFrame {
                 .addComponent(btnSegundavia, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(32, 32, 32)
                 .addComponent(btnRenovação, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(41, 41, 41)
-                .addComponent(bntTrocarUsuário)
-                .addContainerGap(16, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 33, Short.MAX_VALUE)
+                .addComponent(btnFecharSistema)
+                .addGap(24, 24, 24))
         );
 
         pack();
@@ -163,9 +163,9 @@ public class MainAluno extends javax.swing.JFrame {
         txtData.setText(data);
     }//GEN-LAST:event_formWindowOpened
 
-    private void bntTrocarUsuárioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bntTrocarUsuárioActionPerformed
-        new Login().setVisible(true);
-    }//GEN-LAST:event_bntTrocarUsuárioActionPerformed
+    private void btnFecharSistemaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFecharSistemaActionPerformed
+         new Login().setVisible(true);
+    }//GEN-LAST:event_btnFecharSistemaActionPerformed
 
     private void buscarServico(int id) {
         try {
@@ -228,8 +228,8 @@ public class MainAluno extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton bntTrocarUsuário;
     private javax.swing.JButton btnEmissao;
+    private javax.swing.JButton btnFecharSistema;
     private javax.swing.JButton btnRenovação;
     private javax.swing.JButton btnSegundavia;
     private javax.swing.JLabel txtData;
