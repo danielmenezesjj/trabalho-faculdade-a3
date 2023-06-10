@@ -1,12 +1,15 @@
 package visao;
 
 import controle.UsuarioDAO;
+import java.awt.event.KeyEvent;
 import modelo.UsuarioDTO;
 import java.text.ParseException;
 import javax.swing.JOptionPane;
 import javax.swing.text.MaskFormatter;
 import visao.aluno.AlunoCadastro;
+
 public class Login extends javax.swing.JFrame {
+
     /**
      * Creates new form LoginVIEW
      */
@@ -41,6 +44,14 @@ public class Login extends javax.swing.JFrame {
                 formWindowActivated(evt);
             }
         });
+        addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                formKeyPressed(evt);
+            }
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                formKeyTyped(evt);
+            }
+        });
 
         jLabel1.setText("CPF");
 
@@ -55,6 +66,11 @@ public class Login extends javax.swing.JFrame {
                 btnEntrarActionPerformed(evt);
             }
         });
+        btnEntrar.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                btnEntrarKeyPressed(evt);
+            }
+        });
 
         jLabel3.setBackground(new java.awt.Color(51, 51, 51));
         jLabel3.setFont(new java.awt.Font("Dialog", 0, 36)); // NOI18N
@@ -64,6 +80,11 @@ public class Login extends javax.swing.JFrame {
         txtSenha.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtSenhaActionPerformed(evt);
+            }
+        });
+        txtSenha.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                txtSenhaKeyPressed(evt);
             }
         });
 
@@ -182,23 +203,42 @@ public class Login extends javax.swing.JFrame {
     }//GEN-LAST:event_bntCriarContaActionPerformed
 
     private void btnSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSairActionPerformed
-        JOptionPane.showMessageDialog(null,"Você está encerrando o sistema");
+        JOptionPane.showMessageDialog(null, "Você está encerrando o sistema");
         System.exit(0);
     }//GEN-LAST:event_btnSairActionPerformed
-    
-    public void logar(){
+
+    private void formKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_formKeyPressed
+
+    }//GEN-LAST:event_formKeyPressed
+
+    private void formKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_formKeyTyped
+
+    }//GEN-LAST:event_formKeyTyped
+
+    private void btnEntrarKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_btnEntrarKeyPressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnEntrarKeyPressed
+
+    private void txtSenhaKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtSenhaKeyPressed
+        int KeyCode = evt.getKeyCode();
+        if (KeyCode == KeyEvent.VK_ENTER) {
+            logar();
+        }
+    }//GEN-LAST:event_txtSenhaKeyPressed
+
+    public void logar() {
         UsuarioDTO usuarioDto = new UsuarioDTO();
-        
+
         usuarioDto.setCpf_usuario(txtCpf.getText());
         usuarioDto.setSenha_usuario(txtSenha.getText());
-        
+
         boolean logar = new UsuarioDAO().logar(usuarioDto);
-        
-        if(logar){
+
+        if (logar) {
             this.dispose();
         }
     }
-    
+
     /**
      * @param args the command line arguments
      */
