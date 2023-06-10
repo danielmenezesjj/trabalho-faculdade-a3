@@ -127,7 +127,7 @@ public class InterfaceNovaCNH extends javax.swing.JFrame {
 
         btnMedico.setBackground(new java.awt.Color(51, 102, 255));
         btnMedico.setForeground(new java.awt.Color(255, 255, 255));
-        btnMedico.setText("Realizar exame");
+        btnMedico.setText("Marcar Exame");
         btnMedico.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnMedicoActionPerformed(evt);
@@ -136,7 +136,7 @@ public class InterfaceNovaCNH extends javax.swing.JFrame {
 
         btnPsicologo.setBackground(new java.awt.Color(51, 102, 255));
         btnPsicologo.setForeground(new java.awt.Color(255, 255, 255));
-        btnPsicologo.setText("Realizar exame");
+        btnPsicologo.setText("Marcar Exame");
         btnPsicologo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnPsicologoActionPerformed(evt);
@@ -145,7 +145,7 @@ public class InterfaceNovaCNH extends javax.swing.JFrame {
 
         btnTeorico.setBackground(new java.awt.Color(51, 102, 255));
         btnTeorico.setForeground(new java.awt.Color(255, 255, 255));
-        btnTeorico.setText("Realizar exame");
+        btnTeorico.setText("Iniciar prova");
         btnTeorico.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnTeoricoActionPerformed(evt);
@@ -154,7 +154,7 @@ public class InterfaceNovaCNH extends javax.swing.JFrame {
 
         btnPratico.setBackground(new java.awt.Color(51, 102, 255));
         btnPratico.setForeground(new java.awt.Color(255, 255, 255));
-        btnPratico.setText("Realizar exame");
+        btnPratico.setText("Marcar Exame");
         btnPratico.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnPraticoActionPerformed(evt);
@@ -189,11 +189,11 @@ public class InterfaceNovaCNH extends javax.swing.JFrame {
                                 .addComponent(jLabel5, javax.swing.GroupLayout.Alignment.TRAILING))
                             .addComponent(jLabel9))
                         .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(btnTeorico)
-                            .addComponent(btnPsicologo)
-                            .addComponent(btnPratico)
-                            .addComponent(btnMedico))))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(btnPsicologo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(btnPratico, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(btnMedico, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(btnTeorico, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(txtResultadoPsicologico)

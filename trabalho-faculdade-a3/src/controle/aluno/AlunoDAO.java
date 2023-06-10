@@ -95,7 +95,7 @@ public class AlunoDAO {
             int arrowsAfected = pstm.executeUpdate();
 
             if (arrowsAfected > 0) {
-                JOptionPane.showMessageDialog(null, "Exame lançado! Aguarde o resultado.", "Exame", JOptionPane.PLAIN_MESSAGE);
+                JOptionPane.showMessageDialog(null, "Exame marcado!", "Exame", JOptionPane.PLAIN_MESSAGE);
             }
 
         } catch (SQLException e) {

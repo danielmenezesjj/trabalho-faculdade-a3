@@ -37,25 +37,6 @@ public class ProvaTeoricaDAO {
         } 
     }
     
-    public void refazerProva(ProvaTeoricaDTO provaTeorica){
-        try {
-            String sql = "UPDATE FROM provas_teorica SET resultado = ?, nota = ? WHERE aluno_id = ?";
-            PreparedStatement pstm = conn.prepareStatement(sql);
-            
-            pstm.setString(1, provaTeorica.getResultado());
-            pstm.setInt(2, provaTeorica.getAcertos());
-            pstm.setInt(3, provaTeorica.getIdAluno());
-
-            int rowsAffected = pstm.executeUpdate(sql);
-            
-            if(rowsAffected > 0){
-                
-            }
-        } catch (SQLException e) {
-            JOptionPane.showMessageDialog(null, "ProvaTeoricaDAO: " + e);
-        }
-    }
-    
     public ResultSet buscarProva(int idAluno) {
         try {
             String sql = "SELECT * FROM provas_teorica WHERE aluno_id = ?";
