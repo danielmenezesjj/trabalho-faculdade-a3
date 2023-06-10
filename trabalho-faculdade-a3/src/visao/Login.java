@@ -192,7 +192,11 @@ public class Login extends javax.swing.JFrame {
         usuarioDto.setCpf_usuario(txtCpf.getText());
         usuarioDto.setSenha_usuario(txtSenha.getText());
         
-        new UsuarioDAO().logar(usuarioDto);
+        boolean logar = new UsuarioDAO().logar(usuarioDto);
+        
+        if(logar){
+            this.dispose();
+        }
     }
     
     /**

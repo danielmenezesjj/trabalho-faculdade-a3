@@ -35,7 +35,7 @@ public class UsuarioDAO {
         }
     }
 
-    public void logar(Usuario usuario) {
+    public boolean logar(Usuario usuario) {
         try {
             // Autenticação
             ResultSet rs = autenticacaoUsuario(usuario);
@@ -67,20 +67,16 @@ public class UsuarioDAO {
                         new MainAdmin().setVisible(true);
                         break;
                 }
+                
+                return true;
             } else {
                 JOptionPane.showMessageDialog(null, "Usuário ou senha incorreto.");
+                return false;
             }
         } catch (SQLException erro) {
             JOptionPane.showMessageDialog(null, "Login: " + erro);
 
-        } finally {
-            if (conn != null) {
-                try {
-                    conn.close();
-                } catch (SQLException ex) {
-                    Logger.getLogger(ExaminadorDAO.class.getName()).log(Level.SEVERE, null, ex);
-                }
-            }
         }
+        return false;
     }
 }
