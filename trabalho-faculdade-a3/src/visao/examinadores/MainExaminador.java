@@ -1,14 +1,16 @@
 package visao.examinadores;
 
 import modelo.Usuario;
+import visao.Login;
 
-public class InterfaceExaminador extends javax.swing.JFrame {
+public class MainExaminador extends javax.swing.JFrame {
 
     /**
      * Creates new form InterfaceAgente
      */
-    public InterfaceExaminador() {
+    public MainExaminador() {
         initComponents();
+        txtUsuarioLogado.setText("Olá, " + Usuario.usuarioLogado.getNome_usuario());
     }
 
     /**
@@ -20,9 +22,40 @@ public class InterfaceExaminador extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        bntTrocarUsuário = new javax.swing.JButton();
+        bntTrocarUsuário1 = new javax.swing.JButton();
+        bntTrocarUsuário2 = new javax.swing.JButton();
         txtUsuarioLogado = new javax.swing.JLabel();
         btnResultadosLancados = new javax.swing.JButton();
         btnLancarResultado = new javax.swing.JButton();
+        bntTrocarUsuario = new javax.swing.JButton();
+
+        bntTrocarUsuário.setBackground(new java.awt.Color(0, 0, 0));
+        bntTrocarUsuário.setForeground(new java.awt.Color(255, 255, 255));
+        bntTrocarUsuário.setText("Trocar Usuário");
+        bntTrocarUsuário.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bntTrocarUsuárioActionPerformed(evt);
+            }
+        });
+
+        bntTrocarUsuário1.setBackground(new java.awt.Color(0, 0, 0));
+        bntTrocarUsuário1.setForeground(new java.awt.Color(255, 255, 255));
+        bntTrocarUsuário1.setText("Trocar Usuário");
+        bntTrocarUsuário1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bntTrocarUsuário1ActionPerformed(evt);
+            }
+        });
+
+        bntTrocarUsuário2.setBackground(new java.awt.Color(0, 0, 0));
+        bntTrocarUsuário2.setForeground(new java.awt.Color(255, 255, 255));
+        bntTrocarUsuário2.setText("Trocar Usuário");
+        bntTrocarUsuário2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bntTrocarUsuário2ActionPerformed(evt);
+            }
+        });
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setResizable(false);
@@ -48,10 +81,19 @@ public class InterfaceExaminador extends javax.swing.JFrame {
         btnLancarResultado.setBackground(new java.awt.Color(0, 0, 0));
         btnLancarResultado.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
         btnLancarResultado.setForeground(new java.awt.Color(255, 255, 255));
-        btnLancarResultado.setText("Lançar Resultado de Exame Prático");
+        btnLancarResultado.setText("Lançar Resultado de Exame");
         btnLancarResultado.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnLancarResultadoActionPerformed(evt);
+            }
+        });
+
+        bntTrocarUsuario.setBackground(new java.awt.Color(0, 0, 0));
+        bntTrocarUsuario.setForeground(new java.awt.Color(255, 255, 255));
+        bntTrocarUsuario.setText("Trocar Usuário");
+        bntTrocarUsuario.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bntTrocarUsuarioActionPerformed(evt);
             }
         });
 
@@ -64,7 +106,8 @@ public class InterfaceExaminador extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
                     .addComponent(btnLancarResultado, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(txtUsuarioLogado)
-                    .addComponent(btnResultadosLancados, javax.swing.GroupLayout.PREFERRED_SIZE, 258, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(btnResultadosLancados, javax.swing.GroupLayout.PREFERRED_SIZE, 258, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(bntTrocarUsuario))
                 .addGap(73, 73, 73))
         );
         layout.setVerticalGroup(
@@ -76,7 +119,9 @@ public class InterfaceExaminador extends javax.swing.JFrame {
                 .addComponent(btnLancarResultado, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(btnResultadosLancados, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(79, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 29, Short.MAX_VALUE)
+                .addComponent(bntTrocarUsuario)
+                .addGap(26, 26, 26))
         );
 
         pack();
@@ -92,10 +137,24 @@ public class InterfaceExaminador extends javax.swing.JFrame {
     }//GEN-LAST:event_btnLancarResultadoActionPerformed
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
-        txtUsuarioLogado.setText("Olá, " + Usuario.usuarioLogado.getNome_usuario());
-
-
+        
     }//GEN-LAST:event_formWindowOpened
+
+    private void bntTrocarUsuárioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bntTrocarUsuárioActionPerformed
+       
+    }//GEN-LAST:event_bntTrocarUsuárioActionPerformed
+
+    private void bntTrocarUsuário1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bntTrocarUsuário1ActionPerformed
+    
+    }//GEN-LAST:event_bntTrocarUsuário1ActionPerformed
+
+    private void bntTrocarUsuário2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bntTrocarUsuário2ActionPerformed
+        
+    }//GEN-LAST:event_bntTrocarUsuário2ActionPerformed
+
+    private void bntTrocarUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bntTrocarUsuarioActionPerformed
+        new Login().setVisible(true);
+    }//GEN-LAST:event_bntTrocarUsuarioActionPerformed
 
     /**
      * @param args the command line arguments
@@ -114,26 +173,32 @@ public class InterfaceExaminador extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(InterfaceExaminador.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(MainExaminador.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(InterfaceExaminador.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(MainExaminador.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(InterfaceExaminador.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(MainExaminador.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(InterfaceExaminador.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(MainExaminador.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new InterfaceExaminador().setVisible(true);
+                new MainExaminador().setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton bntTrocarUsuario;
+    private javax.swing.JButton bntTrocarUsuário;
+    private javax.swing.JButton bntTrocarUsuário1;
+    private javax.swing.JButton bntTrocarUsuário2;
     private javax.swing.JButton btnLancarResultado;
     private javax.swing.JButton btnResultadosLancados;
     private javax.swing.JLabel txtUsuarioLogado;

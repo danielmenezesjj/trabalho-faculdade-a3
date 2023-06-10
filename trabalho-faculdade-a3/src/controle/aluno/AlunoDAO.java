@@ -1,5 +1,6 @@
-package controle;
+package controle.aluno;
 
+import controle.ConexaoDAO;
 import java.sql.Connection;
 import java.sql.Date;
 import java.sql.PreparedStatement;
@@ -8,7 +9,6 @@ import java.sql.SQLException;
 import java.util.concurrent.TimeUnit;
 import javax.swing.JOptionPane;
 import modelo.AlunoDTO;
-import modelo.ExameDTO;
 import modelo.UsuarioDTO;
 
 public class AlunoDAO {
@@ -95,9 +95,27 @@ public class AlunoDAO {
             int arrowsAfected = pstm.executeUpdate();
 
             if (arrowsAfected > 0) {
-                JOptionPane.showMessageDialog(null, "Exame lançado!", "Exame", JOptionPane.PLAIN_MESSAGE);
+                JOptionPane.showMessageDialog(null, "Exame marcado!", "Exame", JOptionPane.PLAIN_MESSAGE);
             }
 
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null, "ExameDAO: " + e, "Erro", JOptionPane.ERROR_MESSAGE);
+        }
+    }
+    
+    public void refazerExame(int idAluno,int tipoExameId){
+        try {
+            String sql = "UPDATE exames SET resultado = null WHERE aluno_id = ? AND tipo_exame_id = ?";
+            PreparedStatement pstm = conn.prepareStatement(sql);
+            pstm.setInt(1, idAluno);
+            pstm.setInt(2, tipoExameId);
+            
+            int rowsAffected = pstm.executeUpdate();
+            
+            if(rowsAffected > 0){
+                JOptionPane.showMessageDialog(null, "Exame sendo refeito.");
+            }
+            
         } catch (SQLException e) {
             JOptionPane.showMessageDialog(null, "ExameDAO: " + e, "Erro", JOptionPane.ERROR_MESSAGE);
         }
@@ -113,7 +131,7 @@ public class AlunoDAO {
             ResultSet rs = pstm.executeQuery();
             return rs;
         } catch (SQLException e) {
-            JOptionPane.showMessageDialog(null, "ExameDAO: " + e, "Erro", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(null, "AlunoDAO: " + e, "Erro", JOptionPane.ERROR_MESSAGE);
             return null;
         }
     }

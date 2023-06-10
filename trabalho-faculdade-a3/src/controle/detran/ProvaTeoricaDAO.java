@@ -1,5 +1,6 @@
-package controle;
+package controle.detran;
 
+import controle.ConexaoDAO;
 import modelo.ProvaTeoricaDTO;
 import java.sql.Connection;
 import java.sql.Date;
@@ -33,22 +34,54 @@ public class ProvaTeoricaDAO {
             }
         } catch (SQLException e) {
             JOptionPane.showMessageDialog(null, "ProvaTeoricaDAO: " + e);
-        }
+        } 
     }
     
-    public ResultSet buscarProva(int id){
+    public ResultSet buscarProva(int idAluno) {
         try {
             String sql = "SELECT * FROM provas_teorica WHERE aluno_id = ?";
             PreparedStatement pstm = conn.prepareStatement(sql);
-            
-            pstm.setInt(1, id);
-            
-            ResultSet rs = pstm.executeQuery();        
+
+            pstm.setInt(1, idAluno);
+
+            ResultSet rs = pstm.executeQuery();
             return rs;
-        } catch (SQLException e) {          
+        } catch (SQLException e) {
             JOptionPane.showMessageDialog(null, "ProvaTeoricaDAO: " + e);
             return null;
         }
+
+    }
+
+    public ResultSet buscarProvasAprovadas(int idAluno) {
+        try {
+            String sql = "SELECT * FROM provas_teorica WHERE aluno_id = ? AND resultado = 'Aprovado'";
+            PreparedStatement pstm = conn.prepareStatement(sql);
+
+            pstm.setInt(1, idAluno);
+
+            ResultSet rs = pstm.executeQuery();
+            return rs;
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null, "ProvaTeoricaDAO: " + e);
+            return null;
+        }
+
     }
     
+    public ResultSet buscarProvasReprovadas(int idAluno) {
+        try {
+            String sql = "SELECT * FROM provas_teorica WHERE aluno_id = ? AND resultado = 'Reprovado'";
+            PreparedStatement pstm = conn.prepareStatement(sql);
+
+            pstm.setInt(1, idAluno);
+
+            ResultSet rs = pstm.executeQuery();
+            return rs;
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null, "ProvaTeoricaDAO: " + e);
+            return null;
+        }
+
+    }
 }

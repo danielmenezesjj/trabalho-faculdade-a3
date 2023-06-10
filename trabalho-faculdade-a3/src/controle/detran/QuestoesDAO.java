@@ -1,5 +1,6 @@
-package controle;
+package controle.detran;
 
+import controle.ConexaoDAO;
 import java.sql.PreparedStatement;
 import java.sql.Connection;
 import java.sql.ResultSet;
@@ -23,7 +24,7 @@ public class QuestoesDAO {
         } catch (SQLException erro) {
             JOptionPane.showMessageDialog(null, "QuestoesDAO: " + erro);
             return null;
-        }
+        } 
     }
 
 }

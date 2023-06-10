@@ -1,5 +1,7 @@
-package controle;
+package controle.admin;
 
+import controle.ConexaoDAO;
+import controle.examinador.ExaminadorDAO;
 import modelo.UsuarioDTO;
 import java.sql.PreparedStatement;
 import java.sql.Connection;
@@ -7,32 +9,34 @@ import java.sql.Date;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 
 public class AdminDAO {
 
     Connection conn = (Connection) new ConexaoDAO().connectDB();
 
-    public boolean buscarUsuario(String cpf) {
+    public ResultSet buscarUsuario(String cpf) {
         try {
             String sql = "SELECT * FROM usuarios WHERE usuarios.cpf = ?";
             PreparedStatement pstm = conn.prepareStatement(sql);
             pstm.setString(1, cpf);
 
             ResultSet rs = pstm.executeQuery();
-            return rs.next();
+            return rs;
         } catch (SQLException e) {
             JOptionPane.showMessageDialog(null, "Erro ao buscar usuário." + e, "Erro", JOptionPane.ERROR_MESSAGE);
-            return false;
+            return null;
         }
     }
 
     public void cadastrarUsuario(UsuarioDTO objUsuarioDto) {
         try {
 
-            boolean rsBuscaUsuario = buscarUsuario(objUsuarioDto.getCpf_usuario());
+            ResultSet rsBuscaUsuario = buscarUsuario(objUsuarioDto.getCpf_usuario());
 
-            if (rsBuscaUsuario) {
+            if (rsBuscaUsuario.next()) {
                 JOptionPane.showMessageDialog(null, "Usuário já cadastrado!", "Erro", JOptionPane.ERROR_MESSAGE);
                 return;
             }
@@ -40,7 +44,7 @@ public class AdminDAO {
             String sql = "INSERT INTO usuarios(nome_completo, dt_nascimento, cpf, email, telefone, senha, perfil_id) values (?, ?, ?, ?, ?, ?, ?)";
             PreparedStatement pstm = conn.prepareStatement(sql);
             Date sqlDate = new java.sql.Date(objUsuarioDto.getDt_nascimento_usuario().getTime());
-            
+
             pstm.setString(1, objUsuarioDto.getNome_usuario());
             pstm.setDate(2, sqlDate);
             pstm.setString(3, objUsuarioDto.getCpf_usuario());
@@ -59,6 +63,14 @@ public class AdminDAO {
 
         } catch (Exception erro) {
             JOptionPane.showMessageDialog(null, "UsuarioDAO: " + erro);
+        } finally {
+            if (conn != null) {
+                try {
+                    conn.close();
+                } catch (SQLException ex) {
+                    Logger.getLogger(ExaminadorDAO.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
         }
     }
 
@@ -75,6 +87,14 @@ public class AdminDAO {
         } catch (SQLException erro) {
             JOptionPane.showMessageDialog(null, "UsuarioDAO: " + erro);
             return false;
+        } finally {
+            if (conn != null) {
+                try {
+                    conn.close();
+                } catch (SQLException ex) {
+                    Logger.getLogger(ExaminadorDAO.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
         }
     }
 
@@ -107,9 +127,30 @@ public class AdminDAO {
 
     public void editarUsuario(UsuarioDTO usuario) {
         try {
-            String sql = "UPDATE ";
+            String sql = "UPDATE usuarios"
+                    + " SET nome_completo = ?, "
+                    + "dt_nascimento = ?, "
+                    + "cpf = ?, "
+                    + "email = ?, "
+                    + "telefone = ?, "
+                    + "senha = ?, "
+                    + "perfil_id = ? "
+                    + "WHERE id = ?";
+
             PreparedStatement pstm = conn.prepareStatement(sql);
-            int rowsAffected = pstm.executeUpdate(sql);
+
+            Date sqlDate = new java.sql.Date(usuario.getDt_nascimento_usuario().getTime());
+
+            pstm.setString(1, usuario.getNome_usuario());
+            pstm.setDate(2, sqlDate);
+            pstm.setString(3, usuario.getCpf_usuario());
+            pstm.setString(4, usuario.getEmail_usuario());
+            pstm.setString(5, usuario.getTelefone_usuario());
+            pstm.setString(6, usuario.getSenha_usuario());
+            pstm.setInt(7, usuario.getPerfil_usuario());
+            pstm.setInt(8, usuario.getId_usuario());
+
+            int rowsAffected = pstm.executeUpdate();
 
             if (rowsAffected > 0) {
                 JOptionPane.showMessageDialog(null, "Usuário atualizado com sucesso!");

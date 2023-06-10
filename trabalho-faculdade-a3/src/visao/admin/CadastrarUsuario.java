@@ -1,19 +1,18 @@
 package visao.admin;
 
-import controle.AdminDAO;
+import controle.admin.AdminDAO;
 import modelo.UsuarioDTO;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javax.swing.JFormattedTextField;
 import javax.swing.JOptionPane;
 import javax.swing.text.MaskFormatter;
 
-public class EditarUsuarios extends javax.swing.JFrame {
+public class CadastrarUsuario extends javax.swing.JFrame {
 
-    public EditarUsuarios() {
+    public CadastrarUsuario() {
         initComponents();
     }
 
@@ -44,6 +43,7 @@ public class EditarUsuarios extends javax.swing.JFrame {
         optionAdmin = new javax.swing.JRadioButton();
         txtCpf = new javax.swing.JFormattedTextField();
         txtDtNascimento = new javax.swing.JFormattedTextField();
+        FecharSistema = new javax.swing.JButton();
 
         jCheckBox1.setText("jCheckBox1");
 
@@ -97,6 +97,15 @@ public class EditarUsuarios extends javax.swing.JFrame {
         buttonGroup1.add(optionAdmin);
         optionAdmin.setText("Administrador");
 
+        FecharSistema.setBackground(new java.awt.Color(255, 51, 51));
+        FecharSistema.setForeground(new java.awt.Color(255, 255, 255));
+        FecharSistema.setText("Sair");
+        FecharSistema.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                FecharSistemaActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -131,13 +140,18 @@ public class EditarUsuarios extends javax.swing.JFrame {
                             .addComponent(txtCpf)))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(237, 237, 237)
-                        .addComponent(btnCadastrar, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(btnCadastrar, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(20, 20, 20)
+                        .addComponent(FecharSistema, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(99, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(47, 47, 47)
+                .addGap(17, 17, 17)
+                .addComponent(FecharSistema)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel1)
                 .addGap(52, 52, 52)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
@@ -192,11 +206,9 @@ public class EditarUsuarios extends javax.swing.JFrame {
 
     private void btnCadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCadastrarActionPerformed
         try {
-
             cadastrar();
-            limpar();
         } catch (ParseException ex) {
-            Logger.getLogger(EditarUsuarios.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(CadastrarUsuario.class.getName()).log(Level.SEVERE, null, ex);
         }
 
 
@@ -208,6 +220,11 @@ public class EditarUsuarios extends javax.swing.JFrame {
         formataData();
        
     }//GEN-LAST:event_formWindowActivated
+
+    private void FecharSistemaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_FecharSistemaActionPerformed
+        JOptionPane.showMessageDialog(null,"Você está encerrando o sistema");
+        System.exit(0);
+    }//GEN-LAST:event_FecharSistemaActionPerformed
 
     private void cadastrar() throws ParseException {
         try {
@@ -286,7 +303,6 @@ public class EditarUsuarios extends javax.swing.JFrame {
         txtSenha.setText("");
         
         txtNomeCompleto.requestFocus();
-        
     }
 
     /**
@@ -301,7 +317,7 @@ public class EditarUsuarios extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException | InstantiationException | IllegalAccessException | javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(EditarUsuarios.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(CadastrarUsuario.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
         //</editor-fold>
@@ -320,12 +336,13 @@ public class EditarUsuarios extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new EditarUsuarios().setVisible(true);
+                new CadastrarUsuario().setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton FecharSistema;
     private javax.swing.JButton btnCadastrar;
     private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.ButtonGroup buttonGroup2;

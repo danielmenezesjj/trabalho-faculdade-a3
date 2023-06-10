@@ -1,7 +1,7 @@
 package visao.aluno.servicos;
 
 import services.AlunoServices;
-import controle.PagamentoDAO;
+import controle.aluno.PagamentoDAO;
 import visao.aluno.servicos.InterfaceRenovacao;
 import visao.aluno.servicos.InterfaceSegundaVia;
 import modelo.ServicoDTO;
@@ -140,6 +140,7 @@ int idItem;
         int alunoId = UsuarioDTO.usuarioLogado.getId_usuario();
         // Salvando pagamento no banco
         new AlunoServices().pagarBoleto(idItem, alunoId);
+        this.dispose();
     }//GEN-LAST:event_btnPagarActionPerformed
 public ServicoDTO getServico(ServicoDTO servico){
         valor = servico.getValor();

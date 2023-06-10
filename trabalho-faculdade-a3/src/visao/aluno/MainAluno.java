@@ -1,8 +1,8 @@
 package visao.aluno;
 
-import controle.PagamentoDAO;
+import controle.aluno.PagamentoDAO;
 import visao.aluno.servicos.Boleto;
-import controle.ServicoDAO;
+import controle.detran.ServicoDAO;
 import modelo.ServicoDTO;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -12,15 +12,18 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import modelo.Usuario;
+import visao.Login;
 import visao.aluno.servicos.InterfaceNovaCNH;
 
-public class InterfaceAluno extends javax.swing.JFrame {
+public class MainAluno extends javax.swing.JFrame {
+
     SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
     Date dataAtual = new Date();
+
     /**
      * Creates new form InterfaceAluno
      */
-    public InterfaceAluno() {
+    public MainAluno() {
         initComponents();
     }
 
@@ -38,6 +41,7 @@ public class InterfaceAluno extends javax.swing.JFrame {
         btnEmissao = new javax.swing.JButton();
         btnRenovação = new javax.swing.JButton();
         txtData = new javax.swing.JLabel();
+        bntTrocarUsuário = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setResizable(false);
@@ -80,6 +84,15 @@ public class InterfaceAluno extends javax.swing.JFrame {
         txtData.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         txtData.setText("Data");
 
+        bntTrocarUsuário.setBackground(new java.awt.Color(0, 0, 0));
+        bntTrocarUsuário.setForeground(new java.awt.Color(255, 255, 255));
+        bntTrocarUsuário.setText("Trocar Usuário");
+        bntTrocarUsuário.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bntTrocarUsuárioActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -89,7 +102,8 @@ public class InterfaceAluno extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
                     .addComponent(btnSegundavia, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(btnEmissao, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(btnRenovação, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(btnRenovação, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(bntTrocarUsuário))
                 .addContainerGap(156, Short.MAX_VALUE))
             .addGroup(layout.createSequentialGroup()
                 .addGap(23, 23, 23)
@@ -105,13 +119,15 @@ public class InterfaceAluno extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(txtUsuarioLogado)
                     .addComponent(txtData, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(71, 71, 71)
+                .addGap(42, 42, 42)
                 .addComponent(btnEmissao, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(29, 29, 29)
                 .addComponent(btnSegundavia, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(32, 32, 32)
                 .addComponent(btnRenovação, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(52, Short.MAX_VALUE))
+                .addGap(41, 41, 41)
+                .addComponent(bntTrocarUsuário)
+                .addContainerGap(16, Short.MAX_VALUE))
         );
 
         pack();
@@ -120,18 +136,18 @@ public class InterfaceAluno extends javax.swing.JFrame {
 
     private void btnEmissaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEmissaoActionPerformed
         ResultSet rsPgmDAO = new PagamentoDAO().buscar(Usuario.usuarioLogado.getId_usuario());
-        
+
         try {
-            if(rsPgmDAO.next()){ 
+            if (rsPgmDAO.next()) {
                 new InterfaceNovaCNH().setVisible(true);
-            }else{
+            } else {
                 buscarServico(1);
             }
         } catch (SQLException ex) {
-            Logger.getLogger(InterfaceAluno.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(MainAluno.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_btnEmissaoActionPerformed
-  
+
     private void btnRenovaçãoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRenovaçãoActionPerformed
         buscarServico(3);
     }//GEN-LAST:event_btnRenovaçãoActionPerformed
@@ -142,13 +158,17 @@ public class InterfaceAluno extends javax.swing.JFrame {
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
         txtUsuarioLogado.setText("Olá, " + Usuario.usuarioLogado.getNome_usuario());
-        
+
         String data = String.valueOf(sdf.format(dataAtual));
         txtData.setText(data);
     }//GEN-LAST:event_formWindowOpened
-    
-    private void buscarServico(int id){
-    try {
+
+    private void bntTrocarUsuárioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bntTrocarUsuárioActionPerformed
+        new Login().setVisible(true);
+    }//GEN-LAST:event_bntTrocarUsuárioActionPerformed
+
+    private void buscarServico(int id) {
+        try {
             ServicoDTO objServicoDto = new ServicoDTO();
             objServicoDto.setId(id);
 
@@ -158,20 +178,19 @@ public class InterfaceAluno extends javax.swing.JFrame {
             if (rsServicoDao.next()) {
                 objServicoDto.setValor(rsServicoDao.getDouble("preco_item"));
                 objServicoDto.setItem(rsServicoDao.getString("nome_item"));
-                
+
                 Boleto objBoleto = new Boleto();
                 objBoleto.getServico(objServicoDto);
-                objBoleto.setVisible(true);             
+                objBoleto.setVisible(true);
             } else {
                 JOptionPane.showMessageDialog(null, "Serviço não encontrado.");
             }
 
-            
         } catch (SQLException erro) {
             JOptionPane.showMessageDialog(null, "InterfaceALuno: " + erro);
         }
     }
-    
+
     /**
      * @param args the command line arguments
      */
@@ -189,25 +208,27 @@ public class InterfaceAluno extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(InterfaceAluno.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(MainAluno.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(InterfaceAluno.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(MainAluno.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(InterfaceAluno.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(MainAluno.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(InterfaceAluno.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(MainAluno.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new InterfaceAluno().setVisible(true);
+                new MainAluno().setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton bntTrocarUsuário;
     private javax.swing.JButton btnEmissao;
     private javax.swing.JButton btnRenovação;
     private javax.swing.JButton btnSegundavia;

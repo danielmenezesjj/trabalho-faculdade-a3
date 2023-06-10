@@ -1,11 +1,13 @@
 package visao.admin;
 
 import modelo.UsuarioDTO;
+import visao.Login;
 
-public class PrincipalAdmin extends javax.swing.JFrame {
+public class MainAdmin extends javax.swing.JFrame {
     String nomeUser;
-    public PrincipalAdmin() {
+    public MainAdmin() {
         initComponents();
+        setOla();
     }
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -15,6 +17,7 @@ public class PrincipalAdmin extends javax.swing.JFrame {
         jSeparator1 = new javax.swing.JSeparator();
         jLabel1 = new javax.swing.JLabel();
         txtUsuarioLogado = new javax.swing.JLabel();
+        bntTrocarUsuário = new javax.swing.JButton();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         jMenuItem1 = new javax.swing.JMenuItem();
@@ -23,7 +26,7 @@ public class PrincipalAdmin extends javax.swing.JFrame {
 
         jMenu5.setText("jMenu5");
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setResizable(false);
         addWindowListener(new java.awt.event.WindowAdapter() {
             public void windowActivated(java.awt.event.WindowEvent evt) {
@@ -38,6 +41,15 @@ public class PrincipalAdmin extends javax.swing.JFrame {
 
         txtUsuarioLogado.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
         txtUsuarioLogado.setText("Olá, #NomeUsuario");
+
+        bntTrocarUsuário.setBackground(new java.awt.Color(0, 0, 0));
+        bntTrocarUsuário.setForeground(new java.awt.Color(255, 255, 255));
+        bntTrocarUsuário.setText("Trocar Usuário");
+        bntTrocarUsuário.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bntTrocarUsuárioActionPerformed(evt);
+            }
+        });
 
         jMenu1.setText("Usuarios");
         jMenu1.addActionListener(new java.awt.event.ActionListener() {
@@ -77,7 +89,9 @@ public class PrincipalAdmin extends javax.swing.JFrame {
                 .addGap(99, 99, 99)
                 .addComponent(jLabel1)
                 .addGap(27, 27, 27)
-                .addComponent(txtUsuarioLogado, javax.swing.GroupLayout.PREFERRED_SIZE, 163, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
+                    .addComponent(bntTrocarUsuário)
+                    .addComponent(txtUsuarioLogado, javax.swing.GroupLayout.PREFERRED_SIZE, 163, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(116, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -87,7 +101,9 @@ public class PrincipalAdmin extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(txtUsuarioLogado, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel1))
-                .addContainerGap(237, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 177, Short.MAX_VALUE)
+                .addComponent(bntTrocarUsuário)
+                .addGap(36, 36, 36))
         );
 
         pack();
@@ -95,12 +111,11 @@ public class PrincipalAdmin extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
-        new CadastroUsuarios().setVisible(true);
+        new CadastrarUsuario().setVisible(true);
     }//GEN-LAST:event_jMenuItem1ActionPerformed
 
     private void formWindowActivated(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowActivated
-      setOla();
-        
+  
     }//GEN-LAST:event_formWindowActivated
 
     private void jMenu1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenu1ActionPerformed
@@ -108,12 +123,16 @@ public class PrincipalAdmin extends javax.swing.JFrame {
     }//GEN-LAST:event_jMenu1ActionPerformed
 
     private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
-        new UsuariosLista().setVisible(true);
+        new ListarUsuarios().setVisible(true);
     }//GEN-LAST:event_jMenuItem2ActionPerformed
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
         txtUsuarioLogado.setText("Olá, " + UsuarioDTO.usuarioLogado.getNome_usuario());
     }//GEN-LAST:event_formWindowOpened
+
+    private void bntTrocarUsuárioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bntTrocarUsuárioActionPerformed
+         new Login().setVisible(true);
+    }//GEN-LAST:event_bntTrocarUsuárioActionPerformed
     
     public UsuarioDTO getUsuario(UsuarioDTO usuario){
         nomeUser = usuario.getNome_usuario();
@@ -124,8 +143,6 @@ public class PrincipalAdmin extends javax.swing.JFrame {
     private void setOla(){
         txtUsuarioLogado.setText("Olá, " + nomeUser);
     }
-    
-    
     
     /**
      * @param args the command line arguments
@@ -139,26 +156,29 @@ public class PrincipalAdmin extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(PrincipalAdmin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(MainAdmin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(PrincipalAdmin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(MainAdmin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(PrincipalAdmin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(MainAdmin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(PrincipalAdmin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(MainAdmin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new PrincipalAdmin().setVisible(true);
+                new MainAdmin().setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton bntTrocarUsuário;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
