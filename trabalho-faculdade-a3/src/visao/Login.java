@@ -41,6 +41,11 @@ public class Login extends javax.swing.JFrame {
                 formWindowActivated(evt);
             }
         });
+        addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                formKeyPressed(evt);
+            }
+        });
 
         jLabel1.setText("CPF");
 
@@ -185,6 +190,10 @@ public class Login extends javax.swing.JFrame {
         JOptionPane.showMessageDialog(null,"Você está encerrando o sistema");
         System.exit(0);
     }//GEN-LAST:event_btnSairActionPerformed
+
+    private void formKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_formKeyPressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_formKeyPressed
     
     public void logar(){
         UsuarioDTO usuarioDto = new UsuarioDTO();

@@ -28,7 +28,7 @@ public class InterfaceNovaCNH extends javax.swing.JFrame {
     boolean provaTeoriAprovado = false;
     AlunoDAO alunoDao = new AlunoDAO();
 
-    int alunoLogadoId = UsuarioDTO.usuarioLogado.getId_usuario();
+    int alunoLogadoId = AlunoDTO.usuarioLogado.getId_usuario();
 
     /**
      * Creates new form InterfaceNovaCNH
