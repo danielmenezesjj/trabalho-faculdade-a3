@@ -48,9 +48,12 @@ public class Login extends javax.swing.JFrame {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 formKeyPressed(evt);
             }
+<<<<<<< HEAD
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 formKeyTyped(evt);
             }
+=======
+>>>>>>> d35347d3363cf528349bc5eef553e0f690925871
         });
 
         jLabel1.setText("CPF");
@@ -208,6 +211,7 @@ public class Login extends javax.swing.JFrame {
     }//GEN-LAST:event_btnSairActionPerformed
 
     private void formKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_formKeyPressed
+<<<<<<< HEAD
 
     }//GEN-LAST:event_formKeyPressed
 
@@ -227,6 +231,12 @@ public class Login extends javax.swing.JFrame {
     }//GEN-LAST:event_txtSenhaKeyPressed
 
     public void logar() {
+=======
+        // TODO add your handling code here:
+    }//GEN-LAST:event_formKeyPressed
+    
+    public void logar(){
+>>>>>>> d35347d3363cf528349bc5eef553e0f690925871
         UsuarioDTO usuarioDto = new UsuarioDTO();
 
         usuarioDto.setCpf_usuario(txtCpf.getText());
