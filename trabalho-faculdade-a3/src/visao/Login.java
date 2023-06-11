@@ -179,7 +179,7 @@ public class Login extends javax.swing.JFrame {
     }//GEN-LAST:event_btnEntrarActionPerformed
 
     private void txtSenhaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtSenhaActionPerformed
-        
+
     }//GEN-LAST:event_txtSenhaActionPerformed
 
     private void formWindowActivated(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowActivated
@@ -195,8 +195,14 @@ public class Login extends javax.swing.JFrame {
     }//GEN-LAST:event_bntCriarContaActionPerformed
 
     private void btnSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSairActionPerformed
-        JOptionPane.showMessageDialog(null, "Você está encerrando o sistema");
-        System.exit(0);
+        int resposta = JOptionPane.showConfirmDialog(null, "Deseja realmente sair do sistema?", "Confirmação!", JOptionPane.YES_NO_OPTION);
+        if (resposta == JOptionPane.YES_OPTION) {
+            System.out.println("Ação confirmada. Executando...");
+            System.exit(0);
+        } else {
+            System.out.println("Ação cancelada");
+        }
+
     }//GEN-LAST:event_btnSairActionPerformed
 
     private void formKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_formKeyPressed
@@ -205,7 +211,7 @@ public class Login extends javax.swing.JFrame {
 
     private void txtSenhaKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtSenhaKeyPressed
         int KeyCode = evt.getKeyCode();
-        
+
         if (KeyCode == KeyEvent.VK_ENTER) {
             logar();
         }
