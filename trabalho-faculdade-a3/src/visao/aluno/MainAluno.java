@@ -60,6 +60,8 @@ public class MainAluno extends javax.swing.JFrame {
         btnSegundavia.setBackground(new java.awt.Color(0, 0, 0));
         btnSegundavia.setForeground(new java.awt.Color(255, 255, 255));
         btnSegundavia.setText("Segunda via CNH");
+        btnSegundavia.setEnabled(false);
+        btnSegundavia.setOpaque(false);
         btnSegundavia.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnSegundaviaActionPerformed(evt);
@@ -78,6 +80,8 @@ public class MainAluno extends javax.swing.JFrame {
         btnRenovação.setBackground(new java.awt.Color(0, 0, 0));
         btnRenovação.setForeground(new java.awt.Color(255, 255, 255));
         btnRenovação.setText("Renovação CNH");
+        btnRenovação.setEnabled(false);
+        btnRenovação.setOpaque(false);
         btnRenovação.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnRenovaçãoActionPerformed(evt);

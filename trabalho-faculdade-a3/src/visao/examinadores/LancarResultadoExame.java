@@ -175,7 +175,7 @@ public class LancarResultadoExame extends javax.swing.JFrame {
             }
         });
         getContentPane().add(btnClose);
-        btnClose.setBounds(560, 10, 40, 24);
+        btnClose.setBounds(550, 10, 40, 24);
 
         pack();
         setLocationRelativeTo(null);
