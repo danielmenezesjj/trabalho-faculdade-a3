@@ -4,6 +4,7 @@ import controle.UsuarioDAO;
 import java.awt.event.KeyEvent;
 import modelo.UsuarioDTO;
 import java.text.ParseException;
+import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.text.MaskFormatter;
 import visao.aluno.AlunoCadastro;
@@ -16,6 +17,8 @@ public class Login extends javax.swing.JFrame {
     public Login() {
         initComponents();
         formataCpf();
+        txtCpf.requestFocus();
+        this.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
     }
 
     /**
@@ -38,6 +41,7 @@ public class Login extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setName("frameLogin"); // NOI18N
+        setUndecorated(true);
         setResizable(false);
         addWindowListener(new java.awt.event.WindowAdapter() {
             public void windowActivated(java.awt.event.WindowEvent evt) {

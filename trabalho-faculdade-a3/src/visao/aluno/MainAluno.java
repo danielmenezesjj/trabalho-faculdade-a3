@@ -10,6 +10,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import modelo.Usuario;
 import visao.Login;
@@ -25,6 +26,7 @@ public class MainAluno extends javax.swing.JFrame {
      */
     public MainAluno() {
         initComponents();
+        this.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
     }
 
     /**
@@ -44,6 +46,7 @@ public class MainAluno extends javax.swing.JFrame {
         btnFecharSistema = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setUndecorated(true);
         setResizable(false);
         addWindowListener(new java.awt.event.WindowAdapter() {
             public void windowOpened(java.awt.event.WindowEvent evt) {
@@ -164,8 +167,8 @@ public class MainAluno extends javax.swing.JFrame {
     }//GEN-LAST:event_formWindowOpened
 
     private void btnFecharSistemaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFecharSistemaActionPerformed
-         new Login().setVisible(true);
-         this.dispose();
+        new Login().setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_btnFecharSistemaActionPerformed
 
     private void buscarServico(int id) {

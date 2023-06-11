@@ -1,5 +1,6 @@
 package visao.examinadores;
 
+import javax.swing.JFrame;
 import modelo.Usuario;
 import visao.Login;
 
@@ -11,6 +12,7 @@ public class MainExaminador extends javax.swing.JFrame {
     public MainExaminador() {
         initComponents();
         txtUsuarioLogado.setText("Olá, " + Usuario.usuarioLogado.getNome_usuario());
+        this.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
     }
 
     /**
@@ -137,24 +139,24 @@ public class MainExaminador extends javax.swing.JFrame {
     }//GEN-LAST:event_btnLancarResultadoActionPerformed
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
-        
+
     }//GEN-LAST:event_formWindowOpened
 
     private void bntTrocarUsuárioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bntTrocarUsuárioActionPerformed
-       
+
     }//GEN-LAST:event_bntTrocarUsuárioActionPerformed
 
     private void bntTrocarUsuário1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bntTrocarUsuário1ActionPerformed
-    
+
     }//GEN-LAST:event_bntTrocarUsuário1ActionPerformed
 
     private void bntTrocarUsuário2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bntTrocarUsuário2ActionPerformed
-        
+
     }//GEN-LAST:event_bntTrocarUsuário2ActionPerformed
 
     private void btnFecharSistemaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFecharSistemaActionPerformed
-          new Login().setVisible(true);
-          this.dispose();
+        new Login().setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_btnFecharSistemaActionPerformed
 
     /**
