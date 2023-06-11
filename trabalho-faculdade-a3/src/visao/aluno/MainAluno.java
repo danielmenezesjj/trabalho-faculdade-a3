@@ -1,6 +1,7 @@
 package visao.aluno;
 
 import controle.aluno.PagamentoDAO;
+import controle.detran.CarteiraDAO;
 import visao.aluno.servicos.Boleto;
 import controle.detran.ServicoDAO;
 import modelo.ServicoDTO;
@@ -12,6 +13,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
+import modelo.AlunoDTO;
 import modelo.Usuario;
 import visao.Login;
 import visao.aluno.servicos.InterfaceNovaCNH;
@@ -20,6 +22,8 @@ public class MainAluno extends javax.swing.JFrame {
 
     SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
     Date dataAtual = new Date();
+    
+    int idAlunoLogado = AlunoDTO.usuarioLogado.getId_usuario();
 
     /**
      * Creates new form InterfaceAluno
@@ -27,6 +31,8 @@ public class MainAluno extends javax.swing.JFrame {
     public MainAluno() {
         initComponents();
         this.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
+        permitirRenovacao();
+        permitirSegundaVia();
     }
 
     /**
@@ -41,7 +47,7 @@ public class MainAluno extends javax.swing.JFrame {
         txtUsuarioLogado = new javax.swing.JLabel();
         btnSegundavia = new javax.swing.JButton();
         btnEmissao = new javax.swing.JButton();
-        btnRenovação = new javax.swing.JButton();
+        btnRenovacao = new javax.swing.JButton();
         txtData = new javax.swing.JLabel();
         btnFecharSistema = new javax.swing.JButton();
 
@@ -77,14 +83,14 @@ public class MainAluno extends javax.swing.JFrame {
             }
         });
 
-        btnRenovação.setBackground(new java.awt.Color(0, 0, 0));
-        btnRenovação.setForeground(new java.awt.Color(255, 255, 255));
-        btnRenovação.setText("Renovação CNH");
-        btnRenovação.setEnabled(false);
-        btnRenovação.setOpaque(false);
-        btnRenovação.addActionListener(new java.awt.event.ActionListener() {
+        btnRenovacao.setBackground(new java.awt.Color(0, 0, 0));
+        btnRenovacao.setForeground(new java.awt.Color(255, 255, 255));
+        btnRenovacao.setText("Renovação CNH");
+        btnRenovacao.setEnabled(false);
+        btnRenovacao.setOpaque(false);
+        btnRenovacao.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnRenovaçãoActionPerformed(evt);
+                btnRenovacaoActionPerformed(evt);
             }
         });
 
@@ -109,7 +115,7 @@ public class MainAluno extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
                     .addComponent(btnSegundavia, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(btnEmissao, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(btnRenovação, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnRenovacao, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(btnFecharSistema, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(156, Short.MAX_VALUE))
             .addGroup(layout.createSequentialGroup()
@@ -131,7 +137,7 @@ public class MainAluno extends javax.swing.JFrame {
                 .addGap(29, 29, 29)
                 .addComponent(btnSegundavia, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(32, 32, 32)
-                .addComponent(btnRenovação, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btnRenovacao, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 33, Short.MAX_VALUE)
                 .addComponent(btnFecharSistema)
                 .addGap(24, 24, 24))
@@ -155,9 +161,9 @@ public class MainAluno extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_btnEmissaoActionPerformed
 
-    private void btnRenovaçãoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRenovaçãoActionPerformed
+    private void btnRenovacaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRenovacaoActionPerformed
         buscarServico(3);
-    }//GEN-LAST:event_btnRenovaçãoActionPerformed
+    }//GEN-LAST:event_btnRenovacaoActionPerformed
 
     private void btnSegundaviaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSegundaviaActionPerformed
         buscarServico(2);
@@ -196,6 +202,32 @@ public class MainAluno extends javax.swing.JFrame {
 
         } catch (SQLException erro) {
             JOptionPane.showMessageDialog(null, "InterfaceALuno: " + erro);
+        }
+    }
+    
+    private void permitirRenovacao(){
+        try {
+            ResultSet rsCarteiraDao = new CarteiraDAO().buscaCarteira(idAlunoLogado);
+            
+            if(rsCarteiraDao.next()){
+                if(rsCarteiraDao.getDate("dt_vencimento").before(dataAtual)){
+                    btnRenovacao.setEnabled(true);
+                }
+            }
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, e);
+        }
+    }
+    
+     private void permitirSegundaVia(){
+        try {
+            ResultSet rsCarteiraDao = new CarteiraDAO().buscaCarteira(idAlunoLogado);    
+            if(rsCarteiraDao.next()){
+                    btnSegundavia.setEnabled(true);
+                
+            }
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, e);
         }
     }
 
@@ -238,7 +270,7 @@ public class MainAluno extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnEmissao;
     private javax.swing.JButton btnFecharSistema;
-    private javax.swing.JButton btnRenovação;
+    private javax.swing.JButton btnRenovacao;
     private javax.swing.JButton btnSegundavia;
     private javax.swing.JLabel txtData;
     private javax.swing.JLabel txtUsuarioLogado;
