@@ -152,6 +152,7 @@ public class MainAluno extends javax.swing.JFrame {
 
         try {
             if (rsPgmDAO.next()) {
+                this.dispose();
                 new InterfaceNovaCNH().setVisible(true);
             } else {
                 buscarServico(1);

@@ -52,22 +52,14 @@ public class UsuarioDAO {
                     case 1:
                         new MainAluno().setVisible(true);
                         break;
-                    case 2:
-                        new MainExaminador().setVisible(true);
-                        break;
-
-                    case 3:
-                        new MainExaminador().setVisible(true);
-                        break;
-
-                    case 4:
+                    case 2, 3, 4:
                         new MainExaminador().setVisible(true);
                         break;
                     case 5:
                         new MainAdmin().setVisible(true);
                         break;
                 }
-                
+
                 return true;
             } else {
                 JOptionPane.showMessageDialog(null, "Usuário ou senha incorreto.");

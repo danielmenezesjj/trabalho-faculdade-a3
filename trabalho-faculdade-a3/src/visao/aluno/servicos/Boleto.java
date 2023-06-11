@@ -3,6 +3,7 @@ package visao.aluno.servicos;
 import services.AlunoServices;
 import modelo.ServicoDTO;
 import modelo.UsuarioDTO;
+import visao.aluno.MainAluno;
 public class Boleto extends javax.swing.JFrame {
 
     double valor;
@@ -122,10 +123,12 @@ public class Boleto extends javax.swing.JFrame {
     private void btnPagarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPagarActionPerformed
 
         if (idItem == 1) {
+            new MainAluno().dispose();
             new InterfaceNovaCNH().setVisible(true);
         }
         
         if (idItem == 3) {
+            new MainAluno().dispose();
             new InterfaceRenovacao().setVisible(true);
         }
 
