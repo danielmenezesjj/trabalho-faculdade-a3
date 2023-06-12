@@ -135,5 +135,20 @@ public class AlunoDAO {
             return null;
         }
     }
+    
+        public ResultSet verificaSeContemCarteira() {
+        try {
+            String sql = "select * from carteira where aluno_id = ?";
+            PreparedStatement pstm = conn.prepareStatement(sql);
+
+            pstm.setInt(1, AlunoDTO.usuarioLogado.getId_usuario());
+
+            ResultSet rs = pstm.executeQuery();
+            return rs;
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null, "AlunoDAO: " + e, "Erro", JOptionPane.ERROR_MESSAGE);
+            return null;
+        }
+    }
 
 }

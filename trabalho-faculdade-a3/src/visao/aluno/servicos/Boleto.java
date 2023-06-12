@@ -127,6 +127,11 @@ public class Boleto extends javax.swing.JFrame {
             new InterfaceNovaCNH().setVisible(true);
         }
         
+        if(idItem == 2){
+            new MainAluno().dispose();
+            new Carteira().setVisible(true);
+        }
+        
         if (idItem == 3) {
             new MainAluno().dispose();
             new InterfaceRenovacao().setVisible(true);

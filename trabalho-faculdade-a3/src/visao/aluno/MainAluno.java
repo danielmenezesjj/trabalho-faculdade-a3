@@ -4,6 +4,7 @@ import controle.aluno.PagamentoDAO;
 import controle.detran.CarteiraDAO;
 import visao.aluno.servicos.Boleto;
 import controle.detran.ServicoDAO;
+import controle.aluno.AlunoDAO;
 import modelo.ServicoDTO;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -167,7 +168,17 @@ public class MainAluno extends javax.swing.JFrame {
     }//GEN-LAST:event_btnRenovacaoActionPerformed
 
     private void btnSegundaviaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSegundaviaActionPerformed
-        buscarServico(2);
+       AlunoDAO alunoDAO = new AlunoDAO();
+        ResultSet rsCarteira = alunoDAO.verificaSeContemCarteira();
+    try {
+        if (rsCarteira.next()) {
+            buscarServico(2);
+        } else {
+            JOptionPane.showMessageDialog(null, "Usuário não possui carteira.");
+        }
+    } catch (SQLException ex) {
+        Logger.getLogger(MainAluno.class.getName()).log(Level.SEVERE, null, ex);
+    }
     }//GEN-LAST:event_btnSegundaviaActionPerformed
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
