@@ -32,6 +32,7 @@ public class MainAluno extends javax.swing.JFrame {
     public MainAluno() {
         initComponents();
         this.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
+        permitirNovaEmissao();
         permitirRenovacao();
         permitirSegundaVia();
     }
@@ -68,7 +69,6 @@ public class MainAluno extends javax.swing.JFrame {
         btnSegundavia.setForeground(new java.awt.Color(255, 255, 255));
         btnSegundavia.setText("Segunda via CNH");
         btnSegundavia.setEnabled(false);
-        btnSegundavia.setOpaque(false);
         btnSegundavia.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnSegundaviaActionPerformed(evt);
@@ -78,6 +78,7 @@ public class MainAluno extends javax.swing.JFrame {
         btnEmissao.setBackground(new java.awt.Color(0, 0, 0));
         btnEmissao.setForeground(new java.awt.Color(255, 255, 255));
         btnEmissao.setText("Emissão de nova CNH");
+        btnEmissao.setEnabled(false);
         btnEmissao.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnEmissaoActionPerformed(evt);
@@ -88,7 +89,6 @@ public class MainAluno extends javax.swing.JFrame {
         btnRenovacao.setForeground(new java.awt.Color(255, 255, 255));
         btnRenovacao.setText("Renovação CNH");
         btnRenovacao.setEnabled(false);
-        btnRenovacao.setOpaque(false);
         btnRenovacao.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnRenovacaoActionPerformed(evt);
@@ -150,7 +150,7 @@ public class MainAluno extends javax.swing.JFrame {
 
     private void btnEmissaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEmissaoActionPerformed
         ResultSet rsPgmDAO = new PagamentoDAO().buscar(Usuario.usuarioLogado.getId_usuario());
-
+        
         try {
             if (rsPgmDAO.next()) {
                 this.dispose();
@@ -214,6 +214,18 @@ public class MainAluno extends javax.swing.JFrame {
 
         } catch (SQLException erro) {
             JOptionPane.showMessageDialog(null, "InterfaceALuno: " + erro);
+        }
+    }
+    
+    private void permitirNovaEmissao(){
+        ResultSet rsCarteiraAluno = new AlunoDAO().verificaSeContemCarteira();
+        
+        try {
+            if(!rsCarteiraAluno.next()){
+                btnEmissao.setEnabled(true);
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(MainAluno.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
     

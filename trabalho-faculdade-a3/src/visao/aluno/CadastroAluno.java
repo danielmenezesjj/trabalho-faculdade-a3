@@ -12,12 +12,12 @@ import modelo.AlunoDTO;
 import visao.Login;
 import visao.admin.CadastrarUsuario;
 
-public class AlunoCadastro extends javax.swing.JFrame {
+public class CadastroAluno extends javax.swing.JFrame {
 
     /**
      * Creates new form AlunoCadastro
      */
-    public AlunoCadastro() {
+    public CadastroAluno() {
         initComponents();
     }
 
@@ -215,7 +215,7 @@ public class AlunoCadastro extends javax.swing.JFrame {
            try {
                cadastrarAluno();
            } catch (ParseException ex) {
-               Logger.getLogger(AlunoCadastro.class.getName()).log(Level.SEVERE, null, ex);
+               Logger.getLogger(CadastroAluno.class.getName()).log(Level.SEVERE, null, ex);
            }
         }
     }//GEN-LAST:event_txtDtNascimentoKeyPressed
@@ -292,20 +292,21 @@ public class AlunoCadastro extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(AlunoCadastro.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(CadastroAluno.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(AlunoCadastro.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(CadastroAluno.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(AlunoCadastro.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(CadastroAluno.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(AlunoCadastro.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(CadastroAluno.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new AlunoCadastro().setVisible(true);
+                new CadastroAluno().setVisible(true);
             }
         });
     }

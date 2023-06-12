@@ -7,7 +7,7 @@ import java.text.ParseException;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.text.MaskFormatter;
-import visao.aluno.AlunoCadastro;
+import visao.aluno.CadastroAluno;
 
 public class Login extends javax.swing.JFrame {
 
@@ -195,7 +195,7 @@ public class Login extends javax.swing.JFrame {
     }//GEN-LAST:event_txtCpfActionPerformed
 
     private void bntCriarContaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bntCriarContaActionPerformed
-        new AlunoCadastro().setVisible(true);
+        new CadastroAluno().setVisible(true);
     }//GEN-LAST:event_bntCriarContaActionPerformed
 
     private void btnSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSairActionPerformed
