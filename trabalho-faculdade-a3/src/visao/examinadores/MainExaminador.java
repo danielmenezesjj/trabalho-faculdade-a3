@@ -1,6 +1,8 @@
 package visao.examinadores;
 
+import javax.swing.JFrame;
 import modelo.Usuario;
+import visao.Login;
 
 public class MainExaminador extends javax.swing.JFrame {
 
@@ -10,6 +12,7 @@ public class MainExaminador extends javax.swing.JFrame {
     public MainExaminador() {
         initComponents();
         txtUsuarioLogado.setText("Olá, " + Usuario.usuarioLogado.getNome_usuario());
+        this.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
     }
 
     /**
@@ -21,11 +24,43 @@ public class MainExaminador extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        bntTrocarUsuário = new javax.swing.JButton();
+        bntTrocarUsuário1 = new javax.swing.JButton();
+        bntTrocarUsuário2 = new javax.swing.JButton();
         txtUsuarioLogado = new javax.swing.JLabel();
         btnResultadosLancados = new javax.swing.JButton();
         btnLancarResultado = new javax.swing.JButton();
+        btnFecharSistema = new javax.swing.JButton();
+
+        bntTrocarUsuário.setBackground(new java.awt.Color(0, 0, 0));
+        bntTrocarUsuário.setForeground(new java.awt.Color(255, 255, 255));
+        bntTrocarUsuário.setText("Trocar Usuário");
+        bntTrocarUsuário.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bntTrocarUsuárioActionPerformed(evt);
+            }
+        });
+
+        bntTrocarUsuário1.setBackground(new java.awt.Color(0, 0, 0));
+        bntTrocarUsuário1.setForeground(new java.awt.Color(255, 255, 255));
+        bntTrocarUsuário1.setText("Trocar Usuário");
+        bntTrocarUsuário1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bntTrocarUsuário1ActionPerformed(evt);
+            }
+        });
+
+        bntTrocarUsuário2.setBackground(new java.awt.Color(0, 0, 0));
+        bntTrocarUsuário2.setForeground(new java.awt.Color(255, 255, 255));
+        bntTrocarUsuário2.setText("Trocar Usuário");
+        bntTrocarUsuário2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bntTrocarUsuário2ActionPerformed(evt);
+            }
+        });
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setUndecorated(true);
         setResizable(false);
         addWindowListener(new java.awt.event.WindowAdapter() {
             public void windowOpened(java.awt.event.WindowEvent evt) {
@@ -56,6 +91,15 @@ public class MainExaminador extends javax.swing.JFrame {
             }
         });
 
+        btnFecharSistema.setBackground(new java.awt.Color(255, 51, 51));
+        btnFecharSistema.setForeground(new java.awt.Color(255, 255, 255));
+        btnFecharSistema.setText("Sair");
+        btnFecharSistema.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnFecharSistemaActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -65,19 +109,22 @@ public class MainExaminador extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
                     .addComponent(btnLancarResultado, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(txtUsuarioLogado)
-                    .addComponent(btnResultadosLancados, javax.swing.GroupLayout.PREFERRED_SIZE, 258, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(btnResultadosLancados, javax.swing.GroupLayout.PREFERRED_SIZE, 258, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnFecharSistema, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(73, 73, 73))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(54, 54, 54)
+                .addGap(42, 42, 42)
                 .addComponent(txtUsuarioLogado)
-                .addGap(41, 41, 41)
+                .addGap(39, 39, 39)
                 .addComponent(btnLancarResultado, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(btnResultadosLancados, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(79, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 48, Short.MAX_VALUE)
+                .addComponent(btnFecharSistema)
+                .addGap(21, 21, 21))
         );
 
         pack();
@@ -93,8 +140,25 @@ public class MainExaminador extends javax.swing.JFrame {
     }//GEN-LAST:event_btnLancarResultadoActionPerformed
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
-        
+
     }//GEN-LAST:event_formWindowOpened
+
+    private void bntTrocarUsuárioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bntTrocarUsuárioActionPerformed
+
+    }//GEN-LAST:event_bntTrocarUsuárioActionPerformed
+
+    private void bntTrocarUsuário1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bntTrocarUsuário1ActionPerformed
+
+    }//GEN-LAST:event_bntTrocarUsuário1ActionPerformed
+
+    private void bntTrocarUsuário2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bntTrocarUsuário2ActionPerformed
+
+    }//GEN-LAST:event_bntTrocarUsuário2ActionPerformed
+
+    private void btnFecharSistemaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFecharSistemaActionPerformed
+        new Login().setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_btnFecharSistemaActionPerformed
 
     /**
      * @param args the command line arguments
@@ -135,6 +199,10 @@ public class MainExaminador extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton bntTrocarUsuário;
+    private javax.swing.JButton bntTrocarUsuário1;
+    private javax.swing.JButton bntTrocarUsuário2;
+    private javax.swing.JButton btnFecharSistema;
     private javax.swing.JButton btnLancarResultado;
     private javax.swing.JButton btnResultadosLancados;
     private javax.swing.JLabel txtUsuarioLogado;

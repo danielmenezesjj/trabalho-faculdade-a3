@@ -1,5 +1,6 @@
-package controle;
+package controle.detran;
 
+import controle.ConexaoDAO;
 import modelo.ServicoDTO;
 import java.sql.PreparedStatement;
 import java.sql.Connection;

@@ -1,13 +1,19 @@
 package visao.admin;
 
+import javax.swing.JFrame;
 import modelo.UsuarioDTO;
+import visao.Login;
 
 public class MainAdmin extends javax.swing.JFrame {
+
     String nomeUser;
+
     public MainAdmin() {
         initComponents();
         setOla();
+        this.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
     }
+
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -16,6 +22,7 @@ public class MainAdmin extends javax.swing.JFrame {
         jSeparator1 = new javax.swing.JSeparator();
         jLabel1 = new javax.swing.JLabel();
         txtUsuarioLogado = new javax.swing.JLabel();
+        btnFecharSistema = new javax.swing.JButton();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         jMenuItem1 = new javax.swing.JMenuItem();
@@ -39,6 +46,15 @@ public class MainAdmin extends javax.swing.JFrame {
 
         txtUsuarioLogado.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
         txtUsuarioLogado.setText("Olá, #NomeUsuario");
+
+        btnFecharSistema.setBackground(new java.awt.Color(255, 51, 51));
+        btnFecharSistema.setForeground(new java.awt.Color(255, 255, 255));
+        btnFecharSistema.setText("Sair");
+        btnFecharSistema.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnFecharSistemaActionPerformed(evt);
+            }
+        });
 
         jMenu1.setText("Usuarios");
         jMenu1.addActionListener(new java.awt.event.ActionListener() {
@@ -80,6 +96,10 @@ public class MainAdmin extends javax.swing.JFrame {
                 .addGap(27, 27, 27)
                 .addComponent(txtUsuarioLogado, javax.swing.GroupLayout.PREFERRED_SIZE, 163, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(116, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(btnFecharSistema, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(166, 166, 166))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -88,7 +108,9 @@ public class MainAdmin extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(txtUsuarioLogado, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel1))
-                .addContainerGap(237, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 178, Short.MAX_VALUE)
+                .addComponent(btnFecharSistema)
+                .addGap(35, 35, 35))
         );
 
         pack();
@@ -96,11 +118,11 @@ public class MainAdmin extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
-        new CadastroUsuarios().setVisible(true);
+        new CadastrarUsuario().setVisible(true);
     }//GEN-LAST:event_jMenuItem1ActionPerformed
 
     private void formWindowActivated(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowActivated
-  
+
     }//GEN-LAST:event_formWindowActivated
 
     private void jMenu1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenu1ActionPerformed
@@ -108,23 +130,28 @@ public class MainAdmin extends javax.swing.JFrame {
     }//GEN-LAST:event_jMenu1ActionPerformed
 
     private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
-        new UsuariosLista().setVisible(true);
+        new ListarUsuarios().setVisible(true);
     }//GEN-LAST:event_jMenuItem2ActionPerformed
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
         txtUsuarioLogado.setText("Olá, " + UsuarioDTO.usuarioLogado.getNome_usuario());
     }//GEN-LAST:event_formWindowOpened
-    
-    public UsuarioDTO getUsuario(UsuarioDTO usuario){
+
+    private void btnFecharSistemaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFecharSistemaActionPerformed
+        new Login().setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_btnFecharSistemaActionPerformed
+
+    public UsuarioDTO getUsuario(UsuarioDTO usuario) {
         nomeUser = usuario.getNome_usuario();
         return usuario;
-        
+
     }
-    
-    private void setOla(){
+
+    private void setOla() {
         txtUsuarioLogado.setText("Olá, " + nomeUser);
     }
-    
+
     /**
      * @param args the command line arguments
      */
@@ -159,6 +186,7 @@ public class MainAdmin extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnFecharSistema;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;

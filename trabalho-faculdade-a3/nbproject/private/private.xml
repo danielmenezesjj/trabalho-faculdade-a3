@@ -3,6 +3,7 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
+<<<<<<< HEAD
             <file>file:/C:/Users/yasmi/OneDrive/Área%20de%20Trabalho/A3-detran/trabalho-faculdade-a3/trabalho-faculdade-a3/src/visao/aluno/servicos/InterfaceNovaCNH.java</file>
             <file>file:/C:/Users/yasmi/OneDrive/Área%20de%20Trabalho/A3-detran/trabalho-faculdade-a3/trabalho-faculdade-a3/src/modelo/ExameDTO.java</file>
             <file>file:/C:/Users/yasmi/OneDrive/Área%20de%20Trabalho/A3-detran/trabalho-faculdade-a3/trabalho-faculdade-a3/src/visao/aluno/AlunoCadastro.java</file>
@@ -22,6 +23,40 @@
             <file>file:/C:/Users/yasmi/OneDrive/Área%20de%20Trabalho/A3-detran/trabalho-faculdade-a3/trabalho-faculdade-a3/src/controle/ProvaTeoricaDAO.java</file>
             <file>file:/C:/Users/yasmi/OneDrive/Área%20de%20Trabalho/A3-detran/trabalho-faculdade-a3/trabalho-faculdade-a3/src/controle/PagamentoDAO.java</file>
             <file>file:/C:/Users/yasmi/OneDrive/Área%20de%20Trabalho/A3-detran/trabalho-faculdade-a3/trabalho-faculdade-a3/src/visao/examinadores/ListaResultadosExame.java</file>
+=======
+            <file>file:/C:/Users/freir/OneDrive/Área%20de%20Trabalho/A3-prog/trabalho-faculdade-a3/trabalho-faculdade-a3/src/modelo/ProvaTeoricaDTO.java</file>
+            <file>file:/C:/Users/freir/OneDrive/Área%20de%20Trabalho/A3-prog/trabalho-faculdade-a3/trabalho-faculdade-a3/src/visao/aluno/MainAluno.java</file>
+            <file>file:/C:/Users/freir/OneDrive/Área%20de%20Trabalho/A3-prog/trabalho-faculdade-a3/trabalho-faculdade-a3/src/visao/examinadores/LancarResultadoExame.java</file>
+            <file>file:/C:/Users/freir/OneDrive/Área%20de%20Trabalho/A3-prog/trabalho-faculdade-a3/trabalho-faculdade-a3/src/modelo/Usuario.java</file>
+            <file>file:/C:/Users/freir/OneDrive/Área%20de%20Trabalho/A3-prog/trabalho-faculdade-a3/trabalho-faculdade-a3/src/modelo/ServicoDTO.java</file>
+            <file>file:/C:/Users/freir/OneDrive/Área%20de%20Trabalho/A3-prog/trabalho-faculdade-a3/trabalho-faculdade-a3/src/controle/UsuarioDAO.java</file>
+            <file>file:/C:/Users/freir/OneDrive/Área%20de%20Trabalho/A3-prog/trabalho-faculdade-a3/trabalho-faculdade-a3/src/modelo/ExameDTO.java</file>
+            <file>file:/C:/Users/freir/OneDrive/Área%20de%20Trabalho/A3-prog/trabalho-faculdade-a3/trabalho-faculdade-a3/src/visao/aluno/servicos/InterfaceNovaCNH.java</file>
+            <file>file:/C:/Users/freir/OneDrive/Área%20de%20Trabalho/A3-prog/trabalho-faculdade-a3/trabalho-faculdade-a3/src/visao/admin/EditarUsuario.java</file>
+            <file>file:/C:/Users/freir/OneDrive/Área%20de%20Trabalho/A3-prog/trabalho-faculdade-a3/trabalho-faculdade-a3/src/visao/admin/CadastrarUsuario.java</file>
+            <file>file:/C:/Users/freir/OneDrive/Área%20de%20Trabalho/A3-prog/trabalho-faculdade-a3/trabalho-faculdade-a3/src/visao/aluno/AlunoCadastro.java</file>
+            <file>file:/C:/Users/freir/OneDrive/Área%20de%20Trabalho/A3-prog/trabalho-faculdade-a3/trabalho-faculdade-a3/src/controle/detran/ServicoDAO.java</file>
+            <file>file:/C:/Users/freir/OneDrive/Área%20de%20Trabalho/A3-prog/trabalho-faculdade-a3/trabalho-faculdade-a3/src/controle/detran/ExamesDAO.java</file>
+            <file>file:/C:/Users/freir/OneDrive/Área%20de%20Trabalho/A3-prog/trabalho-faculdade-a3/trabalho-faculdade-a3/src/visao/aluno/servicos/Carteira.java</file>
+            <file>file:/C:/Users/freir/OneDrive/Área%20de%20Trabalho/A3-prog/trabalho-faculdade-a3/trabalho-faculdade-a3/src/visao/Login.java</file>
+            <file>file:/C:/Users/freir/OneDrive/Área%20de%20Trabalho/A3-prog/trabalho-faculdade-a3/trabalho-faculdade-a3/src/controle/aluno/AlunoDAO.java</file>
+            <file>file:/C:/Users/freir/OneDrive/Área%20de%20Trabalho/A3-prog/trabalho-faculdade-a3/trabalho-faculdade-a3/src/controle/admin/AdminDAO.java</file>
+            <file>file:/C:/Users/freir/OneDrive/Área%20de%20Trabalho/A3-prog/trabalho-faculdade-a3/trabalho-faculdade-a3/src/modelo/CarteiraDTO.java</file>
+            <file>file:/C:/Users/freir/OneDrive/Área%20de%20Trabalho/A3-prog/trabalho-faculdade-a3/trabalho-faculdade-a3/src/visao/examinadores/MainExaminador.java</file>
+            <file>file:/C:/Users/freir/OneDrive/Área%20de%20Trabalho/A3-prog/trabalho-faculdade-a3/trabalho-faculdade-a3/src/visao/aluno/servicos/ProvaTeorica.java</file>
+            <file>file:/C:/Users/freir/OneDrive/Área%20de%20Trabalho/A3-prog/trabalho-faculdade-a3/trabalho-faculdade-a3/src/visao/admin/MainAdmin.java</file>
+            <file>file:/C:/Users/freir/OneDrive/Área%20de%20Trabalho/A3-prog/trabalho-faculdade-a3/trabalho-faculdade-a3/src/modelo/UsuarioDTO.java</file>
+            <file>file:/C:/Users/freir/OneDrive/Área%20de%20Trabalho/A3-prog/trabalho-faculdade-a3/trabalho-faculdade-a3/src/visao/aluno/servicos/InterfaceRenovacao.java</file>
+            <file>file:/C:/Users/freir/OneDrive/Área%20de%20Trabalho/A3-prog/trabalho-faculdade-a3/trabalho-faculdade-a3/src/SERVICES/AlunoServices.java</file>
+            <file>file:/C:/Users/freir/OneDrive/Área%20de%20Trabalho/A3-prog/trabalho-faculdade-a3/trabalho-faculdade-a3/src/controle/detran/ProvaTeoricaDAO.java</file>
+            <file>file:/C:/Users/freir/OneDrive/Área%20de%20Trabalho/A3-prog/trabalho-faculdade-a3/trabalho-faculdade-a3/src/modelo/PagamentoDTO.java</file>
+            <file>file:/C:/Users/freir/OneDrive/Área%20de%20Trabalho/A3-prog/trabalho-faculdade-a3/trabalho-faculdade-a3/src/visao/aluno/servicos/Boleto.java</file>
+            <file>file:/C:/Users/freir/OneDrive/Área%20de%20Trabalho/A3-prog/trabalho-faculdade-a3/trabalho-faculdade-a3/src/controle/examinador/ExaminadorDAO.java</file>
+            <file>file:/C:/Users/freir/OneDrive/Área%20de%20Trabalho/A3-prog/trabalho-faculdade-a3/trabalho-faculdade-a3/src/modelo/Questao.java</file>
+            <file>file:/C:/Users/freir/OneDrive/Área%20de%20Trabalho/A3-prog/trabalho-faculdade-a3/trabalho-faculdade-a3/src/controle/detran/QuestoesDAO.java</file>
+            <file>file:/C:/Users/freir/OneDrive/Área%20de%20Trabalho/A3-prog/trabalho-faculdade-a3/trabalho-faculdade-a3/src/controle/ConexaoDAO.java</file>
+            <file>file:/C:/Users/freir/OneDrive/Área%20de%20Trabalho/A3-prog/trabalho-faculdade-a3/trabalho-faculdade-a3/src/controle/aluno/PagamentoDAO.java</file>
+>>>>>>> 4ce2828e1b18fe93eab6abdc34a3452fc65eae4b
         </group>
     </open-files>
 </project-private>

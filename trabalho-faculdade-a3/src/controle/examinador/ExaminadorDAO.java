@@ -1,23 +1,25 @@
-package controle;
+package controle.examinador;
 
+import controle.ConexaoDAO;
 import java.sql.ResultSet;
 import java.sql.PreparedStatement;
 import java.sql.Connection;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
+import modelo.AlunoDTO;
 import modelo.ExameDTO;
 
 public class ExaminadorDAO {
 
     Connection conn = (Connection) new ConexaoDAO().connectDB();
 
-    public ResultSet buscarExame(int idAluno) {
+    public ResultSet buscarExameSendoFeito() {
         try {
-            String sql = "SELECT * FROM exames WHERE aluno_id = ?";
+            String sql = "SELECT * FROM exames WHERE aluno_id = ? AND resultado IS NULL";
             PreparedStatement pstm = conn.prepareStatement(sql);
 
-            pstm.setInt(1, idAluno);
+            pstm.setInt(1, AlunoDTO.usuarioLogado.getId_usuario());
 
             ResultSet rs = pstm.executeQuery();
             return rs;

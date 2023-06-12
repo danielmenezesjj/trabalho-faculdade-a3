@@ -1,20 +1,20 @@
 package visao.admin;
 
-import controle.AdminDAO;
+import controle.admin.AdminDAO;
+import java.awt.event.KeyEvent;
 import modelo.UsuarioDTO;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javax.swing.JFormattedTextField;
 import javax.swing.JOptionPane;
 import javax.swing.text.MaskFormatter;
 import visao.Login;
 
-public class CadastroUsuarios extends javax.swing.JFrame {
+public class CadastrarUsuario extends javax.swing.JFrame {
 
-    public CadastroUsuarios() {
+    public CadastrarUsuario() {
         initComponents();
     }
 
@@ -45,6 +45,7 @@ public class CadastroUsuarios extends javax.swing.JFrame {
         optionAdmin = new javax.swing.JRadioButton();
         txtCpf = new javax.swing.JFormattedTextField();
         txtDtNascimento = new javax.swing.JFormattedTextField();
+        btnLogin = new javax.swing.JButton();
 
         jCheckBox1.setText("jCheckBox1");
 
@@ -98,14 +99,26 @@ public class CadastroUsuarios extends javax.swing.JFrame {
         buttonGroup1.add(optionAdmin);
         optionAdmin.setText("Administrador");
 
+        txtDtNascimento.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                txtDtNascimentoKeyPressed(evt);
+            }
+        });
+
+        btnLogin.setBackground(new java.awt.Color(0, 51, 102));
+        btnLogin.setForeground(new java.awt.Color(255, 255, 255));
+        btnLogin.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/perfil-de-usuario.png"))); // NOI18N
+        btnLogin.setText("Login");
+        btnLogin.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnLoginActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 218, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(168, 168, 168))
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
@@ -131,14 +144,22 @@ public class CadastroUsuarios extends javax.swing.JFrame {
                             .addComponent(optionAdmin)
                             .addComponent(txtCpf)))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(237, 237, 237)
-                        .addComponent(btnCadastrar, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(243, 243, 243)
+                        .addComponent(btnCadastrar, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(232, 232, 232)
+                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 218, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(19, 19, 19)
+                        .addComponent(btnLogin, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(99, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(47, 47, 47)
+                .addGap(17, 17, 17)
+                .addComponent(btnLogin, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel1)
                 .addGap(52, 52, 52)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
@@ -178,9 +199,9 @@ public class CadastroUsuarios extends javax.swing.JFrame {
                         .addComponent(optionAgente, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(optionAdmin, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 66, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 49, Short.MAX_VALUE)
                 .addComponent(btnCadastrar, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(56, 56, 56))
+                .addGap(68, 68, 68))
         );
 
         pack();
@@ -194,9 +215,8 @@ public class CadastroUsuarios extends javax.swing.JFrame {
     private void btnCadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCadastrarActionPerformed
         try {
             cadastrar();
-            new Login().setVisible(true);
         } catch (ParseException ex) {
-            Logger.getLogger(CadastroUsuarios.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(CadastrarUsuario.class.getName()).log(Level.SEVERE, null, ex);
         }
 
 
@@ -206,8 +226,25 @@ public class CadastroUsuarios extends javax.swing.JFrame {
 
         formataCpf();
         formataData();
-       
+
     }//GEN-LAST:event_formWindowActivated
+
+    private void btnLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLoginActionPerformed
+        this.dispose();
+        new Login().setVisible(true);
+    }//GEN-LAST:event_btnLoginActionPerformed
+
+    private void txtDtNascimentoKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtDtNascimentoKeyPressed
+       int KeyCode = evt.getKeyCode();
+        
+        if (KeyCode == KeyEvent.VK_ENTER) {
+           try {
+               cadastrar();
+           } catch (ParseException ex) {
+               Logger.getLogger(CadastrarUsuario.class.getName()).log(Level.SEVERE, null, ex);
+           }
+        }
+    }//GEN-LAST:event_txtDtNascimentoKeyPressed
 
     private void cadastrar() throws ParseException {
         try {
@@ -247,8 +284,14 @@ public class CadastroUsuarios extends javax.swing.JFrame {
             objUsuarioDto.setSenha_usuario(senha);
             objUsuarioDto.setPerfil_usuario(perfil);
 
-            AdminDAO objUsuarioDao = new AdminDAO();
-            objUsuarioDao.cadastrarUsuario(objUsuarioDto);
+            
+
+            if (buttonGroup1.getSelection() == null) {
+                JOptionPane.showMessageDialog(null, "Selecione um perfil.");
+                return;
+            }
+            
+            new AdminDAO().cadastrarUsuario(objUsuarioDto);
 
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, e);
@@ -277,14 +320,15 @@ public class CadastroUsuarios extends javax.swing.JFrame {
             e.printStackTrace();
         }
     }
-     public void limpar(){
+
+    public void limpar() {
         txtNomeCompleto.setText("");
         txtCpf.setText("");
         txtDtNascimento.setText("");
         txtEmail.setText("");
         txtTelefone.setText("");
         txtSenha.setText("");
-        
+
         txtNomeCompleto.requestFocus();
     }
 
@@ -300,8 +344,12 @@ public class CadastroUsuarios extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException | InstantiationException | IllegalAccessException | javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(CadastroUsuarios.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(CadastrarUsuario.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
         //</editor-fold>
@@ -315,13 +363,14 @@ public class CadastroUsuarios extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new CadastroUsuarios().setVisible(true);
+                new CadastrarUsuario().setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnCadastrar;
+    private javax.swing.JButton btnLogin;
     private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.ButtonGroup buttonGroup2;
     private javax.swing.ButtonGroup buttonGroup3;

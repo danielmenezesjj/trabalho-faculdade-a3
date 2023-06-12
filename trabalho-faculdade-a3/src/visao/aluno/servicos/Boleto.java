@@ -1,19 +1,12 @@
 package visao.aluno.servicos;
 
+import controle.aluno.AlunoDAO;
 import services.AlunoServices;
-import controle.PagamentoDAO;
-import visao.aluno.servicos.InterfaceRenovacao;
-import visao.aluno.servicos.InterfaceSegundaVia;
 import modelo.ServicoDTO;
-import javax.swing.JOptionPane;
-import modelo.PagamentoDTO;
 import modelo.UsuarioDTO;
-import visao.Login;
-
+import visao.aluno.MainAluno;
 public class Boleto extends javax.swing.JFrame {
-double valor;
-String item;
-int idItem;
+    int idItem;
 
     /**
      * Creates new form Boleto
@@ -22,6 +15,16 @@ int idItem;
         initComponents();
     }
 
+     public Boleto(ServicoDTO servico) {
+        initComponents();
+        double valor = servico.getValor();
+        String item = servico.getItem();
+        idItem = servico.getId();   
+        
+        txtValor.setText("R$" + String.valueOf(valor));
+        txtItem.setText(item);
+    }
+     
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -121,35 +124,31 @@ int idItem;
     }// </editor-fold>//GEN-END:initComponents
 
     private void formWindowActivated(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowActivated
-       txtValor.setText("R$"+ String.valueOf(valor));
-        txtItem.setText(item);
+        
     }//GEN-LAST:event_formWindowActivated
 
     private void btnPagarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPagarActionPerformed
 
-        if(idItem == 1){         
-            new InterfaceNovaCNH().setVisible(true);
-        }
-        if (idItem == 2){
-            new InterfaceSegundaVia().setVisible(true);
-        }
-        if(idItem == 3){
-            new InterfaceRenovacao().setVisible(true);
+        if (idItem == 1) {
+            new NovaCNH().setVisible(true);
         }
         
+        if(idItem == 2){
+            new Carteira().setVisible(true);
+        }
+        
+        if (idItem == 3) {
+            new AlunoDAO().renovarCarteira();
+            new Renovacao().setVisible(true);
+        }
+
         int alunoId = UsuarioDTO.usuarioLogado.getId_usuario();
         // Salvando pagamento no banco
         new AlunoServices().pagarBoleto(idItem, alunoId);
         this.dispose();
     }//GEN-LAST:event_btnPagarActionPerformed
-public ServicoDTO getServico(ServicoDTO servico){
-        valor = servico.getValor();
-        item = servico.getItem();
-        idItem = servico.getId();
-        return servico;
-    }                              
-        
-   
+
+
     /**
      * @param args the command line arguments
      */
