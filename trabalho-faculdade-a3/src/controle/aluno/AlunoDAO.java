@@ -102,20 +102,20 @@ public class AlunoDAO {
             JOptionPane.showMessageDialog(null, "ExameDAO: " + e, "Erro", JOptionPane.ERROR_MESSAGE);
         }
     }
-    
-    public void refazerExame(int idAluno,int tipoExameId){
+
+    public void refazerExame(int idAluno, int tipoExameId) {
         try {
             String sql = "UPDATE exames SET resultado = null WHERE aluno_id = ? AND tipo_exame_id = ?";
             PreparedStatement pstm = conn.prepareStatement(sql);
             pstm.setInt(1, idAluno);
             pstm.setInt(2, tipoExameId);
-            
+
             int rowsAffected = pstm.executeUpdate();
-            
-            if(rowsAffected > 0){
+
+            if (rowsAffected > 0) {
                 JOptionPane.showMessageDialog(null, "Exame sendo refeito.");
             }
-            
+
         } catch (SQLException e) {
             JOptionPane.showMessageDialog(null, "ExameDAO: " + e, "Erro", JOptionPane.ERROR_MESSAGE);
         }
@@ -135,8 +135,8 @@ public class AlunoDAO {
             return null;
         }
     }
-    
-        public ResultSet verificaSeContemCarteira() {
+
+    public ResultSet verificaSeContemCarteira() {
         try {
             String sql = "select * from carteira where aluno_id = ?";
             PreparedStatement pstm = conn.prepareStatement(sql);
@@ -148,6 +148,35 @@ public class AlunoDAO {
         } catch (SQLException e) {
             JOptionPane.showMessageDialog(null, "AlunoDAO: " + e, "Erro", JOptionPane.ERROR_MESSAGE);
             return null;
+        }
+    }
+    
+    private void updateExame(){
+         try {
+            String sql = "UPDATE exames SET resultado = NULL WHERE aluno_id = ? AND tipo_exame_id = 3";
+            PreparedStatement pstm = conn.prepareStatement(sql);
+
+            pstm.setInt(1, AlunoDTO.usuarioLogado.getId_usuario());
+
+            pstm.executeUpdate();
+
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null, "CarteiraDAO: " + e, "Erro", JOptionPane.ERROR_MESSAGE);
+        }
+    }
+
+    public void renovarCarteira() {
+        try {
+            String sql = "UPDATE carteira SET dt_emissao = NULL, dt_vencimento = NULL WHERE aluno_id = ?";
+            PreparedStatement pstm = conn.prepareStatement(sql);
+
+            pstm.setInt(1, AlunoDTO.usuarioLogado.getId_usuario());
+            
+            updateExame();
+            pstm.executeUpdate();
+
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null, "CarteiraDAO: " + e, "Erro", JOptionPane.ERROR_MESSAGE);
         }
     }
 

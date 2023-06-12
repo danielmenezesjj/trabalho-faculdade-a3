@@ -1,5 +1,6 @@
 package visao.aluno.servicos;
 
+import controle.aluno.AlunoDAO;
 import services.AlunoServices;
 import modelo.ServicoDTO;
 import modelo.UsuarioDTO;
@@ -129,17 +130,15 @@ public class Boleto extends javax.swing.JFrame {
     private void btnPagarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPagarActionPerformed
 
         if (idItem == 1) {
-            new MainAluno().dispose();
             new NovaCNH().setVisible(true);
         }
         
         if(idItem == 2){
-            new MainAluno().dispose();
             new Carteira().setVisible(true);
         }
         
         if (idItem == 3) {
-            new MainAluno().dispose();
+            new AlunoDAO().renovarCarteira();
             new Renovacao().setVisible(true);
         }
 

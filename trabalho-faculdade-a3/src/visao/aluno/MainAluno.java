@@ -170,13 +170,14 @@ public class MainAluno extends javax.swing.JFrame {
             ResultSet rsCarteiraAluno = new AlunoDAO().verificaSeContemCarteira();
 
             if (rsPgmDAO.next()) {
-                while (rsCarteiraAluno.next()) {
-                    if (rsCarteiraAluno.getDate("dt_emissao").before(dataAtual)) {
+                if (rsCarteiraAluno.next()) {
+                    if (rsCarteiraAluno.getDate("dt_emissao") == null) {
                         this.dispose();
                         new Renovacao().setVisible(true);
+                    } else {
+                        buscarServico(3);
                     }
                 }
-
             } else {
                 buscarServico(3);
             }
@@ -223,7 +224,8 @@ public class MainAluno extends javax.swing.JFrame {
                 objServicoDto.setValor(rsServicoDao.getDouble("preco_item"));
                 objServicoDto.setItem(rsServicoDao.getString("nome_item"));
 
-                new Boleto(objServicoDto);
+                this.dispose();
+                new Boleto(objServicoDto).setVisible(true);
             } else {
                 JOptionPane.showMessageDialog(null, "Serviço não encontrado.");
             }
@@ -250,7 +252,7 @@ public class MainAluno extends javax.swing.JFrame {
             ResultSet rsCarteiraDao = new CarteiraDAO().buscaCarteira();
 
             if (rsCarteiraDao.next()) {
-                if (rsCarteiraDao.getDate("dt_vencimento").before(dataAtual)) {
+                if (rsCarteiraDao.getDate("dt_vencimento") == null || rsCarteiraDao.getDate("dt_vencimento").before(dataAtual)) {
                     btnRenovacao.setEnabled(true);
                 }
             }

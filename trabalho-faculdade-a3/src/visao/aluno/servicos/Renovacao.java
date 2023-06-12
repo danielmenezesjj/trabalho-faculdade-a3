@@ -10,13 +10,13 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 import modelo.AlunoDTO;
 import modelo.CarteiraDTO;
 import visao.aluno.MainAluno;
 
 public class Renovacao extends javax.swing.JFrame {
 
-    AlunoDAO alunoDao = new AlunoDAO();
     boolean aprovado = false;
     Date dataAtual = new Date();
 
@@ -39,7 +39,7 @@ public class Renovacao extends javax.swing.JFrame {
 
         txtOla = new javax.swing.JLabel();
         txtResu = new javax.swing.JLabel();
-        btnSolicitar = new javax.swing.JButton();
+        btnImprimir = new javax.swing.JButton();
         btnRealizarExameMedico = new javax.swing.JButton();
         btnClose = new javax.swing.JButton();
         txtResultado = new javax.swing.JLabel();
@@ -58,13 +58,13 @@ public class Renovacao extends javax.swing.JFrame {
 
         txtResu.setText("Resultado:");
 
-        btnSolicitar.setBackground(new java.awt.Color(0, 0, 0));
-        btnSolicitar.setForeground(new java.awt.Color(255, 255, 255));
-        btnSolicitar.setText("Imprimir Carteira");
-        btnSolicitar.setEnabled(false);
-        btnSolicitar.addActionListener(new java.awt.event.ActionListener() {
+        btnImprimir.setBackground(new java.awt.Color(0, 0, 0));
+        btnImprimir.setForeground(new java.awt.Color(255, 255, 255));
+        btnImprimir.setText("Imprimir Carteira");
+        btnImprimir.setEnabled(false);
+        btnImprimir.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnSolicitarActionPerformed(evt);
+                btnImprimirActionPerformed(evt);
             }
         });
 
@@ -109,7 +109,7 @@ public class Renovacao extends javax.swing.JFrame {
                                 .addComponent(txtResultado, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE))))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(134, 134, 134)
-                        .addComponent(btnSolicitar, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(btnImprimir, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(92, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -126,7 +126,7 @@ public class Renovacao extends javax.swing.JFrame {
                     .addComponent(txtResu)
                     .addComponent(txtResultado))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 46, Short.MAX_VALUE)
-                .addComponent(btnSolicitar, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btnImprimir, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(32, 32, 32))
         );
 
@@ -135,18 +135,21 @@ public class Renovacao extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnRealizarExameMedicoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRealizarExameMedicoActionPerformed
-        alunoDao.fazerExame(3);
+        JOptionPane.showMessageDialog(null, "Exame marcado!");
     }//GEN-LAST:event_btnRealizarExameMedicoActionPerformed
 
     private void buscarResultadoExame() {
-        ResultSet rsExame = new ExamesDAO().buscarExames();
+        ResultSet resultSetExame = new ExamesDAO().buscarExames();
 
         try {
-            while (rsExame.next()) {
-                if (rsExame.getInt("tipo_exame_id") == 3) {
-                    txtResultado.setText(rsExame.getString("resultado"));
+            while (resultSetExame.next()) {
+                int tipoExameId = resultSetExame.getInt("tipo_exame_id");
+                String resultado = resultSetExame.getString("resultado");
 
-                    if (rsExame.getString("resultado").equals("Aprovado")) {
+                if (tipoExameId == 3 && resultado != null) {
+                    txtResultado.setText(resultado);
+
+                    if (resultado.equals("Aprovado")) {
                         aprovado = true;
                     }
                 }
@@ -157,16 +160,10 @@ public class Renovacao extends javax.swing.JFrame {
         }
     }
 
-    private void habilitarBtnSolicitar() {
-        if (aprovado) {
-            btnSolicitar.setEnabled(true);
-        }
-    }
-
     private void formWindowActivated(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowActivated
-        habilitarBotaoExame();
         buscarResultadoExame();
-        habilitarBtnSolicitar();
+        habilitarBotaoExame();
+        habilitarBtnImprimir();
     }//GEN-LAST:event_formWindowActivated
 
     private void btnCloseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCloseActionPerformed
@@ -174,39 +171,47 @@ public class Renovacao extends javax.swing.JFrame {
         new MainAluno().setVisible(true);
     }//GEN-LAST:event_btnCloseActionPerformed
 
-    private void btnSolicitarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSolicitarActionPerformed
+    private void btnImprimirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnImprimirActionPerformed
         CarteiraDTO carteiraDto = new CarteiraDTO();
-        
-        
+
         Calendar calendar = Calendar.getInstance();
         calendar.setTime(dataAtual);
 
         calendar.add(Calendar.YEAR, 4);
 
         Date dataVencimento = calendar.getTime();
-        
+
         carteiraDto.setAluno_id(AlunoDTO.usuarioLogado.getId_usuario());
         carteiraDto.setDt_emissao(dataAtual);
         carteiraDto.setDt_vencimento(dataVencimento);
-        
+
         new CarteiraDAO().renovarCarteira(carteiraDto);
-        
+
         new Carteira().setVisible(true);
-    }//GEN-LAST:event_btnSolicitarActionPerformed
+    }//GEN-LAST:event_btnImprimirActionPerformed
+
+    private void habilitarBtnImprimir() {
+        if (aprovado) {
+            btnImprimir.setEnabled(true);
+        }
+    }
 
     private void habilitarBotaoExame() {
         ResultSet rsExameALuno = new ExaminadorDAO().buscarExameSendoFeito();
+        ResultSet rsCarteiraAluno = new AlunoDAO().verificaSeContemCarteira();
 
         try {
-            if (rsExameALuno.next()) {
-                btnRealizarExameMedico.setEnabled(false);
-                btnRealizarExameMedico.setText("Aguardando resultado...");
+            if (rsExameALuno.next() || rsCarteiraAluno.next()) {
+                if (rsCarteiraAluno.getDate("dt_emissao") == null) {
+                    btnRealizarExameMedico.setEnabled(false);
+                    btnRealizarExameMedico.setText("Aguardando resultado...");
+                }
             }
         } catch (SQLException ex) {
             Logger.getLogger(Renovacao.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-    
+
     /**
      * @param args the command line arguments
      */
@@ -247,8 +252,8 @@ public class Renovacao extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnClose;
+    private javax.swing.JButton btnImprimir;
     private javax.swing.JButton btnRealizarExameMedico;
-    private javax.swing.JButton btnSolicitar;
     private javax.swing.JLabel txtOla;
     private javax.swing.JLabel txtResu;
     private javax.swing.JLabel txtResultado;
