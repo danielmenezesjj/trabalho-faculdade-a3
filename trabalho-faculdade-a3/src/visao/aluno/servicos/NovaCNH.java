@@ -65,6 +65,7 @@ public class NovaCNH extends javax.swing.JFrame {
         btnTeorico = new javax.swing.JButton();
         btnPratico = new javax.swing.JButton();
         btnImprimirCarteira = new javax.swing.JButton();
+        txtMessagem = new javax.swing.JLabel();
         btnVoltar = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
 
@@ -105,39 +106,39 @@ public class NovaCNH extends javax.swing.JFrame {
         jLabel2.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
         jLabel2.setText("Etapas");
         getContentPane().add(jLabel2);
-        jLabel2.setBounds(275, 150, 67, 20);
+        jLabel2.setBounds(280, 150, 67, 20);
 
         jLabel3.setText("Exame Médico");
         getContentPane().add(jLabel3);
-        jLabel3.setBounds(120, 240, 80, 20);
+        jLabel3.setBounds(130, 240, 80, 20);
 
         txtResultadoMedico.setText("Resultado:");
         getContentPane().add(txtResultadoMedico);
-        txtResultadoMedico.setBounds(420, 250, 200, 20);
+        txtResultadoMedico.setBounds(430, 250, 200, 20);
 
         jLabel5.setText("Exame Psicológico");
         getContentPane().add(jLabel5);
-        jLabel5.setBounds(120, 280, 105, 20);
+        jLabel5.setBounds(130, 280, 105, 20);
 
         txtResultadoPsicologico.setText("Resultado:");
         getContentPane().add(txtResultadoPsicologico);
-        txtResultadoPsicologico.setBounds(420, 280, 210, 20);
+        txtResultadoPsicologico.setBounds(430, 280, 210, 20);
 
         jLabel7.setText("Exame Prático");
         getContentPane().add(jLabel7);
-        jLabel7.setBounds(120, 360, 79, 20);
+        jLabel7.setBounds(130, 360, 79, 20);
 
         txtResultadoPratico.setText("Resultado:");
         getContentPane().add(txtResultadoPratico);
-        txtResultadoPratico.setBounds(420, 360, 190, 20);
+        txtResultadoPratico.setBounds(430, 360, 190, 20);
 
         jLabel9.setText("Exame Teórico");
         getContentPane().add(jLabel9);
-        jLabel9.setBounds(120, 320, 82, 20);
+        jLabel9.setBounds(130, 320, 82, 20);
 
         jLabel10.setText("Resultado:");
         getContentPane().add(jLabel10);
-        jLabel10.setBounds(420, 320, 200, 20);
+        jLabel10.setBounds(430, 320, 200, 20);
 
         btnSolicitarCarteira.setBackground(new java.awt.Color(0, 0, 0));
         btnSolicitarCarteira.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
@@ -149,7 +150,7 @@ public class NovaCNH extends javax.swing.JFrame {
             }
         });
         getContentPane().add(btnSolicitarCarteira);
-        btnSolicitarCarteira.setBounds(150, 460, 160, 40);
+        btnSolicitarCarteira.setBounds(140, 460, 160, 40);
 
         btnMedico.setBackground(new java.awt.Color(51, 102, 255));
         btnMedico.setForeground(new java.awt.Color(255, 255, 255));
@@ -160,7 +161,7 @@ public class NovaCNH extends javax.swing.JFrame {
             }
         });
         getContentPane().add(btnMedico);
-        btnMedico.setBounds(250, 240, 130, 30);
+        btnMedico.setBounds(260, 240, 130, 30);
 
         btnPsicologo.setBackground(new java.awt.Color(51, 102, 255));
         btnPsicologo.setForeground(new java.awt.Color(255, 255, 255));
@@ -171,7 +172,7 @@ public class NovaCNH extends javax.swing.JFrame {
             }
         });
         getContentPane().add(btnPsicologo);
-        btnPsicologo.setBounds(250, 280, 130, 30);
+        btnPsicologo.setBounds(260, 280, 130, 30);
 
         btnTeorico.setBackground(new java.awt.Color(51, 102, 255));
         btnTeorico.setForeground(new java.awt.Color(255, 255, 255));
@@ -182,7 +183,7 @@ public class NovaCNH extends javax.swing.JFrame {
             }
         });
         getContentPane().add(btnTeorico);
-        btnTeorico.setBounds(250, 320, 130, 30);
+        btnTeorico.setBounds(260, 320, 130, 30);
 
         btnPratico.setBackground(new java.awt.Color(51, 102, 255));
         btnPratico.setForeground(new java.awt.Color(255, 255, 255));
@@ -193,11 +194,11 @@ public class NovaCNH extends javax.swing.JFrame {
             }
         });
         getContentPane().add(btnPratico);
-        btnPratico.setBounds(250, 360, 130, 30);
+        btnPratico.setBounds(260, 360, 130, 30);
 
-        btnImprimirCarteira.setBackground(new java.awt.Color(0, 0, 0));
+        btnImprimirCarteira.setBackground(new java.awt.Color(153, 153, 153));
         btnImprimirCarteira.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        btnImprimirCarteira.setForeground(new java.awt.Color(255, 255, 255));
+        btnImprimirCarteira.setForeground(new java.awt.Color(51, 51, 51));
         btnImprimirCarteira.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/imprimindo-contorno-do-botao.png"))); // NOI18N
         btnImprimirCarteira.setText("Imprimir Carteira");
         btnImprimirCarteira.setEnabled(false);
@@ -207,7 +208,11 @@ public class NovaCNH extends javax.swing.JFrame {
             }
         });
         getContentPane().add(btnImprimirCarteira);
-        btnImprimirCarteira.setBounds(350, 460, 160, 40);
+        btnImprimirCarteira.setBounds(340, 460, 170, 40);
+
+        txtMessagem.setForeground(new java.awt.Color(153, 0, 0));
+        getContentPane().add(txtMessagem);
+        txtMessagem.setBounds(80, 100, 490, 30);
 
         btnVoltar.setBackground(new java.awt.Color(255, 51, 51));
         btnVoltar.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
@@ -221,9 +226,9 @@ public class NovaCNH extends javax.swing.JFrame {
         getContentPane().add(btnVoltar);
         btnVoltar.setBounds(620, 20, 40, 30);
 
-        jLabel1.setText("___________________________________________________________");
+        jLabel1.setText("________________________________________________________");
         getContentPane().add(jLabel1);
-        jLabel1.setBounds(110, 170, 430, 20);
+        jLabel1.setBounds(120, 170, 400, 20);
 
         pack();
         setLocationRelativeTo(null);
@@ -605,6 +610,7 @@ public class NovaCNH extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel9;
+    private javax.swing.JLabel txtMessagem;
     private javax.swing.JLabel txtResultadoMedico;
     private javax.swing.JLabel txtResultadoPratico;
     private javax.swing.JLabel txtResultadoPsicologico;

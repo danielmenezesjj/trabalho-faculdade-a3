@@ -53,10 +53,9 @@ public class ProvaTeorica extends javax.swing.JFrame {
         txtNumQuestao = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
-        setMinimumSize(new java.awt.Dimension(860, 650));
+        setMinimumSize(new java.awt.Dimension(983, 701));
         setUndecorated(true);
         setPreferredSize(new java.awt.Dimension(900, 622));
-        setResizable(false);
         addWindowListener(new java.awt.event.WindowAdapter() {
             public void windowActivated(java.awt.event.WindowEvent evt) {
                 formWindowActivated(evt);
@@ -65,9 +64,12 @@ public class ProvaTeorica extends javax.swing.JFrame {
                 formWindowOpened(evt);
             }
         });
+        getContentPane().setLayout(null);
 
         jLabel2.setFont(new java.awt.Font("Dialog", 0, 24)); // NOI18N
         jLabel2.setText("Prova Teórica");
+        getContentPane().add(jLabel2);
+        jLabel2.setBounds(370, 40, 160, 32);
 
         btnSalvar.setBackground(new java.awt.Color(0, 0, 0));
         btnSalvar.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
@@ -78,6 +80,8 @@ public class ProvaTeorica extends javax.swing.JFrame {
                 btnSalvarActionPerformed(evt);
             }
         });
+        getContentPane().add(btnSalvar);
+        btnSalvar.setBounds(380, 610, 170, 40);
 
         buttonGroup1.add(a);
         a.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
@@ -88,6 +92,8 @@ public class ProvaTeorica extends javax.swing.JFrame {
                 aActionPerformed(evt);
             }
         });
+        getContentPane().add(a);
+        a.setBounds(70, 390, 110, 30);
 
         buttonGroup1.add(b);
         b.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
@@ -97,6 +103,8 @@ public class ProvaTeorica extends javax.swing.JFrame {
                 bActionPerformed(evt);
             }
         });
+        getContentPane().add(b);
+        b.setBounds(70, 440, 110, 30);
 
         buttonGroup1.add(rD);
         rD.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
@@ -106,6 +114,8 @@ public class ProvaTeorica extends javax.swing.JFrame {
                 rDActionPerformed(evt);
             }
         });
+        getContentPane().add(rD);
+        rD.setBounds(70, 540, 110, 30);
 
         buttonGroup1.add(rC);
         rC.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
@@ -115,8 +125,12 @@ public class ProvaTeorica extends javax.swing.JFrame {
                 rCActionPerformed(evt);
             }
         });
+        getContentPane().add(rC);
+        rC.setBounds(70, 490, 110, 30);
 
         txtResposta.setEnabled(false);
+        getContentPane().add(txtResposta);
+        txtResposta.setBounds(0, 0, 0, 0);
 
         txtPergunta.setEditable(false);
         txtPergunta.setBackground(new java.awt.Color(255, 255, 255));
@@ -126,61 +140,13 @@ public class ProvaTeorica extends javax.swing.JFrame {
         txtPergunta.setRows(5);
         jScrollPane1.setViewportView(txtPergunta);
 
+        getContentPane().add(jScrollPane1);
+        jScrollPane1.setBounds(70, 110, 810, 267);
+
         txtNumQuestao.setFont(new java.awt.Font("Dialog", 0, 16)); // NOI18N
         txtNumQuestao.setText("Questão 1");
-
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(txtResposta)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(340, 340, 340)
-                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE))
-            .addGroup(layout.createSequentialGroup()
-                .addGap(40, 40, 40)
-                .addComponent(txtNumQuestao, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE))
-            .addGroup(layout.createSequentialGroup()
-                .addGap(40, 40, 40)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 810, javax.swing.GroupLayout.PREFERRED_SIZE))
-            .addGroup(layout.createSequentialGroup()
-                .addGap(40, 40, 40)
-                .addComponent(a, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE))
-            .addGroup(layout.createSequentialGroup()
-                .addGap(40, 40, 40)
-                .addComponent(b, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE))
-            .addGroup(layout.createSequentialGroup()
-                .addGap(40, 40, 40)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(rC, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(rD, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(220, 220, 220)
-                .addComponent(btnSalvar, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(txtResposta)
-                .addGap(50, 50, 50)
-                .addComponent(jLabel2)
-                .addGap(8, 8, 8)
-                .addComponent(txtNumQuestao, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(7, 7, 7)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 267, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(13, 13, 13)
-                .addComponent(a, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(20, 20, 20)
-                .addComponent(b, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(20, 20, 20)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(rC, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(20, 20, 20)
-                        .addComponent(rD, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(20, 20, 20)
-                        .addComponent(btnSalvar, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))))
-        );
+        getContentPane().add(txtNumQuestao);
+        txtNumQuestao.setBounds(70, 80, 90, 23);
 
         pack();
         setLocationRelativeTo(null);
