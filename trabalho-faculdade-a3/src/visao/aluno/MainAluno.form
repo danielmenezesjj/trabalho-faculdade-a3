@@ -32,7 +32,7 @@
               <EmptySpace min="-2" pref="151" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="2" attributes="0">
                   <Component id="btnSegundavia" alignment="2" max="32767" attributes="0"/>
-                  <Component id="btnEmissao" alignment="2" max="32767" attributes="0"/>
+                  <Component id="btnNovaEmissao" alignment="2" max="32767" attributes="0"/>
                   <Component id="btnRenovacao" alignment="2" max="32767" attributes="0"/>
                   <Component id="btnFecharSistema" alignment="2" min="-2" pref="71" max="-2" attributes="0"/>
               </Group>
@@ -56,7 +56,7 @@
                   <Component id="txtData" min="-2" pref="16" max="-2" attributes="0"/>
               </Group>
               <EmptySpace min="-2" pref="42" max="-2" attributes="0"/>
-              <Component id="btnEmissao" min="-2" pref="52" max="-2" attributes="0"/>
+              <Component id="btnNovaEmissao" min="-2" pref="52" max="-2" attributes="0"/>
               <EmptySpace min="-2" pref="29" max="-2" attributes="0"/>
               <Component id="btnSegundavia" min="-2" pref="52" max="-2" attributes="0"/>
               <EmptySpace min="-2" pref="32" max="-2" attributes="0"/>
@@ -92,7 +92,7 @@
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnSegundaviaActionPerformed"/>
       </Events>
     </Component>
-    <Component class="javax.swing.JButton" name="btnEmissao">
+    <Component class="javax.swing.JButton" name="btnNovaEmissao">
       <Properties>
         <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
           <Color blue="0" green="0" red="0" type="rgb"/>
@@ -104,7 +104,7 @@
         <Property name="enabled" type="boolean" value="false"/>
       </Properties>
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnEmissaoActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnNovaEmissaoActionPerformed"/>
       </Events>
     </Component>
     <Component class="javax.swing.JButton" name="btnRenovacao">

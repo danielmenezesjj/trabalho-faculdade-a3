@@ -6,6 +6,7 @@ import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import javax.swing.JOptionPane;
 import java.sql.ResultSet;
+import modelo.AlunoDTO;
 import modelo.PagamentoDTO;
 
 public class PagamentoDAO {
@@ -33,12 +34,13 @@ public class PagamentoDAO {
         } 
     }
 
-    public ResultSet buscar(int usuario_id) {
+    public ResultSet buscar(int idItem) {
         try {
-            String sql = "SELECT * FROM pagamentos WHERE aluno_id = ?";
+            String sql = "SELECT * FROM pagamentos WHERE aluno_id = ? AND item_id = ?";
             PreparedStatement pstm = conn.prepareStatement(sql);
 
-            pstm.setInt(1, usuario_id);
+            pstm.setInt(1, AlunoDTO.usuarioLogado.getId_usuario());
+            pstm.setInt(2, idItem);
 
             ResultSet rs = pstm.executeQuery();
 

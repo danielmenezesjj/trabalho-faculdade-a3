@@ -177,7 +177,7 @@ public class ProvaTeorica extends javax.swing.JFrame {
                 // Salvando prova no banco
                 new ProvaTeoricaDAO().cadastrarProvaTeorica(provaDto);
                 
-                new InterfaceNovaCNH().setVisible(true);
+                new NovaCNH().setVisible(true);
                 this.dispose();
 
             } else {

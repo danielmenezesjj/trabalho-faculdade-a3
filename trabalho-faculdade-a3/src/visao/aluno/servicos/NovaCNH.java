@@ -18,7 +18,7 @@ import modelo.CarteiraDTO;
 import modelo.UsuarioDTO;
 import visao.aluno.MainAluno;
 
-public class InterfaceNovaCNH extends javax.swing.JFrame {
+public class NovaCNH extends javax.swing.JFrame {
 
     boolean refazerExame = false;
 
@@ -33,7 +33,7 @@ public class InterfaceNovaCNH extends javax.swing.JFrame {
     /**
      * Creates new form InterfaceNovaCNH
      */
-    public InterfaceNovaCNH() {
+    public NovaCNH() {
         initComponents();
         obterQuantidadeReprovacao();
         habilitarChance();
@@ -85,7 +85,6 @@ public class InterfaceNovaCNH extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setUndecorated(true);
-        setPreferredSize(new java.awt.Dimension(500, 420));
         setResizable(false);
         addWindowListener(new java.awt.event.WindowAdapter() {
             public void windowActivated(java.awt.event.WindowEvent evt) {
@@ -360,13 +359,13 @@ public class InterfaceNovaCNH extends javax.swing.JFrame {
                 btnTeorico.setEnabled(false);
             }
         } catch (SQLException ex) {
-            Logger.getLogger(InterfaceNovaCNH.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(NovaCNH.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
     private void verificaSeEstaFazendoExame() {
         try {
-            ResultSet rsExDao = new ExaminadorDAO().buscarExameSendoFeito(alunoLogadoId);
+            ResultSet rsExDao = new ExaminadorDAO().buscarExameSendoFeito();
 
             while (rsExDao.next()) {
                 int tipo_exame = rsExDao.getInt("tipo_exame_id");
@@ -385,7 +384,7 @@ public class InterfaceNovaCNH extends javax.swing.JFrame {
                 }
             }
         } catch (SQLException ex) {
-            Logger.getLogger(InterfaceNovaCNH.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(NovaCNH.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
@@ -408,7 +407,7 @@ public class InterfaceNovaCNH extends javax.swing.JFrame {
 
             rsAlunoDao.close();
         } catch (SQLException ex) {
-            Logger.getLogger(InterfaceNovaCNH.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(NovaCNH.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
@@ -444,7 +443,7 @@ public class InterfaceNovaCNH extends javax.swing.JFrame {
                 }
             }
         } catch (SQLException ex) {
-            Logger.getLogger(InterfaceNovaCNH.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(NovaCNH.class.getName()).log(Level.SEVERE, null, ex);
             return null;
         }
 
@@ -481,7 +480,7 @@ public class InterfaceNovaCNH extends javax.swing.JFrame {
     private boolean verificaAprovados() {
 
         ResultSet rsProvaDao = new ProvaTeoricaDAO().buscarProva(alunoLogadoId);
-        ResultSet rsExDao = new ExamesDAO().buscarExamesAprovados(alunoLogadoId);
+        ResultSet rsExDao = new ExamesDAO().buscarExamesAprovados();
 
         try {
             while (rsExDao.next()) {
@@ -514,7 +513,7 @@ public class InterfaceNovaCNH extends javax.swing.JFrame {
             return exameMedAprovado && examePratAprovado && examePsiAprovado && provaTeoriAprovado;
 
         } catch (SQLException e) {
-            Logger.getLogger(InterfaceNovaCNH.class.getName()).log(Level.SEVERE, null, e);
+            Logger.getLogger(NovaCNH.class.getName()).log(Level.SEVERE, null, e);
             return false;
         }
     }
@@ -625,20 +624,21 @@ public class InterfaceNovaCNH extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(InterfaceNovaCNH.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(NovaCNH.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(InterfaceNovaCNH.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(NovaCNH.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(InterfaceNovaCNH.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(NovaCNH.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(InterfaceNovaCNH.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(NovaCNH.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new InterfaceNovaCNH().setVisible(true);              
+                new NovaCNH().setVisible(true);              
             }
         });
     }
