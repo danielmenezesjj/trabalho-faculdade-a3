@@ -11,7 +11,6 @@ CREATE TABLE usuarios(
 	id int auto_increment primary key,
     nome_completo varchar(100) NOT NULL,
     dt_nascimento date NOT NULL,
-	adm boolean NOT NULL,
     cpf varchar(20) NOT NULL,
     email varchar(100) NOT NULL,
     telefone varchar(20) NOT NULL,
@@ -25,12 +24,6 @@ insert into perfil(nome_perfil) value ("Médico");
 insert into perfil(nome_perfil) value ("Agente");
 insert into perfil(nome_perfil) value ("Psicólogo");
 insert into perfil(nome_perfil) value ("ADMIN");
-
-INSERT INTO usuarios(nome_completo, dt_nascimento, adm, cpf, email, telefone, senha, perfil_id) value("Aluno 1", '2000-12-25', false, "123456", "aluno1@teste.com", "12356791", "123", 1);
-
-INSERT INTO usuarios(nome_completo, dt_nascimento, adm, cpf, email, telefone, senha, perfil_id) value("Médico 1", '2000-12-25', false, "1234567", "medico1@teste.com", "1259548", "123", 2);
-
-INSERT INTO usuarios(nome_completo, dt_nascimento, adm, cpf, email, telefone, senha, perfil_id) value("Admin 1", '2000-12-25', true, "88", "admin1@teste.com", "999", "147", 5);
 
 -- Tabela de questões e provas
  CREATE TABLE questoes(
@@ -121,13 +114,11 @@ INSERT INTO tipo_exame(nome) values ("Psicológico");
 INSERT INTO tipo_exame(nome) values ("Teórico");
 INSERT INTO tipo_exame(nome) values ("Prático");
 
-select * from detran.tipo_exame;
-
 CREATE TABLE exames(
 	id INT AUTO_INCREMENT PRIMARY KEY,
     tipo_exame_id int,
     aluno_id int,
-	resultado boolean,
+	resultado varchar(30),
     
     foreign key (aluno_id) references usuarios(id),
     foreign key (tipo_exame_id) references tipo_exame(id)
@@ -143,36 +134,16 @@ CREATE TABLE servicos(
 
 CREATE TABLE carteira(
  id int auto_increment primary key,
- dt_emissao date NOT NULL,
- dt_vencimento date NOT NULL,
+ dt_emissao date,
+ dt_vencimento date,
  aluno_id int NOT NULL,
  foreign key (aluno_id) REFERENCES usuarios(id)
 );
 
-select * from tipo_exame;
-
-
-select * from exames;
-CREATE TABLE exames(
-    id INT AUTO_INCREMENT PRIMARY KEY,
-    tipo_exame_id int,
-    aluno_id int,
-    resultado varchar(30),
-    
-    foreign key (aluno_id) references usuarios(id),
-    foreign key (tipo_exame_id) references tipo_exame(id)
-);
-select * from Exames;
-
-ALTER TABLE detran.usuarios DROP COLUMN adm;
-
-select * from servicos;
-
 insert into servicos(nome_item, preco_item) values ("Nova CNH", 3500);
 insert into servicos(nome_item, preco_item) values ("Segunda via", 460.75);
 insert into servicos(nome_item, preco_item) values ("Renovação", 230.45);
-select * from Usuarios;
-select * from Perfil;
+
 CREATE TABLE pagamentos(
 	id int auto_increment primary key,
     item_id int, 
