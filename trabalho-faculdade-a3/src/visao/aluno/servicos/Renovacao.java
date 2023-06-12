@@ -1,19 +1,24 @@
 package visao.aluno.servicos;
 
 import controle.aluno.AlunoDAO;
+import controle.detran.CarteiraDAO;
 import controle.detran.ExamesDAO;
 import controle.examinador.ExaminadorDAO;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import modelo.AlunoDTO;
+import modelo.CarteiraDTO;
 import visao.aluno.MainAluno;
 
 public class Renovacao extends javax.swing.JFrame {
 
     AlunoDAO alunoDao = new AlunoDAO();
     boolean aprovado = false;
+    Date dataAtual = new Date();
 
     /**
      * Creates new form InterfaceRenovação
@@ -37,7 +42,6 @@ public class Renovacao extends javax.swing.JFrame {
         btnSolicitar = new javax.swing.JButton();
         btnRealizarExameMedico = new javax.swing.JButton();
         btnClose = new javax.swing.JButton();
-        btnImprimir = new javax.swing.JButton();
         txtResultado = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
@@ -56,8 +60,13 @@ public class Renovacao extends javax.swing.JFrame {
 
         btnSolicitar.setBackground(new java.awt.Color(0, 0, 0));
         btnSolicitar.setForeground(new java.awt.Color(255, 255, 255));
-        btnSolicitar.setText("Solicitar Carteira");
+        btnSolicitar.setText("Imprimir Carteira");
         btnSolicitar.setEnabled(false);
+        btnSolicitar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSolicitarActionPerformed(evt);
+            }
+        });
 
         btnRealizarExameMedico.setBackground(new java.awt.Color(51, 102, 255));
         btnRealizarExameMedico.setText("Marcar Exame Médico");
@@ -74,14 +83,6 @@ public class Renovacao extends javax.swing.JFrame {
         btnClose.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnCloseActionPerformed(evt);
-            }
-        });
-
-        btnImprimir.setText("Imprimir carteira");
-        btnImprimir.setEnabled(false);
-        btnImprimir.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnImprimirActionPerformed(evt);
             }
         });
 
@@ -107,11 +108,9 @@ public class Renovacao extends javax.swing.JFrame {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(txtResultado, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE))))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(53, 53, 53)
-                        .addComponent(btnSolicitar, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(27, 27, 27)
-                        .addComponent(btnImprimir, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(60, Short.MAX_VALUE))
+                        .addGap(134, 134, 134)
+                        .addComponent(btnSolicitar, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(92, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -126,11 +125,9 @@ public class Renovacao extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtResu)
                     .addComponent(txtResultado))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 44, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(btnImprimir, javax.swing.GroupLayout.DEFAULT_SIZE, 33, Short.MAX_VALUE)
-                    .addComponent(btnSolicitar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGap(34, 34, 34))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 46, Short.MAX_VALUE)
+                .addComponent(btnSolicitar, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(32, 32, 32))
         );
 
         pack();
@@ -177,9 +174,25 @@ public class Renovacao extends javax.swing.JFrame {
         new MainAluno().setVisible(true);
     }//GEN-LAST:event_btnCloseActionPerformed
 
-    private void btnImprimirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnImprimirActionPerformed
+    private void btnSolicitarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSolicitarActionPerformed
+        CarteiraDTO carteiraDto = new CarteiraDTO();
+        
+        
+        Calendar calendar = Calendar.getInstance();
+        calendar.setTime(dataAtual);
 
-    }//GEN-LAST:event_btnImprimirActionPerformed
+        calendar.add(Calendar.YEAR, 4);
+
+        Date dataVencimento = calendar.getTime();
+        
+        carteiraDto.setAluno_id(AlunoDTO.usuarioLogado.getId_usuario());
+        carteiraDto.setDt_emissao(dataAtual);
+        carteiraDto.setDt_vencimento(dataVencimento);
+        
+        new CarteiraDAO().renovarCarteira(carteiraDto);
+        
+        new Carteira().setVisible(true);
+    }//GEN-LAST:event_btnSolicitarActionPerformed
 
     private void habilitarBotaoExame() {
         ResultSet rsExameALuno = new ExaminadorDAO().buscarExameSendoFeito();
@@ -193,7 +206,7 @@ public class Renovacao extends javax.swing.JFrame {
             Logger.getLogger(Renovacao.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-
+    
     /**
      * @param args the command line arguments
      */
@@ -234,7 +247,6 @@ public class Renovacao extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnClose;
-    private javax.swing.JButton btnImprimir;
     private javax.swing.JButton btnRealizarExameMedico;
     private javax.swing.JButton btnSolicitar;
     private javax.swing.JLabel txtOla;

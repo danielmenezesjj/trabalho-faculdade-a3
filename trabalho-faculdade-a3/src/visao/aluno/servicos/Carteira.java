@@ -8,8 +8,6 @@ import java.text.SimpleDateFormat;
 import javax.swing.JOptionPane;
 
 public class Carteira extends javax.swing.JFrame {
-
-    int idAlunoLogado = AlunoDTO.usuarioLogado.getId_usuario();
     /** Creates new form Carteira */
     public Carteira() {
         initComponents();
@@ -106,7 +104,7 @@ public class Carteira extends javax.swing.JFrame {
         SimpleDateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy");
         
         try {
-            ResultSet rsCarteira = new CarteiraDAO().buscaCarteira(idAlunoLogado);
+            ResultSet rsCarteira = new CarteiraDAO().buscaCarteira();
             
             if(rsCarteira.next()){
                 String nome = rsCarteira.getString("usuarios.nome_completo");

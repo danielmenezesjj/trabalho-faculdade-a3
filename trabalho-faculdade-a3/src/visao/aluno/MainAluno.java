@@ -247,7 +247,7 @@ public class MainAluno extends javax.swing.JFrame {
 
     private void permitirRenovacao() {
         try {
-            ResultSet rsCarteiraDao = new CarteiraDAO().buscaCarteira(idAlunoLogado);
+            ResultSet rsCarteiraDao = new CarteiraDAO().buscaCarteira();
 
             if (rsCarteiraDao.next()) {
                 if (rsCarteiraDao.getDate("dt_vencimento").before(dataAtual)) {
@@ -261,7 +261,7 @@ public class MainAluno extends javax.swing.JFrame {
 
     private void permitirSegundaVia() {
         try {
-            ResultSet rsCarteiraDao = new CarteiraDAO().buscaCarteira(idAlunoLogado);
+            ResultSet rsCarteiraDao = new CarteiraDAO().buscaCarteira();
             if (rsCarteiraDao.next()) {
                 btnSegundavia.setEnabled(true);
 
