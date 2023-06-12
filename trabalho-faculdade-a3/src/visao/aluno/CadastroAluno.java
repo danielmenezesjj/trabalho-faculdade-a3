@@ -187,7 +187,6 @@ public class CadastroAluno extends javax.swing.JFrame {
 
     private void btnCadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCadastrarActionPerformed
         try {
-            // TODO add your handling code here:
             cadastrarAluno();
         } catch (ParseException ex) {
             Logger.getLogger(CadastrarUsuario.class.getName()).log(Level.SEVERE, null, ex);
@@ -210,7 +209,8 @@ public class CadastroAluno extends javax.swing.JFrame {
 
     private void txtDtNascimentoKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtDtNascimentoKeyPressed
         int KeyCode = evt.getKeyCode();
-
+        
+        // Cadastrar ao precionar ENTER
         if (KeyCode == KeyEvent.VK_ENTER) {
             try {
                 cadastrarAluno();
@@ -238,6 +238,7 @@ public class CadastroAluno extends javax.swing.JFrame {
             boolean alunoCadastrado = new AlunoDAO().cadastrarAluno(alunoDto);
 
             if (alunoCadastrado) {
+                // Limpar campos caso o cadastro dê certo
                 limpar();
             }
 

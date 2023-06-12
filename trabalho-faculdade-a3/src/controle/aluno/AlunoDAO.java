@@ -32,7 +32,8 @@ public class AlunoDAO {
     public boolean cadastrarAluno(AlunoDTO alunoDto) {
         try {
             boolean rsBuscaUsuario = buscarUsuario(alunoDto.getCpf_usuario());
-
+            
+            // Verifica se já existe usuário com o cpf digitado 
             if (rsBuscaUsuario) {
                 JOptionPane.showMessageDialog(null, "Usuário já cadastrado!", "Erro", JOptionPane.ERROR_MESSAGE);
                 return false;
@@ -96,11 +97,11 @@ public class AlunoDAO {
         }
     }
 
-    public void refazerExame(int idAluno, int tipoExameId) {
+    public void refazerExame(int tipoExameId) {
         try {
             String sql = "UPDATE exames SET resultado = null WHERE aluno_id = ? AND tipo_exame_id = ?";
             PreparedStatement pstm = conn.prepareStatement(sql);
-            pstm.setInt(1, idAluno);
+            pstm.setInt(1, AlunoDTO.usuarioLogado.getId_usuario());
             pstm.setInt(2, tipoExameId);
 
             int rowsAffected = pstm.executeUpdate();
