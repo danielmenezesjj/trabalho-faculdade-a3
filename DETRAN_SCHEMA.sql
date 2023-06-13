@@ -111,7 +111,7 @@ CREATE TABLE tipo_exame(
 
 INSERT INTO tipo_exame(nome) values ("Médico");
 INSERT INTO tipo_exame(nome) values ("Psicológico");
-INSERT INTO tipo_exame(nome) values ("Teórico");
+INSERT INTO tipo_exame(nome) values ("Médico-renovação");
 INSERT INTO tipo_exame(nome) values ("Prático");
 
 CREATE TABLE exames(
