@@ -187,7 +187,6 @@ public class CadastroAluno extends javax.swing.JFrame {
 
     private void btnCadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCadastrarActionPerformed
         try {
-            // TODO add your handling code here:
             cadastrarAluno();
         } catch (ParseException ex) {
             Logger.getLogger(CadastrarUsuario.class.getName()).log(Level.SEVERE, null, ex);
@@ -209,14 +208,15 @@ public class CadastroAluno extends javax.swing.JFrame {
     }//GEN-LAST:event_btnLoginActionPerformed
 
     private void txtDtNascimentoKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtDtNascimentoKeyPressed
-       int KeyCode = evt.getKeyCode();
+        int KeyCode = evt.getKeyCode();
         
+        // Cadastrar ao precionar ENTER
         if (KeyCode == KeyEvent.VK_ENTER) {
-           try {
-               cadastrarAluno();
-           } catch (ParseException ex) {
-               Logger.getLogger(CadastroAluno.class.getName()).log(Level.SEVERE, null, ex);
-           }
+            try {
+                cadastrarAluno();
+            } catch (ParseException ex) {
+                Logger.getLogger(CadastroAluno.class.getName()).log(Level.SEVERE, null, ex);
+            }
         }
     }//GEN-LAST:event_txtDtNascimentoKeyPressed
 
@@ -235,7 +235,13 @@ public class CadastroAluno extends javax.swing.JFrame {
             alunoDto.setTelefone_usuario(txtTelefone.getText());
             alunoDto.setSenha_usuario(txtSenha.getText());
 
-            new AlunoDAO().cadastrarAluno(alunoDto);
+            boolean alunoCadastrado = new AlunoDAO().cadastrarAluno(alunoDto);
+
+            if (alunoCadastrado) {
+                // Limpar campos caso o cadastro dê certo
+                limpar();
+            }
+
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, e, "Erro", JOptionPane.ERROR_MESSAGE);
         }

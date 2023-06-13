@@ -4,8 +4,9 @@ import controle.aluno.AlunoDAO;
 import services.AlunoServices;
 import modelo.ServicoDTO;
 import modelo.UsuarioDTO;
-import visao.aluno.MainAluno;
+
 public class Boleto extends javax.swing.JFrame {
+
     int idItem;
 
     /**
@@ -15,16 +16,16 @@ public class Boleto extends javax.swing.JFrame {
         initComponents();
     }
 
-     public Boleto(ServicoDTO servico) {
+    public Boleto(ServicoDTO servico) {
         initComponents();
         double valor = servico.getValor();
         String item = servico.getItem();
-        idItem = servico.getId();   
-        
+        idItem = servico.getId();
+
         txtValor.setText("R$" + String.valueOf(valor));
         txtItem.setText(item);
     }
-     
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -124,7 +125,7 @@ public class Boleto extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void formWindowActivated(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowActivated
-        
+
     }//GEN-LAST:event_formWindowActivated
 
     private void btnPagarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPagarActionPerformed
@@ -132,11 +133,11 @@ public class Boleto extends javax.swing.JFrame {
         if (idItem == 1) {
             new NovaCNH().setVisible(true);
         }
-        
-        if(idItem == 2){
+
+        if (idItem == 2) {
             new Carteira().setVisible(true);
         }
-        
+
         if (idItem == 3) {
             new AlunoDAO().renovarCarteira();
             new Renovacao().setVisible(true);
@@ -147,7 +148,6 @@ public class Boleto extends javax.swing.JFrame {
         new AlunoServices().pagarBoleto(idItem, alunoId);
         this.dispose();
     }//GEN-LAST:event_btnPagarActionPerformed
-
 
     /**
      * @param args the command line arguments

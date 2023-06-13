@@ -29,13 +29,14 @@ public class AlunoDAO {
         }
     }
 
-    public void cadastrarAluno(AlunoDTO alunoDto) {
+    public boolean cadastrarAluno(AlunoDTO alunoDto) {
         try {
             boolean rsBuscaUsuario = buscarUsuario(alunoDto.getCpf_usuario());
-
+            
+            // Verifica se já existe usuário com o cpf digitado 
             if (rsBuscaUsuario) {
                 JOptionPane.showMessageDialog(null, "Usuário já cadastrado!", "Erro", JOptionPane.ERROR_MESSAGE);
-                return;
+                return false;
             }
 
             String sql = "INSERT INTO usuarios(nome_completo, dt_nascimento, cpf, email, telefone, senha, perfil_id) values (?, ?, ?, ?, ?, ?, ?)";
@@ -58,29 +59,22 @@ public class AlunoDAO {
 
             if (idadeAluno < 18) {
                 JOptionPane.showMessageDialog(null, "Aluno precisa ser maior de idade.");
-                return;
+                return false;
             }
 
             int rowsAffected = pstm.executeUpdate();
 
             if (rowsAffected > 0) {
                 JOptionPane.showMessageDialog(null, "Aluno cadastrado!" + "\nNome: " + alunoDto.getNome_usuario());
+                return true;
             } else {
                 JOptionPane.showMessageDialog(null, "Falha ao cadastrar usuário!");
             }
 
         } catch (SQLException e) {
             JOptionPane.showMessageDialog(null, "AlunoDAO: " + e, "AlunoDAO", JOptionPane.ERROR_MESSAGE);
-        } finally {
-            // Fechar conexão
-            if (conn != null) {
-                try {
-                    conn.close();
-                } catch (SQLException e) {
-                    e.printStackTrace();
-                }
-            }
-        }
+        } 
+        return false;
     }
 
     public void fazerExame(int tipo_exame) {
@@ -103,11 +97,11 @@ public class AlunoDAO {
         }
     }
 
-    public void refazerExame(int idAluno, int tipoExameId) {
+    public void refazerExame(int tipoExameId) {
         try {
             String sql = "UPDATE exames SET resultado = null WHERE aluno_id = ? AND tipo_exame_id = ?";
             PreparedStatement pstm = conn.prepareStatement(sql);
-            pstm.setInt(1, idAluno);
+            pstm.setInt(1, AlunoDTO.usuarioLogado.getId_usuario());
             pstm.setInt(2, tipoExameId);
 
             int rowsAffected = pstm.executeUpdate();

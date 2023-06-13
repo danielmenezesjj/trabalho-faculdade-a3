@@ -55,6 +55,7 @@ public class MainAluno extends javax.swing.JFrame {
         btnFecharSistema = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setMinimumSize(new java.awt.Dimension(626, 523));
         setUndecorated(true);
         setResizable(false);
         addWindowListener(new java.awt.event.WindowAdapter() {
@@ -62,9 +63,12 @@ public class MainAluno extends javax.swing.JFrame {
                 formWindowOpened(evt);
             }
         });
+        getContentPane().setLayout(null);
 
         txtUsuarioLogado.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
         txtUsuarioLogado.setText("Olá, #nomeAluno");
+        getContentPane().add(txtUsuarioLogado);
+        txtUsuarioLogado.setBounds(30, 40, 303, 24);
 
         btnSegundavia.setBackground(new java.awt.Color(0, 0, 0));
         btnSegundavia.setForeground(new java.awt.Color(255, 255, 255));
@@ -75,6 +79,8 @@ public class MainAluno extends javax.swing.JFrame {
                 btnSegundaviaActionPerformed(evt);
             }
         });
+        getContentPane().add(btnSegundavia);
+        btnSegundavia.setBounds(140, 270, 360, 52);
 
         btnNovaEmissao.setBackground(new java.awt.Color(0, 0, 0));
         btnNovaEmissao.setForeground(new java.awt.Color(255, 255, 255));
@@ -85,6 +91,8 @@ public class MainAluno extends javax.swing.JFrame {
                 btnNovaEmissaoActionPerformed(evt);
             }
         });
+        getContentPane().add(btnNovaEmissao);
+        btnNovaEmissao.setBounds(140, 170, 360, 52);
 
         btnRenovacao.setBackground(new java.awt.Color(0, 0, 0));
         btnRenovacao.setForeground(new java.awt.Color(255, 255, 255));
@@ -95,55 +103,25 @@ public class MainAluno extends javax.swing.JFrame {
                 btnRenovacaoActionPerformed(evt);
             }
         });
+        getContentPane().add(btnRenovacao);
+        btnRenovacao.setBounds(140, 360, 360, 52);
 
         txtData.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         txtData.setText("Data");
+        getContentPane().add(txtData);
+        txtData.setBounds(30, 70, 107, 16);
 
         btnFecharSistema.setBackground(new java.awt.Color(255, 51, 51));
+        btnFecharSistema.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
         btnFecharSistema.setForeground(new java.awt.Color(255, 255, 255));
-        btnFecharSistema.setText("Sair");
+        btnFecharSistema.setText("X");
         btnFecharSistema.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnFecharSistemaActionPerformed(evt);
             }
         });
-
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(151, 151, 151)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
-                    .addComponent(btnSegundavia, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(btnNovaEmissao, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(btnRenovacao, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(btnFecharSistema, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(156, Short.MAX_VALUE))
-            .addGroup(layout.createSequentialGroup()
-                .addGap(23, 23, 23)
-                .addComponent(txtUsuarioLogado, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(txtData, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(19, 19, 19)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(txtUsuarioLogado)
-                    .addComponent(txtData, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(42, 42, 42)
-                .addComponent(btnNovaEmissao, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(29, 29, 29)
-                .addComponent(btnSegundavia, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(32, 32, 32)
-                .addComponent(btnRenovacao, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 33, Short.MAX_VALUE)
-                .addComponent(btnFecharSistema)
-                .addGap(24, 24, 24))
-        );
+        getContentPane().add(btnFecharSistema);
+        btnFecharSistema.setBounds(560, 20, 40, 24);
 
         pack();
         setLocationRelativeTo(null);

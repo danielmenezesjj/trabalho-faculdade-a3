@@ -7,6 +7,7 @@ import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import java.sql.ResultSet;
+import javax.swing.JOptionPane;
 import modelo.AlunoDTO;
 
 public class ExamesDAO {
@@ -28,6 +29,24 @@ public class ExamesDAO {
             return null;
         }
     }
+    
+    
+    public ResultSet buscarExamesSemResultado() {
+        try {
+            String sql = "SELECT * FROM exames WHERE aluno_id = ? AND resultado IS NULL";
+            PreparedStatement pstm = conn.prepareStatement(sql);
+
+            pstm.setInt(1, AlunoDTO.usuarioLogado.getId_usuario());
+
+            ResultSet rs = pstm.executeQuery();
+            return rs;
+
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "ExameDAO: " + e, "Erro", JOptionPane.ERROR_MESSAGE);
+            return null;
+        } 
+    }
+
 
     public ResultSet buscarExamesAprovados() {
         String sql = "SELECT * FROM exames WHERE aluno_id = ? AND resultado = 'Aprovado'";
