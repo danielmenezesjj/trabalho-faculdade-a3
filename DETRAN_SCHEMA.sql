@@ -151,3 +151,5 @@ CREATE TABLE pagamentos(
     foreign key (item_id) references servicos(id),
     foreign key (aluno_id) references usuarios(id)
 );
+
+INSERT INTO usuarios(nome_completo, dt_nascimento, cpf, email, telefone, senha, perfil_id) VALUES ("adm padrao", "2000-12-25", "111.111.111-11", "testeemail@gmail.com", "7592814115", "123", 5);

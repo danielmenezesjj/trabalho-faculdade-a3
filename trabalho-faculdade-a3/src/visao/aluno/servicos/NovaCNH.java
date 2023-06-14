@@ -291,6 +291,7 @@ public class NovaCNH extends javax.swing.JFrame {
     }//GEN-LAST:event_formWindowActivated
 
     private void btnImprimirCarteiraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnImprimirCarteiraActionPerformed
+        this.dispose();
         new Carteira().setVisible(true);
     }//GEN-LAST:event_btnImprimirCarteiraActionPerformed
 
