@@ -14,7 +14,6 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
-import modelo.AlunoDTO;
 import modelo.Usuario;
 import visao.Login;
 import visao.aluno.servicos.NovaCNH;
@@ -24,8 +23,6 @@ public class MainAluno extends javax.swing.JFrame {
 
     SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
     Date dataAtual = new Date();
-
-    int idAlunoLogado = AlunoDTO.usuarioLogado.getId_usuario();
 
     /**
      * Creates new form InterfaceAluno

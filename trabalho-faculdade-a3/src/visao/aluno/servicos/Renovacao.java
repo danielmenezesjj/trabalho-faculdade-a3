@@ -202,7 +202,8 @@ public class Renovacao extends javax.swing.JFrame {
     private void habilitarBotaoExame() {
         ResultSet rsExameALuno = new ExamesDAO().buscarExamesSemResultado();
         ResultSet rsCarteiraAluno = new AlunoDAO().verificaSeContemCarteira();
-
+        
+        // 
         try {
             if (rsExameALuno.next() && rsCarteiraAluno.next()) {
                 if (rsCarteiraAluno.getDate("dt_emissao") == null) {

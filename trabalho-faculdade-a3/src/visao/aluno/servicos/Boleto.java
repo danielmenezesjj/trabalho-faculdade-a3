@@ -139,7 +139,7 @@ public class Boleto extends javax.swing.JFrame {
         }
 
         if (idItem == 3) {
-            new AlunoDAO().renovarCarteira();
+            new AlunoDAO().iniciarRenovacao();
             new Renovacao().setVisible(true);
         }
 

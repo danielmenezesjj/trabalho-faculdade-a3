@@ -291,7 +291,11 @@ public class CadastrarUsuario extends javax.swing.JFrame {
                 return;
             }
             
-            new AdminDAO().cadastrarUsuario(objUsuarioDto);
+            boolean cadastroUsuario = new AdminDAO().cadastrarUsuario(objUsuarioDto);
+            
+            if(cadastroUsuario){
+                limpar();
+            }
 
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, e);

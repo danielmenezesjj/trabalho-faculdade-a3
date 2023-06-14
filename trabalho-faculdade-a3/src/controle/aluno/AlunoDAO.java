@@ -146,7 +146,7 @@ public class AlunoDAO {
         }
     }
 
-    public void renovarCarteira() {
+    public void iniciarRenovacao() {
         try {
             String sql = "UPDATE carteira SET dt_emissao = NULL, dt_vencimento = NULL WHERE aluno_id = ?";
             PreparedStatement pstm = conn.prepareStatement(sql);
