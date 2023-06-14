@@ -19,7 +19,7 @@ public class PagamentoDAO {
             PreparedStatement pstm = conn.prepareStatement(sql);
 
             pstm.setInt(1, pgmtDto.getItem_id());
-            pstm.setInt(2, pgmtDto.getUsuario_id());
+            pstm.setInt(2, pgmtDto.getAluno_id());
 
             int rowsAffected = pstm.executeUpdate();
 

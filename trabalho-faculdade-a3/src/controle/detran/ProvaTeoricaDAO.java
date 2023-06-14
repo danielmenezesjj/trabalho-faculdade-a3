@@ -8,6 +8,7 @@ import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import javax.swing.JOptionPane;
 import java.sql.ResultSet;
+import modelo.AlunoDTO;
 
 public class ProvaTeoricaDAO {
 
@@ -37,12 +38,12 @@ public class ProvaTeoricaDAO {
         } 
     }
     
-    public ResultSet buscarProva(int idAluno) {
+    public ResultSet buscarProva() {
         try {
             String sql = "SELECT * FROM provas_teorica WHERE aluno_id = ?";
             PreparedStatement pstm = conn.prepareStatement(sql);
 
-            pstm.setInt(1, idAluno);
+            pstm.setInt(1, AlunoDTO.usuarioLogado.getId_usuario());
 
             ResultSet rs = pstm.executeQuery();
             return rs;
@@ -53,12 +54,12 @@ public class ProvaTeoricaDAO {
 
     }
 
-    public ResultSet buscarProvasAprovadas(int idAluno) {
+    public ResultSet buscarProvasAprovadas() {
         try {
             String sql = "SELECT * FROM provas_teorica WHERE aluno_id = ? AND resultado = 'Aprovado'";
             PreparedStatement pstm = conn.prepareStatement(sql);
 
-            pstm.setInt(1, idAluno);
+            pstm.setInt(1, AlunoDTO.usuarioLogado.getId_usuario());
 
             ResultSet rs = pstm.executeQuery();
             return rs;
@@ -69,12 +70,12 @@ public class ProvaTeoricaDAO {
 
     }
     
-    public ResultSet buscarProvasReprovadas(int idAluno) {
+    public ResultSet buscarProvasReprovadas() {
         try {
             String sql = "SELECT * FROM provas_teorica WHERE aluno_id = ? AND resultado = 'Reprovado'";
             PreparedStatement pstm = conn.prepareStatement(sql);
 
-            pstm.setInt(1, idAluno);
+            pstm.setInt(1, AlunoDTO.usuarioLogado.getId_usuario());
 
             ResultSet rs = pstm.executeQuery();
             return rs;

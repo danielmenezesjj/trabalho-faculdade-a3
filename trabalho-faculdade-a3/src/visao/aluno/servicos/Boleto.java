@@ -139,13 +139,13 @@ public class Boleto extends javax.swing.JFrame {
         }
 
         if (idItem == 3) {
+            // Ao 
             new AlunoDAO().iniciarRenovacao();
             new Renovacao().setVisible(true);
         }
 
-        int alunoId = UsuarioDTO.usuarioLogado.getId_usuario();
         // Salvando pagamento no banco
-        new AlunoServices().pagarBoleto(idItem, alunoId);
+        new AlunoServices().pagarBoleto(idItem);
         this.dispose();
     }//GEN-LAST:event_btnPagarActionPerformed
 

@@ -2,7 +2,7 @@ package visao.aluno.servicos;
 
 import controle.aluno.AlunoDAO;
 import controle.detran.CarteiraDAO;
-import controle.detran.ExamesDAO;
+import controle.detran.ExameDAO;
 import controle.detran.ProvaTeoricaDAO;
 import java.awt.Color;
 import java.sql.ResultSet;
@@ -66,7 +66,7 @@ public class NovaCNH extends javax.swing.JFrame {
         btnPratico = new javax.swing.JButton();
         btnImprimirCarteira = new javax.swing.JButton();
         txtMessagem = new javax.swing.JLabel();
-        btnVoltar = new javax.swing.JButton();
+        btnClose = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
 
         jButton3.setText("Realizar exame");
@@ -109,7 +109,7 @@ public class NovaCNH extends javax.swing.JFrame {
 
         jLabel3.setText("Exame Médico");
         getContentPane().add(jLabel3);
-        jLabel3.setBounds(130, 240, 77, 20);
+        jLabel3.setBounds(130, 240, 80, 20);
 
         txtResultadoMedico.setText("Resultado:");
         getContentPane().add(txtResultadoMedico);
@@ -117,7 +117,7 @@ public class NovaCNH extends javax.swing.JFrame {
 
         jLabel5.setText("Exame Psicológico");
         getContentPane().add(jLabel5);
-        jLabel5.setBounds(130, 280, 100, 20);
+        jLabel5.setBounds(130, 280, 105, 20);
 
         txtResultadoPsicologico.setText("Resultado:");
         getContentPane().add(txtResultadoPsicologico);
@@ -125,7 +125,7 @@ public class NovaCNH extends javax.swing.JFrame {
 
         jLabel7.setText("Exame Prático");
         getContentPane().add(jLabel7);
-        jLabel7.setBounds(130, 360, 77, 20);
+        jLabel7.setBounds(130, 360, 79, 20);
 
         txtResultadoPratico.setText("Resultado:");
         getContentPane().add(txtResultadoPratico);
@@ -133,7 +133,7 @@ public class NovaCNH extends javax.swing.JFrame {
 
         jLabel9.setText("Exame Teórico");
         getContentPane().add(jLabel9);
-        jLabel9.setBounds(130, 320, 79, 20);
+        jLabel9.setBounds(130, 320, 82, 20);
 
         jLabel10.setText("Resultado:");
         getContentPane().add(jLabel10);
@@ -213,17 +213,17 @@ public class NovaCNH extends javax.swing.JFrame {
         getContentPane().add(txtMessagem);
         txtMessagem.setBounds(80, 100, 490, 30);
 
-        btnVoltar.setBackground(new java.awt.Color(255, 51, 51));
-        btnVoltar.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
-        btnVoltar.setForeground(new java.awt.Color(255, 255, 255));
-        btnVoltar.setText("X");
-        btnVoltar.addActionListener(new java.awt.event.ActionListener() {
+        btnClose.setBackground(new java.awt.Color(255, 51, 51));
+        btnClose.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
+        btnClose.setForeground(new java.awt.Color(255, 255, 255));
+        btnClose.setText("X");
+        btnClose.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnVoltarActionPerformed(evt);
+                btnCloseActionPerformed(evt);
             }
         });
-        getContentPane().add(btnVoltar);
-        btnVoltar.setBounds(620, 20, 40, 30);
+        getContentPane().add(btnClose);
+        btnClose.setBounds(620, 20, 40, 30);
 
         jLabel1.setText("________________________________________________________");
         getContentPane().add(jLabel1);
@@ -281,11 +281,11 @@ public class NovaCNH extends javax.swing.JFrame {
 
     private void formWindowActivated(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowActivated
         verificaSeEstaFazendoExame();
-        pegarResultadosExames();
+        getResultadosExames();
         ativarBotaoSolicitarCarteira();
         verificaSeJaFezProva();
         verficaSeJatemCarteira();
-        pegarResultadoProvaTeorica();
+        getResultadoProvaTeorica();
         verificaAprovados();
     }//GEN-LAST:event_formWindowActivated
 
@@ -294,16 +294,16 @@ public class NovaCNH extends javax.swing.JFrame {
         new Carteira().setVisible(true);
     }//GEN-LAST:event_btnImprimirCarteiraActionPerformed
 
-    private void btnVoltarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVoltarActionPerformed
+    private void btnCloseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCloseActionPerformed
         this.dispose();
         new MainAluno().setVisible(true);
-    }//GEN-LAST:event_btnVoltarActionPerformed
+    }//GEN-LAST:event_btnCloseActionPerformed
 
     private void verificaSeJaFezProva() {
         try {
             // validar se já existe prova com id de usuario
             ProvaTeoricaDAO provaDao = new ProvaTeoricaDAO();
-            ResultSet rsPDao = provaDao.buscarProvasAprovadas(alunoLogadoId);
+            ResultSet rsPDao = provaDao.buscarProvasAprovadas();
 
             if (rsPDao.next()) {
                 btnTeorico.setEnabled(false);
@@ -315,7 +315,7 @@ public class NovaCNH extends javax.swing.JFrame {
 
     private void verificaSeEstaFazendoExame() {
         try {
-            ResultSet rsExDao = new ExamesDAO().buscarExamesSemResultado();
+            ResultSet rsExDao = new ExameDAO().buscarExamesSemResultado();
 
             while (rsExDao.next()) {
                 int tipo_exame = rsExDao.getInt("tipo_exame_id");
@@ -338,7 +338,7 @@ public class NovaCNH extends javax.swing.JFrame {
         }
     }
 
-    private void pegarResultadosExames() {
+    private void getResultadosExames() {
         ResultSet rsAlunoDao = alunoDao.consultarExame();
 
         try {
@@ -361,12 +361,12 @@ public class NovaCNH extends javax.swing.JFrame {
         }
     }
 
-    private String pegarResultadoProvaTeorica() {
+    private String getResultadoProvaTeorica() {
 
         ProvaTeoricaDAO pDao = new ProvaTeoricaDAO();
 
-        ResultSet rsPDAO = pDao.buscarProva(alunoLogadoId);
-        ResultSet rsPDaoAprovado = pDao.buscarProvasAprovadas(alunoLogadoId);
+        ResultSet rsPDAO = pDao.buscarProva();
+        ResultSet rsPDaoAprovado = pDao.buscarProvasAprovadas();
 
         try {
             if (rsPDaoAprovado.next()) {
@@ -429,8 +429,8 @@ public class NovaCNH extends javax.swing.JFrame {
 
     private boolean verificaAprovados() {
 
-        ResultSet rsProvaDao = new ProvaTeoricaDAO().buscarProva(alunoLogadoId);
-        ResultSet rsExDao = new ExamesDAO().buscarExamesAprovados();
+        ResultSet rsProvaDao = new ProvaTeoricaDAO().buscarProva();
+        ResultSet rsExDao = new ExameDAO().buscarExamesAprovados();
 
         try {
             while (rsExDao.next()) {
@@ -505,9 +505,9 @@ public class NovaCNH extends javax.swing.JFrame {
             }
 
             if (contadorReprovacao == 1) {
-                ExamesDAO exDao = new ExamesDAO();
-                ResultSet rsExames = exDao.buscarExamesReprovados(alunoLogadoId);
-                ResultSet rsProvas = new ProvaTeoricaDAO().buscarProvasReprovadas(alunoLogadoId);
+                ExameDAO exDao = new ExameDAO();
+                ResultSet rsExames = exDao.buscarExamesReprovados();
+                ResultSet rsProvas = new ProvaTeoricaDAO().buscarProvasReprovadas();
 
                 if (rsProvas.next()) {
                     btnTeorico.setText("Refazer exame");
@@ -542,8 +542,8 @@ public class NovaCNH extends javax.swing.JFrame {
         int contadorReprovacao = 0;
 
         try {
-            ResultSet rsExames = new ExamesDAO().buscarExamesReprovados(alunoLogadoId);
-            ResultSet rsProvas = new ProvaTeoricaDAO().buscarProvasReprovadas(alunoLogadoId);
+            ResultSet rsExames = new ExameDAO().buscarExamesReprovados();
+            ResultSet rsProvas = new ProvaTeoricaDAO().buscarProvasReprovadas();
 
             while (rsExames.next()) {
                 contadorReprovacao++;
@@ -588,19 +588,19 @@ public class NovaCNH extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new NovaCNH().setVisible(true);              
+                new NovaCNH().setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnClose;
     private javax.swing.JButton btnImprimirCarteira;
     private javax.swing.JButton btnMedico;
     private javax.swing.JButton btnPratico;
     private javax.swing.JButton btnPsicologo;
     private javax.swing.JButton btnSolicitarCarteira;
     private javax.swing.JButton btnTeorico;
-    private javax.swing.JButton btnVoltar;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton5;
     private javax.swing.JLabel jLabel1;

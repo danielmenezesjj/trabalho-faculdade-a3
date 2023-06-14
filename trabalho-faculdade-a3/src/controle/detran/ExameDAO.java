@@ -10,7 +10,7 @@ import java.sql.ResultSet;
 import javax.swing.JOptionPane;
 import modelo.AlunoDTO;
 
-public class ExamesDAO {
+public class ExameDAO {
 
     Connection conn = (Connection) new ConexaoDAO().connectDB();
 
@@ -25,7 +25,7 @@ public class ExamesDAO {
 
             return rs;
         } catch (SQLException ex) {
-            Logger.getLogger(ExamesDAO.class.getName()).log(Level.SEVERE, null, "ExamesDAO: " + ex);
+            Logger.getLogger(ExameDAO.class.getName()).log(Level.SEVERE, null, "ExamesDAO: " + ex);
             return null;
         }
     }
@@ -59,23 +59,23 @@ public class ExamesDAO {
 
             return rs;
         } catch (SQLException ex) {
-            Logger.getLogger(ExamesDAO.class.getName()).log(Level.SEVERE, null, "ExamesDAO: " + ex);
+            Logger.getLogger(ExameDAO.class.getName()).log(Level.SEVERE, null, "ExamesDAO: " + ex);
             return null;
         }
     }
 
-    public ResultSet buscarExamesReprovados(int idAluno) {
+    public ResultSet buscarExamesReprovados() {
         String sql = "SELECT * FROM exames WHERE aluno_id = ? AND resultado = 'Reprovado'";
 
         try {
             PreparedStatement pstm = conn.prepareStatement(sql);
-            pstm.setInt(1, idAluno);
+            pstm.setInt(1, AlunoDTO.usuarioLogado.getId_usuario());
 
             ResultSet rs = pstm.executeQuery();
 
             return rs;
         } catch (SQLException ex) {
-            Logger.getLogger(ExamesDAO.class.getName()).log(Level.SEVERE, null, "ExamesDAO: " + ex);
+            Logger.getLogger(ExameDAO.class.getName()).log(Level.SEVERE, null, "ExamesDAO: " + ex);
             return null;
         }
     }

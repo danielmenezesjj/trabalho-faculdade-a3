@@ -1,7 +1,7 @@
 package visao.aluno.servicos;
 
 import controle.detran.ProvaTeoricaDAO;
-import controle.detran.QuestoesDAO;
+import controle.detran.QuestaoDAO;
 import modelo.ProvaTeoricaDTO;
 import modelo.Questao;
 import java.sql.ResultSet;
@@ -231,7 +231,7 @@ public class ProvaTeorica extends javax.swing.JFrame {
         txtResposta.setVisible(false);
         try {
 
-            QuestoesDAO objQuestoesDao = new QuestoesDAO();
+            QuestaoDAO objQuestoesDao = new QuestaoDAO();
             ResultSet rsObjQuestoesDao = objQuestoesDao.buscarQuestoes(qtQuestoes);
 
             // Amrazenando questoes no arrayList

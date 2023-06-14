@@ -142,7 +142,7 @@ public class MainAluno extends javax.swing.JFrame {
     private void btnRenovacaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRenovacaoActionPerformed
         try {
             ResultSet rsPgmDAO = new PagamentoDAO().buscar(3);
-            ResultSet rsCarteiraAluno = new AlunoDAO().verificaSeContemCarteira();
+            ResultSet rsCarteiraAluno = new CarteiraDAO().buscaCarteira();
 
             if (rsPgmDAO.next()) {
                 if (rsCarteiraAluno.next()) {
@@ -163,7 +163,7 @@ public class MainAluno extends javax.swing.JFrame {
     }//GEN-LAST:event_btnRenovacaoActionPerformed
 
     private void btnSegundaviaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSegundaviaActionPerformed
-        ResultSet rsCarteira = new AlunoDAO().verificaSeContemCarteira();
+        ResultSet rsCarteira = new CarteiraDAO().buscaCarteira();
         try {
             if (rsCarteira.next()) {
                 buscarServico(2);
@@ -211,7 +211,7 @@ public class MainAluno extends javax.swing.JFrame {
     }
 
     private void permitirNovaEmissao() {
-        ResultSet rsCarteiraAluno = new AlunoDAO().verificaSeContemCarteira();
+        ResultSet rsCarteiraAluno =  new CarteiraDAO().buscaCarteira();
 
         try {
             if (!rsCarteiraAluno.next()) {

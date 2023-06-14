@@ -2,7 +2,7 @@ package visao.aluno.servicos;
 
 import controle.aluno.AlunoDAO;
 import controle.detran.CarteiraDAO;
-import controle.detran.ExamesDAO;
+import controle.detran.ExameDAO;
 import controle.examinador.ExaminadorDAO;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -135,14 +135,11 @@ public class Renovacao extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnRealizarExameMedicoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRealizarExameMedicoActionPerformed
-        JOptionPane.showMessageDialog(null, "Exame marcado!");
-        
-        // Fazer exame do tipo Médico-renovação
         new AlunoDAO().fazerExame(3);
     }//GEN-LAST:event_btnRealizarExameMedicoActionPerformed
 
     private void buscarResultadoExame() {
-        ResultSet resultSetExame = new ExamesDAO().buscarExames();
+        ResultSet resultSetExame = new ExameDAO().buscarExames();
 
         try {
             while (resultSetExame.next()) {
@@ -165,7 +162,6 @@ public class Renovacao extends javax.swing.JFrame {
 
     private void formWindowActivated(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowActivated
         buscarResultadoExame();
-        habilitarBotaoExame();
         habilitarBtnImprimir();
     }//GEN-LAST:event_formWindowActivated
 
@@ -173,7 +169,7 @@ public class Renovacao extends javax.swing.JFrame {
         this.dispose();
         new MainAluno().setVisible(true);
     }//GEN-LAST:event_btnCloseActionPerformed
-    
+
     private void btnImprimirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnImprimirActionPerformed
         CarteiraDTO carteiraDto = new CarteiraDTO();
 
@@ -200,10 +196,9 @@ public class Renovacao extends javax.swing.JFrame {
     }
 
     private void habilitarBotaoExame() {
-        ResultSet rsExameALuno = new ExamesDAO().buscarExamesSemResultado();
+        ResultSet rsExameALuno = new ExameDAO().buscarExamesSemResultado();
         ResultSet rsCarteiraAluno = new AlunoDAO().verificaSeContemCarteira();
-        
-        // 
+
         try {
             if (rsExameALuno.next() && rsCarteiraAluno.next()) {
                 if (rsCarteiraAluno.getDate("dt_emissao") == null) {

@@ -7,10 +7,11 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import javax.swing.JOptionPane;
 
-public class QuestoesDAO {
+public class QuestaoDAO {
 
     Connection conn = (Connection) new ConexaoDAO().connectDB();
 
+    // Retorna questões do banco em ordem aleatória com limite passado no parâmetro
     public ResultSet buscarQuestoes(int limite) {
         try {
             String sql = "select * from questoes ORDER BY RAND() LIMIT ?";

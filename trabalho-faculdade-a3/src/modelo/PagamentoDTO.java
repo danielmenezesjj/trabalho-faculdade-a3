@@ -3,7 +3,7 @@ package modelo;
 public class PagamentoDTO {
 
     private int id;
-    private int usuario_id;
+    private int aluno_id;
     private int item_id;
 
     public int getId() {
@@ -14,12 +14,12 @@ public class PagamentoDTO {
         this.id = id;
     }
 
-    public int getUsuario_id() {
-        return usuario_id;
+    public int getAluno_id() {
+        return aluno_id;
     }
 
-    public void setUsuario_id(int usuario_id) {
-        this.usuario_id = usuario_id;
+    public void setAluno_id(int aluno_id) {
+        this.aluno_id = aluno_id;
     }
 
     public int getItem_id() {
