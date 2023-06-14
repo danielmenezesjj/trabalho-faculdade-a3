@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
 package visao.examinadores;
 
 import controle.examinador.ExaminadorDAO;
@@ -46,6 +42,7 @@ public class ListaResultadosExame extends javax.swing.JFrame {
     private void listarExames(){
         if(UsuarioDTO.usuarioLogado.getPerfil_usuario() == 2){
             listarExamesEmTabela(1);
+            listarExamesEmTabela(3);
         }
         
         if(UsuarioDTO.usuarioLogado.getPerfil_usuario() == 4){

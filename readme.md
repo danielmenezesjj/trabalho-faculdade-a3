@@ -1,4 +1,4 @@
-# Trabalho faculdade A3 - Sistema de Gerencimaneto de cadastro de CNH
+# Trabalho faculdade A3 - Sistema de Gerenciamento de cadastro de CNH
 
 ## Descrição:
 Desenvolvimento do sistema de controle da Carteira Nacional de Habilitação (CNH) para o DETRAN, conforme cenário descrito a seguir.
