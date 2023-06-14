@@ -13,7 +13,7 @@ public class ConexaoDAO{
         Connection conn = null;
         
         try{
-            String url = "jdbc:mysql://localhost:3306/detran?useSSL=false&user=root&password=123456";
+            String url = "jdbc:mysql://localhost:3306/detran?useSSL=false&allowPublicKeyRetrieval=true&user=root&password=123456";
             conn = DriverManager.getConnection(url);
             
         }catch(SQLException erro){
