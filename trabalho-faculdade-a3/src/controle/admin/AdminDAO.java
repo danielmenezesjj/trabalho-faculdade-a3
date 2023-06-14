@@ -1,6 +1,7 @@
 package controle.admin;
 
 import controle.ConexaoDAO;
+import controle.UsuarioDAO;
 import controle.examinador.ExaminadorDAO;
 import modelo.UsuarioDTO;
 import java.sql.PreparedStatement;
@@ -17,28 +18,16 @@ public class AdminDAO {
 
     Connection conn = (Connection) new ConexaoDAO().connectDB();
 
-    public ResultSet buscarUsuario(String cpf) {
-        try {
-            String sql = "SELECT * FROM usuarios WHERE usuarios.cpf = ?";
-            PreparedStatement pstm = conn.prepareStatement(sql);
-            pstm.setString(1, cpf);
+    public boolean cadastrarUsuario(UsuarioDTO objUsuarioDto) {
 
-            ResultSet rs = pstm.executeQuery();
-            return rs;
-        } catch (SQLException e) {
-            JOptionPane.showMessageDialog(null, "Erro ao buscar usuário." + e, "Erro", JOptionPane.ERROR_MESSAGE);
-            return null;
-        }
-    }
-
-    public void cadastrarUsuario(UsuarioDTO objUsuarioDto) {
         try {
 
-            ResultSet rsBuscaUsuario = buscarUsuario(objUsuarioDto.getCpf_usuario());
+            boolean rsBuscaUsuario = new UsuarioDAO().buscarUsuario(objUsuarioDto.getCpf_usuario());
 
-            if (rsBuscaUsuario.next()) {
+            // Verifica se já existe usuário com o cpf digitado 
+            if (rsBuscaUsuario) {
                 JOptionPane.showMessageDialog(null, "Usuário já cadastrado!", "Erro", JOptionPane.ERROR_MESSAGE);
-                return;
+                return false;
             }
 
             String sql = "INSERT INTO usuarios(nome_completo, dt_nascimento, cpf, email, telefone, senha, perfil_id) values (?, ?, ?, ?, ?, ?, ?)";
@@ -57,21 +46,17 @@ public class AdminDAO {
 
             if (rowsAffected > 0) {
                 JOptionPane.showMessageDialog(null, "Usuário cadastrado!");
+                return true;
             } else {
                 JOptionPane.showMessageDialog(null, "Falha ao cadastrar usuário!");
+                return false;
             }
 
         } catch (Exception erro) {
             JOptionPane.showMessageDialog(null, "UsuarioDAO: " + erro);
-        } finally {
-            if (conn != null) {
-                try {
-                    conn.close();
-                } catch (SQLException ex) {
-                    Logger.getLogger(ExaminadorDAO.class.getName()).log(Level.SEVERE, null, ex);
-                }
-            }
+            return false;
         }
+
     }
 
     public boolean excluirUsuario(int idUsuario) {
@@ -162,6 +147,20 @@ public class AdminDAO {
             JOptionPane.showMessageDialog(null, "UsuarioDAO: " + e);
         }
 
+    }
+
+    public ResultSet buscarUsuario(String cpf) {
+        try {
+            String sql = "SELECT * FROM usuarios WHERE usuarios.cpf = ?";
+            PreparedStatement pstm = conn.prepareStatement(sql);
+            pstm.setString(1, cpf);
+
+            ResultSet rs = pstm.executeQuery();
+            return rs;
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null, "Erro ao buscar usuário." + e, "Erro", JOptionPane.ERROR_MESSAGE);
+            return null;
+        }
     }
 
 }

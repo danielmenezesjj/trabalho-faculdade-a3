@@ -68,4 +68,18 @@ public class UsuarioDAO {
         }
         return false;
     }
+
+    public boolean buscarUsuario(String cpf) {
+        try {
+            String sql = "SELECT * FROM usuarios WHERE usuarios.cpf = ?";
+            PreparedStatement pstm = conn.prepareStatement(sql);
+            pstm.setString(1, cpf);
+
+            ResultSet rs = pstm.executeQuery();
+            return rs.next();
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null, "Erro ao buscar usuário." + e, "Erro", JOptionPane.ERROR_MESSAGE);
+            return false;
+        }
+    }
 }

@@ -1,6 +1,7 @@
 package controle.aluno;
 
 import controle.ConexaoDAO;
+import controle.UsuarioDAO;
 import java.sql.Connection;
 import java.sql.Date;
 import java.sql.PreparedStatement;
@@ -15,23 +16,9 @@ public class AlunoDAO {
 
     Connection conn = new ConexaoDAO().connectDB();
 
-    public boolean buscarUsuario(String cpf) {
-        try {
-            String sql = "SELECT * FROM usuarios WHERE usuarios.cpf = ?";
-            PreparedStatement pstm = conn.prepareStatement(sql);
-            pstm.setString(1, cpf);
-
-            ResultSet rs = pstm.executeQuery();
-            return rs.next();
-        } catch (SQLException e) {
-            JOptionPane.showMessageDialog(null, "Erro ao buscar usuário." + e, "Erro", JOptionPane.ERROR_MESSAGE);
-            return false;
-        }
-    }
-
     public boolean cadastrarAluno(AlunoDTO alunoDto) {
         try {
-            boolean rsBuscaUsuario = buscarUsuario(alunoDto.getCpf_usuario());
+            boolean rsBuscaUsuario = new UsuarioDAO().buscarUsuario(alunoDto.getCpf_usuario());
             
             // Verifica se já existe usuário com o cpf digitado 
             if (rsBuscaUsuario) {
