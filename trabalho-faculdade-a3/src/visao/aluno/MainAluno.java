@@ -4,6 +4,7 @@ import controle.aluno.PagamentoDAO;
 import controle.detran.CarteiraDAO;
 import visao.aluno.servicos.Boleto;
 import controle.detran.ServicoDAO;
+import controle.aluno.AlunoDAO;
 import modelo.ServicoDTO;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -16,13 +17,14 @@ import javax.swing.JOptionPane;
 import modelo.AlunoDTO;
 import modelo.Usuario;
 import visao.Login;
-import visao.aluno.servicos.InterfaceNovaCNH;
+import visao.aluno.servicos.NovaCNH;
+import visao.aluno.servicos.Renovacao;
 
 public class MainAluno extends javax.swing.JFrame {
 
     SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
     Date dataAtual = new Date();
-    
+
     int idAlunoLogado = AlunoDTO.usuarioLogado.getId_usuario();
 
     /**
@@ -31,6 +33,7 @@ public class MainAluno extends javax.swing.JFrame {
     public MainAluno() {
         initComponents();
         this.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
+        permitirNovaEmissao();
         permitirRenovacao();
         permitirSegundaVia();
     }
@@ -46,12 +49,13 @@ public class MainAluno extends javax.swing.JFrame {
 
         txtUsuarioLogado = new javax.swing.JLabel();
         btnSegundavia = new javax.swing.JButton();
-        btnEmissao = new javax.swing.JButton();
+        btnNovaEmissao = new javax.swing.JButton();
         btnRenovacao = new javax.swing.JButton();
         txtData = new javax.swing.JLabel();
         btnFecharSistema = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setMinimumSize(new java.awt.Dimension(626, 523));
         setUndecorated(true);
         setResizable(false);
         addWindowListener(new java.awt.event.WindowAdapter() {
@@ -59,115 +63,119 @@ public class MainAluno extends javax.swing.JFrame {
                 formWindowOpened(evt);
             }
         });
+        getContentPane().setLayout(null);
 
         txtUsuarioLogado.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
         txtUsuarioLogado.setText("Olá, #nomeAluno");
+        getContentPane().add(txtUsuarioLogado);
+        txtUsuarioLogado.setBounds(30, 40, 303, 24);
 
         btnSegundavia.setBackground(new java.awt.Color(0, 0, 0));
         btnSegundavia.setForeground(new java.awt.Color(255, 255, 255));
         btnSegundavia.setText("Segunda via CNH");
         btnSegundavia.setEnabled(false);
-        btnSegundavia.setOpaque(false);
         btnSegundavia.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnSegundaviaActionPerformed(evt);
             }
         });
+        getContentPane().add(btnSegundavia);
+        btnSegundavia.setBounds(140, 270, 360, 52);
 
-        btnEmissao.setBackground(new java.awt.Color(0, 0, 0));
-        btnEmissao.setForeground(new java.awt.Color(255, 255, 255));
-        btnEmissao.setText("Emissão de nova CNH");
-        btnEmissao.addActionListener(new java.awt.event.ActionListener() {
+        btnNovaEmissao.setBackground(new java.awt.Color(0, 0, 0));
+        btnNovaEmissao.setForeground(new java.awt.Color(255, 255, 255));
+        btnNovaEmissao.setText("Emissão de nova CNH");
+        btnNovaEmissao.setEnabled(false);
+        btnNovaEmissao.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnEmissaoActionPerformed(evt);
+                btnNovaEmissaoActionPerformed(evt);
             }
         });
+        getContentPane().add(btnNovaEmissao);
+        btnNovaEmissao.setBounds(140, 170, 360, 52);
 
         btnRenovacao.setBackground(new java.awt.Color(0, 0, 0));
         btnRenovacao.setForeground(new java.awt.Color(255, 255, 255));
         btnRenovacao.setText("Renovação CNH");
         btnRenovacao.setEnabled(false);
-        btnRenovacao.setOpaque(false);
         btnRenovacao.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnRenovacaoActionPerformed(evt);
             }
         });
+        getContentPane().add(btnRenovacao);
+        btnRenovacao.setBounds(140, 360, 360, 52);
 
         txtData.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         txtData.setText("Data");
+        getContentPane().add(txtData);
+        txtData.setBounds(30, 70, 107, 16);
 
         btnFecharSistema.setBackground(new java.awt.Color(255, 51, 51));
+        btnFecharSistema.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
         btnFecharSistema.setForeground(new java.awt.Color(255, 255, 255));
-        btnFecharSistema.setText("Sair");
+        btnFecharSistema.setText("X");
         btnFecharSistema.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnFecharSistemaActionPerformed(evt);
             }
         });
-
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(151, 151, 151)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
-                    .addComponent(btnSegundavia, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(btnEmissao, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(btnRenovacao, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(btnFecharSistema, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(156, Short.MAX_VALUE))
-            .addGroup(layout.createSequentialGroup()
-                .addGap(23, 23, 23)
-                .addComponent(txtUsuarioLogado, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(txtData, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(19, 19, 19)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(txtUsuarioLogado)
-                    .addComponent(txtData, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(42, 42, 42)
-                .addComponent(btnEmissao, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(29, 29, 29)
-                .addComponent(btnSegundavia, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(32, 32, 32)
-                .addComponent(btnRenovacao, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 33, Short.MAX_VALUE)
-                .addComponent(btnFecharSistema)
-                .addGap(24, 24, 24))
-        );
+        getContentPane().add(btnFecharSistema);
+        btnFecharSistema.setBounds(560, 20, 40, 24);
 
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btnEmissaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEmissaoActionPerformed
-        ResultSet rsPgmDAO = new PagamentoDAO().buscar(Usuario.usuarioLogado.getId_usuario());
+    private void btnNovaEmissaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNovaEmissaoActionPerformed
+        ResultSet rsPgmDAO = new PagamentoDAO().buscar(1);
 
         try {
             if (rsPgmDAO.next()) {
                 this.dispose();
-                new InterfaceNovaCNH().setVisible(true);
+                new NovaCNH().setVisible(true);
             } else {
                 buscarServico(1);
             }
         } catch (SQLException ex) {
             Logger.getLogger(MainAluno.class.getName()).log(Level.SEVERE, null, ex);
         }
-    }//GEN-LAST:event_btnEmissaoActionPerformed
+    }//GEN-LAST:event_btnNovaEmissaoActionPerformed
 
     private void btnRenovacaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRenovacaoActionPerformed
-        buscarServico(3);
+        try {
+            ResultSet rsPgmDAO = new PagamentoDAO().buscar(3);
+            ResultSet rsCarteiraAluno = new AlunoDAO().verificaSeContemCarteira();
+
+            if (rsPgmDAO.next()) {
+                if (rsCarteiraAluno.next()) {
+                    if (rsCarteiraAluno.getDate("dt_emissao") == null) {
+                        this.dispose();
+                        new Renovacao().setVisible(true);
+                    } else {
+                        buscarServico(3);
+                    }
+                }
+            } else {
+                buscarServico(3);
+            }
+
+        } catch (SQLException ex) {
+            Logger.getLogger(MainAluno.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_btnRenovacaoActionPerformed
 
     private void btnSegundaviaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSegundaviaActionPerformed
-        buscarServico(2);
+        ResultSet rsCarteira = new AlunoDAO().verificaSeContemCarteira();
+        try {
+            if (rsCarteira.next()) {
+                buscarServico(2);
+            } else {
+                JOptionPane.showMessageDialog(null, "Usuário não possui carteira.");
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(MainAluno.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_btnSegundaviaActionPerformed
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
@@ -194,9 +202,8 @@ public class MainAluno extends javax.swing.JFrame {
                 objServicoDto.setValor(rsServicoDao.getDouble("preco_item"));
                 objServicoDto.setItem(rsServicoDao.getString("nome_item"));
 
-                Boleto objBoleto = new Boleto();
-                objBoleto.getServico(objServicoDto);
-                objBoleto.setVisible(true);
+                this.dispose();
+                new Boleto(objServicoDto).setVisible(true);
             } else {
                 JOptionPane.showMessageDialog(null, "Serviço não encontrado.");
             }
@@ -205,13 +212,25 @@ public class MainAluno extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "InterfaceALuno: " + erro);
         }
     }
-    
-    private void permitirRenovacao(){
+
+    private void permitirNovaEmissao() {
+        ResultSet rsCarteiraAluno = new AlunoDAO().verificaSeContemCarteira();
+
         try {
-            ResultSet rsCarteiraDao = new CarteiraDAO().buscaCarteira(idAlunoLogado);
-            
-            if(rsCarteiraDao.next()){
-                if(rsCarteiraDao.getDate("dt_vencimento").before(dataAtual)){
+            if (!rsCarteiraAluno.next()) {
+                btnNovaEmissao.setEnabled(true);
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(MainAluno.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
+    private void permitirRenovacao() {
+        try {
+            ResultSet rsCarteiraDao = new CarteiraDAO().buscaCarteira();
+
+            if (rsCarteiraDao.next()) {
+                if (rsCarteiraDao.getDate("dt_vencimento") == null || rsCarteiraDao.getDate("dt_vencimento").before(dataAtual)) {
                     btnRenovacao.setEnabled(true);
                 }
             }
@@ -219,13 +238,13 @@ public class MainAluno extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, e);
         }
     }
-    
-     private void permitirSegundaVia(){
+
+    private void permitirSegundaVia() {
         try {
-            ResultSet rsCarteiraDao = new CarteiraDAO().buscaCarteira(idAlunoLogado);    
-            if(rsCarteiraDao.next()){
-                    btnSegundavia.setEnabled(true);
-                
+            ResultSet rsCarteiraDao = new CarteiraDAO().buscaCarteira();
+            if (rsCarteiraDao.next()) {
+                btnSegundavia.setEnabled(true);
+
             }
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, e);
@@ -269,8 +288,8 @@ public class MainAluno extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnEmissao;
     private javax.swing.JButton btnFecharSistema;
+    private javax.swing.JButton btnNovaEmissao;
     private javax.swing.JButton btnRenovacao;
     private javax.swing.JButton btnSegundavia;
     private javax.swing.JLabel txtData;

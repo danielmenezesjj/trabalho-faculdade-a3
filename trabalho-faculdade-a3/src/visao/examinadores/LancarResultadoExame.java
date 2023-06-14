@@ -41,6 +41,7 @@ public class LancarResultadoExame extends javax.swing.JFrame {
     private void listarExames(){
         if(UsuarioDTO.usuarioLogado.getPerfil_usuario() == 2){
             listarExamesEmTabela(1);
+            listarExamesEmTabela(3);
         }
         
         if(UsuarioDTO.usuarioLogado.getPerfil_usuario() == 4){
