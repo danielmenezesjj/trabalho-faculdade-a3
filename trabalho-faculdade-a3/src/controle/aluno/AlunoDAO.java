@@ -132,14 +132,17 @@ public class AlunoDAO {
         }
     }
     
-    private void updateExame(){
+    private void deleteExame(){
          try {
-            String sql = "UPDATE exames SET resultado = NULL WHERE aluno_id = ? AND tipo_exame_id = 3";
+            String sql = "DELETE FROM exames WHERE aluno_id = ? AND tipo_exame_id = 3";
             PreparedStatement pstm = conn.prepareStatement(sql);
 
             pstm.setInt(1, AlunoDTO.usuarioLogado.getId_usuario());
 
-            pstm.executeUpdate();
+            int rowsAffected = pstm.executeUpdate();
+            
+            if(rowsAffected > 0)
+                JOptionPane.showMessageDialog(null, "Deletados");
 
         } catch (SQLException e) {
             JOptionPane.showMessageDialog(null, "CarteiraDAO: " + e, "Erro", JOptionPane.ERROR_MESSAGE);
@@ -153,7 +156,7 @@ public class AlunoDAO {
 
             pstm.setInt(1, AlunoDTO.usuarioLogado.getId_usuario());
             
-            updateExame();
+            deleteExame();
             pstm.executeUpdate();
 
         } catch (SQLException e) {

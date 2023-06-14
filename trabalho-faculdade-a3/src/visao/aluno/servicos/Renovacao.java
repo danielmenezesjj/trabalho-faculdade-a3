@@ -163,6 +163,7 @@ public class Renovacao extends javax.swing.JFrame {
     private void formWindowActivated(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowActivated
         buscarResultadoExame();
         habilitarBtnImprimir();
+        habilitarBotaoExame();
     }//GEN-LAST:event_formWindowActivated
 
     private void btnCloseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCloseActionPerformed
@@ -197,14 +198,11 @@ public class Renovacao extends javax.swing.JFrame {
 
     private void habilitarBotaoExame() {
         ResultSet rsExameALuno = new ExameDAO().buscarExamesSemResultado();
-        ResultSet rsCarteiraAluno = new AlunoDAO().verificaSeContemCarteira();
 
         try {
-            if (rsExameALuno.next() && rsCarteiraAluno.next()) {
-                if (rsCarteiraAluno.getDate("dt_emissao") == null) {
-                    btnRealizarExameMedico.setEnabled(false);
-                    btnRealizarExameMedico.setText("Aguardando resultado...");
-                }
+            if (rsExameALuno.next()) {
+                btnRealizarExameMedico.setEnabled(false);
+                btnRealizarExameMedico.setText("Aguardando resultado...");
             }
         } catch (SQLException ex) {
             Logger.getLogger(Renovacao.class.getName()).log(Level.SEVERE, null, ex);

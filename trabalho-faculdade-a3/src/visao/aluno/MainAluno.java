@@ -239,9 +239,12 @@ public class MainAluno extends javax.swing.JFrame {
     private void permitirSegundaVia() {
         try {
             ResultSet rsCarteiraDao = new CarteiraDAO().buscaCarteira();
-            if (rsCarteiraDao.next()) {
+            if (rsCarteiraDao.next()){
+                // Se carteira não estiver vencida
+                Date dt_vencimento = rsCarteiraDao.getDate("dt_vencimento");
+                if(dt_vencimento != null && dt_vencimento.after(dataAtual)){
                 btnSegundavia.setEnabled(true);
-
+                }
             }
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, e);
