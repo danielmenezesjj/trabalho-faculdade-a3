@@ -86,7 +86,6 @@ public class NovaCNH extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setMinimumSize(new java.awt.Dimension(684, 574));
         setUndecorated(true);
-        setPreferredSize(new java.awt.Dimension(601, 520));
         setResizable(false);
         addWindowListener(new java.awt.event.WindowAdapter() {
             public void windowActivated(java.awt.event.WindowEvent evt) {
@@ -106,11 +105,11 @@ public class NovaCNH extends javax.swing.JFrame {
         jLabel2.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
         jLabel2.setText("Etapas");
         getContentPane().add(jLabel2);
-        jLabel2.setBounds(280, 150, 67, 20);
+        jLabel2.setBounds(300, 150, 67, 20);
 
         jLabel3.setText("Exame Médico");
         getContentPane().add(jLabel3);
-        jLabel3.setBounds(130, 240, 80, 20);
+        jLabel3.setBounds(130, 240, 77, 20);
 
         txtResultadoMedico.setText("Resultado:");
         getContentPane().add(txtResultadoMedico);
@@ -118,7 +117,7 @@ public class NovaCNH extends javax.swing.JFrame {
 
         jLabel5.setText("Exame Psicológico");
         getContentPane().add(jLabel5);
-        jLabel5.setBounds(130, 280, 105, 20);
+        jLabel5.setBounds(130, 280, 100, 20);
 
         txtResultadoPsicologico.setText("Resultado:");
         getContentPane().add(txtResultadoPsicologico);
@@ -126,7 +125,7 @@ public class NovaCNH extends javax.swing.JFrame {
 
         jLabel7.setText("Exame Prático");
         getContentPane().add(jLabel7);
-        jLabel7.setBounds(130, 360, 79, 20);
+        jLabel7.setBounds(130, 360, 77, 20);
 
         txtResultadoPratico.setText("Resultado:");
         getContentPane().add(txtResultadoPratico);
@@ -134,7 +133,7 @@ public class NovaCNH extends javax.swing.JFrame {
 
         jLabel9.setText("Exame Teórico");
         getContentPane().add(jLabel9);
-        jLabel9.setBounds(130, 320, 82, 20);
+        jLabel9.setBounds(130, 320, 79, 20);
 
         jLabel10.setText("Resultado:");
         getContentPane().add(jLabel10);
@@ -228,7 +227,7 @@ public class NovaCNH extends javax.swing.JFrame {
 
         jLabel1.setText("________________________________________________________");
         getContentPane().add(jLabel1);
-        jLabel1.setBounds(120, 170, 400, 20);
+        jLabel1.setBounds(140, 170, 400, 20);
 
         pack();
         setLocationRelativeTo(null);
