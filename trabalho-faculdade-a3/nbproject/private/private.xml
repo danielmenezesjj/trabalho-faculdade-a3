@@ -21,6 +21,8 @@
             <file>file:/C:/Users/freir/OneDrive/Área%20de%20Trabalho/A3-prog/trabalho-faculdade-a3/trabalho-faculdade-a3/src/controle/aluno/AlunoDAO.java</file>
             <file>file:/C:/Users/freir/OneDrive/Área%20de%20Trabalho/A3-prog/trabalho-faculdade-a3/trabalho-faculdade-a3/src/controle/admin/AdminDAO.java</file>
             <file>file:/C:/Users/freir/OneDrive/Área%20de%20Trabalho/A3-prog/trabalho-faculdade-a3/trabalho-faculdade-a3/src/modelo/CarteiraDTO.java</file>
+            <file>file:/C:/Users/freir/OneDrive/Área%20de%20Trabalho/A3-prog/trabalho-faculdade-a3/trabalho-faculdade-a3/src/modelo/AlunoDTO.java</file>
+            <file>file:/C:/Users/freir/OneDrive/Área%20de%20Trabalho/A3-prog/trabalho-faculdade-a3/trabalho-faculdade-a3/src/controle/detran/CarteiraDAO.java</file>
             <file>file:/C:/Users/freir/OneDrive/Área%20de%20Trabalho/A3-prog/trabalho-faculdade-a3/trabalho-faculdade-a3/src/visao/examinadores/MainExaminador.java</file>
             <file>file:/C:/Users/freir/OneDrive/Área%20de%20Trabalho/A3-prog/trabalho-faculdade-a3/trabalho-faculdade-a3/src/visao/aluno/servicos/ProvaTeorica.java</file>
             <file>file:/C:/Users/freir/OneDrive/Área%20de%20Trabalho/A3-prog/trabalho-faculdade-a3/trabalho-faculdade-a3/src/visao/admin/MainAdmin.java</file>
@@ -35,6 +37,7 @@
             <file>file:/C:/Users/freir/OneDrive/Área%20de%20Trabalho/A3-prog/trabalho-faculdade-a3/trabalho-faculdade-a3/src/controle/detran/QuestoesDAO.java</file>
             <file>file:/C:/Users/freir/OneDrive/Área%20de%20Trabalho/A3-prog/trabalho-faculdade-a3/trabalho-faculdade-a3/src/controle/ConexaoDAO.java</file>
             <file>file:/C:/Users/freir/OneDrive/Área%20de%20Trabalho/A3-prog/trabalho-faculdade-a3/trabalho-faculdade-a3/src/controle/aluno/PagamentoDAO.java</file>
+            <file>file:/C:/Users/freir/OneDrive/Área%20de%20Trabalho/A3-prog/trabalho-faculdade-a3/trabalho-faculdade-a3/src/visao/examinadores/ListaResultadosExame.java</file>
         </group>
     </open-files>
 </project-private>
