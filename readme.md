@@ -40,7 +40,7 @@ O objetivo do trabalho é oferecer a oportunidade dos alunos da UC de Programaç
 
 *    2º Importe a dependecia do mysql-conector
 
-*    3º Mudar o login e senha da sua database local -> src/controle/ConexaoDAO.java -   String url = "jdbc:mysql://localhost:3306/detran?user=SEUusuario&password=SUAsenha";
+*    3º Mudar o login e senha da sua database local -> src/controle/ConexaoDAO.java -   String url = "jdbc:mysql://localhost:3306/detran?user=`SEU USUARIO`&password=`SUA SENHA`";
 
 
 ## Primeiros passos
