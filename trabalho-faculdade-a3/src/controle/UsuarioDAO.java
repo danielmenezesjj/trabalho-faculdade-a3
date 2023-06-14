@@ -1,12 +1,9 @@
 package controle;
 
-import controle.examinador.ExaminadorDAO;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import modelo.Usuario;
 import visao.admin.MainAdmin;
@@ -52,22 +49,14 @@ public class UsuarioDAO {
                     case 1:
                         new MainAluno().setVisible(true);
                         break;
-                    case 2:
-                        new MainExaminador().setVisible(true);
-                        break;
-
-                    case 3:
-                        new MainExaminador().setVisible(true);
-                        break;
-
-                    case 4:
+                    case 2, 3, 4:
                         new MainExaminador().setVisible(true);
                         break;
                     case 5:
                         new MainAdmin().setVisible(true);
                         break;
                 }
-                
+
                 return true;
             } else {
                 JOptionPane.showMessageDialog(null, "Usuário ou senha incorreto.");

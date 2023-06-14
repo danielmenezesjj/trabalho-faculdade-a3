@@ -1,12 +1,12 @@
 package visao.aluno.servicos;
 
+import controle.aluno.AlunoDAO;
 import services.AlunoServices;
 import modelo.ServicoDTO;
 import modelo.UsuarioDTO;
+
 public class Boleto extends javax.swing.JFrame {
 
-    double valor;
-    String item;
     int idItem;
 
     /**
@@ -14,6 +14,16 @@ public class Boleto extends javax.swing.JFrame {
      */
     public Boleto() {
         initComponents();
+    }
+
+    public Boleto(ServicoDTO servico) {
+        initComponents();
+        double valor = servico.getValor();
+        String item = servico.getItem();
+        idItem = servico.getId();
+
+        txtValor.setText("R$" + String.valueOf(valor));
+        txtItem.setText(item);
     }
 
     /**
@@ -115,18 +125,22 @@ public class Boleto extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void formWindowActivated(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowActivated
-        txtValor.setText("R$" + String.valueOf(valor));
-        txtItem.setText(item);
+
     }//GEN-LAST:event_formWindowActivated
 
     private void btnPagarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPagarActionPerformed
 
         if (idItem == 1) {
-            new InterfaceNovaCNH().setVisible(true);
+            new NovaCNH().setVisible(true);
         }
-        
+
+        if (idItem == 2) {
+            new Carteira().setVisible(true);
+        }
+
         if (idItem == 3) {
-            new InterfaceRenovacao().setVisible(true);
+            new AlunoDAO().renovarCarteira();
+            new Renovacao().setVisible(true);
         }
 
         int alunoId = UsuarioDTO.usuarioLogado.getId_usuario();
@@ -134,12 +148,6 @@ public class Boleto extends javax.swing.JFrame {
         new AlunoServices().pagarBoleto(idItem, alunoId);
         this.dispose();
     }//GEN-LAST:event_btnPagarActionPerformed
-    public ServicoDTO getServico(ServicoDTO servico) {
-        valor = servico.getValor();
-        item = servico.getItem();
-        idItem = servico.getId();
-        return servico;
-    }
 
     /**
      * @param args the command line arguments

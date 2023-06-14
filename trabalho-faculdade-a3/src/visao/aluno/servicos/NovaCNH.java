@@ -3,7 +3,6 @@ package visao.aluno.servicos;
 import controle.aluno.AlunoDAO;
 import controle.detran.CarteiraDAO;
 import controle.detran.ExamesDAO;
-import controle.examinador.ExaminadorDAO;
 import controle.detran.ProvaTeoricaDAO;
 import java.awt.Color;
 import java.sql.ResultSet;
@@ -18,7 +17,7 @@ import modelo.CarteiraDTO;
 import modelo.UsuarioDTO;
 import visao.aluno.MainAluno;
 
-public class InterfaceNovaCNH extends javax.swing.JFrame {
+public class NovaCNH extends javax.swing.JFrame {
 
     boolean refazerExame = false;
 
@@ -33,7 +32,7 @@ public class InterfaceNovaCNH extends javax.swing.JFrame {
     /**
      * Creates new form InterfaceNovaCNH
      */
-    public InterfaceNovaCNH() {
+    public NovaCNH() {
         initComponents();
         obterQuantidadeReprovacao();
         habilitarChance();
@@ -68,6 +67,7 @@ public class InterfaceNovaCNH extends javax.swing.JFrame {
         btnImprimirCarteira = new javax.swing.JButton();
         txtMessagem = new javax.swing.JLabel();
         btnVoltar = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
 
         jButton3.setText("Realizar exame");
         jButton3.addActionListener(new java.awt.event.ActionListener() {
@@ -84,8 +84,9 @@ public class InterfaceNovaCNH extends javax.swing.JFrame {
         });
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setMinimumSize(new java.awt.Dimension(684, 574));
         setUndecorated(true);
-        setPreferredSize(new java.awt.Dimension(500, 420));
+        setPreferredSize(new java.awt.Dimension(601, 520));
         setResizable(false);
         addWindowListener(new java.awt.event.WindowAdapter() {
             public void windowActivated(java.awt.event.WindowEvent evt) {
@@ -95,28 +96,49 @@ public class InterfaceNovaCNH extends javax.swing.JFrame {
                 formWindowOpened(evt);
             }
         });
+        getContentPane().setLayout(null);
 
         txtUsuarioLogado.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
         txtUsuarioLogado.setText("Olá, #nomeAluno");
+        getContentPane().add(txtUsuarioLogado);
+        txtUsuarioLogado.setBounds(40, 50, 210, 24);
 
-        jLabel2.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+        jLabel2.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
         jLabel2.setText("Etapas");
+        getContentPane().add(jLabel2);
+        jLabel2.setBounds(280, 150, 67, 20);
 
         jLabel3.setText("Exame Médico");
+        getContentPane().add(jLabel3);
+        jLabel3.setBounds(130, 240, 80, 20);
 
         txtResultadoMedico.setText("Resultado:");
+        getContentPane().add(txtResultadoMedico);
+        txtResultadoMedico.setBounds(430, 250, 200, 20);
 
         jLabel5.setText("Exame Psicológico");
+        getContentPane().add(jLabel5);
+        jLabel5.setBounds(130, 280, 105, 20);
 
         txtResultadoPsicologico.setText("Resultado:");
+        getContentPane().add(txtResultadoPsicologico);
+        txtResultadoPsicologico.setBounds(430, 280, 210, 20);
 
         jLabel7.setText("Exame Prático");
+        getContentPane().add(jLabel7);
+        jLabel7.setBounds(130, 360, 79, 20);
 
         txtResultadoPratico.setText("Resultado:");
+        getContentPane().add(txtResultadoPratico);
+        txtResultadoPratico.setBounds(430, 360, 190, 20);
 
         jLabel9.setText("Exame Teórico");
+        getContentPane().add(jLabel9);
+        jLabel9.setBounds(130, 320, 82, 20);
 
         jLabel10.setText("Resultado:");
+        getContentPane().add(jLabel10);
+        jLabel10.setBounds(430, 320, 200, 20);
 
         btnSolicitarCarteira.setBackground(new java.awt.Color(0, 0, 0));
         btnSolicitarCarteira.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
@@ -127,6 +149,8 @@ public class InterfaceNovaCNH extends javax.swing.JFrame {
                 btnSolicitarCarteiraActionPerformed(evt);
             }
         });
+        getContentPane().add(btnSolicitarCarteira);
+        btnSolicitarCarteira.setBounds(140, 460, 160, 40);
 
         btnMedico.setBackground(new java.awt.Color(51, 102, 255));
         btnMedico.setForeground(new java.awt.Color(255, 255, 255));
@@ -136,6 +160,8 @@ public class InterfaceNovaCNH extends javax.swing.JFrame {
                 btnMedicoActionPerformed(evt);
             }
         });
+        getContentPane().add(btnMedico);
+        btnMedico.setBounds(260, 240, 130, 30);
 
         btnPsicologo.setBackground(new java.awt.Color(51, 102, 255));
         btnPsicologo.setForeground(new java.awt.Color(255, 255, 255));
@@ -145,6 +171,8 @@ public class InterfaceNovaCNH extends javax.swing.JFrame {
                 btnPsicologoActionPerformed(evt);
             }
         });
+        getContentPane().add(btnPsicologo);
+        btnPsicologo.setBounds(260, 280, 130, 30);
 
         btnTeorico.setBackground(new java.awt.Color(51, 102, 255));
         btnTeorico.setForeground(new java.awt.Color(255, 255, 255));
@@ -154,6 +182,8 @@ public class InterfaceNovaCNH extends javax.swing.JFrame {
                 btnTeoricoActionPerformed(evt);
             }
         });
+        getContentPane().add(btnTeorico);
+        btnTeorico.setBounds(260, 320, 130, 30);
 
         btnPratico.setBackground(new java.awt.Color(51, 102, 255));
         btnPratico.setForeground(new java.awt.Color(255, 255, 255));
@@ -163,10 +193,13 @@ public class InterfaceNovaCNH extends javax.swing.JFrame {
                 btnPraticoActionPerformed(evt);
             }
         });
+        getContentPane().add(btnPratico);
+        btnPratico.setBounds(260, 360, 130, 30);
 
-        btnImprimirCarteira.setBackground(new java.awt.Color(0, 0, 0));
+        btnImprimirCarteira.setBackground(new java.awt.Color(153, 153, 153));
         btnImprimirCarteira.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        btnImprimirCarteira.setForeground(new java.awt.Color(255, 255, 255));
+        btnImprimirCarteira.setForeground(new java.awt.Color(51, 51, 51));
+        btnImprimirCarteira.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/imprimindo-contorno-do-botao.png"))); // NOI18N
         btnImprimirCarteira.setText("Imprimir Carteira");
         btnImprimirCarteira.setEnabled(false);
         btnImprimirCarteira.addActionListener(new java.awt.event.ActionListener() {
@@ -174,105 +207,28 @@ public class InterfaceNovaCNH extends javax.swing.JFrame {
                 btnImprimirCarteiraActionPerformed(evt);
             }
         });
+        getContentPane().add(btnImprimirCarteira);
+        btnImprimirCarteira.setBounds(340, 460, 170, 40);
 
         txtMessagem.setForeground(new java.awt.Color(153, 0, 0));
+        getContentPane().add(txtMessagem);
+        txtMessagem.setBounds(80, 100, 490, 30);
 
         btnVoltar.setBackground(new java.awt.Color(255, 51, 51));
+        btnVoltar.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
         btnVoltar.setForeground(new java.awt.Color(255, 255, 255));
-        btnVoltar.setText("Voltar");
+        btnVoltar.setText("X");
         btnVoltar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnVoltarActionPerformed(evt);
             }
         });
+        getContentPane().add(btnVoltar);
+        btnVoltar.setBounds(620, 20, 40, 30);
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(15, 15, 15)
-                        .addComponent(btnVoltar, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(64, 64, 64)
-                        .addComponent(txtUsuarioLogado))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(214, 214, 214)
-                        .addComponent(jLabel2))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(41, 41, 41)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(txtMessagem, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(btnSolicitarCarteira, javax.swing.GroupLayout.PREFERRED_SIZE, 181, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(36, 36, 36)
-                                .addComponent(btnImprimirCarteira, javax.swing.GroupLayout.PREFERRED_SIZE, 184, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                .addGap(47, 47, 47))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(68, 68, 68)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel7)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(jLabel3)
-                                .addComponent(jLabel5, javax.swing.GroupLayout.Alignment.TRAILING))
-                            .addComponent(jLabel9))
-                        .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(btnPsicologo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(btnPratico, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(btnMedico, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(btnTeorico, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 39, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(txtResultadoPsicologico)
-                    .addComponent(txtResultadoMedico)
-                    .addComponent(jLabel10)
-                    .addComponent(txtResultadoPratico))
-                .addGap(169, 169, 169))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(34, 34, 34)
-                        .addComponent(txtUsuarioLogado))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(19, 19, 19)
-                        .addComponent(btnVoltar)))
-                .addGap(18, 18, 18)
-                .addComponent(txtMessagem, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel2)
-                .addGap(9, 9, 9)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtResultadoMedico, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnMedico))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtResultadoPsicologico, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnPsicologo))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnTeorico))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtResultadoPratico, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnPratico))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 47, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(btnImprimirCarteira, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(btnSolicitarCarteira, javax.swing.GroupLayout.DEFAULT_SIZE, 42, Short.MAX_VALUE))
-                .addGap(38, 38, 38))
-        );
+        jLabel1.setText("________________________________________________________");
+        getContentPane().add(jLabel1);
+        jLabel1.setBounds(120, 170, 400, 20);
 
         pack();
         setLocationRelativeTo(null);
@@ -280,7 +236,7 @@ public class InterfaceNovaCNH extends javax.swing.JFrame {
 
     private void btnMedicoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMedicoActionPerformed
         if (refazerExame) {
-            alunoDao.refazerExame(alunoLogadoId, 1);
+            alunoDao.refazerExame(1);
         } else {
             alunoDao.fazerExame(1);
         }
@@ -289,7 +245,7 @@ public class InterfaceNovaCNH extends javax.swing.JFrame {
 
     private void btnPsicologoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPsicologoActionPerformed
         if (refazerExame) {
-            alunoDao.refazerExame(alunoLogadoId, 2);
+            alunoDao.refazerExame(2);
         } else {
             alunoDao.fazerExame(2);
         }
@@ -300,6 +256,7 @@ public class InterfaceNovaCNH extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void btnTeoricoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTeoricoActionPerformed
+        this.dispose();
         new ProvaTeorica().setVisible(true);
     }//GEN-LAST:event_btnTeoricoActionPerformed
 
@@ -309,7 +266,7 @@ public class InterfaceNovaCNH extends javax.swing.JFrame {
 
     private void btnPraticoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPraticoActionPerformed
         if (refazerExame) {
-            alunoDao.refazerExame(alunoLogadoId, 4);
+            alunoDao.refazerExame(4);
         } else {
             alunoDao.fazerExame(4);
         }
@@ -325,20 +282,12 @@ public class InterfaceNovaCNH extends javax.swing.JFrame {
 
     private void formWindowActivated(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowActivated
         verificaSeEstaFazendoExame();
-
         pegarResultadosExames();
-
         ativarBotaoSolicitarCarteira();
-
         verificaSeJaFezProva();
-
         verficaSeJatemCarteira();
-
         pegarResultadoProvaTeorica();
-
         verificaAprovados();
-
-
     }//GEN-LAST:event_formWindowActivated
 
     private void btnImprimirCarteiraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnImprimirCarteiraActionPerformed
@@ -360,13 +309,13 @@ public class InterfaceNovaCNH extends javax.swing.JFrame {
                 btnTeorico.setEnabled(false);
             }
         } catch (SQLException ex) {
-            Logger.getLogger(InterfaceNovaCNH.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(NovaCNH.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
     private void verificaSeEstaFazendoExame() {
         try {
-            ResultSet rsExDao = new ExaminadorDAO().buscarExameSendoFeito(alunoLogadoId);
+            ResultSet rsExDao = new ExamesDAO().buscarExamesSemResultado();
 
             while (rsExDao.next()) {
                 int tipo_exame = rsExDao.getInt("tipo_exame_id");
@@ -385,7 +334,7 @@ public class InterfaceNovaCNH extends javax.swing.JFrame {
                 }
             }
         } catch (SQLException ex) {
-            Logger.getLogger(InterfaceNovaCNH.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(NovaCNH.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
@@ -408,7 +357,7 @@ public class InterfaceNovaCNH extends javax.swing.JFrame {
 
             rsAlunoDao.close();
         } catch (SQLException ex) {
-            Logger.getLogger(InterfaceNovaCNH.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(NovaCNH.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
@@ -444,7 +393,7 @@ public class InterfaceNovaCNH extends javax.swing.JFrame {
                 }
             }
         } catch (SQLException ex) {
-            Logger.getLogger(InterfaceNovaCNH.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(NovaCNH.class.getName()).log(Level.SEVERE, null, ex);
             return null;
         }
 
@@ -481,7 +430,7 @@ public class InterfaceNovaCNH extends javax.swing.JFrame {
     private boolean verificaAprovados() {
 
         ResultSet rsProvaDao = new ProvaTeoricaDAO().buscarProva(alunoLogadoId);
-        ResultSet rsExDao = new ExamesDAO().buscarExamesAprovados(alunoLogadoId);
+        ResultSet rsExDao = new ExamesDAO().buscarExamesAprovados();
 
         try {
             while (rsExDao.next()) {
@@ -514,7 +463,7 @@ public class InterfaceNovaCNH extends javax.swing.JFrame {
             return exameMedAprovado && examePratAprovado && examePsiAprovado && provaTeoriAprovado;
 
         } catch (SQLException e) {
-            Logger.getLogger(InterfaceNovaCNH.class.getName()).log(Level.SEVERE, null, e);
+            Logger.getLogger(NovaCNH.class.getName()).log(Level.SEVERE, null, e);
             return false;
         }
     }
@@ -529,7 +478,7 @@ public class InterfaceNovaCNH extends javax.swing.JFrame {
 
     private void verficaSeJatemCarteira() {
         try {
-            ResultSet rsCarteira = new CarteiraDAO().buscaCarteira(alunoLogadoId);
+            ResultSet rsCarteira = new CarteiraDAO().buscaCarteira();
 
             if (rsCarteira.next()) {
                 btnSolicitarCarteira.setEnabled(false);
@@ -625,20 +574,21 @@ public class InterfaceNovaCNH extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(InterfaceNovaCNH.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(NovaCNH.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(InterfaceNovaCNH.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(NovaCNH.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(InterfaceNovaCNH.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(NovaCNH.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(InterfaceNovaCNH.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(NovaCNH.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new InterfaceNovaCNH().setVisible(true);              
+                new NovaCNH().setVisible(true);              
             }
         });
     }
@@ -653,6 +603,7 @@ public class InterfaceNovaCNH extends javax.swing.JFrame {
     private javax.swing.JButton btnVoltar;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton5;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
