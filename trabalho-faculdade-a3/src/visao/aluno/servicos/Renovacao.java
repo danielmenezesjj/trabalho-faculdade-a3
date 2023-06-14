@@ -136,6 +136,9 @@ public class Renovacao extends javax.swing.JFrame {
 
     private void btnRealizarExameMedicoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRealizarExameMedicoActionPerformed
         JOptionPane.showMessageDialog(null, "Exame marcado!");
+        
+        // Fazer exame do tipo Médico-renovação
+        new AlunoDAO().fazerExame(3);
     }//GEN-LAST:event_btnRealizarExameMedicoActionPerformed
 
     private void buscarResultadoExame() {
@@ -170,7 +173,7 @@ public class Renovacao extends javax.swing.JFrame {
         this.dispose();
         new MainAluno().setVisible(true);
     }//GEN-LAST:event_btnCloseActionPerformed
-
+    
     private void btnImprimirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnImprimirActionPerformed
         CarteiraDTO carteiraDto = new CarteiraDTO();
 
@@ -201,7 +204,7 @@ public class Renovacao extends javax.swing.JFrame {
         ResultSet rsCarteiraAluno = new AlunoDAO().verificaSeContemCarteira();
 
         try {
-            if (rsExameALuno.next() || rsCarteiraAluno.next()) {
+            if (rsExameALuno.next() && rsCarteiraAluno.next()) {
                 if (rsCarteiraAluno.getDate("dt_emissao") == null) {
                     btnRealizarExameMedico.setEnabled(false);
                     btnRealizarExameMedico.setText("Aguardando resultado...");
