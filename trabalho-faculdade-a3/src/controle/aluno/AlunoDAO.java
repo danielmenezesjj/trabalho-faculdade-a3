@@ -2,6 +2,7 @@ package controle.aluno;
 
 import controle.ConexaoDAO;
 import controle.UsuarioDAO;
+import controle.detran.ExameDAO;
 import java.sql.Connection;
 import java.sql.Date;
 import java.sql.PreparedStatement;
@@ -19,7 +20,7 @@ public class AlunoDAO {
     public boolean cadastrarAluno(AlunoDTO alunoDto) {
         try {
             boolean rsBuscaUsuario = new UsuarioDAO().buscarUsuario(alunoDto.getCpf_usuario());
-            
+
             // Verifica se já existe usuário com o cpf digitado 
             if (rsBuscaUsuario) {
                 JOptionPane.showMessageDialog(null, "Usuário já cadastrado!", "Erro", JOptionPane.ERROR_MESSAGE);
@@ -60,7 +61,7 @@ public class AlunoDAO {
 
         } catch (SQLException e) {
             JOptionPane.showMessageDialog(null, "AlunoDAO: " + e, "AlunoDAO", JOptionPane.ERROR_MESSAGE);
-        } 
+        }
         return false;
     }
 
@@ -131,23 +132,6 @@ public class AlunoDAO {
             return null;
         }
     }
-    
-    private void deleteExame(){
-         try {
-            String sql = "DELETE FROM exames WHERE aluno_id = ? AND tipo_exame_id = 3";
-            PreparedStatement pstm = conn.prepareStatement(sql);
-
-            pstm.setInt(1, AlunoDTO.usuarioLogado.getId_usuario());
-
-            int rowsAffected = pstm.executeUpdate();
-            
-            if(rowsAffected > 0)
-                JOptionPane.showMessageDialog(null, "Deletados");
-
-        } catch (SQLException e) {
-            JOptionPane.showMessageDialog(null, "CarteiraDAO: " + e, "Erro", JOptionPane.ERROR_MESSAGE);
-        }
-    }
 
     public void iniciarRenovacao() {
         try {
@@ -156,7 +140,9 @@ public class AlunoDAO {
 
             pstm.setInt(1, AlunoDTO.usuarioLogado.getId_usuario());
             
-            deleteExame();
+            // Deleta exame Médico-renovação caso exista para poder fazê-lo novamente
+            new ExameDAO().deleteExame();
+            
             pstm.executeUpdate();
 
         } catch (SQLException e) {

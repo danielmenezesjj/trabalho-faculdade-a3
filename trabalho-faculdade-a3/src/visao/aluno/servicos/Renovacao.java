@@ -3,14 +3,13 @@ package visao.aluno.servicos;
 import controle.aluno.AlunoDAO;
 import controle.detran.CarteiraDAO;
 import controle.detran.ExameDAO;
-import controle.examinador.ExaminadorDAO;
+import java.awt.Color;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javax.swing.JOptionPane;
 import modelo.AlunoDTO;
 import modelo.CarteiraDTO;
 import visao.aluno.MainAluno;
@@ -147,10 +146,14 @@ public class Renovacao extends javax.swing.JFrame {
                 String resultado = resultSetExame.getString("resultado");
 
                 if (tipoExameId == 3 && resultado != null) {
+                    btnRealizarExameMedico.setText("Exame feito");
                     txtResultado.setText(resultado);
 
                     if (resultado.equals("Aprovado")) {
+                        txtResultado.setForeground(new Color(0, 102, 0, 255));
                         aprovado = true;
+                    } else {
+                        txtResultado.setForeground(Color.red);
                     }
                 }
 
@@ -197,12 +200,15 @@ public class Renovacao extends javax.swing.JFrame {
     }
 
     private void habilitarBotaoExame() {
-        ResultSet rsExameALuno = new ExameDAO().buscarExamesSemResultado();
+        ResultSet rsExameALuno = new ExameDAO().buscarExames();
 
         try {
-            if (rsExameALuno.next()) {
-                btnRealizarExameMedico.setEnabled(false);
-                btnRealizarExameMedico.setText("Aguardando resultado...");
+            while (rsExameALuno.next()) {
+                if (rsExameALuno.getInt("tipo_exame_id") == 3) {
+                    btnRealizarExameMedico.setEnabled(false);
+                    btnRealizarExameMedico.setText("Aguardando resultado...");
+                }
+
             }
         } catch (SQLException ex) {
             Logger.getLogger(Renovacao.class.getName()).log(Level.SEVERE, null, ex);

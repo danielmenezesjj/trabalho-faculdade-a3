@@ -79,4 +79,19 @@ public class ExameDAO {
             return null;
         }
     }
+    
+        public void deleteExame() {
+        try {
+            String sql = "DELETE FROM exames WHERE aluno_id = ? AND tipo_exame_id = 3";
+            PreparedStatement pstm = conn.prepareStatement(sql);
+
+            pstm.setInt(1, AlunoDTO.usuarioLogado.getId_usuario());
+
+            pstm.executeUpdate();
+
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null, "CarteiraDAO: " + e, "Erro", JOptionPane.ERROR_MESSAGE);
+        }
+    }
+
 }
