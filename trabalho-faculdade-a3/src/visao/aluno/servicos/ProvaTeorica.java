@@ -234,7 +234,7 @@ public class ProvaTeorica extends javax.swing.JFrame {
             QuestaoDAO objQuestoesDao = new QuestaoDAO();
             ResultSet rsObjQuestoesDao = objQuestoesDao.buscarQuestoes(qtQuestoes);
 
-            // Amrazenando questoes no arrayList
+            // Armazenando questoes no arrayList
             while (rsObjQuestoesDao.next()) {
                 Questao questao = new Questao();
 

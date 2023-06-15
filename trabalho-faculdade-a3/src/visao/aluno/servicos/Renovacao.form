@@ -136,7 +136,7 @@
     </Component>
     <Component class="javax.swing.JLabel" name="txtResultado">
       <Properties>
-        <Property name="text" type="java.lang.String" value="x"/>
+        <Property name="text" type="java.lang.String" value="|"/>
       </Properties>
     </Component>
   </SubComponents>

@@ -85,7 +85,7 @@ public class Renovacao extends javax.swing.JFrame {
             }
         });
 
-        txtResultado.setText("x");
+        txtResultado.setText("|");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
