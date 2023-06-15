@@ -21,11 +21,13 @@ O objetivo do trabalho é oferecer a oportunidade dos alunos da UC de Programaç
 
 
 
-## Requisitos funcionais e não funcionais
-![Requisitos ](https://i.imgur.com/9YDVM57.png)
+
 
 ## Diagrama de Classes
-![Classes ](https://i.imgur.com/9JNojO6.png)
+![Classes ](https://i.imgur.com/NZfEMMk.png)
+
+## Diagrama de Caso de Uso
+![CasoDeUso ](https://i.imgur.com/vZgb56b.png)
 
 ## Programas pra rodar o software
 * https://download.oracle.com/java/19/archive/jdk-19.0.2_windows-x64_bin.exe - JDK 19
@@ -60,5 +62,4 @@ O objetivo do trabalho é oferecer a oportunidade dos alunos da UC de Programaç
 
 
 ## Interfaces 
-
-![Interfaces ](https://i.imgur.com/bsrRzn3.png)
+![Interfaces ](https://i.imgur.com/BtOKIVW.png)
