@@ -62,5 +62,4 @@ O objetivo do trabalho é oferecer a oportunidade dos alunos da UC de Programaç
 
 
 ## Interfaces 
-
-![Interfaces ](https://i.imgur.com/bsrRzn3.png)
+![Interfaces ](https://i.imgur.com/BtOKIVW.png)
