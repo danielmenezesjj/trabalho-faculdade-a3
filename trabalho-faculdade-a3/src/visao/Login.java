@@ -18,7 +18,6 @@ public class Login extends javax.swing.JFrame {
         initComponents();
         formataCpf();
         txtCpf.requestFocus();
-        this.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
     }
 
     /**
@@ -39,7 +38,7 @@ public class Login extends javax.swing.JFrame {
         btnSair = new javax.swing.JButton();
         jLabel4 = new javax.swing.JLabel();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMinimumSize(new java.awt.Dimension(418, 547));
         setName("frameLogin"); // NOI18N
         setUndecorated(true);

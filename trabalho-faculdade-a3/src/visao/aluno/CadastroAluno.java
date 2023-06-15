@@ -210,7 +210,7 @@ public class CadastroAluno extends javax.swing.JFrame {
     private void txtDtNascimentoKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtDtNascimentoKeyPressed
         int KeyCode = evt.getKeyCode();
         
-        // Cadastrar ao precionar ENTER
+        // Cadastrar ao pressionar ENTER
         if (KeyCode == KeyEvent.VK_ENTER) {
             try {
                 cadastrarAluno();
