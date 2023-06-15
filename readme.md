@@ -25,7 +25,7 @@ O objetivo do trabalho é oferecer a oportunidade dos alunos da UC de Programaç
 ![Requisitos ](https://i.imgur.com/9YDVM57.png)
 
 ## Diagrama de Classes
-![Classes ](https://i.imgur.com/9JNojO6.png)
+![Classes ]([https://i.imgur.com/9JNojO6.png](https://i.imgur.com/NZfEMMk.png))
 
 ## Programas pra rodar o software
 * https://download.oracle.com/java/19/archive/jdk-19.0.2_windows-x64_bin.exe - JDK 19
