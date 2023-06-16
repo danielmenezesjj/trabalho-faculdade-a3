@@ -132,7 +132,7 @@ public class MainAluno extends javax.swing.JFrame {
                 this.dispose();
                 new NovaCNH().setVisible(true);
             } else {
-                buscarServico(1);
+                pagarBoleto(1);
             }
         } catch (SQLException ex) {
             Logger.getLogger(MainAluno.class.getName()).log(Level.SEVERE, null, ex);
@@ -146,15 +146,16 @@ public class MainAluno extends javax.swing.JFrame {
 
             if (rsPgmDAO.next()) {
                 if (rsCarteiraAluno.next()) {
-                    if (rsCarteiraAluno.getDate("dt_emissao") == null) {
+                    Date dt_vencimento = rsCarteiraAluno.getDate("dt_vencimento");
+                    
+                    // Se já estiver fazendo renovação não abre tela de boleto e renderiza a tela de Renovação
+                    if (dt_vencimento == null) {
                         this.dispose();
                         new Renovacao().setVisible(true);
                     } else {
-                        buscarServico(3);
+                        pagarBoleto(3);
                     }
                 }
-            } else {
-                buscarServico(3);
             }
 
         } catch (SQLException ex) {
@@ -166,7 +167,7 @@ public class MainAluno extends javax.swing.JFrame {
         ResultSet rsCarteira = new CarteiraDAO().buscaCarteira();
         try {
             if (rsCarteira.next()) {
-                buscarServico(2);
+                pagarBoleto(2);
             } else {
                 JOptionPane.showMessageDialog(null, "Usuário não possui carteira.");
             }
@@ -187,10 +188,10 @@ public class MainAluno extends javax.swing.JFrame {
         new Login().setVisible(true);
     }//GEN-LAST:event_btnFecharSistemaActionPerformed
 
-    private void buscarServico(int id) {
+    private void pagarBoleto(int idServico) {
         try {
             ServicoDTO objServicoDto = new ServicoDTO();
-            objServicoDto.setId(id);
+            objServicoDto.setId(idServico);
 
             ServicoDAO objServicoDao = new ServicoDAO();
             ResultSet rsServicoDao = objServicoDao.getServico(objServicoDto);
@@ -225,9 +226,12 @@ public class MainAluno extends javax.swing.JFrame {
     private void permitirRenovacao() {
         try {
             ResultSet rsCarteiraDao = new CarteiraDAO().buscaCarteira();
-
+            
+            
             if (rsCarteiraDao.next()) {
-                if (rsCarteiraDao.getDate("dt_vencimento") == null || rsCarteiraDao.getDate("dt_vencimento").before(dataAtual)) {
+                Date dt_vencimento = rsCarteiraDao.getDate("dt_vencimento");
+                
+                if (dt_vencimento == null || dt_vencimento.before(dataAtual)) {
                     btnRenovacao.setEnabled(true);
                 }
             }

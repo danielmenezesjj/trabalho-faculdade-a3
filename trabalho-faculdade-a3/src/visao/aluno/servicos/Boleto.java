@@ -1,6 +1,7 @@
 package visao.aluno.servicos;
 
 import controle.aluno.AlunoDAO;
+import controle.detran.ExameDAO;
 import services.AlunoServices;
 import modelo.ServicoDTO;
 import modelo.UsuarioDTO;
@@ -139,8 +140,11 @@ public class Boleto extends javax.swing.JFrame {
         }
 
         if (idItem == 3) {
-            // Ao 
+            // Ao iniciar a renovação o sistema já altera a dt_emissao e dt_vencimento de carteira para NULL
+            // Isso é ultilizado para não ter que pagar boleto se estiver fazendo a renovação (serve como um status de 'fazendo renovação')
             new AlunoDAO().iniciarRenovacao();
+            
+            new ExameDAO().deleteExame();
             new Renovacao().setVisible(true);
         }
 
