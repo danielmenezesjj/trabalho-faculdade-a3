@@ -43,6 +43,7 @@ public class AlunoDAO {
             java.util.Date dataAtual = new java.util.Date();
 
             long diferenca = dataAtual.getTime() - alunoDto.getDt_nascimento_usuario().getTime();
+            // Converte data de nascimento de aluno em anos
             long idadeAluno = TimeUnit.DAYS.convert(diferenca, TimeUnit.MILLISECONDS) / 365;
 
             if (idadeAluno < 18) {

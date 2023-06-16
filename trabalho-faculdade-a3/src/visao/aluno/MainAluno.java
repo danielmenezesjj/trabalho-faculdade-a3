@@ -147,15 +147,17 @@ public class MainAluno extends javax.swing.JFrame {
             if (rsPgmDAO.next()) {
                 if (rsCarteiraAluno.next()) {
                     Date dt_vencimento = rsCarteiraAluno.getDate("dt_vencimento");
-                    
+
                     // Se já estiver fazendo renovação não abre tela de boleto e renderiza a tela de Renovação
-                    if (dt_vencimento == null) {
+                    if (dt_vencimento == null || dt_vencimento.before(dataAtual)) {
                         this.dispose();
                         new Renovacao().setVisible(true);
                     } else {
                         pagarBoleto(3);
                     }
                 }
+            } else {
+                pagarBoleto(3);
             }
 
         } catch (SQLException ex) {
@@ -212,7 +214,7 @@ public class MainAluno extends javax.swing.JFrame {
     }
 
     private void permitirNovaEmissao() {
-        ResultSet rsCarteiraAluno =  new CarteiraDAO().buscaCarteira();
+        ResultSet rsCarteiraAluno = new CarteiraDAO().buscaCarteira();
 
         try {
             if (!rsCarteiraAluno.next()) {
@@ -226,11 +228,10 @@ public class MainAluno extends javax.swing.JFrame {
     private void permitirRenovacao() {
         try {
             ResultSet rsCarteiraDao = new CarteiraDAO().buscaCarteira();
-            
-            
+
             if (rsCarteiraDao.next()) {
                 Date dt_vencimento = rsCarteiraDao.getDate("dt_vencimento");
-                
+
                 if (dt_vencimento == null || dt_vencimento.before(dataAtual)) {
                     btnRenovacao.setEnabled(true);
                 }
@@ -243,11 +244,11 @@ public class MainAluno extends javax.swing.JFrame {
     private void permitirSegundaVia() {
         try {
             ResultSet rsCarteiraDao = new CarteiraDAO().buscaCarteira();
-            if (rsCarteiraDao.next()){
+            if (rsCarteiraDao.next()) {
                 // Se carteira não estiver vencida
                 Date dt_vencimento = rsCarteiraDao.getDate("dt_vencimento");
-                if(dt_vencimento != null && dt_vencimento.after(dataAtual)){
-                btnSegundavia.setEnabled(true);
+                if (dt_vencimento != null && dt_vencimento.after(dataAtual)) {
+                    btnSegundavia.setEnabled(true);
                 }
             }
         } catch (Exception e) {
