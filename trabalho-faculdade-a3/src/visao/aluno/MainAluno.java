@@ -149,17 +149,15 @@ public class MainAluno extends javax.swing.JFrame {
                     Date dt_vencimento = rsCarteiraAluno.getDate("dt_vencimento");
 
                     // Se já estiver fazendo renovação não abre tela de boleto e renderiza a tela de Renovação
-                    if (dt_vencimento == null || dt_vencimento.before(dataAtual)) {
+                    if (dt_vencimento == null) {
                         this.dispose();
                         new Renovacao().setVisible(true);
                     } else {
                         pagarBoleto(3);
                     }
                 }
-            } else {
-                pagarBoleto(3);
-            }
-
+            } 
+            
         } catch (SQLException ex) {
             Logger.getLogger(MainAluno.class.getName()).log(Level.SEVERE, null, ex);
         }
