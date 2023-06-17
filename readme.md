@@ -29,6 +29,9 @@ O objetivo do trabalho é oferecer a oportunidade dos alunos da UC de Programaç
 ## Diagrama de Caso de Uso
 ![CasoDeUso ](https://i.imgur.com/vZgb56b.png)
 
+## Diagrama ER
+<img src="https://raw.githubusercontent.com/gist/santyasm/f8a0d7d9e03eb75734bc6a16c0729b64/raw/c1163f08bacef803274c2eb2d22b6204af2acdb3/ER.svg">
+
 ## Programas pra rodar o software
 * https://download.oracle.com/java/19/archive/jdk-19.0.2_windows-x64_bin.exe - JDK 19
 * https://dlcdn.apache.org/netbeans/netbeans-installers/17/Apache-NetBeans-17-bin-windows-x64.exe - NetBeans 17
